@@ -1,0 +1,40 @@
+[project]
+name = "song-video-maker"
+version = "0.1.0"
+description = "Automated aesthetic Instagram Reels from movie clip compilations and songs."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "yt-dlp",
+    "scenedetect[opencv]",
+    "opencv-python",
+    "faster-whisper",
+    "anthropic",
+    "openai",
+    "moviepy",
+    "python-dotenv",
+    "pillow",
+    "numpy",
+    "pydantic",
+]
+
+[project.scripts]
+song-video-maker = "main:main"
+
+[tool.uv]
+dev-dependencies = [
+    "ruff",
+    "pyright",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "basic"
