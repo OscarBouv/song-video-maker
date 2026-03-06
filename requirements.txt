@@ -1,0 +1,10 @@
+yt-dlp
+scenedetect[opencv]
+opencv-python
+faster-whisper
+anthropic
+openai
+moviepy
+python-dotenv
+pillow
+numpy
