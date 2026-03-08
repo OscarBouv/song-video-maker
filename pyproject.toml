@@ -16,10 +16,18 @@ dependencies = [
     "pillow",
     "numpy",
     "pydantic",
+    "typer",
 ]
 
 [project.scripts]
-song-video-maker = "main:main"
+song-video-maker = "pipeline.cli:app"
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "config.py",
+    "models/",
+    "pipeline/",
+]
 
 [tool.uv]
 dev-dependencies = [

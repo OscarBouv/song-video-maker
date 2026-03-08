@@ -1,36 +1,22 @@
-"""Match scenes to lyric lines using an LLM. Produces a reviewable plan file.
-
-Supported providers:
-  - "anthropic"   : Claude via the Anthropic SDK (default)
-  - "openrouter"  : Any model on OpenRouter via the OpenAI-compatible API
-                    See https://openrouter.ai/models for available model IDs.
-"""
+"""Match scenes to lyric lines using an LLM via OpenRouter. Produces a reviewable plan file."""
 import json
 from pathlib import Path
 
 from config import (
-    ANTHROPIC_API_KEY,
-    CLAUDE_MODEL,
     OPENROUTER_API_KEY,
     OPENROUTER_BASE_URL,
-    OPENROUTER_DEFAULT_MODEL,
+    DEFAULT_MATCHER_MODEL,
     MAX_REEL_DURATION,
 )
 from models import Scene, LyricLine, MatchedSegment
-
-
-def _call_anthropic(prompt: str, model: str) -> str:
-    import anthropic as _anthropic
-    client = _anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    response = client.messages.create(
-        model=model,
-        max_tokens=2048,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return response.content[0].text.strip()
+from pipeline import cache
 
 
 def _call_openrouter(prompt: str, model: str) -> str:
+    cached = cache.get_llm(prompt, model, "openrouter")
+    if cached:
+        print("[matcher] Using cached OpenRouter response")
+        return cached
     from openai import OpenAI
     client = OpenAI(api_key=OPENROUTER_API_KEY, base_url=OPENROUTER_BASE_URL)
     response = client.chat.completions.create(
@@ -38,7 +24,9 @@ def _call_openrouter(prompt: str, model: str) -> str:
         max_tokens=2048,
         messages=[{"role": "user", "content": prompt}],
     )
-    return response.choices[0].message.content.strip()
+    result = response.choices[0].message.content.strip()
+    cache.set_llm(prompt, model, "openrouter", result)
+    return result
 
 
 def generate_plan(
@@ -48,14 +36,12 @@ def generate_plan(
     song_name: str,
     output_dir: Path,
     slug: str = "output",
-    provider: str = "anthropic",
     model: str | None = None,
 ) -> list[MatchedSegment]:
-    """Ask an LLM to propose a scene-to-lyric mapping.
+    """Ask an LLM via OpenRouter to propose a scene-to-lyric mapping.
 
     Args:
-        provider: "anthropic" (default) or "openrouter"
-        model:    Model ID override. Defaults to CLAUDE_MODEL or OPENROUTER_DEFAULT_MODEL.
+        model: Model ID override. Defaults to DEFAULT_MATCHER_MODEL.
 
     Saves two files:
       - {output_dir}/{slug}_plan.json   (machine-readable, user can edit)
@@ -63,21 +49,16 @@ def generate_plan(
 
     Returns the MatchedSegment list so the caller can proceed directly if desired.
     """
-    film_scenes = [s for s in scenes if s.is_film_related]
+    film_scenes = [s for s in scenes if s.is_usable]
     if not film_scenes:
-        print("[matcher] Warning: no film-related scenes found — using all scenes")
+        print("[matcher] Warning: no usable scenes found — using all scenes")
         film_scenes = scenes
 
     prompt = _build_prompt(film_scenes, lyrics, film_name, song_name)
 
-    if provider == "openrouter":
-        resolved_model = model or OPENROUTER_DEFAULT_MODEL
-        print(f"[matcher] Calling OpenRouter ({resolved_model}) for scene-to-lyric plan...")
-        raw = _call_openrouter(prompt, resolved_model)
-    else:
-        resolved_model = model or CLAUDE_MODEL
-        print(f"[matcher] Calling Anthropic ({resolved_model}) for scene-to-lyric plan...")
-        raw = _call_anthropic(prompt, resolved_model)
+    resolved_model = model or DEFAULT_MATCHER_MODEL.value
+    print(f"[matcher] Calling OpenRouter ({resolved_model}) for scene-to-lyric plan...")
+    raw = _call_openrouter(prompt, resolved_model)
 
     # Strip markdown code fences if present
     if raw.startswith("```"):
@@ -163,7 +144,7 @@ SONG LYRICS with timestamps (0 = song start):
 {lyric_lines}
 
 TASK:
-Create a scene-to-lyric plan for a ~{max_dur:.0f}s video. Assign each lyric line to the most emotionally/visually fitting scene. You may reuse scenes or skip scenes, but cover all lyric lines. Each scene segment should be 3-15 seconds.
+Create a scene-to-lyric plan for a ~{max_dur:.0f}s video. Assign each lyric line to the most emotionally/visually fitting scene. You may reuse scenes or skip scenes, but cover all lyric lines. Each scene segment should be 1-5 seconds.
 
 Return a JSON array where each element has:
   "scene_index": <integer — must be one of the available scene indices above>,
