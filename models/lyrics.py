@@ -19,6 +19,8 @@ class MatchedSegment(BaseModel):
     lyric_lines: list[LyricLine] = Field(default_factory=list)
     scene_trim_start: float = 0.0   # offset within scene to start from (seconds)
     scene_trim_end: float = -1.0    # offset within scene to end at (-1 = use scene end)
+    song_start: float = -1.0        # absolute position in audio timeline where clip starts (-1 = legacy)
+    song_end: float = -1.0          # absolute position in audio timeline where clip ends   (-1 = legacy)
 
     def to_dict(self) -> dict:
         """Serialize to a plain dict (used when saving plan.json)."""

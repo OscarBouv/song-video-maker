@@ -1,6 +1,6 @@
 .env
 temp/
-outputs/
+outputs*/
 __pycache__/
 *.pyc
 *.pyo

@@ -23,25 +23,59 @@ def _system_prompt(film_name: str, n_frames: int, characters: list[str] | None =
     if characters:
         names = "\n".join(f"  - {c}" for c in characters)
         char_block = (
-            f"\nKnown characters in '{film_name}' — identify them by name whenever recognisable:\n"
+            f"\nKnown characters in '{film_name}' — identify them by name whenever they appear:\n"
             f"{names}\n"
+            f"Always use these exact names in 'characters_present' and in the description.\n"
         )
 
     return (
-        f"You are analyzing scenes from a video compilation of the film '{film_name}'.\n"
+        f"You are a cinematographer and film analyst examining scenes from '{film_name}'.\n"
         f"{char_block}\n"
-        f"For each scene below (labeled SCENE N), I will show you {n_frames} frames sampled from that scene.\n\n"
-        "For each scene, respond with a JSON object containing:\n"
-        '  "index": <scene index>,\n'
-        '  "description": "<2-3 sentences: (1) name any recognisable characters and describe what they are doing,\n'
-        "    (2) describe the setting and visual atmosphere, (3) note the dominant emotion or mood of the scene.\n"
-        "    Be specific — prefer 'Alana watches Gary drive away, her expression unreadable' over 'a woman stands outside'>,\n"
-        f'  "is_film_related": <true/false — whether this scene is from \'{film_name}\'>,\n'
-        '  "is_aesthetic": <true/false — whether this scene is visually clean and suitable for an Instagram Reel.\n'
-        "    Mark false if the frame has: overlaid text/subtitles/watermarks/logos, explicit or graphic content,\n"
-        "    heavily pixelated/blurry/corrupted image, black bars covering most of the frame, or on-screen UI elements>,\n"
-        '  "confidence": <0.0-1.0 — your confidence in the is_film_related judgment>\n\n'
-        "Return a JSON array of these objects, one per scene. Nothing else."
+        f"For each scene (labeled SCENE N) you receive {n_frames} sampled frames.\n\n"
+        "Return a JSON array — one object per scene — with EXACTLY these keys:\n\n"
+
+        '  "index": <scene index (integer)>,\n\n'
+
+        '  "description": "<One vivid sentence describing WHAT IS HAPPENING: who is present, '
+        "what they are doing, and the dramatic situation. Be specific and visual — "
+        "prefer 'Alana stands frozen in the parking lot, watching Gary's truck disappear around the corner' "
+        "over 'a woman stands outside'. Mention character names if visible.>,\n\n"
+
+        '  "characters_present": [<list of character names visible in this scene — empty list [] if none>],\n\n'
+
+        '  "emotion": "<The dominant emotional register of the scene in 2–5 evocative words. '
+        "Think like a music-video director: what FEELING should a viewer walk away with? "
+        "e.g. 'aching longing', 'quiet joy', 'electric tension', 'bittersweet nostalgia', 'defiant freedom'.>,\n\n"
+
+        '  "shot_type": "<The dominant camera framing, choosing from: '
+        "extreme close-up | close-up | medium close-up | medium | medium wide | wide | extreme wide | "
+        "over-the-shoulder | two-shot | POV | insert/detail shot. "
+        "If the scene cuts between framings, name the most emotionally powerful one.>,\n\n"
+
+        '  "lighting": "<Describe the lighting quality and colour in 3–8 words. '
+        "e.g. 'warm golden hour, soft shadows', 'harsh fluorescent, clinical', "
+        "'blue-green neon, night', 'diffused overcast, flat', 'high contrast backlit silhouette'.>,\n\n"
+
+        '  "visual_power": <integer 1–5 — how iconic and cinematically striking is this scene '
+        "as a standalone music-video shot? Apply this rubric strictly:\n"
+        "    5 = Showstopper: a frame you could print as a poster. Extraordinary light, composition,\n"
+        "        or emotional charge. The hero shot of any music video.\n"
+        "    4 = Strong: visually beautiful or emotionally arresting. Great light or framing.\n"
+        "        A confident choice for a key moment in a fan edit.\n"
+        "    3 = Solid: competent and clean, nothing wrong but nothing exceptional.\n"
+        "    2 = Weak: flat light, cluttered background, or awkward composition.\n"
+        "    1 = Poor: blurry, badly framed, heavily obstructed, or aesthetically unappealing.>,\n\n"
+
+        f'  "is_film_related": <true/false — is this scene from \'{film_name}\'?>,\n\n'
+
+        '  "is_aesthetic": <true/false — is this scene visually suitable for an Instagram Reel? '
+        "Mark FALSE if any frame shows: overlaid text/subtitles/watermarks/channel logos, "
+        "explicit or graphic content, heavy pixelation/corruption, black bars covering >30 % of the frame, "
+        "or on-screen UI / interface elements>,\n\n"
+
+        '  "confidence": <0.0–1.0 — your confidence that is_film_related is correct>\n\n'
+
+        "Return ONLY the JSON array, no markdown, no commentary."
     )
 
 
@@ -67,16 +101,21 @@ def _call_openrouter(content: list[dict], model: str) -> str:
     client = OpenAI(api_key=OPENROUTER_API_KEY, base_url=OPENROUTER_BASE_URL)
     response = client.chat.completions.create(
         model=model,
-        max_tokens=1024,
+        max_tokens=2048,
         messages=[{"role": "user", "content": content}],
     )
     return response.choices[0].message.content.strip()
 
 def _apply_result(scene: Scene, r: dict) -> None:
-    scene.description = r.get("description", "")
-    scene.is_film_related = r.get("is_film_related", True)
-    scene.is_aesthetic = r.get("is_aesthetic", True)
-    scene.confidence = float(r.get("confidence", 1.0))
+    scene.description        = r.get("description", "")
+    scene.characters_present = r.get("characters_present", [])
+    scene.emotion            = r.get("emotion", "")
+    scene.shot_type          = r.get("shot_type", "")
+    scene.lighting           = r.get("lighting", "")
+    scene.visual_power       = max(1, min(5, int(r.get("visual_power", 3))))  # clamp 1–5
+    scene.is_film_related    = r.get("is_film_related", True)
+    scene.is_aesthetic       = r.get("is_aesthetic", True)
+    scene.confidence         = float(r.get("confidence", 1.0))
 
 
 def _parse_json(raw: str, batch_num: int) -> list[dict] | None:
@@ -116,6 +155,8 @@ def analyze_scenes(
 
     # Build a stable cache key that encodes character context so adding/removing
     # characters triggers a fresh analysis rather than returning stale generic descriptions.
+    # The model is embedded in the cache *filename* (via cache.get_scene/set_scene),
+    # so switching models always produces a cache miss — no need to put it in the key too.
     cache_context = film_name
     if characters:
         cache_context = f"{film_name}|chars:{','.join(sorted(characters))}"
@@ -123,7 +164,7 @@ def analyze_scenes(
     # ── Separate cached and uncached ─────────────────────────────────────────
     uncached: list[Scene] = []
     for scene in scenes:
-        cached = cache.get_scene(scene.frames, cache_context)
+        cached = cache.get_scene(scene.frames, cache_context, model=resolved_model)
         if cached:
             _apply_result(scene, cached)
         else:
@@ -168,11 +209,17 @@ def analyze_scenes(
                     scene.frames,
                     cache_context,
                     {
-                        "description": scene.description,
-                        "is_film_related": scene.is_film_related,
-                        "is_aesthetic": scene.is_aesthetic,
-                        "confidence": scene.confidence,
+                        "description":        scene.description,
+                        "characters_present": scene.characters_present,
+                        "emotion":            scene.emotion,
+                        "shot_type":          scene.shot_type,
+                        "lighting":           scene.lighting,
+                        "visual_power":       scene.visual_power,
+                        "is_film_related":    scene.is_film_related,
+                        "is_aesthetic":       scene.is_aesthetic,
+                        "confidence":         scene.confidence,
                     },
+                    model=resolved_model,
                 )
 
     film_related = sum(1 for s in scenes if s.is_film_related)

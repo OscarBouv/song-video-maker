@@ -6,10 +6,17 @@ class Scene(BaseModel):
     start_time: float               # seconds in source video
     end_time: float                 # seconds in source video
     frames: list[str] = Field(default_factory=list)  # paths to sampled frame images
-    description: str = ""           # filled by scene_analyzer
-    is_film_related: bool = True    # filled by scene_analyzer
-    is_aesthetic: bool = True       # filled by scene_analyzer — False if overlaid text, watermarks, or explicit content
-    confidence: float = 1.0        # filled by scene_analyzer (0.0–1.0)
+
+    # ── Set by scene_analyzer ─────────────────────────────────────────────────
+    description: str = ""           # narrative summary: who + what + dramatic feel
+    characters_present: list[str] = Field(default_factory=list)  # named characters visible
+    emotion: str = ""               # dominant emotional register (e.g. "longing, quiet joy")
+    shot_type: str = ""             # framing: "close-up", "medium", "wide", "over-the-shoulder", etc.
+    lighting: str = ""              # lighting quality: "warm golden", "dim/moody", "harsh daylight", etc.
+    visual_power: int = 3           # 1–5 iconic/cinematic strength (5 = music-video gold, 1 = weak)
+    is_film_related: bool = True    # False if not from the target film
+    is_aesthetic: bool = True       # False if overlaid text, watermarks, explicit content, heavy blur, etc.
+    confidence: float = 1.0        # confidence in is_film_related (0.0–1.0)
 
     @property
     def duration(self) -> float:

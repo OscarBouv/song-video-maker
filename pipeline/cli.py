@@ -30,11 +30,12 @@ app = typer.Typer(
 
 # ── State paths ───────────────────────────────────────────────────────────────
 
-STATE_DIR        = TEMP_DIR / "state"
-SCENES_FILE      = STATE_DIR / "scenes.json"
-LYRICS_FILE      = STATE_DIR / "lyrics.json"
-AUDIO_PATH_FILE  = STATE_DIR / "audio_path.txt"
-VIDEO_PATH_FILE  = STATE_DIR / "video_path.txt"
+STATE_DIR            = TEMP_DIR / "state"
+SCENES_FILE          = STATE_DIR / "scenes.json"
+LYRICS_FILE          = STATE_DIR / "lyrics.json"
+LYRICS_READABLE_FILE = STATE_DIR / "lyrics_readable.txt"
+AUDIO_PATH_FILE      = STATE_DIR / "audio_path.txt"
+VIDEO_PATH_FILE      = STATE_DIR / "video_path.txt"
 
 
 # ── State helpers ─────────────────────────────────────────────────────────────
@@ -54,6 +55,24 @@ def _save_lyrics(lyrics: list[LyricLine]) -> None:
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     LYRICS_FILE.write_text(json.dumps([l.model_dump() for l in lyrics], indent=2))
     typer.echo(f"[state] Saved {len(lyrics)} lyric lines → {LYRICS_FILE}")
+
+    # Also write a human-readable version so the chunks are easy to inspect
+    lines = [
+        f"LYRICS — {len(lyrics)} chunks",
+        f"{'─' * 52}",
+    ]
+    for i, ll in enumerate(lyrics):
+        dur = ll.end_time - ll.start_time
+        # Mark zero-duration (never-display) lines clearly
+        if dur <= 0:
+            lines.append(f"  [{i:>3}]  {'—never display—':<12}  {ll.text}")
+        else:
+            lines.append(
+                f"  [{i:>3}]  {ll.start_time:>6.2f}s – {ll.end_time:>6.2f}s  "
+                f"({dur:.2f}s)  {ll.text}"
+            )
+    LYRICS_READABLE_FILE.write_text("\n".join(lines))
+    typer.echo(f"[state] Readable lyrics   → {LYRICS_READABLE_FILE}")
 
 
 def _load_lyrics() -> list[LyricLine]:
@@ -95,6 +114,91 @@ def _next(cmd: str) -> None:
     typer.echo(f"\n→ Next:  song-video-maker {cmd}\n")
 
 
+def _apply_lyrics_to_plan(
+    segments: list[MatchedSegment],
+) -> list[MatchedSegment]:
+    """Override every lyric in the plan with the current lyrics.json.
+
+    The plan owns *which scenes to use* (scene_index, trim offsets, song_start/song_end).
+    Lyric text and timestamps always come from lyrics.json, so any refinement
+    (Whisper re-run, manual tweaks) is picked up on the next render without
+    regenerating the plan.
+
+    Strategy:
+    • New-format plans (song_start ≥ 0): time-based — each segment's lyrics are
+      refreshed to all lyrics.json lines that overlap its song_start..song_end window.
+    • Legacy plans (song_start = -1): positional — the i-th unique lyric slot maps
+      to the i-th line in lyrics.json.
+    """
+    if not LYRICS_FILE.exists():
+        return segments
+
+    fresh_lyrics = _load_lyrics()
+
+    # ── New format: time-based match ─────────────────────────────────────────
+    if any(seg.song_start >= 0 for seg in segments):
+        result = []
+        for seg in segments:
+            if seg.song_start < 0:
+                result.append(seg)
+                continue
+
+            seg_lyrics = [
+                ll for ll in fresh_lyrics
+                if ll.end_time > ll.start_time        # displayable
+                and ll.start_time < seg.song_end
+                and ll.end_time   > seg.song_start
+            ]
+            result.append(MatchedSegment(
+                scene_index=seg.scene_index,
+                lyric_lines=seg_lyrics,
+                scene_trim_start=seg.scene_trim_start,
+                scene_trim_end=seg.scene_trim_end,
+                song_start=seg.song_start,
+                song_end=seg.song_end,
+            ))
+        typer.echo(f"[render] Applied lyrics.json ({len(fresh_lyrics)} lines) → plan (time-based match)")
+        return result
+
+    # ── Legacy format: positional match ──────────────────────────────────────
+    seen: dict[str, int] = {}
+    unique_keys: list[str] = []
+    for seg in segments:
+        for ll in seg.lyric_lines:
+            key = ll.text.strip().lower()
+            if key not in seen:
+                seen[key] = len(unique_keys)
+                unique_keys.append(key)
+
+    if len(unique_keys) != len(fresh_lyrics):
+        typer.echo(
+            f"\n[render] ✗ Lyric count mismatch — plan has {len(unique_keys)} unique lyric slots "
+            f"but lyrics.json has {len(fresh_lyrics)} lines.\n"
+            f"  This usually means extract-lyrics was re-run (producing new chunks) without\n"
+            f"  regenerating the plan.  The render will use the lyrics embedded in the plan\n"
+            f"  (possibly old LRCLIB timestamps or unchunked text).\n"
+            f"  → Fix: song-video-maker generate-plan --film '...' --song '...'\n"
+            f"         then re-run render.\n",
+            err=True,
+        )
+        return segments  # best-effort fallback: use whatever the plan already contains
+
+    slot_to_fresh: dict[str, LyricLine] = {
+        key: fresh_lyrics[i] for i, key in enumerate(unique_keys)
+    }
+    result = []
+    for seg in segments:
+        result.append(MatchedSegment(
+            scene_index=seg.scene_index,
+            lyric_lines=[slot_to_fresh[ll.text.strip().lower()] for ll in seg.lyric_lines],
+            scene_trim_start=seg.scene_trim_start,
+            scene_trim_end=seg.scene_trim_end,
+        ))
+
+    typer.echo(f"[render] Applied lyrics.json ({len(fresh_lyrics)} lines) → plan (positional match)")
+    return result
+
+
 # ── Full pipeline ─────────────────────────────────────────────────────────────
 
 @app.command()
@@ -112,6 +216,10 @@ def run(
     characters:     Annotated[Optional[str],   typer.Option(help="Comma-separated main character names for richer scene descriptions (e.g. 'Alana Kane, Gary Valentine')")] = None,
     analyzer_model: Annotated[OpenRouterModel, typer.Option(help="Vision model for scene analysis")] = DEFAULT_ANALYZER_MODEL,
     matcher_model:  Annotated[OpenRouterModel, typer.Option(help="Text model for scene-to-lyric matching")] = DEFAULT_MATCHER_MODEL,
+    refine_timing:  Annotated[bool, typer.Option(
+        "--refine-timing/--no-refine-timing",
+        help="Whisper word-level subtitle timing (default: on)",
+    )] = True,
     render_only: Annotated[bool, typer.Option("--render-only", help="Skip straight to render using an existing plan")] = False,
 ) -> None:
     """Run the full pipeline end-to-end.
@@ -139,6 +247,7 @@ def run(
         audio_path = _load_audio_path()
         scenes   = detect_scenes(video_path)
         segments = [MatchedSegment.from_dict(d) for d in json.loads(plan_path.read_text())]
+        segments = _apply_lyrics_to_plan(segments)
         render_video(segments, scenes, video_path, audio_path, output_path)
         return
 
@@ -158,7 +267,11 @@ def run(
     scenes = analyze_scenes(scenes, film_name=film, model=analyzer_model.value, characters=char_list)
 
     typer.echo("\n── Step 5/6: Extracting lyrics ──────────────────────────────")
-    lyrics = extract_lyrics(audio_path, track=song, artist=artist, start_sec=song_start, end_sec=song_end)
+    lyrics = extract_lyrics(
+        audio_path, track=song, artist=artist,
+        start_sec=song_start, end_sec=song_end,
+        refine_timing=refine_timing,
+    )
     if not lyrics:
         typer.echo("Error: no lyrics found. Check your audio or song title.", err=True)
         raise typer.Exit(1)
@@ -172,6 +285,8 @@ def run(
         output_dir=OUTPUTS_DIR,
         slug=slug,
         model=matcher_model.value,
+        characters=char_list,
+        audio_path=audio_path,
     )
 
     typer.echo("\n✓ Pipeline complete. Next steps:")
@@ -270,34 +385,89 @@ def analyze_scenes_cmd(
 
 @app.command("extract-lyrics")
 def extract_lyrics_cmd(
-    song:       Annotated[str,             typer.Option(help="Song title")],
-    artist:     Annotated[Optional[str],   typer.Option(help="Artist name (improves LRCLIB lookup)")] = None,
-    song_start: Annotated[Optional[float], typer.Option(help="Window start (seconds)")] = None,
-    song_end:   Annotated[Optional[float], typer.Option(help="Window end   (seconds)")] = None,
+    song:          Annotated[str,             typer.Option(help="Song title")],
+    artist:        Annotated[Optional[str],   typer.Option(help="Artist name (improves LRCLIB lookup)")] = None,
+    song_start:    Annotated[Optional[float], typer.Option(help="Window start (seconds)")] = None,
+    song_end:      Annotated[Optional[float], typer.Option(help="Window end   (seconds)")] = None,
+    refine_timing: Annotated[bool,            typer.Option(
+        "--refine-timing/--no-refine-timing",
+        help="Use Whisper word-level timestamps to show subtitles only while singing (default: on)",
+    )] = True,
 ) -> None:
-    """Fetch synced lyrics via LRCLIB, falling back to local Whisper → saves temp/state/lyrics.json."""
+    """Fetch synced lyrics via LRCLIB (+ Whisper timing refinement) → saves temp/state/lyrics.json."""
     from pipeline.lyrics_extractor import extract_lyrics
     audio_path = _load_audio_path()
-    lyrics = extract_lyrics(audio_path, track=song, artist=artist, start_sec=song_start, end_sec=song_end)
+    lyrics = extract_lyrics(
+        audio_path, track=song, artist=artist,
+        start_sec=song_start, end_sec=song_end,
+        refine_timing=refine_timing,
+    )
     if not lyrics:
         typer.echo("Error: no lyrics found.", err=True)
         raise typer.Exit(1)
     _save_lyrics(lyrics)
-    typer.echo(f"\n✓ {len(lyrics)} lyric lines")
+
+    # ── Print a readable preview in the terminal ──────────────────────────────
+    preview_n = min(len(lyrics), 12)
+    typer.echo(f"\n── Lyric chunks ({len(lyrics)} total) ────────────────────────────────")
+    non_zero = [ll for ll in lyrics if ll.end_time > ll.start_time]
+    for ll in lyrics[:preview_n]:
+        dur = ll.end_time - ll.start_time
+        if dur <= 0:
+            typer.echo(f"  {'—':>14}  {ll.text}")
+        else:
+            typer.echo(f"  {ll.start_time:>6.2f}–{ll.end_time:>6.2f}s  {ll.text}")
+    if len(lyrics) > preview_n:
+        typer.echo(f"  … ({len(lyrics) - preview_n} more — see {LYRICS_READABLE_FILE.name})")
+
+    total_dur = non_zero[-1].end_time if non_zero else 0.0
+    typer.echo(
+        f"\n✓ {len(lyrics)} lyric chunks  |  "
+        f"{len(non_zero)} displayable  |  "
+        f"song window: 0 – {total_dur:.1f}s"
+    )
+    typer.echo(f"  Full list: {LYRICS_READABLE_FILE}")
+
+    # ── Warn if any existing plan.json won't match the new lyric count ────────
+    plan_files = list(OUTPUTS_DIR.glob("*_plan.json"))
+    stale = []
+    for pf in plan_files:
+        try:
+            plan_data = json.loads(pf.read_text())
+            plan_lyric_texts = {
+                ll["text"].strip().lower()
+                for seg in plan_data
+                for ll in seg.get("lyric_lines", [])
+            }
+            if len(plan_lyric_texts) != len(lyrics):
+                stale.append(pf.name)
+        except Exception:
+            pass
+    if stale:
+        typer.echo(
+            f"\n⚠️  {len(stale)} plan file(s) have a different lyric count and will NOT "
+            f"sync correctly on render:\n"
+            + "\n".join(f"     {n}" for n in stale)
+            + f"\n   → Re-run: song-video-maker generate-plan --film '...' --song '...'"
+        )
+
     _next("generate-plan --film '<film>' --song '<song>'")
 
 
 @app.command("generate-plan")
 def generate_plan_cmd(
-    film:  Annotated[str,   typer.Option(help="Film name")],
-    song:  Annotated[str,   typer.Option(help="Song title")],
-    model: Annotated[OpenRouterModel, typer.Option(help="Text model to use")] = DEFAULT_MATCHER_MODEL,
+    film:       Annotated[str,             typer.Option(help="Film name")],
+    song:       Annotated[str,             typer.Option(help="Song title")],
+    model:      Annotated[OpenRouterModel, typer.Option(help="Text model to use")] = DEFAULT_MATCHER_MODEL,
+    characters: Annotated[Optional[str],   typer.Option(help="Comma-separated main character names (e.g. 'Alana Kane, Gary Valentine')")] = None,
 ) -> None:
     """Ask an LLM to map scenes to lyrics → saves outputs/{slug}_plan.json + _readable.txt."""
     from pipeline.matcher import generate_plan
     scenes = _load_scenes()
     lyrics = _load_lyrics()
+    audio_path = _load_audio_path()   # needed for exact audio duration
     slug = _slugify(film, song)
+    char_list = [c.strip() for c in characters.split(",")] if characters else None
     generate_plan(
         scenes=scenes,
         lyrics=lyrics,
@@ -306,6 +476,8 @@ def generate_plan_cmd(
         output_dir=OUTPUTS_DIR,
         slug=slug,
         model=model.value,
+        characters=char_list,
+        audio_path=audio_path,
     )
     typer.echo(f"\n✓ Plan: outputs/{slug}_plan_readable.txt")
     _next(f"render --film '{film}' --song '{song}'")
@@ -325,6 +497,7 @@ def render(
     plan_path = OUTPUTS_DIR / f"{slug}_plan.json"
     _require(plan_path, f"generate-plan --film '{film}' --song '{song}'")
     segments = [MatchedSegment.from_dict(d) for d in json.loads(plan_path.read_text())]
+    segments = _apply_lyrics_to_plan(segments)
     output_path = OUTPUTS_DIR / f"{slug}_reel.mp4"
     render_video(segments, scenes, video_path, audio_path, output_path)
     typer.echo(f"\n✓ Reel: {output_path}")
