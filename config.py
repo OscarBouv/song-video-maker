@@ -10,10 +10,12 @@ ROOT_DIR = Path(__file__).parent
 TEMP_DIR = ROOT_DIR / "temp"
 OUTPUTS_DIR = ROOT_DIR / "outputs"
 FRAMES_DIR = TEMP_DIR / "frames"
+WORKSPACES_DIR = ROOT_DIR / "workspaces"
 
 TEMP_DIR.mkdir(exist_ok=True)
 OUTPUTS_DIR.mkdir(exist_ok=True)
 FRAMES_DIR.mkdir(exist_ok=True)
+WORKSPACES_DIR.mkdir(exist_ok=True)
 
 # OpenRouter (all AI calls go through OpenRouter)
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -42,6 +44,11 @@ SCENE_ANALYSIS_BATCH = 5     # scenes per vision request
 # Whisper
 WHISPER_MODEL = "base"       # base is fast and accurate enough for lyrics
 
+# Instagram Publication
+INSTAGRAM_USERNAME = os.getenv("INSTAGRAM_USERNAME")
+INSTAGRAM_PASSWORD = os.getenv("INSTAGRAM_PASSWORD")
+INSTAGRAM_SESSION_FILE = ROOT_DIR / "instagram_session.json"
+
 # Output video
 OUTPUT_WIDTH = 1080
 OUTPUT_HEIGHT = 1920
@@ -49,9 +56,11 @@ OUTPUT_FPS = 30
 MAX_REEL_DURATION = 90       # seconds
 
 # Subtitle style
-SUBTITLE_COLOR = "yellow"
-SUBTITLE_FONTSIZE = 46              # smaller = more subtle
-SUBTITLE_Y_RATIO = 0.82            # vertical position (0 = top, 1 = bottom)
+SUBTITLE_COLOR        = "#FFD966"  # warm soft yellow — readable on dark backgrounds
+SUBTITLE_BORDER_COLOR = "black"
+SUBTITLE_BORDER_WIDTH = 3          # px — crisp outline instead of soft shadow only
+SUBTITLE_FONTSIZE     = 56         # was 46 — larger for mobile readability
+SUBTITLE_Y_RATIO      = 0.82       # vertical position (0 = top, 1 = bottom)
 
 
 def _find_ffmpeg() -> tuple[str, str]:
@@ -107,3 +116,75 @@ def _find_font(name: str) -> str:
 
 
 SUBTITLE_FONT = _find_font("Arial Rounded Bold")  # softer, more modern than standard Arial Bold
+
+
+def _find_insert_font() -> str:
+    """Find a clean, non-rounded font for the source credit insert (distinct from subtitle font)."""
+    for path in [
+        "/System/Library/Fonts/Supplemental/GillSans.ttc",
+        "/Library/Fonts/GillSans.ttc",
+        "/System/Library/Fonts/Supplemental/Futura.ttc",
+        "/System/Library/Fonts/Helvetica.ttc",
+    ]:
+        if Path(path).exists():
+            return path
+    return _find_font("Arial")
+
+
+def _discover_subtitle_fonts() -> dict[str, str]:
+    """Return {display_name: font_path} for every available subtitle font on this machine.
+
+    Uses explicit absolute paths so fallback logic in _find_font() doesn't pollute results
+    with wrong fonts.  The order defines the display order in the UI.
+    """
+    candidates: list[tuple[str, list[str]]] = [
+        ("Arial Rounded Bold", ["/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf"]),
+        ("Helvetica",          ["/System/Library/Fonts/Helvetica.ttc"]),
+        ("Avenir Next",        ["/System/Library/Fonts/Avenir Next.ttc",
+                                "/System/Library/Fonts/AvenirNext.ttc"]),
+        ("Futura",             ["/System/Library/Fonts/Supplemental/Futura.ttc"]),
+        ("Gill Sans",          ["/System/Library/Fonts/Supplemental/GillSans.ttc",
+                                "/Library/Fonts/GillSans.ttc"]),
+        ("Didot",              ["/System/Library/Fonts/Supplemental/Didot.ttc"]),
+        ("Baskerville",        ["/System/Library/Fonts/Supplemental/Baskerville.ttc"]),
+        ("Georgia",            ["/System/Library/Fonts/Supplemental/Georgia.ttf",
+                                "/Library/Fonts/Georgia.ttf"]),
+        ("Courier New",        ["/System/Library/Fonts/Supplemental/Courier New.ttf",
+                                "/Library/Fonts/Courier New.ttf"]),
+        ("Trebuchet MS",       ["/System/Library/Fonts/Supplemental/Trebuchet MS.ttf",
+                                "/Library/Fonts/Trebuchet MS.ttf"]),
+        # Google Fonts — present only if manually installed
+        ("Sarabun",            ["/Library/Fonts/Sarabun-Bold.ttf",
+                                "/Library/Fonts/Sarabun Bold.ttf",
+                                "/Library/Fonts/Sarabun.ttf"]),
+        ("Inter",              ["/Library/Fonts/Inter-Bold.ttf",
+                                "/Library/Fonts/Inter Bold.ttf",
+                                "/Library/Fonts/Inter.ttf"]),
+    ]
+    result: dict[str, str] = {}
+    for display_name, paths in candidates:
+        for path in paths:
+            if Path(path).exists():
+                result[display_name] = path
+                break
+    return result
+
+
+# Reel fade-in / fade-out (video + audio)
+VIDEO_FADE_DURATION = 0.5   # seconds — video fade to/from black at both ends
+AUDIO_FADE_DURATION = 1.0   # seconds — audio is faded slightly longer for a smoother feel
+
+# Insert overlay — top-left corner, fades in at INSERT_START_T and disappears at INSERT_END_T
+INSERT_FONT         = _find_insert_font()
+INSERT_FONTSIZE     = 27
+INSERT_COLOR        = "#FFD966@0.72" # same warm yellow as subtitles; multiplied by alpha expression
+INSERT_BORDER_WIDTH = 1
+INSERT_X_RATIO      = 0.048          # left margin as fraction of output width
+INSERT_Y_TOP_RATIO  = 0.033          # top margin as fraction of output height
+INSERT_START_T      = 2.0            # seconds — fade-in begins
+INSERT_FADE_T       = 0.5            # seconds — fade-in duration
+INSERT_END_T        = 7.0            # seconds — fully gone (5s total window: 2→7)
+INSERT_FADE_OUT_T   = 0.5            # seconds — fade-out duration before INSERT_END_T
+
+# Subtitle font options (populated at startup from available system fonts)
+SUBTITLE_FONTS: dict[str, str] = _discover_subtitle_fonts()

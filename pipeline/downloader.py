@@ -1,10 +1,11 @@
 """Download video and audio from YouTube using yt-dlp."""
 import re
+import subprocess
 from pathlib import Path
 
 import yt_dlp
 
-from config import TEMP_DIR
+from config import TEMP_DIR, FFMPEG_BIN
 
 
 def _slugify(*parts: str | None) -> str:
@@ -18,14 +19,23 @@ def download_video(
     start_sec: float | None = None,
     end_sec: float | None = None,
 ) -> Path:
-    """Download best quality video+audio to output_dir, optionally trimmed. Returns path to file."""
-    import subprocess
+    """Download up to 1080p video+audio to output_dir, optionally trimmed. Returns path to file.
 
+    Caps at 1080p — higher resolutions waste bandwidth since the output is 1080×1920.
+    Accepts any container (webm/mp4) since everything is re-encoded by the editor.
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
     output_template = str(output_dir / "video.%(ext)s")
 
     ydl_opts = {
-        "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+        # Prefer ≤1080p: no benefit from 4K source when output is 1080×1920.
+        # Accept any container — the editor re-encodes everything anyway.
+        "format": (
+            "bestvideo[height<=1080]+bestaudio[ext=m4a]"
+            "/bestvideo[height<=1080]+bestaudio"
+            "/bestvideo+bestaudio"
+            "/best[height<=1080]/best"
+        ),
         "outtmpl": output_template,
         "merge_output_format": "mp4",
         "noplaylist": True,
@@ -46,12 +56,17 @@ def download_video(
     if start_sec is not None or end_sec is not None:
         suffix = f"_{int(start_sec or 0)}_{int(end_sec or 0)}"
         trimmed = path.parent / f"video{suffix}.mp4"
-        cmd = ["ffmpeg", "-y", "-i", str(path)]
+        # Re-encode trim for frame-accurate start point (stream copy can miss the first keyframe)
+        cmd = [FFMPEG_BIN, "-y"]
         if start_sec is not None:
             cmd += ["-ss", str(start_sec)]
+        cmd += ["-i", str(path)]
         if end_sec is not None:
-            cmd += ["-to", str(end_sec)]
-        cmd += ["-c", "copy", str(trimmed)]
+            # -to is relative to -ss when -ss is before -i, so use duration instead
+            duration = (end_sec - (start_sec or 0))
+            cmd += ["-t", str(duration)]
+        cmd += ["-c:v", "libx264", "-crf", "18", "-preset", "fast",
+                "-c:a", "aac", "-b:a", "256k", "-movflags", "+faststart", str(trimmed)]
         subprocess.run(cmd, check=True, capture_output=True)
         path = trimmed
 
@@ -67,7 +82,7 @@ def download_audio(
     track: str | None = None,
     artist: str | None = None,
 ) -> Path:
-    """Download audio as MP3 to output_dir, optionally trimmed to [start_sec, end_sec].
+    """Download audio as high-quality MP3 to output_dir, optionally trimmed.
     Returns path to the audio file."""
     output_dir.mkdir(parents=True, exist_ok=True)
     slug = _slugify(artist, track) or "audio"
@@ -77,12 +92,12 @@ def download_audio(
         {
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
-            "preferredquality": "192",
+            "preferredquality": "320",  # was 192 — max MP3 quality for the source track
         }
     ]
 
     ydl_opts = {
-        "format": "bestaudio/best",
+        "format": "bestaudio[ext=m4a]/bestaudio/best",  # prefer M4A source for AAC→MP3 quality
         "outtmpl": output_template,
         "postprocessors": postprocessors,
         "noplaylist": True,
@@ -110,17 +125,18 @@ def download_audio(
 def _trim_audio(
     audio_path: Path, start_sec: float | None, end_sec: float | None, slug: str = "audio"
 ) -> Path:
-    """Trim audio using ffmpeg subprocess as fallback."""
-    import subprocess
-
+    """Trim audio with ffmpeg, re-encoding for sample-accurate start point."""
     suffix = f"_{int(start_sec or 0)}_{int(end_sec or 0)}"
     trimmed = audio_path.parent / f"{slug}{suffix}.mp3"
-    cmd = ["ffmpeg", "-y", "-i", str(audio_path)]
+    # Place -ss before -i for fast seek, then re-encode so the start is sample-accurate
+    cmd = [FFMPEG_BIN, "-y"]
     if start_sec is not None:
         cmd += ["-ss", str(start_sec)]
+    cmd += ["-i", str(audio_path)]
     if end_sec is not None:
-        cmd += ["-to", str(end_sec)]
-    cmd += ["-c", "copy", str(trimmed)]
+        duration = end_sec - (start_sec or 0)
+        cmd += ["-t", str(duration)]
+    cmd += ["-c:a", "libmp3lame", "-b:a", "320k", "-q:a", "0", str(trimmed)]
 
     subprocess.run(cmd, check=True, capture_output=True)
     return trimmed

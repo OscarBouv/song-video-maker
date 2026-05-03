@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>song-video-maker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { accent: '#6366f1' }
+        }
+      }
+    }
+  </script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/sortablejs@1.15.0/Sortable.min.js"></script>
+  <style>
+    [x-cloak] { display: none !important; }
+    .log-panel { font-family: 'Menlo', 'Monaco', monospace; }
+    .drag-handle { cursor: grab; }
+    .drag-handle:active { cursor: grabbing; }
+    .clip-card { transition: box-shadow 0.15s; }
+    .sortable-ghost { opacity: 0.4; background: #374151; }
+    .star-filled { color: #facc15; }
+    .star-empty { color: #374151; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 h-screen flex flex-col overflow-hidden"
+      x-data="app()" x-init="init()" x-cloak>
+
+  <!-- ── Top bar ── -->
+  <nav class="flex items-center gap-4 px-4 py-2 bg-gray-900 border-b border-gray-800 flex-none">
+    <span class="font-semibold text-indigo-400 tracking-tight">🎬 song-video-maker</span>
+    <span class="text-gray-600">|</span>
+    <span x-show="wsDetail" class="text-sm text-gray-300">
+      <span class="font-medium" x-text="wsDetail?.film"></span>
+      <span class="text-gray-500 mx-1">×</span>
+      <span x-text="wsDetail?.song"></span>
+    </span>
+    <div class="ml-auto flex items-center gap-2">
+      <span x-show="isRunning" class="flex items-center gap-1 text-xs text-yellow-400">
+        <svg class="animate-spin h-3 w-3" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+        Running…
+      </span>
+      <button @click="showNewWorkspace = true"
+              class="text-xs bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded font-medium">
+        + New Workspace
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Main layout ── -->
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- ── Sidebar ── -->
+    <aside class="w-56 bg-gray-900 border-r border-gray-800 flex flex-col overflow-hidden">
+      <div class="p-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Workspaces</div>
+      <div class="flex-1 overflow-y-auto">
+        <template x-for="ws in workspaces" :key="ws.slug">
+          <button @click="selectWorkspace(ws.slug)"
+                  class="w-full text-left px-3 py-2.5 border-b border-gray-800 hover:bg-gray-800 transition-colors"
+                  :class="selectedSlug === ws.slug ? 'bg-gray-800 border-l-2 border-l-indigo-500' : ''">
+            <div class="text-sm font-medium text-gray-200 truncate" x-text="ws.film"></div>
+            <div class="text-xs text-gray-500 truncate" x-text="ws.song"></div>
+            <div class="flex flex-wrap gap-1 mt-1">
+              <template x-for="step in ws.steps_complete" :key="step">
+                <span class="text-xs px-1 rounded"
+                      :class="step === 'reel' ? 'bg-green-900 text-green-300' : 'bg-gray-700 text-gray-400'"
+                      x-text="step"></span>
+              </template>
+            </div>
+          </button>
+        </template>
+        <div x-show="workspaces.length === 0" class="px-3 py-4 text-xs text-gray-600 italic">
+          No workspaces yet.<br>Click "+ New Workspace" to start.
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Content area ── -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+
+      <!-- Workspace required placeholder -->
+      <div x-show="!selectedSlug" class="flex-1 flex items-center justify-center">
+        <div class="text-center text-gray-600">
+          <div class="text-4xl mb-3">🎞</div>
+          <div class="text-lg font-medium">Select a workspace to get started</div>
+          <div class="text-sm mt-1">or create a new one with the button above</div>
+        </div>
+      </div>
+
+      <!-- Tabs + content (when workspace selected) -->
+      <div x-show="selectedSlug" class="flex-1 flex flex-col overflow-hidden">
+
+        <!-- Tab bar -->
+        <div class="flex border-b border-gray-800 bg-gray-900 flex-none px-2">
+          <template x-for="t in [{id:'pipeline',label:'Pipeline'},{id:'plan',label:'Plan Editor'},{id:'lyrics',label:'Lyrics'},{id:'scenes',label:'Scene Browser'}]" :key="t.id">
+            <button @click="switchTab(t.id)"
+                    class="px-4 py-2.5 text-sm font-medium border-b-2 transition-colors"
+                    :class="tab === t.id
+                      ? 'border-indigo-500 text-indigo-400'
+                      : 'border-transparent text-gray-500 hover:text-gray-300'">
+              <span x-text="t.label"></span>
+            </button>
+          </template>
+          <div class="ml-auto flex items-center pr-2 gap-2">
+            <span x-show="wsDetail" class="text-xs text-gray-600">
+              <span x-show="wsDetail?.scenes_usable" x-text="`${wsDetail?.scenes_usable} usable scenes`"></span>
+              <span x-show="wsDetail?.lyrics_count" x-text="` · ${wsDetail?.lyrics_count} lyric lines`"></span>
+            </span>
+            <button x-show="wsDetail?.has_reel"
+                    @click="showReel = true; $nextTick(() => $refs.reelVideo.play())"
+                    class="flex items-center gap-1.5 text-xs bg-rose-900 hover:bg-rose-800 text-rose-200 px-3 py-1 rounded font-medium transition-colors">
+              ▶ Watch Reel
+            </button>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- PIPELINE TAB                                            -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div x-show="tab === 'pipeline'" class="flex-1 flex flex-col overflow-hidden">
+          <div class="flex-1 overflow-y-auto p-4">
+            <div class="grid grid-cols-2 xl:grid-cols-4 gap-3 mb-4">
+              <template x-for="step in pipelineSteps" :key="step.id">
+                <div class="bg-gray-800 rounded-lg p-3 flex flex-col border border-gray-700"
+                     :class="isStepDone(step) ? 'border-green-800' : ''">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium" x-text="step.label"></span>
+                    <span x-show="isStepDone(step)" class="text-green-400 text-sm">✓</span>
+                  </div>
+                  <div class="flex-1">
+                    <template x-for="param in step.params" :key="param.name">
+                      <div class="mb-1.5">
+                        <label class="text-xs text-gray-500 block mb-0.5" x-text="param.label"></label>
+                        <input x-model="stepParams[step.id][param.name]"
+                               :placeholder="param.placeholder"
+                               :type="param.type || 'text'"
+                               class="w-full bg-gray-700 border border-gray-600 rounded px-2 py-1 text-xs focus:outline-none focus:border-indigo-500" />
+                      </div>
+                    </template>
+                  </div>
+                  <button @click="runStep(step.id)"
+                          :disabled="isRunning"
+                          class="mt-2 w-full bg-indigo-700 hover:bg-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed rounded py-1.5 text-xs font-medium transition-colors">
+                    Run
+                  </button>
+                </div>
+              </template>
+            </div>
+
+            <!-- Shared log panel -->
+            <div class="bg-gray-950 border border-gray-800 rounded-lg">
+              <div class="flex items-center justify-between px-3 py-1.5 border-b border-gray-800">
+                <span class="text-xs text-gray-500 font-medium">Logs</span>
+                <button @click="logs = []" class="text-xs text-gray-600 hover:text-gray-400">Clear</button>
+              </div>
+              <div class="log-panel text-xs text-green-400 p-3 h-52 overflow-y-auto" id="log-panel">
+                <template x-for="(line, i) in logs" :key="i">
+                  <div :class="line.startsWith('✓') ? 'text-green-300' : line.startsWith('❌') || line.startsWith('⚠') ? 'text-red-400' : 'text-green-400'"
+                       x-text="line"></div>
+                </template>
+                <div x-show="logs.length === 0" class="text-gray-700 italic">Run a step to see output…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- PLAN EDITOR TAB                                         -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div x-show="tab === 'plan'" class="flex-1 flex overflow-hidden">
+
+          <!-- Clip list (sortable) -->
+          <div class="flex-1 flex flex-col overflow-hidden">
+            <div class="flex items-center justify-between px-4 py-2 border-b border-gray-800 flex-none">
+              <div class="text-sm font-medium">
+                <span x-text="plan.length"></span> clips
+                <span x-show="planDirty" class="ml-2 text-xs text-yellow-400">● unsaved</span>
+              </div>
+              <div class="flex gap-2">
+                <button @click="loadPlan()" class="text-xs text-gray-500 hover:text-gray-300 px-2 py-1 rounded">↺ Reload</button>
+                <button @click="savePlan()"
+                        :disabled="!planDirty"
+                        class="text-xs bg-green-700 hover:bg-green-600 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1 rounded font-medium">
+                  Save Order
+                </button>
+              </div>
+            </div>
+
+            <div x-show="plan.length === 0" class="flex-1 flex items-center justify-center text-gray-600 text-sm">
+              No plan yet — run generate-plan first, then come back here.
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-3" x-show="plan.length > 0">
+              <div x-ref="planList" id="plan-list">
+                <template x-for="(clip, idx) in plan" :key="clip.clip_number + '-' + clip.scene_index">
+                  <div class="clip-card bg-gray-800 border border-gray-700 rounded-lg mb-2 flex gap-2 p-2 hover:border-gray-600">
+                    <!-- Drag handle + number -->
+                    <div class="drag-handle flex flex-col items-center justify-center w-6 text-gray-600 flex-none">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+                      </svg>
+                      <span class="text-xs text-gray-600 mt-1" x-text="idx + 1"></span>
+                    </div>
+                    <!-- Thumbnail -->
+                    <div class="w-14 h-20 bg-gray-700 rounded overflow-hidden flex-none">
+                      <img :src="clip.thumbnail" class="w-full h-full object-cover"
+                           onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-gray-600 text-xs\'>No<br>frame</div>'" />
+                    </div>
+                    <!-- Info -->
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs bg-gray-700 rounded px-1.5 py-0.5 text-gray-400">
+                          Sc <span x-text="clip.scene_index"></span>
+                        </span>
+                        <span class="text-xs text-gray-500"
+                              x-text="clip.song_start >= 0 ? `${clip.song_start.toFixed(1)}–${clip.song_end.toFixed(1)}s` : ''">
+                        </span>
+                        <span class="text-xs" x-html="stars(clip.scene?.visual_power || 3)"></span>
+                      </div>
+                      <div class="text-sm font-medium text-yellow-300 mb-1 truncate"
+                           x-text="clip.lyric_lines.map(l => l.text).join(' · ') || '(silence)'">
+                      </div>
+                      <div class="text-xs text-purple-400 truncate" x-text="clip.scene?.emotion || '—'"></div>
+                      <div class="text-xs text-gray-500 truncate" x-text="clip.scene?.description || '—'"></div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI edit sidebar -->
+          <div class="w-72 bg-gray-900 border-l border-gray-800 flex flex-col p-3 gap-3">
+            <div>
+              <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">AI Instruction</div>
+              <textarea x-model="editInstruction"
+                        placeholder="e.g. 'Clip 5 is too static, swap it for a close-up shot'&#10;'Replace clips 3 and 7 with alternatives to scene 22'&#10;'Fix lyric 2 — change there to here'"
+                        rows="5"
+                        class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs resize-none focus:outline-none focus:border-indigo-500 placeholder-gray-600">
+              </textarea>
+            </div>
+            <div>
+              <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">Model</div>
+              <select x-model="editModel"
+                      class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs focus:outline-none focus:border-indigo-500">
+                <option value="google/gemini-2.0-flash-001">Gemini Flash (fast &amp; cheap)</option>
+                <option value="anthropic/claude-sonnet-4-6">Claude Sonnet (best quality)</option>
+                <option value="anthropic/claude-haiku-4-5-20251001">Claude Haiku</option>
+                <option value="google/gemini-2.5-pro-preview">Gemini Pro</option>
+                <option value="meta-llama/llama-4-maverick">Llama 4 Maverick</option>
+              </select>
+            </div>
+            <button @click="applyEdit()"
+                    :disabled="isRunning || !editInstruction.trim()"
+                    class="bg-indigo-700 hover:bg-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed rounded py-2 text-sm font-medium transition-colors">
+              Apply AI Edit
+            </button>
+            <!-- Subtitle font selector -->
+            <div>
+              <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">Subtitle Font</div>
+              <select x-model="selectedFont"
+                      class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs focus:outline-none focus:border-indigo-500">
+                <template x-for="f in fontOptions" :key="f.name">
+                  <option :value="f.name" x-text="f.name"></option>
+                </template>
+              </select>
+            </div>
+            <button @click="runRender()"
+                    :disabled="isRunning"
+                    class="bg-rose-800 hover:bg-rose-700 disabled:opacity-40 disabled:cursor-not-allowed rounded py-2 text-sm font-medium transition-colors">
+              🎬 Render Reel
+            </button>
+            <!-- Plan history -->
+            <div class="border border-gray-700 rounded-lg overflow-hidden">
+              <button @click="historyExpanded = !historyExpanded; if(historyExpanded) loadPlanHistory()"
+                      class="w-full flex items-center justify-between px-3 py-2 bg-gray-800 hover:bg-gray-750 text-xs font-medium text-gray-300 transition-colors">
+                <span class="flex items-center gap-1.5">
+                  <span>⏱ Plan History</span>
+                  <span x-show="planHistory.length > 0"
+                        class="bg-gray-700 text-gray-400 rounded-full px-1.5 py-0.5 text-xs"
+                        x-text="planHistory.length"></span>
+                </span>
+                <span x-text="historyExpanded ? '▲' : '▼'" class="text-gray-500 text-xs"></span>
+              </button>
+              <div x-show="historyExpanded" x-transition class="max-h-48 overflow-y-auto bg-gray-900">
+                <div x-show="planHistory.length === 0"
+                     class="px-3 py-4 text-xs text-gray-600 italic text-center">
+                  No history yet — regenerate a plan to create an entry.
+                </div>
+                <template x-for="entry in planHistory" :key="entry.filename">
+                  <div class="flex items-center justify-between px-3 py-2 border-b border-gray-800 hover:bg-gray-800/60 gap-2">
+                    <div class="flex-1 min-w-0">
+                      <div class="text-xs text-gray-300 truncate" x-text="entry.display"></div>
+                      <div class="text-xs text-gray-600">
+                        <span x-text="entry.clip_count"></span> clips
+                      </div>
+                    </div>
+                    <button @click="restorePlan(entry.filename)"
+                            :disabled="isRunning"
+                            title="Restore this plan as the current plan"
+                            class="flex-none text-xs px-2 py-1 bg-indigo-900 hover:bg-indigo-700 disabled:opacity-40 text-indigo-300 rounded transition-colors whitespace-nowrap">
+                      Restore
+                    </button>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+            <!-- Logs -->
+            <div class="flex-1 overflow-hidden flex flex-col">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs text-gray-500">Logs</span>
+                <button @click="logs = []" class="text-xs text-gray-600 hover:text-gray-400">Clear</button>
+              </div>
+              <div class="log-panel flex-1 overflow-y-auto bg-gray-950 rounded p-2 text-xs text-green-400" id="log-panel-plan">
+                <template x-for="(line, i) in logs" :key="i">
+                  <div :class="line.startsWith('✓') ? 'text-green-300' : line.startsWith('❌') || line.startsWith('⚠') ? 'text-red-400' : 'text-green-400'"
+                       x-text="line"></div>
+                </template>
+                <div x-show="logs.length === 0" class="text-gray-700 italic">Output appears here…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- LYRICS TAB                                              -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div x-show="tab === 'lyrics'" class="flex-1 flex flex-col overflow-hidden">
+
+          <!-- Hidden audio element — always mounted so state persists while on this tab -->
+          <audio x-ref="audioPlayer"
+                 :src="selectedSlug ? `/api/workspace/${selectedSlug}/audio` : ''"
+                 @timeupdate="onAudioTimeUpdate()"
+                 @loadedmetadata="audioDuration = $refs.audioPlayer.duration"
+                 @play="audioPlaying = true"
+                 @pause="audioPlaying = false"
+                 @ended="audioPlaying = false"
+                 preload="metadata">
+          </audio>
+
+          <!-- Audio player bar -->
+          <div class="flex-none bg-gray-900 border-b border-gray-800 px-4 py-2.5">
+            <div class="flex items-center gap-3">
+              <!-- Play/Pause -->
+              <button @click="toggleAudio()"
+                      class="w-8 h-8 flex items-center justify-center bg-indigo-600 hover:bg-indigo-500 rounded-full flex-none text-sm transition-colors"
+                      :title="audioPlaying ? 'Pause' : 'Play'">
+                <span x-text="audioPlaying ? '⏸' : '▶'"></span>
+              </button>
+              <!-- Skip back -->
+              <button @click="seekAudio(audioCurrentTime - 5)"
+                      class="text-xs text-gray-500 hover:text-gray-200 px-1.5 py-1 rounded transition-colors" title="Back 5s">−5s</button>
+              <!-- Time display -->
+              <span class="text-xs font-mono text-indigo-300 w-14 flex-none tabular-nums" x-text="fmtTime(audioCurrentTime)"></span>
+              <!-- Seek bar -->
+              <div class="flex-1 relative h-5 flex items-center cursor-pointer select-none"
+                   @click="seekToBarPosition($event)">
+                <div class="w-full h-1.5 bg-gray-700 rounded-full absolute"></div>
+                <!-- Lyric window markers -->
+                <template x-for="(l, li) in lyrics" :key="'sb'+li">
+                  <div x-show="l.start_time !== l.end_time && audioDuration > 0"
+                       class="absolute h-1.5 bg-yellow-500/40 pointer-events-none"
+                       :style="`left:${(l.start_time/audioDuration*100).toFixed(3)}%;width:${Math.max(0.15,(l.end_time-l.start_time)/audioDuration*100).toFixed(3)}%`">
+                  </div>
+                </template>
+                <!-- Progress fill -->
+                <div class="absolute left-0 h-1.5 bg-indigo-500 rounded-l-full pointer-events-none"
+                     :style="`width:${audioDuration ? (audioCurrentTime/audioDuration*100).toFixed(3) : 0}%`">
+                </div>
+                <!-- Playhead dot -->
+                <div class="absolute w-3 h-3 rounded-full bg-white border-2 border-indigo-400 pointer-events-none -translate-x-1/2 shadow"
+                     :style="`left:${audioDuration ? (audioCurrentTime/audioDuration*100).toFixed(3) : 0}%`">
+                </div>
+              </div>
+              <span class="text-xs font-mono text-gray-600 w-14 flex-none tabular-nums" x-text="fmtTime(audioDuration||0)"></span>
+              <!-- Skip forward -->
+              <button @click="seekAudio(audioCurrentTime + 5)"
+                      class="text-xs text-gray-500 hover:text-gray-200 px-1.5 py-1 rounded transition-colors" title="Forward 5s">+5s</button>
+            </div>
+            <!-- Status line: current position + active lyric -->
+            <div class="flex items-center gap-1.5 mt-1.5 text-xs">
+              <span class="text-gray-600">Cursor:</span>
+              <span class="font-mono text-indigo-400 font-medium" x-text="audioCurrentTime.toFixed(3) + 's'"></span>
+              <span class="text-gray-700 mx-1">|</span>
+              <span class="text-gray-600">Active:</span>
+              <span class="font-mono text-yellow-400"
+                    x-text="audioActiveLyricIdx >= 0 ? `#${audioActiveLyricIdx+1} — &quot;${(lyrics[audioActiveLyricIdx]?.text||'').slice(0,40)}&quot;` : '—'">
+              </span>
+            </div>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="flex items-center justify-between px-4 py-2 border-b border-gray-800 flex-none gap-2">
+            <div class="text-sm font-medium whitespace-nowrap">
+              <span x-text="lyrics.filter(l => l.start_time !== l.end_time).length"></span> lines
+              <span x-show="lyricsDirty" class="ml-2 text-xs text-yellow-400">● unsaved</span>
+            </div>
+            <div class="text-xs text-gray-600 hidden xl:block">Tip: play the song, pause at any word, click ⬅S or E➡ to set start/end of that lyric row</div>
+            <div class="flex gap-1.5 items-center flex-none">
+              <button @click="loadLyrics()" class="text-xs text-gray-500 hover:text-gray-300 px-2 py-1 rounded">↺ Reload</button>
+              <button @click="addLyric()"
+                      class="text-xs bg-gray-700 hover:bg-gray-600 px-2.5 py-1 rounded font-medium transition-colors">+ Add</button>
+              <button @click="saveLyrics()"
+                      :disabled="!lyricsDirty"
+                      class="text-xs bg-green-700 hover:bg-green-600 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1 rounded font-medium transition-colors">
+                Save + Sync Plan
+              </button>
+            </div>
+          </div>
+
+          <!-- Lyrics table -->
+          <div class="flex-1 overflow-y-auto">
+            <div x-show="lyrics.length === 0" class="flex items-center justify-center h-32 text-gray-600 text-sm">
+              No lyrics yet — run extract-lyrics first.
+            </div>
+            <table x-show="lyrics.length > 0" class="w-full text-xs">
+              <thead class="sticky top-0 bg-gray-900 text-gray-500 border-b border-gray-800 z-10">
+                <tr>
+                  <th class="px-2 py-2 text-right w-8 font-normal">#</th>
+                  <th class="px-1 py-2 w-7 font-normal"></th>
+                  <th class="px-2 py-2 w-24 font-normal text-right">Start (s)</th>
+                  <th class="px-2 py-2 w-24 font-normal text-right">End (s)</th>
+                  <th class="px-2 py-2 w-14 font-normal text-center">Dur</th>
+                  <th class="px-2 py-2 font-normal text-left">Lyrics text</th>
+                  <th class="px-2 py-2 w-28 font-normal text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="(lyric, idx) in lyrics" :key="idx">
+                  <tr :id="`lyric-row-${idx}`"
+                      class="border-b border-gray-800/50 transition-colors"
+                      :class="{
+                        'bg-yellow-900/25': audioActiveLyricIdx === idx,
+                        'opacity-30': lyric.start_time === lyric.end_time,
+                        'hover:bg-gray-800/40': audioActiveLyricIdx !== idx && lyric.start_time !== lyric.end_time,
+                      }">
+                    <!-- Row number -->
+                    <td class="px-2 py-1.5 text-right text-gray-600 w-8" x-text="idx+1"></td>
+                    <!-- Play button -->
+                    <td class="px-1 py-1 w-7">
+                      <button x-show="lyric.start_time !== lyric.end_time"
+                              @click.stop="seekAudio(Math.max(0, lyric.start_time - 0.4))"
+                              title="Play from this lyric"
+                              class="w-5 h-5 flex items-center justify-center bg-gray-700 hover:bg-indigo-600 rounded text-gray-300 transition-colors text-xs leading-none">
+                        ▶
+                      </button>
+                    </td>
+                    <!-- Start time -->
+                    <td class="px-1 py-1 w-24">
+                      <input type="number" step="0.001" min="0"
+                             :value="lyric.start_time"
+                             @change="lyric.start_time = +$event.target.value; lyricsDirty = true"
+                             class="w-full bg-gray-800 border border-transparent hover:border-gray-600 focus:border-indigo-500 rounded px-1.5 py-0.5 text-gray-200 text-right focus:outline-none transition-colors" />
+                    </td>
+                    <!-- End time -->
+                    <td class="px-1 py-1 w-24">
+                      <input type="number" step="0.001" min="0"
+                             :value="lyric.end_time"
+                             @change="lyric.end_time = +$event.target.value; lyricsDirty = true"
+                             class="w-full bg-gray-800 border border-transparent hover:border-gray-600 focus:border-indigo-500 rounded px-1.5 py-0.5 text-gray-200 text-right focus:outline-none transition-colors" />
+                    </td>
+                    <!-- Duration -->
+                    <td class="px-2 py-1 text-center">
+                      <span :class="lyric.start_time === lyric.end_time
+                                      ? 'text-gray-600'
+                                      : (lyric.end_time - lyric.start_time) < 0.4
+                                        ? 'text-red-400 font-bold'
+                                        : (lyric.end_time - lyric.start_time) < 1.0
+                                          ? 'text-yellow-500'
+                                          : 'text-gray-500'"
+                            x-text="lyric.start_time === lyric.end_time ? 'skip' : (lyric.end_time - lyric.start_time).toFixed(2)+'s'">
+                      </span>
+                    </td>
+                    <!-- Text -->
+                    <td class="px-1 py-1">
+                      <input type="text"
+                             :value="lyric.text"
+                             @input="lyric.text = $event.target.value; lyricsDirty = true"
+                             :placeholder="lyric.start_time === lyric.end_time ? '(skip marker — not rendered)' : 'Lyric text…'"
+                             class="w-full bg-gray-800 border border-transparent hover:border-gray-600 focus:border-indigo-500 rounded px-2 py-0.5 text-gray-100 focus:outline-none placeholder-gray-700 transition-colors" />
+                    </td>
+                    <!-- Actions -->
+                    <td class="px-1 py-1 w-28">
+                      <div class="flex gap-1 justify-center">
+                        <button @click="setLyricStart(idx)"
+                                title="Set start = current audio position"
+                                class="px-1.5 py-0.5 bg-blue-950 hover:bg-blue-800 border border-blue-900 rounded text-blue-300 transition-colors">⬅S</button>
+                        <button @click="setLyricEnd(idx)"
+                                title="Set end = current audio position"
+                                class="px-1.5 py-0.5 bg-blue-950 hover:bg-blue-800 border border-blue-900 rounded text-blue-300 transition-colors">E➡</button>
+                        <button @click="deleteLyric(idx)"
+                                title="Delete this line"
+                                class="px-1.5 py-0.5 bg-red-950 hover:bg-red-900 border border-red-900 rounded text-red-400 transition-colors">×</button>
+                      </div>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- SCENE BROWSER TAB                                       -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div x-show="tab === 'scenes'" class="flex-1 flex flex-col overflow-hidden">
+          <!-- Filter bar -->
+          <div class="flex items-center gap-2 px-3 py-2 border-b border-gray-800 flex-none flex-wrap">
+            <template x-for="f in sceneFilters" :key="f.id">
+              <button @click="sceneFilter = f.id"
+                      class="text-xs px-2.5 py-1 rounded transition-colors"
+                      :class="sceneFilter === f.id ? 'bg-indigo-600 text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'">
+                <span x-text="f.label"></span>
+                <span class="ml-1 text-gray-400" x-text="`(${sceneCount(f.id)})`"></span>
+              </button>
+            </template>
+            <div class="ml-auto text-xs text-gray-600">
+              Showing <span x-text="filteredScenes.length"></span> scenes
+            </div>
+          </div>
+          <!-- Grid -->
+          <div class="flex-1 overflow-y-auto p-3">
+            <div x-show="scenes.length === 0" class="flex items-center justify-center h-full text-gray-600 text-sm">
+              No scenes yet — run analyze-scenes first.
+            </div>
+            <div class="grid gap-2" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))">
+              <template x-for="scene in filteredScenes" :key="scene.index">
+                <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:border-indigo-500 transition-colors"
+                     @click="selectedScene = scene">
+                  <div class="h-28 bg-gray-700">
+                    <img :src="scene.thumbnail" class="w-full h-full object-cover"
+                         onerror="this.style.display='none'" />
+                  </div>
+                  <div class="p-2">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-xs text-gray-500">Sc <span x-text="scene.index"></span></span>
+                      <span class="text-xs" x-html="stars(scene.visual_power)"></span>
+                    </div>
+                    <div class="text-xs text-purple-400 truncate" x-text="scene.emotion || '—'"></div>
+                    <div class="text-xs text-gray-400 mt-0.5 line-clamp-2" x-text="scene.description || '(not analyzed)'"></div>
+                    <div class="flex gap-1 mt-1.5">
+                      <span x-show="scene.is_film_related" class="text-xs bg-blue-900 text-blue-300 px-1 rounded">film</span>
+                      <span x-show="scene.is_aesthetic" class="text-xs bg-green-900 text-green-300 px-1 rounded">ok</span>
+                      <span x-show="!scene.is_aesthetic" class="text-xs bg-red-900 text-red-300 px-1 rounded">skip</span>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /selectedSlug content -->
+    </div><!-- /content area -->
+  </div><!-- /main layout -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- NEW WORKSPACE MODAL                                             -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div x-show="showNewWorkspace" x-transition.opacity
+       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+    <div class="bg-gray-900 border border-gray-700 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+         @click.stop>
+      <div class="flex items-center justify-between p-4 border-b border-gray-800">
+        <h2 class="font-semibold text-lg">New Workspace</h2>
+        <button @click="showNewWorkspace = false; newWsLogs = []" class="text-gray-500 hover:text-gray-300 text-xl leading-none">×</button>
+      </div>
+      <div class="p-4 space-y-3">
+        <!-- Identity -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-gray-400 block mb-1">Film Name *</label>
+            <input x-model="newWs.film" placeholder="Licorice Pizza"
+                   class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="text-xs text-gray-400 block mb-1">Song Title *</label>
+            <input x-model="newWs.song" placeholder="Call it Fate, Call it Karma"
+                   class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Artist (optional — improves lyric search)</label>
+          <input x-model="newWs.artist" placeholder="The Strokes"
+                 class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+        </div>
+        <!-- URLs -->
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Video URL (YouTube compilation) *</label>
+          <input x-model="newWs.video_url" placeholder="https://youtube.com/watch?v=..."
+                 class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm font-mono focus:outline-none focus:border-indigo-500" />
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Song URL (YouTube) *</label>
+          <input x-model="newWs.song_url" placeholder="https://youtube.com/watch?v=..."
+                 class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm font-mono focus:outline-none focus:border-indigo-500" />
+        </div>
+        <!-- Timestamps -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-gray-400 block mb-1">Video window (optional, seconds)</label>
+            <div class="flex gap-1.5">
+              <input x-model="newWs.video_start" type="number" placeholder="start"
+                     class="flex-1 bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+              <input x-model="newWs.video_end" type="number" placeholder="end"
+                     class="flex-1 bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+            </div>
+          </div>
+          <div>
+            <label class="text-xs text-gray-400 block mb-1">Song window (optional, seconds)</label>
+            <div class="flex gap-1.5">
+              <input x-model="newWs.song_start" type="number" placeholder="start"
+                     class="flex-1 bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+              <input x-model="newWs.song_end" type="number" placeholder="end"
+                     class="flex-1 bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+            </div>
+          </div>
+        </div>
+        <!-- Characters -->
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Characters (optional, comma-separated — improves AI scene descriptions)</label>
+          <input x-model="newWs.characters" placeholder="Alana Kane, Gary Valentine"
+                 class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+        </div>
+        <!-- Models -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-gray-400 block mb-1">Scene analysis model</label>
+            <select x-model="newWs.analyzer_model"
+                    class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500">
+              <option value="">Default (Gemini Flash)</option>
+              <option value="google/gemini-2.0-flash-001">Gemini Flash</option>
+              <option value="google/gemini-2.5-pro-preview">Gemini Pro</option>
+              <option value="anthropic/claude-sonnet-4-6">Claude Sonnet</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs text-gray-400 block mb-1">Matcher model</label>
+            <select x-model="newWs.matcher_model"
+                    class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500">
+              <option value="">Default (Claude Sonnet)</option>
+              <option value="anthropic/claude-sonnet-4-6">Claude Sonnet</option>
+              <option value="anthropic/claude-haiku-4-5-20251001">Claude Haiku</option>
+              <option value="google/gemini-2.5-pro-preview">Gemini Pro</option>
+            </select>
+          </div>
+        </div>
+        <!-- Live log panel inside modal -->
+        <div x-show="newWsLogs.length > 0">
+          <div class="text-xs text-gray-500 mb-1">Pipeline output</div>
+          <div class="log-panel bg-gray-950 border border-gray-800 rounded p-2 h-36 overflow-y-auto text-xs text-green-400">
+            <template x-for="(line, i) in newWsLogs" :key="i">
+              <div :class="line.startsWith('✓') ? 'text-green-300' : line.startsWith('❌') ? 'text-red-400' : 'text-green-400'"
+                   x-text="line"></div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-2 justify-end p-4 border-t border-gray-800">
+        <button @click="showNewWorkspace = false; newWsLogs = []"
+                class="px-4 py-2 text-sm text-gray-400 hover:text-gray-200">Cancel</button>
+        <button @click="createWorkspace()"
+                :disabled="isRunning || !newWs.film || !newWs.song || !newWs.video_url || !newWs.song_url"
+                class="px-4 py-2 text-sm bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed rounded font-medium">
+          Create &amp; Run Pipeline
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- REEL PLAYER MODAL                                               -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div x-show="showReel" x-transition.opacity
+       class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+       @click="showReel = false; $refs.reelVideo.pause()">
+    <div class="flex flex-col items-center gap-3" @click.stop>
+      <div class="flex items-center justify-between w-full px-1">
+        <span class="text-sm font-medium text-gray-300"
+              x-text="wsDetail ? wsDetail.film + ' × ' + wsDetail.song : ''"></span>
+        <button @click="showReel = false; $refs.reelVideo.pause()"
+                class="text-gray-500 hover:text-gray-200 text-xl leading-none ml-8">×</button>
+      </div>
+      <!-- 9:16 video container — tall on desktop, fills height -->
+      <video x-ref="reelVideo"
+             :src="selectedSlug ? `/api/workspace/${selectedSlug}/reel` : ''"
+             controls playsinline loop
+             class="rounded-xl shadow-2xl border border-gray-700"
+             style="height: min(80vh, 640px); width: auto; aspect-ratio: 9/16;">
+      </video>
+      <a :href="selectedSlug ? `/api/workspace/${selectedSlug}/reel` : '#'"
+         :download="wsDetail ? wsDetail.film + '_' + wsDetail.song + '.mp4' : 'reel.mp4'"
+         class="text-xs text-gray-500 hover:text-gray-300 underline">
+        Download MP4
+      </a>
+
+      <!-- Publish to Instagram Section -->
+      <div class="mt-4 w-full max-w-sm bg-gray-900/80 border border-gray-800 rounded-lg p-3">
+        <div class="text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">Publish to Instagram</div>
+        <textarea x-model="publishCaption"
+                  placeholder="Enter caption..."
+                  rows="2"
+                  class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs resize-none focus:outline-none focus:border-indigo-500 placeholder-gray-600 mb-2"></textarea>
+        <button @click="runPublish()"
+                :disabled="isRunning"
+                class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:opacity-40 disabled:cursor-not-allowed rounded py-1.5 text-xs font-bold transition-all shadow-lg">
+          Push to Instagram
+        </button>
+        <div x-show="isRunning" class="mt-2 text-[10px] text-yellow-500 animate-pulse text-center">
+          Uploading Reel... Please wait.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- SCENE DETAIL MODAL                                              -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div x-show="selectedScene" x-transition.opacity
+       class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+       @click="selectedScene = null">
+    <div class="bg-gray-900 border border-gray-700 rounded-xl max-w-lg w-full" @click.stop>
+      <div class="flex items-center justify-between p-4 border-b border-gray-800">
+        <h3 class="font-semibold">Scene <span x-text="selectedScene?.index"></span></h3>
+        <button @click="selectedScene = null" class="text-gray-500 hover:text-gray-300 text-xl leading-none">×</button>
+      </div>
+      <div x-show="selectedScene">
+        <img :src="selectedScene?.thumbnail" class="w-full h-52 object-cover" onerror="this.style.display='none'" />
+        <div class="p-4 space-y-2">
+          <div class="flex gap-4 text-xs text-gray-400">
+            <span><span class="text-gray-500">Duration</span> <span x-text="selectedScene?.duration?.toFixed(1) + 's'"></span></span>
+            <span><span class="text-gray-500">Start</span> <span x-text="selectedScene?.start_time?.toFixed(1) + 's'"></span></span>
+            <span><span class="text-gray-500">Shot</span> <span x-text="selectedScene?.shot_type"></span></span>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500 mb-0.5">Emotion</div>
+            <div class="text-sm text-purple-400" x-text="selectedScene?.emotion || '—'"></div>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500 mb-0.5">Description</div>
+            <div class="text-sm text-gray-200" x-text="selectedScene?.description || '(not analyzed)'"></div>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500 mb-0.5">Lighting</div>
+            <div class="text-sm text-gray-300" x-text="selectedScene?.lighting || '—'"></div>
+          </div>
+          <div x-show="selectedScene?.characters_present?.length">
+            <div class="text-xs text-gray-500 mb-0.5">Characters</div>
+            <div class="text-sm text-blue-300" x-text="selectedScene?.characters_present?.join(', ')"></div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span x-html="stars(selectedScene?.visual_power || 3)"></span>
+            <span x-show="selectedScene?.is_film_related" class="text-xs bg-blue-900 text-blue-300 px-1.5 py-0.5 rounded">film-related</span>
+            <span x-show="selectedScene?.is_aesthetic" class="text-xs bg-green-900 text-green-300 px-1.5 py-0.5 rounded">aesthetic ✓</span>
+            <span x-show="!selectedScene?.is_aesthetic" class="text-xs bg-red-900 text-red-300 px-1.5 py-0.5 rounded">not aesthetic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- ALPINE COMPONENT                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <script>
+  function app() {
+    return {
+      // ── State ──────────────────────────────────────────────────
+      workspaces: [],
+      selectedSlug: null,
+      wsDetail: null,
+      scenes: [],
+      plan: [],
+      tab: 'pipeline',
+      logs: [],
+      isRunning: false,
+      planDirty: false,
+      _sortable: null,
+
+      // ── Lyrics tab ─────────────────────────────────────────────
+      lyrics: [],
+      lyricsDirty: false,
+
+      // ── Audio player ───────────────────────────────────────────
+      audioCurrentTime: 0,
+      audioDuration: 0,
+      audioPlaying: false,
+      audioActiveLyricIdx: -1,
+
+      // ── Modals ─────────────────────────────────────────────────
+      showNewWorkspace: false,
+      showReel: false,
+      selectedScene: null,
+      newWsLogs: [],
+
+      // ── New workspace form ──────────────────────────────────────
+      newWs: {
+        film: '', song: '', artist: '',
+        video_url: '', song_url: '',
+        video_start: '', video_end: '',
+        song_start: '', song_end: '',
+        characters: '', analyzer_model: '', matcher_model: '',
+      },
+
+      // ── Scene browser ──────────────────────────────────────────
+      sceneFilter: 'all',
+      sceneFilters: [
+        { id: 'all',       label: 'All' },
+        { id: 'usable',    label: 'Usable' },
+        { id: 'film',      label: 'Film-related' },
+        { id: 'aesthetic', label: 'Aesthetic' },
+        { id: 'high',      label: '★★★★+' },
+      ],
+
+      // ── Edit plan ──────────────────────────────────────────────
+      editInstruction: '',
+      editModel: 'google/gemini-2.0-flash-001',
+
+      // ── Render options ─────────────────────────────────────────
+      fontOptions: [],
+      selectedFont: 'Arial Rounded Bold',
+
+      // ── Plan history ───────────────────────────────────────────
+      planHistory: [],
+      historyExpanded: false,
+
+      // ── Publish ────────────────────────────────────────────────
+      publishCaption: '',
+
+      // ── Pipeline steps ─────────────────────────────────────────
+      pipelineSteps: [
+        {
+          id: 'download-video', label: '① Download Video', produces: 'video',
+          params: [
+            { name: 'url', label: 'Video URL', placeholder: 'https://youtube.com/watch?v=...' },
+            { name: 'video_start', label: 'Start (s)', placeholder: 'optional', type: 'number' },
+            { name: 'video_end',   label: 'End (s)',   placeholder: 'optional', type: 'number' },
+          ]
+        },
+        {
+          id: 'download-audio', label: '② Download Audio', produces: 'audio',
+          params: [
+            { name: 'url',       label: 'Song URL',   placeholder: 'https://youtube.com/watch?v=...' },
+            { name: 'artist',    label: 'Artist',     placeholder: 'optional' },
+            { name: 'song_start', label: 'Start (s)', placeholder: 'optional', type: 'number' },
+            { name: 'song_end',   label: 'End (s)',   placeholder: 'optional', type: 'number' },
+          ]
+        },
+        {
+          id: 'detect-scenes', label: '③ Detect Scenes', produces: 'scenes',
+          params: [
+            { name: 'threshold',    label: 'Threshold',      placeholder: '27.0', type: 'number' },
+            { name: 'min_duration', label: 'Min duration (s)', placeholder: '1.5', type: 'number' },
+          ]
+        },
+        {
+          id: 'sample-frames', label: '④ Sample Frames', produces: 'scenes',
+          params: [
+            { name: 'n_frames', label: 'Frames/scene', placeholder: '3', type: 'number' },
+          ]
+        },
+        {
+          id: 'analyze-scenes', label: '⑤ Analyze Scenes (AI)', produces: 'scenes',
+          params: [
+            { name: 'characters',  label: 'Characters',   placeholder: 'Alana Kane, Gary Valentine' },
+            { name: 'model',       label: 'Model',        placeholder: 'google/gemini-2.0-flash-001' },
+            { name: 'max_batches', label: 'Max batches',  placeholder: 'optional', type: 'number' },
+          ]
+        },
+        {
+          id: 'extract-lyrics', label: '⑥ Extract Lyrics', produces: 'lyrics',
+          params: [
+            { name: 'artist',     label: 'Artist',   placeholder: 'optional' },
+            { name: 'song_start', label: 'Start (s)', placeholder: 'optional', type: 'number' },
+            { name: 'song_end',   label: 'End (s)',   placeholder: 'optional', type: 'number' },
+          ]
+        },
+        {
+          id: 'generate-plan', label: '⑦ Generate Plan (AI)', produces: 'plan',
+          params: [
+            { name: 'characters', label: 'Characters', placeholder: 'optional' },
+            { name: 'model',      label: 'Model',      placeholder: 'anthropic/claude-sonnet-4-6' },
+          ]
+        },
+        {
+          id: 'render', label: '⑧ Render Reel', produces: 'reel',
+          params: []
+        },
+      ],
+
+      stepParams: {
+        'download-video':  { url: '', video_start: '', video_end: '' },
+        'download-audio':  { url: '', artist: '', song_start: '', song_end: '' },
+        'detect-scenes':   { threshold: '', min_duration: '' },
+        'sample-frames':   { n_frames: '' },
+        'analyze-scenes':  { characters: '', model: '', max_batches: '' },
+        'extract-lyrics':  { artist: '', song_start: '', song_end: '' },
+        'generate-plan':   { characters: '', model: '' },
+        'render':          {},
+      },
+
+      // ── Computed ───────────────────────────────────────────────
+      get filteredScenes() {
+        if (this.sceneFilter === 'all')       return this.scenes;
+        if (this.sceneFilter === 'usable')    return this.scenes.filter(s => s.is_usable);
+        if (this.sceneFilter === 'film')      return this.scenes.filter(s => s.is_film_related);
+        if (this.sceneFilter === 'aesthetic') return this.scenes.filter(s => s.is_aesthetic);
+        if (this.sceneFilter === 'high')      return this.scenes.filter(s => s.visual_power >= 4);
+        return this.scenes;
+      },
+
+      sceneCount(filterId) {
+        if (filterId === 'all')       return this.scenes.length;
+        if (filterId === 'usable')    return this.scenes.filter(s => s.is_usable).length;
+        if (filterId === 'film')      return this.scenes.filter(s => s.is_film_related).length;
+        if (filterId === 'aesthetic') return this.scenes.filter(s => s.is_aesthetic).length;
+        if (filterId === 'high')      return this.scenes.filter(s => s.visual_power >= 4).length;
+        return 0;
+      },
+
+      isStepDone(step) {
+        if (!this.wsDetail) return false;
+        const done = this.wsDetail.steps_complete || [];
+        return done.includes(step.produces);
+      },
+
+      // ── Plan history ───────────────────────────────────────────
+      async loadPlanHistory() {
+        if (!this.selectedSlug) return;
+        try {
+          this.planHistory = await this._get(`/api/workspace/${this.selectedSlug}/plan/history`);
+        } catch { this.planHistory = []; }
+      },
+
+      async restorePlan(filename) {
+        if (!this.selectedSlug || this.isRunning) return;
+        const r = await fetch(`/api/workspace/${this.selectedSlug}/plan/restore`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ filename }),
+        });
+        if (r.ok) {
+          this.logs.push(`✓ Restored plan from ${filename}`);
+          await this.loadPlan();
+          await this.loadPlanHistory();
+        } else {
+          this.logs.push(`❌ Restore failed: ${await r.text()}`);
+        }
+      },
+
+      // ── Lyrics tab ─────────────────────────────────────────────
+      async loadLyrics() {
+        if (!this.selectedSlug) return;
+        try {
+          this.lyrics = await this._get(`/api/workspace/${this.selectedSlug}/lyrics`);
+          this.lyricsDirty = false;
+        } catch { this.lyrics = []; }
+      },
+
+      async saveLyrics() {
+        if (!this.selectedSlug) return;
+        const r = await fetch(`/api/workspace/${this.selectedSlug}/lyrics`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lyrics: this.lyrics }),
+        });
+        if (r.ok) {
+          const d = await r.json();
+          this.lyricsDirty = false;
+          this.logs.push(d.synced ? '✓ Lyrics saved + plan synced' : '✓ Lyrics saved (no plan to sync yet)');
+          this.wsDetail = await this._get(`/api/workspace/${this.selectedSlug}`);
+        }
+      },
+
+      onAudioTimeUpdate() {
+        const a = this.$refs.audioPlayer;
+        if (!a) return;
+        this.audioCurrentTime = a.currentTime;
+        const t = this.audioCurrentTime;
+        const newIdx = this.lyrics.findIndex(
+          l => l.start_time !== l.end_time && l.start_time <= t && l.end_time > t
+        );
+        if (newIdx !== this.audioActiveLyricIdx) {
+          this.audioActiveLyricIdx = newIdx;
+          if (newIdx >= 0) {
+            this.$nextTick(() => {
+              const row = document.getElementById(`lyric-row-${newIdx}`);
+              if (row) row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            });
+          }
+        }
+      },
+
+      toggleAudio() {
+        const a = this.$refs.audioPlayer;
+        if (!a) return;
+        if (a.paused) { a.play(); this.audioPlaying = true; }
+        else { a.pause(); this.audioPlaying = false; }
+      },
+
+      seekAudio(time) {
+        const a = this.$refs.audioPlayer;
+        if (!a) return;
+        a.currentTime = Math.max(0, Math.min(time, this.audioDuration || 0));
+        if (a.paused) { a.play(); this.audioPlaying = true; }
+      },
+
+      seekToBarPosition(e) {
+        const a = this.$refs.audioPlayer;
+        if (!a || !this.audioDuration) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        a.currentTime = pct * this.audioDuration;
+      },
+
+      setLyricStart(idx) {
+        this.lyrics[idx].start_time = +this.audioCurrentTime.toFixed(3);
+        this.lyricsDirty = true;
+      },
+
+      setLyricEnd(idx) {
+        this.lyrics[idx].end_time = +this.audioCurrentTime.toFixed(3);
+        this.lyricsDirty = true;
+      },
+
+      deleteLyric(idx) {
+        this.lyrics.splice(idx, 1);
+        this.lyricsDirty = true;
+      },
+
+      addLyric() {
+        const t = +this.audioCurrentTime.toFixed(3);
+        this.lyrics.push({ text: '', start_time: t, end_time: +(t + 2).toFixed(3) });
+        this.lyricsDirty = true;
+        this.$nextTick(() => {
+          const last = document.getElementById(`lyric-row-${this.lyrics.length - 1}`);
+          if (last) last.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        });
+      },
+
+      fmtTime(s) {
+        if (!s || isNaN(s) || s < 0) return '0:00.0';
+        const m = Math.floor(s / 60);
+        const sec = (s % 60).toFixed(1);
+        return `${m}:${sec.padStart(4, '0')}`;
+      },
+
+      stars(n) {
+        n = Math.max(1, Math.min(5, n || 3));
+        return '★'.repeat(n) + '<span style="color:#374151">★</span>'.repeat(5 - n);
+      },
+
+      // ── Lifecycle ──────────────────────────────────────────────
+      async init() {
+        await this.loadWorkspaces();
+        try { this.fontOptions = await this._get('/api/fonts'); } catch {}
+      },
+
+      // ── Data loading ───────────────────────────────────────────
+      async loadWorkspaces() {
+        this.workspaces = await this._get('/api/workspaces');
+      },
+
+      async selectWorkspace(slug) {
+        this.selectedSlug = slug;
+        this.plan = [];
+        this.scenes = [];
+        this.lyrics = [];
+        this.lyricsDirty = false;
+        this.audioCurrentTime = 0;
+        this.audioDuration = 0;
+        this.audioPlaying = false;
+        this.audioActiveLyricIdx = -1;
+        this.logs = [];
+        this.planDirty = false;
+        this.planHistory = [];
+        this.historyExpanded = false;
+        this.showReel = false;
+        this.wsDetail = await this._get(`/api/workspace/${slug}`);
+        this._prefillParams();
+        this.publishCaption = `'${this.wsDetail.song}' by ${this.wsDetail.film} (AI generated reel) #aesthetic #reels`;
+      },
+
+      _prefillParams() {
+        const cfg = this.wsDetail?.config || {};
+        if (cfg.video_url)   this.stepParams['download-video'].url = cfg.video_url;
+        if (cfg.video_start) this.stepParams['download-video'].video_start = cfg.video_start;
+        if (cfg.video_end)   this.stepParams['download-video'].video_end = cfg.video_end;
+        if (cfg.song_url)    this.stepParams['download-audio'].url = cfg.song_url;
+        if (cfg.artist)      this.stepParams['download-audio'].artist = cfg.artist;
+        if (cfg.song_start)  this.stepParams['download-audio'].song_start = cfg.song_start;
+        if (cfg.song_end)    this.stepParams['download-audio'].song_end = cfg.song_end;
+        if (cfg.artist)      this.stepParams['extract-lyrics'].artist = cfg.artist;
+        if (cfg.song_start)  this.stepParams['extract-lyrics'].song_start = cfg.song_start;
+        if (cfg.song_end)    this.stepParams['extract-lyrics'].song_end = cfg.song_end;
+      },
+
+      async loadPlan() {
+        if (!this.selectedSlug) return;
+        try {
+          this.plan = await this._get(`/api/workspace/${this.selectedSlug}/plan`);
+          this.planDirty = false;
+          this.$nextTick(() => this._initSortable());
+        } catch (e) {
+          this.plan = [];
+        }
+      },
+
+      async loadScenes() {
+        if (!this.selectedSlug) return;
+        try {
+          this.scenes = await this._get(`/api/workspace/${this.selectedSlug}/scenes`);
+        } catch (e) {
+          this.scenes = [];
+        }
+      },
+
+      switchTab(t) {
+        this.tab = t;
+        if (t === 'plan') {
+          if (this.plan.length === 0) this.loadPlan();
+          this.loadPlanHistory();
+        }
+        if (t === 'scenes' && this.scenes.length === 0) this.loadScenes();
+        if (t === 'lyrics' && this.lyrics.length === 0) this.loadLyrics();
+        if (t !== 'lyrics') {
+          const a = this.$refs.audioPlayer;
+          if (a && !a.paused) a.pause();
+        }
+      },
+
+      // ── Sortable ───────────────────────────────────────────────
+      _initSortable() {
+        if (this._sortable) {
+          this._sortable.destroy();
+          this._sortable = null;
+        }
+        const el = this.$refs.planList;
+        if (!el) return;
+        this._sortable = Sortable.create(el, {
+          animation: 150,
+          handle: '.drag-handle',
+          ghostClass: 'sortable-ghost',
+          onEnd: (evt) => {
+            if (evt.oldIndex === evt.newIndex) return;
+            const [moved] = this.plan.splice(evt.oldIndex, 1);
+            this.plan.splice(evt.newIndex, 0, moved);
+            this.planDirty = true;
+            this.$nextTick(() => this._initSortable());
+          }
+        });
+      },
+
+      // ── Actions ────────────────────────────────────────────────
+      async runStep(stepId) {
+        if (!this.selectedSlug || this.isRunning) return;
+        const params = { ...this.stepParams[stepId] };
+        await this._streamPost('/api/pipeline/run', {
+          film: this.wsDetail.film,
+          song: this.wsDetail.song,
+          step: stepId,
+          params,
+        });
+        this.wsDetail = await this._get(`/api/workspace/${this.selectedSlug}`);
+        await this.loadWorkspaces();
+        if (this.tab === 'plan') { await this.loadPlan(); await this.loadPlanHistory(); }
+        if (this.tab === 'scenes') await this.loadScenes();
+      },
+
+      async savePlan() {
+        if (!this.selectedSlug || !this.plan.length) return;
+        const segments = this.plan.map(c => c._raw);
+        await fetch(`/api/workspace/${this.selectedSlug}/plan`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ segments }),
+        });
+        this.planDirty = false;
+        this.logs.push('✓ Plan order saved');
+      },
+
+      async applyEdit() {
+        if (!this.selectedSlug || !this.editInstruction.trim() || this.isRunning) return;
+        await this._streamPost(`/api/workspace/${this.selectedSlug}/edit-plan`, {
+          instruction: this.editInstruction,
+          model: this.editModel,
+        });
+        await this.loadPlan();
+      },
+
+      async runRender() {
+        if (!this.selectedSlug || this.isRunning) return;
+        await this._streamPost(`/api/workspace/${this.selectedSlug}/render`, {
+          subtitle_font: this.selectedFont,
+        });
+        await this.loadWorkspaces();
+        this.wsDetail = await this._get(`/api/workspace/${this.selectedSlug}`);
+      },
+
+      async runPublish() {
+        if (!this.selectedSlug || this.isRunning) return;
+        this.logs = []; // Show publication logs
+        await this._streamPost(`/api/workspace/${this.selectedSlug}/publish`, {
+          caption: this.publishCaption
+        });
+        // Scroll to logs so user sees the result
+        this.tab = 'pipeline';
+        this.showReel = false;
+      },
+
+      async createWorkspace() {
+        if (this.isRunning) return;
+        const body = { ...this.newWs };
+        this.newWsLogs = [];
+        this.isRunning = true;
+        try {
+          const resp = await fetch('/api/workspace/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          });
+          if (!resp.ok) {
+            this.newWsLogs.push(`❌ ${await resp.text()}`);
+            this.isRunning = false;
+            return;
+          }
+          await this._readStream(resp, this.newWsLogs);
+          await this.loadWorkspaces();
+          // Auto-select the new workspace
+          const slug = this.workspaces.find(w => w.film === body.film && w.song === body.song)?.slug;
+          if (slug) {
+            this.showNewWorkspace = false;
+            this.newWsLogs = [];
+            await this.selectWorkspace(slug);
+          }
+        } finally {
+          this.isRunning = false;
+        }
+      },
+
+      // ── SSE helpers ────────────────────────────────────────────
+      async _streamPost(url, body) {
+        this.logs = [];
+        this.isRunning = true;
+        try {
+          const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          });
+          if (!resp.ok) {
+            this.logs.push(`❌ HTTP ${resp.status}: ${await resp.text()}`);
+            return;
+          }
+          await this._readStream(resp, this.logs);
+        } catch (e) {
+          this.logs.push(`❌ ${e.message}`);
+        } finally {
+          this.isRunning = false;
+        }
+      },
+
+      async _readStream(resp, targetLogs) {
+        const reader = resp.body.getReader();
+        const dec = new TextDecoder();
+        let buf = '';
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buf += dec.decode(value, { stream: true });
+          const chunks = buf.split('\n\n');
+          buf = chunks.pop();
+          for (const chunk of chunks) {
+            const line = chunk.trim();
+            if (!line.startsWith('data: ')) continue;
+            try {
+              const msg = JSON.parse(line.slice(6));
+              if (msg.log) {
+                targetLogs.push(msg.log);
+                this._scrollLogs();
+              }
+              if (msg.done) {
+                targetLogs.push(msg.exit_code === 0 ? '✓ Done' : `⚠ Exited with code ${msg.exit_code}`);
+              }
+            } catch {}
+          }
+        }
+      },
+
+      _scrollLogs() {
+        this.$nextTick(() => {
+          ['log-panel', 'log-panel-plan'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.scrollTop = el.scrollHeight;
+          });
+        });
+      },
+
+      async _get(url) {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      },
+    };
+  }
+  </script>
+</body>
+</html>

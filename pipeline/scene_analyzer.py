@@ -140,6 +140,7 @@ def analyze_scenes(
     model: str | None = None,
     characters: list[str] | None = None,
     max_batches: int | None = None,
+    cache_dir: Path | None = None,
 ) -> list[Scene]:
     """Send scenes to a vision LLM via OpenRouter in batches. Cache results by frame content hash.
     Re-running with the same video costs nothing — all scenes load from cache.
@@ -164,7 +165,7 @@ def analyze_scenes(
     # ── Separate cached and uncached ─────────────────────────────────────────
     uncached: list[Scene] = []
     for scene in scenes:
-        cached = cache.get_scene(scene.frames, cache_context, model=resolved_model)
+        cached = cache.get_scene(scene.frames, cache_context, model=resolved_model, cache_dir=cache_dir)
         if cached:
             _apply_result(scene, cached)
         else:
@@ -220,6 +221,7 @@ def analyze_scenes(
                         "confidence":         scene.confidence,
                     },
                     model=resolved_model,
+                    cache_dir=cache_dir,
                 )
 
     film_related = sum(1 for s in scenes if s.is_film_related)

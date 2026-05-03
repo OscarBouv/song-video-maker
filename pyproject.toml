@@ -17,6 +17,9 @@ dependencies = [
     "numpy",
     "pydantic",
     "typer",
+    "fastapi",
+    "uvicorn[standard]",
+    "instagrapi>=2.5.11",
 ]
 
 [project.scripts]

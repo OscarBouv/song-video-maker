@@ -4,8 +4,10 @@ The plan is built around the FIXED lyric timeline — every slot's duration is i
 The LLM's only job is to select which scene (and where within it) to show in each slot.
 """
 import json
+import re
 import subprocess
 from collections import defaultdict
+from datetime import datetime, timezone
 from pathlib import Path
 
 from config import (
@@ -23,8 +25,12 @@ from pipeline import cache
 # rather than becoming their own visual slot.
 _MIN_GAP_FOR_SLOT = 0.3
 
-# Lyric slots longer than this get flagged as multi-clip candidates in the prompt
-_MULTICLIP_THRESHOLD = 5.0
+# Lyric slots longer than this get flagged as multi-clip candidates in the prompt.
+# Raised to 8s so short lyric lines (2-5s) never get split into micro-clips.
+_MULTICLIP_THRESHOLD = 8.0
+
+# Clips shorter than this (seconds) are flagged as problematic after plan generation.
+_MIN_CLIP_DURATION = 1.5
 
 
 # ── ffprobe helper ────────────────────────────────────────────────────────────
@@ -49,8 +55,8 @@ def _probe_audio_duration(audio_path: Path) -> float:
 
 # ── OpenRouter call ───────────────────────────────────────────────────────────
 
-def _call_openrouter(prompt: str, model: str) -> str:
-    cached = cache.get_llm(prompt, model, "openrouter")
+def _call_openrouter(prompt: str, model: str, cache_dir: Path | None = None) -> str:
+    cached = cache.get_llm(prompt, model, "openrouter", cache_dir=cache_dir)
     if cached:
         print("[matcher] Using cached OpenRouter response")
         return cached
@@ -76,7 +82,7 @@ def _call_openrouter(prompt: str, model: str) -> str:
 
     print(f"[matcher] LLM response complete (finish_reason='{finish_reason}', "
           f"{len(result.split())} words)")
-    cache.set_llm(prompt, model, "openrouter", result)
+    cache.set_llm(prompt, model, "openrouter", result, cache_dir=cache_dir)
     return result
 
 
@@ -169,6 +175,7 @@ def generate_plan(
     model: str | None = None,
     characters: list[str] | None = None,
     audio_path: Path | None = None,
+    cache_dir: Path | None = None,
 ) -> list[MatchedSegment]:
     """Ask an LLM via OpenRouter to propose a scene-to-lyric mapping.
 
@@ -215,7 +222,7 @@ def generate_plan(
     prompt = _build_prompt(film_scenes, lyrics, film_name, song_name, audio_duration, slots, characters=characters)
     resolved_model = model or DEFAULT_MATCHER_MODEL.value
     print(f"[matcher] Calling OpenRouter ({resolved_model}) for scene-to-lyric plan...")
-    raw = _call_openrouter(prompt, resolved_model)
+    raw = _call_openrouter(prompt, resolved_model, cache_dir=cache_dir)
 
     # Strip markdown code fences if present
     if raw.startswith("```"):
@@ -340,6 +347,43 @@ def generate_plan(
             f"({audio_duration:.2f}s) — check for missing slots above."
         )
 
+    # ── Scene uniqueness check ─────────────────────────────────────────────────
+    scene_usage: dict[int, int] = {}
+    for seg in segments:
+        scene_usage[seg.scene_index] = scene_usage.get(seg.scene_index, 0) + 1
+    duplicates = {idx: cnt for idx, cnt in scene_usage.items() if cnt > 1}
+    if duplicates:
+        top = sorted(duplicates.items(), key=lambda x: -x[1])[:8]
+        top_str = ", ".join(f"Scene {idx} ×{cnt}" for idx, cnt in top)
+        print(
+            f"[matcher] ⚠️  Duplicate scenes in plan: {top_str}\n"
+            f"  {len(duplicates)} scene(s) reused — re-run generate-plan (prompt now enforces "
+            f"uniqueness so cache will miss) or use edit-plan to swap duplicates."
+        )
+    else:
+        print(
+            f"[matcher] ✓ Scene uniqueness OK — {len(scene_usage)} unique scenes "
+            f"across {len(segments)} clips."
+        )
+
+    # ── Micro-clip check ───────────────────────────────────────────────────────
+    micro_clips = [
+        seg for seg in segments
+        if (seg.song_end - seg.song_start) < _MIN_CLIP_DURATION
+    ]
+    if micro_clips:
+        times = ", ".join(f"{s.song_start:.1f}s" for s in micro_clips[:6])
+        print(
+            f"[matcher] ⚠️  {len(micro_clips)} clip(s) under {_MIN_CLIP_DURATION}s "
+            f"(at: {times}) — may look choppy. "
+            f"Use edit-plan to merge or extend them."
+        )
+
+    # ── Archive existing plan before overwriting ──────────────────────────────
+    archived = archive_existing_plan(output_dir, slug)
+    if archived:
+        print(f"[matcher] Archived previous plan → plan_history/{archived.name}")
+
     # ── Save files ────────────────────────────────────────────────────────────
     plan_path = output_dir / f"{slug}_plan.json"
     with open(plan_path, "w") as f:
@@ -364,6 +408,33 @@ def load_plan(plan_path: Path, lyrics: list[LyricLine]) -> list[MatchedSegment]:
     with open(plan_path) as f:
         data = json.load(f)
     return [MatchedSegment.from_dict(entry) for entry in data]
+
+
+def archive_existing_plan(output_dir: Path, slug: str) -> Path | None:
+    """Copy the current plan + readable to plan_history/ before overwriting.
+
+    Returns the archive path, or None if there was no existing plan to archive.
+    """
+    plan_path = output_dir / f"{slug}_plan.json"
+    if not plan_path.exists():
+        return None
+
+    history_dir = output_dir / "plan_history"
+    history_dir.mkdir(exist_ok=True)
+
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    archive_json = history_dir / f"{slug}_plan_{stamp}.json"
+    # Avoid same-second collisions (e.g. rapid automated re-runs)
+    if archive_json.exists():
+        stamp += f"_{datetime.now(timezone.utc).strftime('%f')[:3]}"
+        archive_json = history_dir / f"{slug}_plan_{stamp}.json"
+    archive_json.write_bytes(plan_path.read_bytes())
+
+    readable = output_dir / f"{slug}_plan_readable.txt"
+    if readable.exists():
+        (history_dir / f"{slug}_plan_{stamp}_readable.txt").write_bytes(readable.read_bytes())
+
+    return archive_json
 
 
 # ── Prompt builder ────────────────────────────────────────────────────────────
@@ -423,13 +494,16 @@ the lyric. A great fan-edit feels personal, not like a highlight reel of action 
     else:
         char_block = ""
 
-    total_slots = len(slots)
-    lyric_slots = sum(1 for sl in slots if sl["has_lyrics"])
+    total_slots   = len(slots)
+    lyric_slots   = sum(1 for sl in slots if sl["has_lyrics"])
     silence_slots = total_slots - lyric_slots
+    n_scenes      = len(scenes)
+    # Target: roughly one clip per slot; allow a small overage for long slots
+    clip_budget   = total_slots + max(4, total_slots // 5)
 
     return f"""You are a world-class video editor creating a deeply resonant Instagram Reel from the film '{film_name}' set to the song '{song_name}'.
 {char_block}
-AVAILABLE SCENES (only aesthetically clean, film-related scenes):
+AVAILABLE SCENES ({n_scenes} usable scenes — only aesthetically clean, film-related ones):
 {scene_lines}
 
 ══════════════════════════════════════════════════════════════════════════════
@@ -445,8 +519,24 @@ to start the clip. The output video MUST cover the full {audio_duration:.2f}s ex
 {slots_display}
 
 ══════════════════════════════════════════════════════════════════════════════
+HARD CONSTRAINTS — non-negotiable, checked automatically after your response:
 
-SCENE SELECTION PRINCIPLES (apply in priority order):
+1. NO SCENE REUSE — each scene_index may appear AT MOST ONCE in the entire plan.
+   You have {n_scenes} distinct scenes for {total_slots} slots. There is no excuse to
+   repeat a scene. As you assign each slot, mentally cross off that scene_index and
+   never select it again.
+
+2. NO MICRO-CLIPS — every individual clip must be ≥ {_MIN_CLIP_DURATION}s.
+   Cuts faster than {_MIN_CLIP_DURATION}s look amateur on mobile. If a slot is short,
+   fill it with ONE clip — never split it.
+
+3. CLIP BUDGET — target ≤ {clip_budget} clips total (≈ one per slot).
+   Multi-clip splits are only justified for slots longer than {_MULTICLIP_THRESHOLD:.0f}s.
+   Do not pad the edit with unnecessary cuts.
+══════════════════════════════════════════════════════════════════════════════
+
+SCENE SELECTION PRINCIPLES (apply after satisfying the hard constraints above):
+
 1. EMOTIONAL RESONANCE — the scene's emotional register must match the lyric
    • Tender/longing → intimate close-ups, quiet moments, characters apart
    • Euphoric/free  → movement, brightness, characters together
@@ -465,23 +555,24 @@ SCENE SELECTION PRINCIPLES (apply in priority order):
    • A question → uncertain or searching expression
    • An answer  → resolution, arrival, eye contact
 
-5. VARIETY — avoid repeating the same scene_index on consecutive clips.
+5. SHOT VARIETY — vary shot scale on consecutive clips (close-up → medium → wide → …)
+   to create visual rhythm even within the no-reuse constraint.
 
 TASK:
 Assign a scene clip to every slot in the timeline above and return a JSON array.
 
-CRITICAL RULES FOR DURATIONS:
+CLIP DURATION RULES:
 • For each slot: the sum of clip_duration values MUST equal the slot's duration EXACTLY.
-• For slots ≤ {_MULTICLIP_THRESHOLD:.0f}s: use ONE clip (clip_duration = slot duration).
-• For slots > {_MULTICLIP_THRESHOLD:.0f}s: use 2–3 clips to create visual rhythm
-  (split the slot duration across them; they must still add up to the slot duration).
+• Slots ≤ {_MULTICLIP_THRESHOLD:.0f}s → exactly ONE clip (clip_duration = slot duration).
+• Slots > {_MULTICLIP_THRESHOLD:.0f}s → 2–3 clips for visual rhythm, each ≥ {_MIN_CLIP_DURATION}s,
+  summing to the exact slot duration.
 • scene_trim_start + clip_duration must not exceed the scene's source duration.
 
 Each JSON element must have:
   "slot_index":        <integer — must match one of the slot indices above>,
-  "scene_index":       <integer — must be one of the available scene indices>,
+  "scene_index":       <integer — must be one of the available scene indices, used at most once>,
   "scene_trim_start":  <float — seconds into the scene where the clip starts>,
-  "clip_duration":     <float — MUST equal slot duration (single clip) or sum to slot duration (multi-clip)>,
+  "clip_duration":     <float — MUST equal slot duration (single clip) or sum to it (multi-clip)>,
   "reasoning":         "<one sentence: scene emotion + why it fits this slot>"
 
 Return ONLY valid JSON, no markdown, no extra text."""

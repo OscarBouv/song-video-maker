@@ -1,0 +1,160 @@
+[
+  {
+    "scene_index": 9,
+    "lyric_lines": [],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 5.171833333333332,
+    "song_start": 0.0,
+    "song_end": 5.88
+  },
+  {
+    "scene_index": 46,
+    "lyric_lines": [
+      {
+        "text": "Can I waste all your time",
+        "start_time": 5.88,
+        "end_time": 10.164
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 4.283999999999999,
+    "song_start": 5.88,
+    "song_end": 10.163999999999998
+  },
+  {
+    "scene_index": 67,
+    "lyric_lines": [
+      {
+        "text": "here on the sidewalk?",
+        "start_time": 10.164,
+        "end_time": 13.02
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 2.856,
+    "song_start": 10.164,
+    "song_end": 13.02
+  },
+  {
+    "scene_index": 87,
+    "lyric_lines": [],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 1.6200000000000008,
+    "song_start": 13.02,
+    "song_end": 14.64
+  },
+  {
+    "scene_index": 109,
+    "lyric_lines": [
+      {
+        "text": "Can I stand in your light",
+        "start_time": 14.64,
+        "end_time": 19.212
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 4.571999999999999,
+    "song_start": 14.64,
+    "song_end": 19.212
+  },
+  {
+    "scene_index": 99,
+    "lyric_lines": [
+      {
+        "text": "just for a while?",
+        "start_time": 19.212,
+        "end_time": 22.26
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 1.7100416666666547,
+    "song_start": 19.212,
+    "song_end": 22.26
+  },
+  {
+    "scene_index": 159,
+    "lyric_lines": [],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 1.4799999999999969,
+    "song_start": 22.26,
+    "song_end": 23.74
+  },
+  {
+    "scene_index": 39,
+    "lyric_lines": [
+      {
+        "text": "I've waited around",
+        "start_time": 23.74,
+        "end_time": 32.215
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 2.4985259433962277,
+    "song_start": 23.74,
+    "song_end": 26.238525943396226
+  },
+  {
+    "scene_index": 120,
+    "lyric_lines": [
+      {
+        "text": "I've waited around",
+        "start_time": 23.74,
+        "end_time": 32.215
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 2.9982311320754733,
+    "song_start": 26.238525943396226,
+    "song_end": 29.2367570754717
+  },
+  {
+    "scene_index": 24,
+    "lyric_lines": [
+      {
+        "text": "I've waited around",
+        "start_time": 23.74,
+        "end_time": 32.215
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 2.8361666666666707,
+    "song_start": 29.2367570754717,
+    "song_end": 32.215
+  },
+  {
+    "scene_index": 161,
+    "lyric_lines": [],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 2.924999999999997,
+    "song_start": 32.215,
+    "song_end": 35.14
+  },
+  {
+    "scene_index": 108,
+    "lyric_lines": [
+      {
+        "text": "Having a hard time",
+        "start_time": 35.14,
+        "end_time": 39.0
+      }
+    ],
+    "scene_trim_start": 0.0,
+    "scene_trim_end": 3.8599999999999994,
+    "song_start": 35.14,
+    "song_end": 39.0
+  },
+  {
+    "scene_index": 167,
+    "lyric_lines": [
+      {
+        "text": "watching you",
+        "start_time": 39.0,
+        "end_time": 42.0
+      }
+    ],
+    "scene_trim_start": 5.3,
+    "scene_trim_end": 8.3,
+    "song_start": 39.0,
+    "song_end": 42.0
+  }
+]

@@ -20,9 +20,23 @@ from config import (
     OUTPUT_FPS,
     MAX_REEL_DURATION,
     SUBTITLE_COLOR,
+    SUBTITLE_BORDER_COLOR,
+    SUBTITLE_BORDER_WIDTH,
     SUBTITLE_FONTSIZE,
     SUBTITLE_Y_RATIO,
     SUBTITLE_FONT,
+    INSERT_FONT,
+    INSERT_FONTSIZE,
+    INSERT_COLOR,
+    INSERT_BORDER_WIDTH,
+    INSERT_X_RATIO,
+    INSERT_Y_TOP_RATIO,
+    INSERT_START_T,
+    INSERT_FADE_T,
+    INSERT_END_T,
+    INSERT_FADE_OUT_T,
+    VIDEO_FADE_DURATION,
+    AUDIO_FADE_DURATION,
     FFMPEG_BIN,
     FFPROBE_BIN,
 )
@@ -36,6 +50,11 @@ def render_video(
     audio_path: Path,
     output_path: Path,
     max_duration: float = MAX_REEL_DURATION,
+    artist: str = "",
+    song_title: str = "",
+    film_name: str = "",
+    director: str = "",
+    subtitle_font: str = "",   # absolute path; empty = use SUBTITLE_FONT from config
 ) -> None:
     """Single-pass ffmpeg render: trim clips → blur-background 9:16 crop → drawtext subtitles → audio."""
 
@@ -131,10 +150,31 @@ def render_video(
             clips[-1] = (last_start, extended_end, last_subs)
             print(f"[editor] Extended last clip by {added:.3f}s to reach audio end ({audio_end:.2f}s)")
 
-    filter_complex = _build_filter_complex(clips, source_crop=source_crop)
+    # Build credit insert lines from metadata (empty string = line not shown)
+    if artist or song_title:
+        _parts = [p for p in [artist, song_title] if p]
+        insert_line1 = "Sound : " + " – ".join(_parts)
+    else:
+        insert_line1 = ""
+    if film_name:
+        insert_line2 = "Script : " + film_name + (f" – {director}" if director else "")
+    else:
+        insert_line2 = ""
+
+    filter_complex = _build_filter_complex(
+        clips, source_crop=source_crop,
+        insert_line1=insert_line1, insert_line2=insert_line2,
+        subtitle_font=subtitle_font or SUBTITLE_FONT,
+        output_duration=audio_end,
+    )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     print(f"[editor] Rendering {len(clips)} clips ({running_time:.1f}s total) → {output_path}...")
+
+    # Audio fade: clamp durations so they never overlap (e.g. very short reels)
+    aud_fade_in  = min(AUDIO_FADE_DURATION, audio_end / 4)
+    aud_fade_out = min(AUDIO_FADE_DURATION, audio_end / 4)
+    aud_fade_out_start = max(0.0, audio_end - aud_fade_out)
 
     cmd = [
         FFMPEG_BIN, "-y",
@@ -144,10 +184,22 @@ def render_video(
         "-map", "[vout]",
         "-map", "1:a",
         "-t", str(audio_end),
-        "-c:v", "libx264", "-crf", "20", "-preset", "fast",
-        "-c:a", "aac", "-b:a", "192k",
+        # ── Audio fade in/out ──────────────────────────────────────────────────
+        "-af", (
+            f"afade=t=in:st=0:d={aud_fade_in:.3f},"
+            f"afade=t=out:st={aud_fade_out_start:.3f}:d={aud_fade_out:.3f}"
+        ),
+        # ── Video: Instagram Reels recommended encoding ────────────────────────
+        # H.264 High profile, CRF 18 for high quality
+        # yuv420p is required — 4:2:0 is the only pixel format Instagram accepts
+        "-c:v", "libx264", "-crf", "18", "-preset", "slow",
+        "-profile:v", "high", "-level:v", "4.2",
+        "-pix_fmt", "yuv420p",
+        "-maxrate", "8M", "-bufsize", "16M",
         "-r", str(OUTPUT_FPS),
         "-movflags", "+faststart",
+        # ── Audio: AAC stereo 256 kbps at 44.1 kHz ────────────────────────────
+        "-c:a", "aac", "-b:a", "256k", "-ar", "44100", "-ac", "2",
         str(output_path),
     ]
 
@@ -163,6 +215,10 @@ def render_video(
 def _build_filter_complex(
     clips: list[tuple[float, float, list[tuple[str, float, float]]]],
     source_crop: tuple[int, int, int, int] | None = None,
+    insert_line1: str = "",
+    insert_line2: str = "",
+    subtitle_font: str = SUBTITLE_FONT,
+    output_duration: float = 0.0,
 ) -> str:
     parts: list[str] = []
     n = len(clips)
@@ -182,55 +238,100 @@ def _build_filter_complex(
         parts.append(f"{concat_in}concat=n={n}:v=1:a=0[vcat]")
 
     # 3. Blur-background portrait conversion
-    #    bg: scale to cover 9:16 → center-crop → Gaussian blur (kept full-frame, bars blur away)
-    #    fg: optionally crop away hardcoded letterbox/pillarbox bars, then scale to fit inside 9:16
+    #    Both bg and fg receive the same source crop so black bars never bleed through.
+    #    bg: crop bars → scale to cover 9:16 → center-crop → Gaussian blur → slight darken
+    #    fg: crop bars → scale to fit (lanczos) → unsharp → colour pop
     parts.append("[vcat]split=2[bgraw][fgraw]")
-    parts.append(
-        f"[bgraw]scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}"
-        f":force_original_aspect_ratio=increase,"
+
+    _bg_scale = (
+        f"scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}:force_original_aspect_ratio=increase,"
         f"crop={OUTPUT_WIDTH}:{OUTPUT_HEIGHT},"
-        f"gblur=sigma=30[bg]"
+        f"gblur=sigma=20,"
+        f"eq=brightness=-0.08"
     )
-    # Apply source crop to foreground only (removes encoded black bars)
+    _fg_chain = (
+        f"scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}"
+        f":force_original_aspect_ratio=decrease:flags=lanczos,"
+        f"unsharp=luma_msize_x=5:luma_msize_y=5:luma_amount=0.4,"
+        f"eq=saturation=1.1:contrast=1.04:gamma=1.01,"
+        f"noise=alls=7:allf=t+u"
+    )
     if source_crop:
         cw, ch, cx, cy = source_crop
-        parts.append(
-            f"[fgraw]crop={cw}:{ch}:{cx}:{cy},"
-            f"scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}"
-            f":force_original_aspect_ratio=decrease:flags=lanczos[fg]"
-        )
+        # Apply source crop to both layers so no black bars in either background or foreground
+        parts.append(f"[bgraw]crop={cw}:{ch}:{cx}:{cy},{_bg_scale}[bg]")
+        parts.append(f"[fgraw]crop={cw}:{ch}:{cx}:{cy},{_fg_chain}[fg]")
     else:
-        parts.append(
-            f"[fgraw]scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}"
-            f":force_original_aspect_ratio=decrease:flags=lanczos[fg]"
-        )
+        parts.append(f"[bgraw]{_bg_scale}[bg]")
+        parts.append(f"[fgraw]{_fg_chain}[fg]")
     parts.append("[bg][fg]overlay=x=(W-w)/2:y=(H-h)/2[vbg]")
 
-    # 4. Subtitle drawtext (chained filters, one per lyric line)
+    # 4. Drawtext: subtitles + source-credit insert, chained in one pass
     all_subs: list[tuple[str, float, float]] = [
         (text, t0, t1)
         for (_, _, subs) in clips
         for (text, t0, t1) in subs
     ]
 
-    if all_subs:
-        dt_parts = []
-        for text, t0, t1 in all_subs:
-            safe = _escape_drawtext(text)
-            dt_parts.append(
-                f"drawtext="
-                f"fontfile='{SUBTITLE_FONT}':"
-                f"text='{safe}':"
-                f"x=(w-tw)/2:"
-                f"y=h*{SUBTITLE_Y_RATIO}:"
-                f"fontsize={SUBTITLE_FONTSIZE}:"
-                f"fontcolor={SUBTITLE_COLOR}@0.92:"
-                f"shadowx=2:shadowy=2:shadowcolor=black@0.65:"
-                f"enable='between(t\\,{t0:.3f}\\,{t1:.3f})'"
-            )
-        parts.append(f"[vbg]{','.join(dt_parts)}[vout]")
+    all_drawtext: list[str] = []
+
+    for text, t0, t1 in all_subs:
+        safe = _escape_drawtext(text)
+        all_drawtext.append(
+            f"drawtext="
+            f"fontfile='{subtitle_font}':"
+            f"text='{safe}':"
+            f"x=(w-tw)/2:"
+            f"y=h*{SUBTITLE_Y_RATIO}-th/2:"
+            f"fontsize={SUBTITLE_FONTSIZE}:"
+            # Warm yellow text — cinematic, reads well on all backgrounds.
+            # Hard outline + subtle drop shadow for depth without visual noise.
+            f"fontcolor={SUBTITLE_COLOR}:"
+            f"bordercolor={SUBTITLE_BORDER_COLOR}:borderw={SUBTITLE_BORDER_WIDTH}:"
+            f"shadowx=0:shadowy=2:shadowcolor=black@0.45:borderw=2:"
+            f"enable='between(t\\,{t0:.3f}\\,{t1:.3f})'"
+        )
+
+    # Credit insert — top-left corner, fades in at INSERT_START_T, fades out before INSERT_END_T
+    _fade_end_t      = INSERT_START_T + INSERT_FADE_T        # end of fade-in
+    _fade_out_start  = INSERT_END_T   - INSERT_FADE_OUT_T    # start of fade-out
+    _alpha_expr = (
+        f"if(lt(t\\,{INSERT_START_T:.1f})\\,0\\,"
+        f"if(lt(t\\,{_fade_end_t:.1f})\\,(t-{INSERT_START_T:.1f})/{INSERT_FADE_T:.1f}\\,"
+        f"if(lt(t\\,{_fade_out_start:.1f})\\,1\\,"
+        f"if(lt(t\\,{INSERT_END_T:.1f})\\,({INSERT_END_T:.1f}-t)/{INSERT_FADE_OUT_T:.1f}\\,0))))"
+    )
+    _line_gap = int(INSERT_FONTSIZE * 1.45)
+    for i, line in enumerate([insert_line1, insert_line2]):
+        if not line:
+            continue
+        safe = _escape_drawtext(line)
+        all_drawtext.append(
+            f"drawtext="
+            f"fontfile='{INSERT_FONT}':"
+            f"text='{safe}':"
+            f"x=w*{INSERT_X_RATIO}:"
+            f"y=h*{INSERT_Y_TOP_RATIO}+{i * _line_gap}:"
+            f"fontsize={INSERT_FONTSIZE}:"
+            f"fontcolor={INSERT_COLOR}:"
+            f"bordercolor=black:borderw={INSERT_BORDER_WIDTH}:"
+            f"shadowx=0:shadowy=2:shadowcolor=black@0.5:"
+            f"fix_bounds=1:"
+            f"alpha='{_alpha_expr}'"
+        )
+
+    # 5. Video fade-in / fade-out — clamped so they never overlap on short reels
+    vid_fade = min(VIDEO_FADE_DURATION, output_duration / 4) if output_duration > 0 else VIDEO_FADE_DURATION
+    vid_fade_out_start = max(0.0, output_duration - vid_fade) if output_duration > 0 else 0.0
+    _vfade = (
+        f"fade=t=in:st=0:d={vid_fade:.3f},"
+        f"fade=t=out:st={vid_fade_out_start:.3f}:d={vid_fade:.3f}"
+    )
+
+    if all_drawtext:
+        parts.append(f"[vbg]{','.join(all_drawtext)},{_vfade}[vout]")
     else:
-        parts.append("[vbg]copy[vout]")
+        parts.append(f"[vbg]{_vfade}[vout]")
 
     return ";".join(parts)
 

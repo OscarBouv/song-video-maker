@@ -49,9 +49,11 @@ def sample_all_scenes(
     video_path: Path,
     scenes: list[Scene],
     n_frames: int = N_FRAMES_PER_SCENE,
+    frames_dir: Path | None = None,
 ) -> list[Scene]:
     """Sample frames for all scenes in-place and return updated scenes."""
+    output_dir = frames_dir if frames_dir is not None else FRAMES_DIR
     for scene in scenes:
-        scene.frames = sample_frames(video_path, scene, n_frames)
+        scene.frames = sample_frames(video_path, scene, n_frames, output_dir)
     print(f"[frame_sampler] Sampled {n_frames} frames for {len(scenes)} scenes")
     return scenes

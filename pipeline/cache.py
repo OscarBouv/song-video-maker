@@ -1,11 +1,11 @@
 """Disk-based cache for expensive API calls (scene analysis, LLM matching).
 
-Cache files live in temp/cache/ and persist across runs.
+Cache files live in the workspace's cache/ directory and persist across runs.
 Keys are content hashes so the same video/prompt always hits the same cache entry.
 
 Each model gets its own cache file so switching models always triggers a fresh call:
-  temp/cache/scene_analysis_<model_slug>.json
-  temp/cache/llm_responses_<model_slug>.json
+  cache/scene_analysis_<model_slug>.json
+  cache/llm_responses_<model_slug>.json
 
 Each cache entry also stores a ``_meta`` block with the model name and creation
 timestamp, making it easy to inspect the cache files and understand their provenance.
@@ -28,24 +28,25 @@ def _model_slug(model: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", model.lower()).strip("_")
 
 
-def _cache_path(namespace: str, model: str = "") -> Path:
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+def _cache_path(namespace: str, model: str = "", cache_dir: Path | None = None) -> Path:
+    base = cache_dir if cache_dir is not None else CACHE_DIR
+    base.mkdir(parents=True, exist_ok=True)
     if model:
         slug = _model_slug(model)
-        return CACHE_DIR / f"{namespace}_{slug}.json"
-    return CACHE_DIR / f"{namespace}.json"
+        return base / f"{namespace}_{slug}.json"
+    return base / f"{namespace}.json"
 
 
-def _load(namespace: str, model: str = "") -> dict:
-    path = _cache_path(namespace, model)
+def _load(namespace: str, model: str = "", cache_dir: Path | None = None) -> dict:
+    path = _cache_path(namespace, model, cache_dir)
     if path.exists():
         with open(path) as f:
             return json.load(f)
     return {}
 
 
-def _save(namespace: str, data: dict, model: str = "") -> None:
-    with open(_cache_path(namespace, model), "w") as f:
+def _save(namespace: str, data: dict, model: str = "", cache_dir: Path | None = None) -> None:
+    with open(_cache_path(namespace, model, cache_dir), "w") as f:
         json.dump(data, f, indent=2)
 
 
@@ -72,7 +73,7 @@ def _hash_str(s: str) -> str:
 
 
 # ── Scene analysis cache ──────────────────────────────────────────────────────
-# File: temp/cache/scene_analysis_<model_slug>.json
+# File: cache/scene_analysis_<model_slug>.json
 # Entry structure:
 #   "<hash>": {
 #       "description": "...", "is_film_related": true, ...,   ← the actual data
@@ -83,19 +84,30 @@ def _scene_key(frame_paths: list[str], film_name: str) -> str:
     return _hash_files(frame_paths) + ":" + _hash_str(film_name)
 
 
-def get_scene(frame_paths: list[str], film_name: str, model: str = "") -> dict | None:
+def get_scene(
+    frame_paths: list[str],
+    film_name: str,
+    model: str = "",
+    cache_dir: Path | None = None,
+) -> dict | None:
     """Return cached scene analysis result dict, or None if not cached."""
-    entry = _load("scene_analysis", model).get(_scene_key(frame_paths, film_name))
+    entry = _load("scene_analysis", model, cache_dir).get(_scene_key(frame_paths, film_name))
     if entry is None:
         return None
     # Strip internal _meta before returning so callers see only the data fields
     return {k: v for k, v in entry.items() if not k.startswith("_")}
 
 
-def set_scene(frame_paths: list[str], film_name: str, result: dict, model: str = "") -> None:
+def set_scene(
+    frame_paths: list[str],
+    film_name: str,
+    result: dict,
+    model: str = "",
+    cache_dir: Path | None = None,
+) -> None:
     """Persist a scene analysis result, attaching model + timestamp metadata."""
-    cache = _load("scene_analysis", model)
-    cache[_scene_key(frame_paths, film_name)] = {
+    data = _load("scene_analysis", model, cache_dir)
+    data[_scene_key(frame_paths, film_name)] = {
         **result,
         "_meta": {
             "model": model,
@@ -103,11 +115,11 @@ def set_scene(frame_paths: list[str], film_name: str, result: dict, model: str =
             "created_at": _now_iso(),
         },
     }
-    _save("scene_analysis", cache, model)
+    _save("scene_analysis", data, model, cache_dir)
 
 
 # ── LLM response cache ────────────────────────────────────────────────────────
-# File: temp/cache/llm_responses_<model_slug>.json
+# File: cache/llm_responses_<model_slug>.json
 # Entry structure:
 #   "<hash>": {
 #       "response": "...",   ← the raw LLM text
@@ -118,9 +130,14 @@ def _llm_key(prompt: str, model: str, provider: str) -> str:
     return _hash_str(f"{provider}:{model}:{prompt}")
 
 
-def get_llm(prompt: str, model: str, provider: str) -> str | None:
+def get_llm(
+    prompt: str,
+    model: str,
+    provider: str,
+    cache_dir: Path | None = None,
+) -> str | None:
     """Return a cached raw LLM response string, or None if not cached."""
-    entry = _load("llm_responses", model).get(_llm_key(prompt, model, provider))
+    entry = _load("llm_responses", model, cache_dir).get(_llm_key(prompt, model, provider))
     if entry is None:
         return None
     # Support both new wrapped format {"response": "..."} and legacy plain string
@@ -129,10 +146,16 @@ def get_llm(prompt: str, model: str, provider: str) -> str | None:
     return entry  # legacy plain string
 
 
-def set_llm(prompt: str, model: str, provider: str, response: str) -> None:
+def set_llm(
+    prompt: str,
+    model: str,
+    provider: str,
+    response: str,
+    cache_dir: Path | None = None,
+) -> None:
     """Persist a raw LLM response string with model/provider metadata."""
-    cache = _load("llm_responses", model)
-    cache[_llm_key(prompt, model, provider)] = {
+    data = _load("llm_responses", model, cache_dir)
+    data[_llm_key(prompt, model, provider)] = {
         "response": response,
         "_meta": {
             "model": model,
@@ -140,4 +163,4 @@ def set_llm(prompt: str, model: str, provider: str, response: str) -> None:
             "created_at": _now_iso(),
         },
     }
-    _save("llm_responses", cache, model)
+    _save("llm_responses", data, model, cache_dir)

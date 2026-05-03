@@ -1,0 +1,126 @@
+PLAN: 'Licorice Pizza' × 'Call it Fate, Call it Karma'
+============================================================
+
+Clip 1  [0.00s–5.88s in audio]  (dur: 5.17s)  Slot 0  INTRO SILENCE
+  Scene 9 [27.2s–32.4s in source]  Power:★★★★☆(4/5)
+  Characters : Gary Valentine, Alana Kane
+  Emotion    : quiet affection, tentative connection
+  Shot       : medium close-up  |  Lighting: soft, warm, ambient
+  Trim: 0.00s → 5.17s within scene
+  Visual: Gary and Alana look at each other with subtle affection in a crowded hallway.
+
+Clip 2  [5.88s–10.16s in audio]  (dur: 4.28s)  Slot 1  "Can I waste all your time"
+  Scene 46 [164.0s–168.3s in source]  Power:★★★☆☆(3/5)
+  Characters : Alana Kane
+  Emotion    : curious intrigue
+  Shot       : medium close-up  |  Lighting: warm tungsten, subtly moody
+  Trim: 0.00s → 4.28s within scene
+  Visual: Alana Kane sits across from Gary Valentine at a dimly lit restaurant table, looking directly at someone off-screen with a slight, curious smile.
+  Lyrics:
+    [5.88s–10.16s] Can I waste all your time
+
+Clip 3  [10.16s–13.02s in audio]  (dur: 2.86s)  Slot 2  "here on the sidewalk?"
+  Scene 67 [251.3s–258.5s in source]  Power:★★★☆☆(3/5)
+  Characters : Alana Kane, Gary Valentine
+  Emotion    : attentive skepticism, unspoken concerns
+  Shot       : medium close-up  |  Lighting: soft, natural daylight, slight overexposure
+  Trim: 0.00s → 2.86s within scene
+  Visual: Alana Kane listens with a furrowed brow as Gary Valentine speaks to her off-screen, trees and buildings visible in the background.
+  Lyrics:
+    [10.16s–13.02s] here on the sidewalk?
+
+Clip 4  [13.02s–14.64s in audio]  (dur: 1.62s)  Slot 3  SILENCE GAP
+  Scene 87 [353.2s–355.8s in source]  Power:★★★★☆(4/5)
+  Characters : Alana Kane
+  Emotion    : Contemplative, gentle, curious
+  Shot       : close-up  |  Lighting: Warm, soft, interior light
+  Trim: 0.00s → 1.62s within scene
+  Visual: Alana Kane looks up and to her left with a soft expression while positioned across from another person.
+
+Clip 5  [14.64s–19.21s in audio]  (dur: 4.57s)  Slot 4  "Can I stand in your light"
+  Scene 109 [414.0s–419.1s in source]  Power:★★★★☆(4/5)
+  Characters : Alana Kane, Gary Valentine
+  Emotion    : serious, considering, intense
+  Shot       : close-up  |  Lighting: warm, diffused interior light
+  Trim: 0.00s → 4.57s within scene
+  Visual: A close-up captures Alana Kane's intensely serious expression as she looks down at Gary.
+  Lyrics:
+    [14.64s–19.21s] Can I stand in your light
+
+Clip 6  [19.21s–22.26s in audio]  (dur: 1.71s)  Slot 5  "just for a while?"
+  Scene 99 [390.6s–392.4s in source]  Power:★★★★☆(4/5)
+  Characters : Gary Valentine
+  Emotion    : hopeful adoration
+  Shot       : close-up  |  Lighting: warm, golden, diffused
+  Trim: 0.00s → 1.71s within scene
+  Visual: Gary Valentine gazes with soft interest at someone who is just out of frame. 
+  Lyrics:
+    [19.21s–22.26s] just for a while?
+
+Clip 7  [22.26s–23.74s in audio]  (dur: 1.48s)  Slot 6  SILENCE GAP
+  Scene 159 [593.6s–598.3s in source]  Power:★★★★☆(4/5)
+  Characters : Gary Valentine, Alana Kane
+  Emotion    : weary, reflective, intimate
+  Shot       : two-shot  |  Lighting: warm, golden, indirect
+  Trim: 0.00s → 1.48s within scene
+  Visual: Gary Valentine and Alana Kane lie side-by-side, appearing exhausted and pensive against a stained wall, lit by warm, golden light.
+
+Clip 8  [23.74s–26.24s in audio]  (dur: 2.50s)  Slot 7  "I've waited around" ← LONG: split into 2–3 clips!
+  Scene 39 [139.2s–141.8s in source]  Power:★★★★☆(4/5)
+  Characters : Alana Kane, Gary Valentine
+  Emotion    : Yearning, hopeful, uncertain
+  Shot       : medium close-up  |  Lighting: warm ambient light, subtle shadows
+  Trim: 0.00s → 2.50s within scene
+  Visual: Gary gazes upwards at Alana, who regards him with an ambiguous expression in a warm-toned interior.
+  Lyrics:
+    [23.74s–32.22s] I've waited around
+
+Clip 9  [26.24s–29.24s in audio]  (dur: 3.00s)
+  Scene 120 [449.9s–458.4s in source]  Power:★★★☆☆(3/5)
+  Characters : Alana Kane
+  Emotion    : desolation, loneliness, hopelessness
+  Shot       : wide  |  Lighting: cool, muted streetlight, somber
+  Trim: 0.00s → 3.00s within scene
+  Visual: Alana sits dejectedly on the curb outside the Encino Post Office, hunched over in disappointment, while a man in a white suit walks past.
+  Lyrics:
+    [23.74s–32.22s] I've waited around
+
+Clip 10  [29.24s–32.22s in audio]  (dur: 2.84s)
+  Scene 24 [82.2s–85.1s in source]  Power:★★★★☆(4/5)
+  Characters : Alana Kane, Gary Valentine
+  Emotion    : youthful wonder
+  Shot       : two-shot  |  Lighting: artificial, nighttime, soft
+  Trim: 0.00s → 2.84s within scene
+  Visual: Alana and Gary are walking at night, lit by streetlights, lost in their own world.
+  Lyrics:
+    [23.74s–32.22s] I've waited around
+
+Clip 11  [32.22s–35.14s in audio]  (dur: 2.92s)  Slot 8  SILENCE GAP
+  Scene 161 [601.0s–605.2s in source]  Power:★★★★☆(4/5)
+  Characters : Alana Kane, Gary Valentine
+  Emotion    : tender intimacy, soft focus
+  Shot       : close-up  |  Lighting: low key, bokeh highlights
+  Trim: 0.00s → 2.92s within scene
+  Visual: Two faces are close together in the darkness, illuminated by bokeh balls in the background, suggesting Alana and Gary's closeness and intimacy.
+
+Clip 12  [35.14s–39.00s in audio]  (dur: 3.86s)  Slot 9  "Having a hard time"
+  Scene 108 [409.7s–414.0s in source]  Power:★★★★☆(4/5)
+  Characters : Gary Valentine, Alana Kane
+  Emotion    : tense confrontation, power imbalance
+  Shot       : two-shot  |  Lighting: warm interior light, slightly diffused
+  Trim: 0.00s → 3.86s within scene
+  Visual: Gary Valentine sits at the table, looking up at Alana Kane who leans in close, creating a tense face-off.
+  Lyrics:
+    [35.14s–39.00s] Having a hard time
+
+Clip 13  [39.00s–42.00s in audio]  (dur: 3.00s)  Slot 10  "watching you"
+  Scene 167 [621.4s–629.7s in source]  Power:★★★★☆(4/5)
+  Characters : Alana Kane, Gary Valentine
+  Emotion    : tender affection
+  Shot       : close-up  |  Lighting: warm, diffused, slightly grainy
+  Trim: 5.30s → 8.30s within scene
+  Visual: Gary and Alana share a kiss, their faces close and intimate against the blurry, colorful background of the arcade.
+  Lyrics:
+    [39.00s–42.00s] watching you
+
+Total duration: 42.00s
