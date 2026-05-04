@@ -126,6 +126,7 @@ def _build_timeline_slots(
     for seq_i, (ly_idx, ll) in enumerate(displayable):
         gap = ll.start_time - t
         if gap >= min_gap:
+            # Large enough gap → dedicated silence slot ending exactly at lyric start
             label = "INTRO SILENCE" if t == 0.0 else "SILENCE GAP"
             slots.append({
                 "slot_index": slot_idx,
@@ -135,14 +136,20 @@ def _build_timeline_slots(
                 "label": label,
             })
             slot_idx += 1
+            t = ll.start_time   # advance cursor to lyric start
+        # Micro-gap (0 < gap < min_gap) or no gap: lyric slot starts at cursor t.
+        # This snaps the slot start to the previous slot's end, keeping the chain
+        # perfectly gapless. The subtitle timing still uses lyric.start_time from
+        # lyrics.json (not the slot boundary), so the difference is imperceptible.
 
-        lyric_duration = ll.end_time - ll.start_time
+        slot_start = t
+        lyric_duration = ll.end_time - slot_start
         is_long = lyric_duration >= _MULTICLIP_THRESHOLD
         label = f'"{ll.text}"' + (" ← LONG: split into 2–3 clips!" if is_long else "")
         slots.append({
             "slot_index": slot_idx,
-            "start": ll.start_time, "end": ll.end_time,
-            "duration": lyric_duration,
+            "start": slot_start, "end": ll.end_time,
+            "duration": max(lyric_duration, 0.01),
             "lyric_indices": [ly_idx], "has_lyrics": True,
             "label": label,
         })
@@ -302,9 +309,24 @@ def generate_plan(
             scene = scene_by_index[scene_idx]
             scene_src_dur = scene.end_time - scene.start_time
 
-            trim_start = float(entry.get("scene_trim_start", 0.0))
-            trim_start = max(0.0, min(trim_start, max(0.0, scene_src_dur - actual_dur)))
-            trim_end = min(trim_start + actual_dur, scene_src_dur)
+            raw_trim_start = float(entry.get("scene_trim_start", 0.0))
+            trim_start = max(0.0, min(raw_trim_start, max(0.0, scene_src_dur - actual_dur)))
+            if abs(trim_start - raw_trim_start) > 0.01:
+                print(
+                    f"[matcher] ⚠  Slot {slot_idx} scene {scene_idx}: "
+                    f"trim_start clamped {raw_trim_start:.3f}s → {trim_start:.3f}s "
+                    f"(scene dur {scene_src_dur:.3f}s, need {actual_dur:.3f}s)"
+                )
+
+            raw_trim_end = trim_start + actual_dur
+            trim_end = min(raw_trim_end, scene_src_dur)
+            if abs(trim_end - raw_trim_end) > 0.01:
+                print(
+                    f"[matcher] ⚠  Slot {slot_idx} scene {scene_idx}: "
+                    f"trim_end clamped {raw_trim_end:.3f}s → {trim_end:.3f}s "
+                    f"— scene is only {scene_src_dur:.3f}s but clip needs {actual_dur:.3f}s. "
+                    f"Pick a longer scene next time."
+                )
 
             segments.append(
                 MatchedSegment(
@@ -318,25 +340,58 @@ def generate_plan(
             )
             t += actual_dur
 
-    # ── Coverage check ────────────────────────────────────────────────────────
+    # ── Coverage check + auto-fill silence gaps ───────────────────────────────
     covered_slots  = set(slot_entries.keys())
     all_slot_idxs  = set(slot_map.keys())
     missing_slots  = all_slot_idxs - covered_slots
 
-    if missing_slots:
-        missing_labels = [
-            f"[{si}] {slot_map[si]['label']}"
-            for si in sorted(missing_slots)
-            if slot_map[si]["has_lyrics"]
-        ]
+    missing_lyric_slots   = [si for si in sorted(missing_slots) if slot_map[si]["has_lyrics"]]
+    missing_silence_slots = [si for si in sorted(missing_slots) if not slot_map[si]["has_lyrics"]]
+
+    if missing_lyric_slots:
+        labels = [f"[{si}] {slot_map[si]['label']}" for si in missing_lyric_slots]
         print(
-            f"[matcher] ⚠️  {len(missing_slots)} slot(s) not covered in plan "
-            f"(indices: {sorted(missing_slots)}).\n"
-            f"  Missing lyric slots: {missing_labels}\n"
-            f"  → Delete the cached plan and re-run generate-plan to get a complete plan."
+            f"[matcher] ⚠️  {len(missing_lyric_slots)} lyric slot(s) not covered: {labels}\n"
+            f"  → Re-run generate-plan to get a complete plan."
         )
-    else:
+    if not missing_slots:
         print(f"[matcher] ✓ All {len(all_slot_idxs)} timeline slots covered.")
+
+    # Auto-fill any uncovered SILENCE slots (intro/outro/gap) with the best
+    # available scene.  This is the root cause of the "10-second extension" bug:
+    # the LLM frequently skips the outro-silence slot, causing render_video() to
+    # stretch the last clip by the missing duration and show wrong content.
+    if missing_silence_slots:
+        used_indices = {seg.scene_index for seg in segments}
+        # Prefer unused scenes, sorted by visual_power desc; fall back to reuse if needed
+        pool = sorted(
+            [s for s in film_scenes if s.index not in used_indices],
+            key=lambda s: -s.visual_power,
+        ) + sorted(film_scenes, key=lambda s: -s.visual_power)
+
+        fill_segs: list[MatchedSegment] = []
+        pool_idx = 0
+        for si in missing_silence_slots:
+            slot = slot_map[si]
+            scene = pool[pool_idx % len(pool)]
+            pool_idx += 1
+            scene_src_dur = scene.end_time - scene.start_time
+            trim_end = min(slot["duration"], scene_src_dur)
+            fill_segs.append(MatchedSegment(
+                scene_index=scene.index,
+                lyric_lines=[],
+                scene_trim_start=0.0,
+                scene_trim_end=trim_end,
+                song_start=slot["start"],
+                song_end=slot["end"],
+            ))
+            print(
+                f"[matcher] Auto-filled {slot['label']} slot [{si}] "
+                f"({slot['duration']:.1f}s) with scene {scene.index}"
+            )
+
+        segments = sorted(segments + fill_segs, key=lambda s: s.song_start)
+        print(f"[matcher] ✓ All silence slots filled — total clips: {len(segments)}")
 
     # Duration sanity check
     total_plan_dur = (segments[-1].song_end if segments else 0.0)
@@ -378,6 +433,48 @@ def generate_plan(
             f"(at: {times}) — may look choppy. "
             f"Use edit-plan to merge or extend them."
         )
+
+    # ── Enforce sequential song_start/song_end invariant ─────────────────────
+    # Sort by song_start to fix any out-of-order segments produced by the LLM.
+    # Then rebuild a perfectly gapless timeline: first clip starts at 0.0,
+    # and every subsequent clip's song_start = previous clip's song_end.
+    # Each clip's DURATION is preserved exactly (scene_trim_end - scene_trim_start).
+    segments.sort(key=lambda s: s.song_start)
+
+    cursor = 0.0
+    rebuilt: list[MatchedSegment] = []
+    corrected = 0
+    for seg in segments:
+        dur = (
+            seg.scene_trim_end - seg.scene_trim_start
+            if seg.scene_trim_end >= 0
+            else seg.song_end - seg.song_start
+        )
+        dur = max(dur, 0.01)
+        if abs(seg.song_start - cursor) > 0.001:
+            corrected += 1
+            if abs(seg.song_start - cursor) > 0.2:
+                print(
+                    f"[matcher] song_start corrected for scene {seg.scene_index}: "
+                    f"{seg.song_start:.4f}s → {cursor:.4f}s "
+                    f"(was {seg.song_start - cursor:+.4f}s off)"
+                )
+        rebuilt.append(MatchedSegment(
+            scene_index=seg.scene_index,
+            lyric_lines=seg.lyric_lines,
+            scene_trim_start=seg.scene_trim_start,
+            scene_trim_end=seg.scene_trim_end,
+            song_start=cursor,
+            song_end=cursor + dur,
+        ))
+        cursor += dur
+
+    if corrected:
+        print(
+            f"[matcher] Sequential fix: {corrected} song_start/song_end adjusted "
+            f"→ timeline is now gapless 0.0–{cursor:.4f}s"
+        )
+        segments = rebuilt
 
     # ── Archive existing plan before overwriting ──────────────────────────────
     archived = archive_existing_plan(output_dir, slug)
@@ -460,7 +557,8 @@ def _build_prompt(
         vp        = max(1, min(5, s.visual_power))
         stars     = _STAR * vp + _EMPTY * (5 - vp)
         scene_parts.append(
-            f"  Scene {s.index} [{s.start_time:.1f}s–{s.end_time:.1f}s, {s.duration:.1f}s]"
+            # dur= and MAX_TRIM_END= are the binding hard limits the LLM must respect
+            f"  Scene {s.index}  dur={s.duration:.2f}s  MAX_TRIM_END={s.duration:.2f}s"
             f"  VisualPower:{stars}({vp}/5)\n"
             f"    Characters : {chars}\n"
             f"    Emotion    : {emotion_s}\n"
@@ -470,15 +568,36 @@ def _build_prompt(
         )
     scene_lines = "\n\n".join(scene_parts)
 
-    # Slots display
+    # Slots display — each slot carries an eligibility list so the LLM never
+    # selects a scene that is physically too short to fill the required duration.
     slot_lines = []
     for sl in slots:
-        dur_str = f"{sl['duration']:.2f}s"
-        sym     = "♪" if sl["has_lyrics"] else "⬚"
+        dur_str  = f"{sl['duration']:.2f}s"
+        sym      = "♪" if sl["has_lyrics"] else "⬚"
+        slot_dur = sl["duration"]
+
+        # Scenes whose source duration is long enough to fill this slot
+        eligible = [s for s in scenes if s.duration >= slot_dur]
+        n_total  = len(scenes)
+        if slot_dur <= 0 or len(eligible) == n_total:
+            elig_str = f"all {n_total} scenes eligible"
+        elif len(eligible) == 0:
+            longest = sorted(scenes, key=lambda s: -s.duration)[:6]
+            elig_str = (
+                f"⚠ NO scene long enough for {slot_dur:.2f}s! "
+                f"Longest available: "
+                + ", ".join(f"Sc{s.index}({s.duration:.2f}s)" for s in longest)
+            )
+        elif len(eligible) <= 20:
+            elig_str = "eligible: " + " ".join(str(s.index) for s in eligible)
+        else:
+            elig_str = f"{len(eligible)}/{n_total} scenes eligible"
+
         slot_lines.append(
             f"  Slot {sl['slot_index']:>2}  "
             f"[{sl['start']:>7.2f}s – {sl['end']:>7.2f}s, {dur_str:>6}]  "
-            f"{sym} {sl['label']}"
+            f"{sym} {sl['label']}\n"
+            f"           need ≥{slot_dur:.2f}s  →  {elig_str}"
         )
     slots_display = "\n".join(slot_lines)
 
@@ -566,14 +685,30 @@ CLIP DURATION RULES:
 • Slots ≤ {_MULTICLIP_THRESHOLD:.0f}s → exactly ONE clip (clip_duration = slot duration).
 • Slots > {_MULTICLIP_THRESHOLD:.0f}s → 2–3 clips for visual rhythm, each ≥ {_MIN_CLIP_DURATION}s,
   summing to the exact slot duration.
-• scene_trim_start + clip_duration must not exceed the scene's source duration.
+
+HARD TRIM CONSTRAINT — enforced mathematically after your response:
+• Every scene shows its MAX_TRIM_END in the scene list above. That is the hard ceiling.
+• scene_trim_start ≥ 0 always.
+• scene_trim_end = scene_trim_start + clip_duration — this computed value MUST be ≤ MAX_TRIM_END.
+  Concretely: scene_trim_start ≤ MAX_TRIM_END − clip_duration.
+  Example: scene dur=3.50s, clip_duration=2.80s → scene_trim_start ≤ 0.70s.
+• ONLY use scenes listed under "eligible" for each slot. If a scene's dur < clip_duration
+  it will be silently truncated, producing a frozen last frame in the output video.
+• Output ONLY scene_trim_start. Do NOT output scene_trim_end — it is computed automatically.
 
 Each JSON element must have:
   "slot_index":        <integer — must match one of the slot indices above>,
-  "scene_index":       <integer — must be one of the available scene indices, used at most once>,
-  "scene_trim_start":  <float — seconds into the scene where the clip starts>,
+  "scene_index":       <integer — must be in the slot's eligible list>,
+  "scene_trim_start":  <float — seconds into the scene; MUST satisfy: scene_trim_start + clip_duration ≤ scene.MAX_TRIM_END>,
   "clip_duration":     <float — MUST equal slot duration (single clip) or sum to it (multi-clip)>,
   "reasoning":         "<one sentence: scene emotion + why it fits this slot>"
+
+OUTPUT ORDER AND CONTIGUITY:
+• Output entries sorted by slot_index (ascending) — never skip or re-order slots.
+• Every slot in the timeline above MUST have at least one entry.
+• Taken in order, the entries must form a gapless chain: the first entry's slot
+  starts at {slots[0]["start"]:.3f}s and the last entry's slot ends at {slots[-1]["end"]:.3f}s.
+• A missing slot leaves a hole in the video timeline and corrupts sync.
 
 Return ONLY valid JSON, no markdown, no extra text."""
 

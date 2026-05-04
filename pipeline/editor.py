@@ -55,14 +55,42 @@ def render_video(
     film_name: str = "",
     director: str = "",
     subtitle_font: str = "",   # absolute path; empty = use SUBTITLE_FONT from config
+    subtitle_fontsize: int = 0,  # 0 = use config default
+    subtitle_italic: bool = False,
+    manual_crop: dict | None = None,  # {top, bottom, left, right} px — overrides auto-detect
+    lyrics=None,               # list[LyricLine] from lyrics.json — bypasses plan lyric_lines
 ) -> None:
     """Single-pass ffmpeg render: trim clips → blur-background 9:16 crop → drawtext subtitles → audio."""
+
+    # Sort by song_start so any out-of-order plan produces a coherent video.
+    # Plans saved after the sequential-fix post-processing are already sorted;
+    # this guards against older plans loaded from disk.
+    segments = sorted(segments, key=lambda s: s.song_start)
 
     video_duration = _probe_duration(video_path)
     scene_by_index = {s.index: s for s in scenes}
 
-    # Detect and remove any hardcoded letterbox / pillarbox bars from the source
-    source_crop = _detect_source_crop(video_path)
+    # Crop: use manual settings if provided, otherwise auto-detect
+    if manual_crop and any(manual_crop.get(k, 0) for k in ("top", "bottom", "left", "right")):
+        info = subprocess.run(
+            [FFPROBE_BIN, "-v", "quiet", "-print_format", "json",
+             "-show_entries", "stream=width,height", "-select_streams", "v:0", str(video_path)],
+            capture_output=True, text=True,
+        )
+        try:
+            streams = json.loads(info.stdout).get("streams", [])
+            vw, vh = int(streams[0]["width"]), int(streams[0]["height"])
+        except Exception:
+            vw, vh = 1920, 1080
+        top    = manual_crop.get("top", 0)
+        bottom = manual_crop.get("bottom", 0)
+        left   = manual_crop.get("left", 0)
+        right  = manual_crop.get("right", 0)
+        cw, ch, cx, cy = vw - left - right, vh - top - bottom, left, top
+        source_crop = (cw, ch, cx, cy) if cw > 0 and ch > 0 else None
+        print(f"[editor] Manual crop: {vw}×{vh} → {cw}×{ch} at ({cx},{cy})", flush=True)
+    else:
+        source_crop = _detect_source_crop(video_path)
 
     # ── Build clip plan ───────────────────────────────────────────────────────
     # Each entry: (src_start, src_end, [(lyric_text, abs_t_start, abs_t_end), ...])
@@ -102,16 +130,46 @@ def render_video(
         #
         # LEGACY format (song_start = -1): fall back to the old running_time + relative-offset
         # arithmetic (works for old plan files without song_start/song_end).
+        # Map lyric pronunciation windows onto the VIDEO output timeline.
+        #
+        # The plan stores lyric timings as AUDIO positions (song_start/end).
+        # ffmpeg's drawtext enable='between(t,...)' uses VIDEO output time.
+        # These are only equal when the plan perfectly covers the full audio timeline
+        # with no gaps.  We compute `offset = running_time - seg.song_start` and shift
+        # all lyric timings so subtitles always appear while the correct scene is on screen,
+        # even when earlier slots were missing and introduced a drift.
         subtitles: list[tuple[str, float, float]] = []
         if seg.song_start >= 0:
+            offset = running_time - seg.song_start   # 0 when plan is complete; compensates gaps
+            if abs(offset) > 0.05:
+                print(
+                    f"[editor] Clip {seg.scene_index}: audio_pos={seg.song_start:.3f}s "
+                    f"video_pos={running_time:.3f}s  drift={offset:+.3f}s — subtitle timing corrected"
+                )
             clip_song_start = seg.song_start
             clip_song_end   = seg.song_end
-            for lyric in seg.lyric_lines:
-                # Exact pronunciation window, clamped to this clip's song-time window
-                t0 = max(clip_song_start, lyric.start_time)
-                t1 = min(clip_song_end,   lyric.end_time)
+
+            # lyrics.json is the single source of truth for subtitle timing.
+            # When the caller passes fresh lyrics we scan the full list rather than
+            # relying on the plan's embedded lyric_lines, which may be stale if the
+            # user edited lyrics.json after the plan was generated.
+            if lyrics is not None:
+                lyric_source = [
+                    ll for ll in lyrics
+                    if ll.end_time > ll.start_time            # skip non-displayable markers
+                    and ll.start_time < clip_song_end         # overlaps this segment's window
+                    and ll.end_time   > clip_song_start
+                ]
+            else:
+                lyric_source = seg.lyric_lines
+
+            for lyric in lyric_source:
+                t0 = (max(clip_song_start, lyric.start_time) + offset)
+                t1 = (min(clip_song_end,   lyric.end_time)   + offset)
+                t0 = max(running_time, t0)
+                t1 = min(running_time + clip_dur, t1)
                 if t1 <= t0:
-                    continue  # zero-duration marker or entirely outside this clip → skip
+                    continue
                 subtitles.append((lyric.text, t0, t1))
         else:
             # Legacy: infer song-start from the first lyric, then compute running_time offsets
@@ -120,7 +178,7 @@ def render_video(
                 t_start = max(0.0, lyric.start_time - seg_t0)
                 t_end   = min(clip_dur, lyric.end_time - seg_t0)
                 if t_end <= t_start:
-                    continue  # zero-duration or inverted → never display, skip
+                    continue
                 subtitles.append((lyric.text, running_time + t_start, running_time + t_end))
 
         clips.append((clip_start, clip_end, subtitles))
@@ -165,6 +223,8 @@ def render_video(
         clips, source_crop=source_crop,
         insert_line1=insert_line1, insert_line2=insert_line2,
         subtitle_font=subtitle_font or SUBTITLE_FONT,
+        subtitle_fontsize=subtitle_fontsize or SUBTITLE_FONTSIZE,
+        subtitle_italic=subtitle_italic,
         output_duration=audio_end,
     )
 
@@ -218,6 +278,8 @@ def _build_filter_complex(
     insert_line1: str = "",
     insert_line2: str = "",
     subtitle_font: str = SUBTITLE_FONT,
+    subtitle_fontsize: int = SUBTITLE_FONTSIZE,
+    subtitle_italic: bool = False,
     output_duration: float = 0.0,
 ) -> str:
     parts: list[str] = []
@@ -275,20 +337,19 @@ def _build_filter_complex(
 
     all_drawtext: list[str] = []
 
+    effective_font = _resolve_italic_font(subtitle_font) if subtitle_italic else subtitle_font
     for text, t0, t1 in all_subs:
         safe = _escape_drawtext(text)
         all_drawtext.append(
             f"drawtext="
-            f"fontfile='{subtitle_font}':"
+            f"fontfile='{effective_font}':"
             f"text='{safe}':"
             f"x=(w-tw)/2:"
             f"y=h*{SUBTITLE_Y_RATIO}-th/2:"
-            f"fontsize={SUBTITLE_FONTSIZE}:"
-            # Warm yellow text — cinematic, reads well on all backgrounds.
-            # Hard outline + subtle drop shadow for depth without visual noise.
+            f"fontsize={subtitle_fontsize}:"
             f"fontcolor={SUBTITLE_COLOR}:"
             f"bordercolor={SUBTITLE_BORDER_COLOR}:borderw={SUBTITLE_BORDER_WIDTH}:"
-            f"shadowx=0:shadowy=2:shadowcolor=black@0.45:borderw=2:"
+            f"shadowx=0:shadowy=2:shadowcolor=black@0.45:"
             f"enable='between(t\\,{t0:.3f}\\,{t1:.3f})'"
         )
 
@@ -336,6 +397,29 @@ def _build_filter_complex(
     return ";".join(parts)
 
 
+
+def _resolve_italic_font(font_path: str) -> str:
+    """Return the italic variant of a font file, or font_path if none can be found.
+
+    Only file-path lookups are used.  Fontconfig patterns (e.g. 'Family:slant=100')
+    look correct on paper but ffmpeg's filter-graph parser splits option values on ':'
+    before drawtext can forward the string to fontconfig, causing a hard crash.
+    For .ttc bundle fonts (Helvetica, Avenir Next, Futura…) the italic face lives
+    inside the same file and can't be addressed by path — italic is silently skipped.
+    """
+    from pathlib import Path as _P
+    p = _P(font_path)
+    stem, suffix, parent = p.stem, p.suffix, p.parent
+
+    candidate = parent / f"{stem} Italic{suffix}"
+    if candidate.exists():
+        print(f"[editor] Italic font: {candidate}", flush=True)
+        return str(candidate)
+
+    print(f"[editor] No italic variant for '{stem}' — rendering without italic", flush=True)
+    return font_path
+
+
 def _escape_drawtext(text: str) -> str:
     """Escape special characters for ffmpeg drawtext text and fontfile options."""
     return (
@@ -379,25 +463,29 @@ def _detect_source_crop(video_path: Path) -> tuple[int, int, int, int] | None:
         print("[editor] cropdetect: could not read video dimensions — skipping")
         return None
 
-    # ── Run cropdetect (limit to 90 s so it finishes quickly) ────────────────
-    result = subprocess.run(
-        [
-            FFMPEG_BIN, "-i", str(video_path),
-            "-vf", "cropdetect=limit=24:round=2:skip=0",
-            "-t", "90",
-            "-f", "null", "/dev/null",
-        ],
-        capture_output=True, text=True,
-    )
+    # ── Run cropdetect at two thresholds; take the most-common rectangle ────
+    # limit=16 catches pure black bars; limit=64 catches slightly non-black bars
+    # (noise from compression, film grain, or near-black fade frames).
+    # Running both passes and picking the modal result keeps false positives low.
+    all_matches: list[tuple[str, str, str, str]] = []
+    for limit in (16, 64):
+        result = subprocess.run(
+            [
+                FFMPEG_BIN, "-i", str(video_path),
+                "-vf", f"cropdetect=limit={limit}:round=2:skip=2",
+                "-t", "90",
+                "-f", "null", "/dev/null",
+            ],
+            capture_output=True, text=True,
+        )
+        all_matches.extend(re.findall(r"crop=(\d+):(\d+):(\d+):(\d+)", result.stderr))
 
-    # Parse every "crop=W:H:X:Y" occurrence from stderr
-    matches = re.findall(r"crop=(\d+):(\d+):(\d+):(\d+)", result.stderr)
-    if not matches:
+    if not all_matches:
         print("[editor] cropdetect: no crop values found — skipping")
         return None
 
-    # Use the modal (most-common) crop rectangle for robustness
-    (cw_s, ch_s, cx_s, cy_s) = Counter(matches).most_common(1)[0][0]
+    # Use the modal (most-common) crop rectangle across both passes
+    (cw_s, ch_s, cx_s, cy_s) = Counter(all_matches).most_common(1)[0][0]
     cw, ch, cx, cy = int(cw_s), int(ch_s), int(cx_s), int(cy_s)
 
     # Skip when the crop is essentially the full frame (< 1 % reduction)

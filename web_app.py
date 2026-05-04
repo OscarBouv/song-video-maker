@@ -2,6 +2,7 @@
 import asyncio
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -363,6 +364,327 @@ async def restore_plan(slug: str, body: dict):
     return {"ok": True, "restored": filename}
 
 
+@app.get("/api/workspace/{slug}/plan/audit")
+def audit_plan(slug: str):
+    """Return a full timing audit: per-clip video positions, gaps, and duration checks."""
+    ws_dir = WORKSPACES_DIR / slug
+    plan_file = next(ws_dir.glob("*_plan.json"), None)
+    if not plan_file:
+        raise HTTPException(404, "No plan found — run generate-plan first")
+
+    segments_raw = json.loads(plan_file.read_text())
+
+    scenes_file = ws_dir / "state" / "scenes.json"
+    scene_map: dict[int, Scene] = {}
+    if scenes_file.exists():
+        for d in json.loads(scenes_file.read_text()):
+            s = Scene.model_validate(d)
+            scene_map[s.index] = s
+
+    # Probe audio duration
+    audio_duration = 0.0
+    audio_path_file = ws_dir / "state" / "audio_path.txt"
+    if audio_path_file.exists():
+        try:
+            from pipeline.editor import _probe_duration
+            ap = Path(audio_path_file.read_text().strip())
+            if ap.exists():
+                audio_duration = _probe_duration(ap)
+        except Exception:
+            pass
+
+    # ── Per-clip analysis ──────────────────────────────────────────────────────
+    running_time = 0.0
+    clips_detail = []
+    issues: list[dict] = []
+
+    for i, seg_dict in enumerate(segments_raw):
+        seg = MatchedSegment.from_dict(seg_dict)
+        scene = scene_map.get(seg.scene_index)
+
+        trim_dur  = (seg.scene_trim_end - seg.scene_trim_start) if seg.scene_trim_end >= 0 else 0.0
+        plan_dur  = (seg.song_end - seg.song_start)             if seg.song_start >= 0    else trim_dur
+        clip_dur  = trim_dur if trim_dur > 0 else plan_dur
+
+        video_out_start = round(running_time, 4)
+        video_out_end   = round(running_time + clip_dur, 4)
+
+        # Drift: how far the video position has drifted from the audio plan position
+        drift = round(running_time - seg.song_start, 4) if seg.song_start >= 0 else 0.0
+
+        # Duration mismatch between plan and trim
+        dur_ok = abs(plan_dur - trim_dur) < 0.05 if (plan_dur > 0 and trim_dur > 0) else None
+
+        # Source overflow
+        src_ok = True
+        if scene and seg.scene_trim_end >= 0:
+            scene_dur = scene.end_time - scene.start_time
+            if seg.scene_trim_end > scene_dur + 0.05:
+                src_ok = False
+                issues.append({
+                    "clip": i + 1, "severity": "error", "type": "source_overflow",
+                    "msg": f"Clip {i+1} trim_end {seg.scene_trim_end:.2f}s > scene {seg.scene_index} duration {scene_dur:.2f}s",
+                })
+
+        if dur_ok is False:
+            issues.append({
+                "clip": i + 1, "severity": "warning", "type": "duration_mismatch",
+                "msg": f"Clip {i+1}: plan={plan_dur:.3f}s trim={trim_dur:.3f}s (Δ{abs(plan_dur-trim_dur):.3f}s)",
+            })
+
+        if abs(drift) > 0.1:
+            issues.append({
+                "clip": i + 1, "severity": "warning", "type": "drift",
+                "msg": f"Clip {i+1}: audio pos {seg.song_start:.2f}s ≠ video pos {running_time:.2f}s (drift {drift:+.2f}s)",
+            })
+
+        clips_detail.append({
+            "n":               i + 1,
+            "scene_index":     seg.scene_index,
+            "song_start":      round(seg.song_start, 3),
+            "song_end":        round(seg.song_end, 3),
+            "plan_dur":        round(plan_dur, 3),
+            "trim_dur":        round(trim_dur, 3),
+            "dur_ok":          dur_ok,
+            "video_out_start": video_out_start,
+            "video_out_end":   video_out_end,
+            "drift":           drift,
+            "src_ok":          src_ok,
+            "lyric":           " · ".join(l.get("text","") for l in seg_dict.get("lyric_lines",[]) if l.get("text")),
+        })
+        running_time += clip_dur
+
+    plan_total = round(running_time, 4)
+    end_gap    = round(audio_duration - plan_total, 4) if audio_duration > 0 else 0.0
+
+    if audio_duration > 0 and abs(end_gap) > 0.1:
+        issues.append({
+            "clip": None, "severity": "error", "type": "total_gap",
+            "msg": f"Plan total {plan_total:.3f}s ≠ audio {audio_duration:.3f}s  (gap {end_gap:+.3f}s)",
+        })
+
+    # ── Timeline gaps (holes in the song_start/song_end sequence) ─────────────
+    timeline_gaps: list[dict] = []
+    sorted_segs = [MatchedSegment.from_dict(d) for d in segments_raw if d.get("song_start", -1) >= 0]
+    sorted_segs.sort(key=lambda s: s.song_start)
+    cursor = 0.0
+    for seg in sorted_segs:
+        if seg.song_start - cursor > 0.1:
+            timeline_gaps.append({"from": round(cursor,3), "to": round(seg.song_start,3),
+                                   "dur": round(seg.song_start - cursor, 3)})
+            issues.append({
+                "clip": None, "severity": "error", "type": "timeline_gap",
+                "msg": f"Timeline gap {cursor:.2f}s → {seg.song_start:.2f}s  ({seg.song_start - cursor:.2f}s uncovered)",
+            })
+        cursor = max(cursor, seg.song_end)
+    if audio_duration > 0 and audio_duration - cursor > 0.1:
+        timeline_gaps.append({"from": round(cursor,3), "to": round(audio_duration,3),
+                               "dur": round(audio_duration - cursor, 3)})
+
+    errors   = sum(1 for x in issues if x["severity"] == "error")
+    warnings = sum(1 for x in issues if x["severity"] == "warning")
+
+    return {
+        "audio_duration": round(audio_duration, 3),
+        "plan_total":     plan_total,
+        "end_gap":        end_gap,
+        "clips":          len(clips_detail),
+        "timeline_gaps":  timeline_gaps,
+        "issues":         issues,
+        "errors":         errors,
+        "warnings":       warnings,
+        "ok":             errors == 0 and abs(end_gap) < 0.1,
+        "clips_detail":   clips_detail,
+    }
+
+
+@app.get("/api/workspace/{slug}/video")
+def serve_video(slug: str):
+    """Stream the source video with byte-range support for in-browser clip preview."""
+    ws_dir = WORKSPACES_DIR / slug
+    video_path_file = ws_dir / "state" / "video_path.txt"
+    if not video_path_file.exists():
+        raise HTTPException(404, "No video — run download-video first")
+    video_path = Path(video_path_file.read_text().strip())
+    if not video_path.exists():
+        raise HTTPException(404, f"Video not found: {video_path}")
+    return FileResponse(
+        str(video_path), media_type="video/mp4",
+        headers={"Accept-Ranges": "bytes", "Cache-Control": "no-cache"},
+    )
+
+
+@app.post("/api/workspace/{slug}/plan/commit")
+async def commit_plan(slug: str, body: dict):
+    """Rebuild plan.json from clip-editor state.
+
+    Accepts an ordered array of clips (scene_index, scene_trim_start, scene_trim_end,
+    song_start, song_end).  For each clip, lyric_lines are re-synced from the current
+    lyrics.json based on the song_start/song_end window.  The current plan is archived
+    to plan_history/ before being overwritten.
+    """
+    from pipeline.matcher import archive_existing_plan
+
+    ws_dir = WORKSPACES_DIR / slug
+    if not ws_dir.exists():
+        raise HTTPException(404, f"Workspace '{slug}' not found")
+
+    clips = body.get("clips", [])
+    if not isinstance(clips, list) or not clips:
+        raise HTTPException(400, "clips array is required and must be non-empty")
+
+    # Load current lyrics for syncing
+    lyrics_file = ws_dir / "state" / "lyrics.json"
+    displayable_lyrics: list[dict] = []
+    if lyrics_file.exists():
+        try:
+            raw_lyrics = json.loads(lyrics_file.read_text())
+            displayable_lyrics = [
+                l for l in raw_lyrics
+                if l.get("start_time", 0) != l.get("end_time", 0)
+            ]
+        except Exception:
+            pass
+
+    # Build segments, re-syncing lyric_lines from lyrics.json
+    segments = []
+    for clip in clips:
+        s0 = float(clip.get("song_start", 0))
+        s1 = float(clip.get("song_end", 0))
+        lyric_lines = [
+            l for l in displayable_lyrics
+            if l.get("end_time", 0) > s0 and l.get("start_time", 0) < s1
+        ] if s1 > s0 else []
+        segments.append({
+            "scene_index":      int(clip["scene_index"]),
+            "lyric_lines":      lyric_lines,
+            "scene_trim_start": float(clip.get("scene_trim_start", 0)),
+            "scene_trim_end":   float(clip.get("scene_trim_end", -1)),
+            "song_start":       s0,
+            "song_end":         s1,
+        })
+
+    # Determine plan file path (may not exist yet if first save)
+    plan_file = next(ws_dir.glob("*_plan.json"), None)
+    cfg_file = ws_dir / "workspace.json"
+    if not plan_file:
+        cfg = json.loads(cfg_file.read_text()) if cfg_file.exists() else {}
+        slug_str = re.sub(r"[^a-z0-9]+", "_",
+                          f"{cfg.get('film','')}_{cfg.get('song','')}".lower()).strip("_")
+        plan_file = ws_dir / f"{slug_str}_plan.json"
+
+    # Archive current plan before overwriting
+    cfg = json.loads(cfg_file.read_text()) if cfg_file.exists() else {}
+    slug_str = re.sub(r"[^a-z0-9]+", "_",
+                      f"{cfg.get('film','')}_{cfg.get('song','')}".lower()).strip("_")
+    archive_existing_plan(ws_dir, slug_str)
+
+    plan_file.write_text(json.dumps(segments, indent=2))
+    return {"ok": True, "clips": len(segments)}
+
+
+@app.get("/api/workspace/{slug}/crop")
+def get_crop(slug: str):
+    """Return manual crop settings + reference frame URL + video dimensions."""
+    import subprocess as _sp
+    from config import FFPROBE_BIN
+    ws_dir = WORKSPACES_DIR / slug
+    cfg_file = ws_dir / "workspace.json"
+    if not cfg_file.exists():
+        raise HTTPException(404, f"Workspace '{slug}' not found")
+    cfg = json.loads(cfg_file.read_text())
+
+    # Probe video dimensions from the stored video path
+    video_w, video_h = 1920, 1080
+    vp_file = ws_dir / "state" / "video_path.txt"
+    if vp_file.exists():
+        vp = Path(vp_file.read_text().strip())
+        if vp.exists():
+            r = _sp.run(
+                [FFPROBE_BIN, "-v", "quiet", "-print_format", "json",
+                 "-show_entries", "stream=width,height", "-select_streams", "v:0", str(vp)],
+                capture_output=True, text=True,
+            )
+            try:
+                streams = json.loads(r.stdout).get("streams", [])
+                video_w = int(streams[0]["width"])
+                video_h = int(streams[0]["height"])
+            except Exception:
+                pass
+
+    # Pick a representative reference frame for the crop tool.
+    # Priority 1: first scene in the current plan (curated content, guaranteed to show film).
+    # Priority 2: a scene from the middle of the sampled frames (avoids opening credits / black).
+    frame_url = None
+    frames_dir = ws_dir / "frames"
+    if frames_dir.exists():
+        scene_dirs = sorted([d for d in frames_dir.iterdir() if d.is_dir()])
+        if scene_dirs:
+            # Try to use the scene_index of the first plan clip
+            chosen_dir = None
+            plan_file = ws_dir / f"{slug}_plan.json"
+            if plan_file.exists():
+                try:
+                    plan = json.loads(plan_file.read_text())
+                    if plan:
+                        first_scene_idx = plan[0].get("scene_index", 0)
+                        target = frames_dir / f"scene_{first_scene_idx:04d}"
+                        if target.is_dir():
+                            chosen_dir = target
+                except Exception:
+                    pass
+            # Fallback: middle scene (avoids opening-credits / black frames)
+            if chosen_dir is None:
+                chosen_dir = scene_dirs[len(scene_dirs) // 2]
+            frames = sorted(chosen_dir.glob("*.jpg"))
+            if frames:
+                # Use the middle frame of the chosen scene for best content coverage
+                frame_url = f"/api/frame?path={frames[len(frames) // 2]}"
+
+    manual_crop = cfg.get("manual_crop")
+    return {
+        "top":      manual_crop.get("top", 0) if manual_crop else 0,
+        "bottom":   manual_crop.get("bottom", 0) if manual_crop else 0,
+        "left":     manual_crop.get("left", 0) if manual_crop else 0,
+        "right":    manual_crop.get("right", 0) if manual_crop else 0,
+        "active":   bool(manual_crop and any(manual_crop.get(k, 0) for k in ("top", "bottom", "left", "right"))),
+        "video_w":  video_w,
+        "video_h":  video_h,
+        "frame_url": frame_url,
+    }
+
+
+@app.put("/api/workspace/{slug}/crop")
+def set_crop(slug: str, body: dict):
+    """Save manual crop settings to workspace.json."""
+    ws_dir = WORKSPACES_DIR / slug
+    cfg_file = ws_dir / "workspace.json"
+    if not cfg_file.exists():
+        raise HTTPException(404, f"Workspace '{slug}' not found")
+    cfg = json.loads(cfg_file.read_text())
+    cfg["manual_crop"] = {
+        "top":    max(0, int(body.get("top", 0))),
+        "bottom": max(0, int(body.get("bottom", 0))),
+        "left":   max(0, int(body.get("left", 0))),
+        "right":  max(0, int(body.get("right", 0))),
+    }
+    cfg_file.write_text(json.dumps(cfg, indent=2))
+    return {"ok": True}
+
+
+@app.delete("/api/workspace/{slug}/crop")
+def clear_crop(slug: str):
+    """Remove manual crop from workspace.json (revert to auto-detection)."""
+    ws_dir = WORKSPACES_DIR / slug
+    cfg_file = ws_dir / "workspace.json"
+    if not cfg_file.exists():
+        raise HTTPException(404, f"Workspace '{slug}' not found")
+    cfg = json.loads(cfg_file.read_text())
+    cfg.pop("manual_crop", None)
+    cfg_file.write_text(json.dumps(cfg, indent=2))
+    return {"ok": True}
+
+
 @app.get("/api/fonts")
 def list_fonts():
     """Return available subtitle font options for this machine."""
@@ -384,6 +706,10 @@ async def render_stream(slug: str, body: dict = None):
         args.extend(["--director", cfg["director"]])
     if body.get("subtitle_font"):
         args.extend(["--subtitle-font", body["subtitle_font"]])
+    if body.get("subtitle_fontsize"):
+        args.extend(["--subtitle-fontsize", str(int(body["subtitle_fontsize"]))])
+    if body.get("subtitle_italic"):
+        args.append("--subtitle-italic")
     return StreamingResponse(_stream_cli(args), media_type="text/event-stream", headers=SSE_HEADERS)
 
 

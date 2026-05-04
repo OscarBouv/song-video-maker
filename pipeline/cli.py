@@ -150,6 +150,17 @@ def _load_lyrics(ws: _WS) -> list[LyricLine]:
     return [LyricLine.model_validate(d) for d in json.loads(ws.lyrics_file.read_text())]
 
 
+def _load_lyrics_safe(ws: _WS) -> list[LyricLine]:
+    """Load lyrics.json without raising — returns [] if missing or corrupt."""
+    if not ws.lyrics_file.exists():
+        return []
+    try:
+        return [LyricLine.model_validate(d) for d in json.loads(ws.lyrics_file.read_text())]
+    except Exception as e:
+        typer.echo(f"[render] Warning: could not load lyrics.json ({e})", err=True)
+        return []
+
+
 def _save_audio_path(ws: _WS, path: Path) -> None:
     ws.state_dir.mkdir(parents=True, exist_ok=True)
     ws.audio_path_file.write_text(str(path))
@@ -305,17 +316,18 @@ def run(
     if render_only:
         _require(ws.plan_file, f"generate-plan", ws)
         cfg = json.loads(ws.config_file.read_text()) if ws.config_file.exists() else {}
-        video_path = _load_video_path(ws)
-        audio_path = _load_audio_path(ws)
-        scenes     = _load_scenes(ws)
-        segments   = [MatchedSegment.from_dict(d) for d in json.loads(ws.plan_file.read_text())]
-        segments   = _apply_lyrics_to_plan(segments, ws)
+        video_path   = _load_video_path(ws)
+        audio_path   = _load_audio_path(ws)
+        scenes       = _load_scenes(ws)
+        fresh_lyrics = _load_lyrics_safe(ws)
+        segments     = [MatchedSegment.from_dict(d) for d in json.loads(ws.plan_file.read_text())]
         render_video(
             segments, scenes, video_path, audio_path, ws.reel_file,
             artist=cfg.get("artist", artist or ""),
             song_title=song,
             film_name=film,
             director=cfg.get("director", ""),
+            lyrics=fresh_lyrics or None,
         )
         typer.echo(f"\n✓ Reel: {ws.reel_file}")
 
@@ -660,15 +672,17 @@ def edit_plan_cmd(
     if auto_render:
         from pipeline.editor import render_video
         typer.echo("\n── Auto-rendering ────────────────────────────────────────")
-        cfg = json.loads(ws.config_file.read_text()) if ws.config_file.exists() else {}
-        video_path = _load_video_path(ws)
-        audio_path = _load_audio_path(ws)
+        cfg          = json.loads(ws.config_file.read_text()) if ws.config_file.exists() else {}
+        video_path   = _load_video_path(ws)
+        audio_path   = _load_audio_path(ws)
+        fresh_lyrics = _load_lyrics_safe(ws)
         render_video(
             new_segments, scenes, video_path, audio_path, ws.reel_file,
             artist=cfg.get("artist", ""),
             song_title=ws.song,
             film_name=ws.film,
             director=cfg.get("director", ""),
+            lyrics=fresh_lyrics or None,
         )
         typer.echo(f"\n✓ Reel: {ws.reel_file}")
     else:
@@ -677,12 +691,14 @@ def edit_plan_cmd(
 
 @app.command()
 def render(
-    film:          Annotated[str,            typer.Option(help="Film name")],
-    song:          Annotated[str,            typer.Option(help="Song title")],
-    director:      Annotated[Optional[str],  typer.Option(help="Director name for credit insert")] = None,
-    subtitle_font: Annotated[Optional[str],  typer.Option(help="Subtitle font name, e.g. 'Helvetica', 'Futura'")] = None,
-    publish:       Annotated[bool, typer.Option("--publish", help="Publish to Instagram after rendering")] = False,
-    caption:       Annotated[Optional[str],  typer.Option(help="Caption for Instagram post")] = None,
+    film:              Annotated[str,            typer.Option(help="Film name")],
+    song:              Annotated[str,            typer.Option(help="Song title")],
+    director:          Annotated[Optional[str],  typer.Option(help="Director name for credit insert")] = None,
+    subtitle_font:     Annotated[Optional[str],  typer.Option(help="Subtitle font name, e.g. 'Helvetica', 'Futura'")] = None,
+    subtitle_fontsize: Annotated[Optional[int],  typer.Option(help="Subtitle font size (default: 56)")] = None,
+    subtitle_italic:   Annotated[bool, typer.Option("--subtitle-italic/--no-subtitle-italic", help="Render subtitles in italic")] = False,
+    publish:           Annotated[bool, typer.Option("--publish", help="Publish to Instagram after rendering")] = False,
+    caption:           Annotated[Optional[str],  typer.Option(help="Caption for Instagram post")] = None,
 ) -> None:
     """Assemble the final 9:16 Reel from the plan → {slug}_reel.mp4 in workspace."""
     from pipeline.editor import render_video
@@ -705,10 +721,12 @@ def render(
 
     video_path = _load_video_path(ws)
     audio_path = _load_audio_path(ws)
-    scenes = _load_scenes(ws)
+    scenes     = _load_scenes(ws)
+    fresh_lyrics = _load_lyrics_safe(ws)
     _require(ws.plan_file, "generate-plan", ws)
     segments = [MatchedSegment.from_dict(d) for d in json.loads(ws.plan_file.read_text())]
-    segments = _apply_lyrics_to_plan(segments, ws)
+    if fresh_lyrics:
+        typer.echo(f"[render] Using {len(fresh_lyrics)} lines from lyrics.json for subtitle timing")
     render_video(
         segments, scenes, video_path, audio_path, ws.reel_file,
         artist=cfg.get("artist", ""),
@@ -716,6 +734,10 @@ def render(
         film_name=film,
         director=cfg.get("director", director or ""),
         subtitle_font=font_path,
+        subtitle_fontsize=subtitle_fontsize or 0,
+        subtitle_italic=subtitle_italic,
+        manual_crop=cfg.get("manual_crop") or None,
+        lyrics=fresh_lyrics or None,
     )
     typer.echo(f"\n✓ Reel: {ws.reel_file}")
 

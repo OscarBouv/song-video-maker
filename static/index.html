@@ -99,7 +99,7 @@
 
         <!-- Tab bar -->
         <div class="flex border-b border-gray-800 bg-gray-900 flex-none px-2">
-          <template x-for="t in [{id:'pipeline',label:'Pipeline'},{id:'plan',label:'Plan Editor'},{id:'lyrics',label:'Lyrics'},{id:'scenes',label:'Scene Browser'}]" :key="t.id">
+          <template x-for="t in [{id:'pipeline',label:'Pipeline'},{id:'plan',label:'Plan Editor'},{id:'clip-editor',label:'Clip Editor'},{id:'lyrics',label:'Lyrics'},{id:'scenes',label:'Scene Browser'},{id:'crop',label:'✂ Crop'}]" :key="t.id">
             <button @click="switchTab(t.id)"
                     class="px-4 py-2.5 text-sm font-medium border-b-2 transition-colors"
                     :class="tab === t.id
@@ -138,10 +138,21 @@
                     <template x-for="param in step.params" :key="param.name">
                       <div class="mb-1.5">
                         <label class="text-xs text-gray-500 block mb-0.5" x-text="param.label"></label>
-                        <input x-model="stepParams[step.id][param.name]"
-                               :placeholder="param.placeholder"
-                               :type="param.type || 'text'"
-                               class="w-full bg-gray-700 border border-gray-600 rounded px-2 py-1 text-xs focus:outline-none focus:border-indigo-500" />
+                        <template x-if="param.type !== 'model'">
+                          <input x-model="stepParams[step.id][param.name]"
+                                 :placeholder="param.placeholder"
+                                 :type="param.type || 'text'"
+                                 class="w-full bg-gray-700 border border-gray-600 rounded px-2 py-1 text-xs focus:outline-none focus:border-indigo-500" />
+                        </template>
+                        <template x-if="param.type === 'model'">
+                          <select x-model="stepParams[step.id][param.name]"
+                                  class="w-full bg-gray-700 border border-gray-600 rounded px-2 py-1 text-xs focus:outline-none focus:border-indigo-500">
+                            <option :value="param.default" x-text="'Default — ' + (modelOptions.find(m => m.id === param.default)?.label || param.default)"></option>
+                            <template x-for="m in modelOptions" :key="m.id">
+                              <option :value="m.id" x-text="m.label + ' — ' + m.tag"></option>
+                            </template>
+                          </select>
+                        </template>
                       </div>
                     </template>
                   </div>
@@ -179,9 +190,25 @@
           <!-- Clip list (sortable) -->
           <div class="flex-1 flex flex-col overflow-hidden">
             <div class="flex items-center justify-between px-4 py-2 border-b border-gray-800 flex-none">
-              <div class="text-sm font-medium">
+              <div class="text-sm font-medium flex items-center gap-2">
                 <span x-text="plan.length"></span> clips
-                <span x-show="planDirty" class="ml-2 text-xs text-yellow-400">● unsaved</span>
+                <span x-show="planDirty" class="text-xs text-yellow-400">● unsaved</span>
+                <!-- Timing summary pill -->
+                <template x-if="planAudit">
+                  <span class="flex items-center gap-1 text-xs font-mono px-2 py-0.5 rounded-full"
+                        :class="planAudit.ok
+                          ? 'bg-green-900/50 text-green-300'
+                          : 'bg-red-900/50 text-red-300'">
+                    <span x-text="planAudit.ok ? '✓' : '⚠'"></span>
+                    <span x-text="`${planAudit.plan_total.toFixed(2)}s`"></span>
+                    <span class="text-gray-500">/</span>
+                    <span x-text="`${planAudit.audio_duration.toFixed(2)}s`"></span>
+                    <span x-show="!planAudit.ok"
+                          class="text-red-400 font-bold"
+                          x-text="`(${planAudit.end_gap > 0 ? '+' : ''}${planAudit.end_gap.toFixed(2)}s)`">
+                    </span>
+                  </span>
+                </template>
               </div>
               <div class="flex gap-2">
                 <button @click="loadPlan()" class="text-xs text-gray-500 hover:text-gray-300 px-2 py-1 rounded">↺ Reload</button>
@@ -215,13 +242,30 @@
                     </div>
                     <!-- Info -->
                     <div class="flex-1 min-w-0">
-                      <div class="flex items-center gap-2 mb-1">
+                      <div class="flex items-center gap-1.5 mb-1 flex-wrap">
                         <span class="text-xs bg-gray-700 rounded px-1.5 py-0.5 text-gray-400">
                           Sc <span x-text="clip.scene_index"></span>
                         </span>
-                        <span class="text-xs text-gray-500"
-                              x-text="clip.song_start >= 0 ? `${clip.song_start.toFixed(1)}–${clip.song_end.toFixed(1)}s` : ''">
+                        <!-- Audio plan position -->
+                        <span class="text-xs text-gray-500 font-mono"
+                              x-text="clip.song_start >= 0 ? `♪ ${clip.song_start.toFixed(2)}–${clip.song_end.toFixed(2)}s` : ''">
                         </span>
+                        <!-- Video output position from audit -->
+                        <template x-if="auditClipDetail(idx)">
+                          <span class="text-xs font-mono px-1.5 py-0.5 rounded"
+                                :class="auditClipDetail(idx).drift === 0
+                                  ? 'bg-gray-800 text-gray-500'
+                                  : Math.abs(auditClipDetail(idx).drift) < 0.1
+                                    ? 'bg-gray-800 text-gray-400'
+                                    : 'bg-amber-900/50 text-amber-300'"
+                                :title="`Video output: ${auditClipDetail(idx).video_out_start.toFixed(2)}–${auditClipDetail(idx).video_out_end.toFixed(2)}s`
+                                         + (auditClipDetail(idx).drift !== 0 ? `  drift: ${auditClipDetail(idx).drift > 0 ? '+' : ''}${auditClipDetail(idx).drift.toFixed(2)}s` : '')">
+                            🎬 <span x-text="`${auditClipDetail(idx).video_out_start.toFixed(2)}s`"></span>
+                            <template x-if="Math.abs(auditClipDetail(idx).drift) >= 0.1">
+                              <span x-text="`⚠${auditClipDetail(idx).drift > 0 ? '+' : ''}${auditClipDetail(idx).drift.toFixed(2)}s`"></span>
+                            </template>
+                          </span>
+                        </template>
                         <span class="text-xs" x-html="stars(clip.scene?.visual_power || 3)"></span>
                       </div>
                       <div class="text-sm font-medium text-yellow-300 mb-1 truncate"
@@ -237,7 +281,7 @@
           </div>
 
           <!-- AI edit sidebar -->
-          <div class="w-72 bg-gray-900 border-l border-gray-800 flex flex-col p-3 gap-3">
+          <div class="w-96 bg-gray-900 border-l border-gray-800 flex flex-col p-3 gap-3">
             <div>
               <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">AI Instruction</div>
               <textarea x-model="editInstruction"
@@ -250,11 +294,9 @@
               <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">Model</div>
               <select x-model="editModel"
                       class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs focus:outline-none focus:border-indigo-500">
-                <option value="google/gemini-2.0-flash-001">Gemini Flash (fast &amp; cheap)</option>
-                <option value="anthropic/claude-sonnet-4-6">Claude Sonnet (best quality)</option>
-                <option value="anthropic/claude-haiku-4-5-20251001">Claude Haiku</option>
-                <option value="google/gemini-2.5-pro-preview">Gemini Pro</option>
-                <option value="meta-llama/llama-4-maverick">Llama 4 Maverick</option>
+                <template x-for="m in modelOptions" :key="m.id">
+                  <option :value="m.id" x-text="m.label + ' — ' + m.tag"></option>
+                </template>
               </select>
             </div>
             <button @click="applyEdit()"
@@ -262,21 +304,120 @@
                     class="bg-indigo-700 hover:bg-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed rounded py-2 text-sm font-medium transition-colors">
               Apply AI Edit
             </button>
-            <!-- Subtitle font selector -->
-            <div>
-              <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">Subtitle Font</div>
+            <!-- Subtitle font selector + preview -->
+            <div class="space-y-2">
+              <div class="text-xs font-medium text-gray-400 uppercase tracking-wider">Subtitle Font</div>
               <select x-model="selectedFont"
                       class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs focus:outline-none focus:border-indigo-500">
                 <template x-for="f in fontOptions" :key="f.name">
                   <option :value="f.name" x-text="f.name"></option>
                 </template>
               </select>
+              <!-- Size + italic row -->
+              <div class="flex gap-2">
+                <div class="flex-1">
+                  <div class="text-xs text-gray-500 mb-1">Size</div>
+                  <input type="number" min="20" max="120" step="2" x-model.number="subtitleFontSize"
+                         class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs text-gray-200 focus:outline-none focus:border-indigo-500" />
+                </div>
+                <div class="flex-none">
+                  <div class="text-xs text-gray-500 mb-1">Italic</div>
+                  <button @click="subtitleItalic = !subtitleItalic"
+                          :class="subtitleItalic ? 'bg-indigo-600 border-indigo-500 text-white' : 'bg-gray-800 border-gray-700 text-gray-400 hover:text-gray-200'"
+                          class="border rounded px-3 py-1.5 text-sm transition-colors h-[30px] flex items-center">
+                    <em>I</em>
+                  </button>
+                </div>
+              </div>
+              <!-- Live preview — font-family map matches what ffmpeg will actually use -->
+              <div class="rounded overflow-hidden flex items-end justify-center pb-3 pt-5"
+                   style="background: linear-gradient(160deg, #1a1535 0%, #0d1b2a 100%);">
+                <p :style="{
+                     fontFamily: ({
+                       'Arial Rounded Bold': '\'Arial Rounded MT Bold\', sans-serif',
+                       'Helvetica':          '\'Helvetica Neue\', Helvetica, sans-serif',
+                       'Avenir Next':        '\'Avenir Next\', Avenir, sans-serif',
+                       'Futura':             'Futura, \'Century Gothic\', sans-serif',
+                       'Gill Sans':          '\'Gill Sans\', \'Gill Sans MT\', sans-serif',
+                       'Didot':              'Didot, \'Bodoni MT\', serif',
+                       'Baskerville':        'Baskerville, \'Book Antiqua\', serif',
+                       'Georgia':            'Georgia, serif',
+                       'Courier New':        '\'Courier New\', monospace',
+                       'Trebuchet MS':       '\'Trebuchet MS\', sans-serif',
+                     }[selectedFont]) || `'${selectedFont}', sans-serif`,
+                     fontSize: Math.round(subtitleFontSize * 0.28) + 'px',
+                     fontStyle: subtitleItalic ? 'italic' : 'normal',
+                     color: '#FFD966',
+                     textAlign: 'center',
+                     WebkitTextStroke: '1px black',
+                     textShadow: '0 1px 3px rgba(0,0,0,0.7)',
+                     lineHeight: 1.2,
+                     padding: '0 12px',
+                     userSelect: 'none',
+                   }" x-text="'♪ Here\'s a sample lyric'">
+                </p>
+              </div>
             </div>
+            <!-- Crop status badge — tool lives in the ✂ Crop tab -->
+            <button @click="switchTab('crop')"
+                    class="w-full flex items-center justify-between px-3 py-2 rounded text-xs font-medium transition-colors"
+                    :class="cropActive ? 'bg-amber-900/30 text-amber-300 hover:bg-amber-900/50 border border-amber-800' : 'bg-gray-800 text-gray-500 hover:text-gray-300 border border-gray-700'">
+              <span class="flex items-center gap-1.5">
+                <span>✂ Crop Bars</span>
+                <span x-show="cropActive" class="bg-amber-700 text-amber-100 rounded px-1.5 py-0.5">manual</span>
+                <span x-show="!cropActive" class="text-gray-600">auto</span>
+              </span>
+              <span class="opacity-50">→</span>
+            </button>
+
             <button @click="runRender()"
                     :disabled="isRunning"
                     class="bg-rose-800 hover:bg-rose-700 disabled:opacity-40 disabled:cursor-not-allowed rounded py-2 text-sm font-medium transition-colors">
               🎬 Render Reel
             </button>
+            <!-- Timing audit -->
+            <div class="border border-gray-700 rounded-lg overflow-hidden" x-show="planAudit">
+              <button @click="auditExpanded = !auditExpanded"
+                      class="w-full flex items-center justify-between px-3 py-2 text-xs font-medium transition-colors"
+                      :class="planAudit?.ok
+                        ? 'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+                        : 'bg-red-900/30 text-red-300 hover:bg-red-900/50'">
+                <span class="flex items-center gap-1.5">
+                  <span x-text="planAudit?.ok ? '✓ Timing OK' : `⚠ ${planAudit?.errors} error(s), ${planAudit?.warnings} warning(s)`"></span>
+                </span>
+                <span x-text="auditExpanded ? '▲' : '▼'" class="opacity-60 text-xs"></span>
+              </button>
+              <div x-show="auditExpanded" x-transition class="bg-gray-900">
+                <!-- Summary row -->
+                <div class="px-3 py-2 border-b border-gray-800 font-mono text-xs grid grid-cols-2 gap-x-2 gap-y-0.5">
+                  <span class="text-gray-500">Audio duration</span>
+                  <span class="text-gray-200 text-right" x-text="planAudit?.audio_duration?.toFixed(3) + 's'"></span>
+                  <span class="text-gray-500">Plan total</span>
+                  <span class="text-right" :class="planAudit?.ok ? 'text-green-300' : 'text-red-300'"
+                        x-text="planAudit?.plan_total?.toFixed(3) + 's'"></span>
+                  <span class="text-gray-500">Gap / overshoot</span>
+                  <span class="text-right font-bold" :class="Math.abs(planAudit?.end_gap ?? 0) < 0.05 ? 'text-green-400' : 'text-red-400'"
+                        x-text="(planAudit?.end_gap >= 0 ? '+' : '') + planAudit?.end_gap?.toFixed(3) + 's'"></span>
+                  <span class="text-gray-500">Timeline gaps</span>
+                  <span class="text-right" :class="(planAudit?.timeline_gaps?.length ?? 0) === 0 ? 'text-green-400' : 'text-amber-400'"
+                        x-text="planAudit?.timeline_gaps?.length ?? 0"></span>
+                </div>
+                <!-- Issues list -->
+                <div x-show="(planAudit?.issues?.length ?? 0) > 0" class="max-h-40 overflow-y-auto">
+                  <template x-for="(issue, ii) in (planAudit?.issues ?? [])" :key="ii">
+                    <div class="px-3 py-1 text-xs border-b border-gray-800/60 flex gap-1.5"
+                         :class="issue.severity === 'error' ? 'text-red-300' : 'text-amber-300'">
+                      <span x-text="issue.severity === 'error' ? '✕' : '⚠'"></span>
+                      <span x-text="issue.msg" class="leading-snug"></span>
+                    </div>
+                  </template>
+                </div>
+                <div x-show="planAudit?.ok" class="px-3 py-2 text-xs text-green-400 text-center">
+                  Plan covers audio perfectly — no gaps detected
+                </div>
+              </div>
+            </div>
+
             <!-- Plan history -->
             <div class="border border-gray-700 rounded-lg overflow-hidden">
               <button @click="historyExpanded = !historyExpanded; if(historyExpanded) loadPlanHistory()"
@@ -326,6 +467,173 @@
                 </template>
                 <div x-show="logs.length === 0" class="text-gray-700 italic">Output appears here…</div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- CLIP EDITOR TAB                                         -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div x-show="tab === 'clip-editor'" class="flex-1 flex flex-col overflow-hidden">
+
+          <!-- Toolbar -->
+          <div class="flex items-center justify-between px-4 py-2 border-b border-gray-800 flex-none gap-3">
+            <div class="text-sm font-medium">
+              <span x-text="clipEdits.length"></span> clips
+              <span x-show="clipEditorDirty" class="ml-2 text-xs text-yellow-400">● unsaved</span>
+            </div>
+            <div class="text-xs text-gray-600 hidden xl:block">
+              Drag handle moves scene assignment · lyric windows stay anchored to the audio
+            </div>
+            <div class="flex gap-2 flex-none">
+              <button @click="loadClipEditor()" class="text-xs text-gray-500 hover:text-gray-300 px-2 py-1 rounded">↺ Reload</button>
+              <button @click="commitClipPlan()"
+                      :disabled="!clipEditorDirty || isRunning"
+                      class="text-xs bg-green-700 hover:bg-green-600 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1 rounded font-medium transition-colors">
+                Commit to Plan
+              </button>
+            </div>
+          </div>
+
+          <!-- Clip list -->
+          <div class="flex-1 overflow-y-auto p-3">
+            <div x-show="clipEdits.length === 0" class="flex items-center justify-center h-32 text-gray-600 text-sm">
+              No plan yet — run generate-plan, then come back here.
+            </div>
+
+            <div x-ref="clipEditList" x-show="clipEdits.length > 0">
+              <template x-for="(clip, idx) in clipEdits" :key="clip._id">
+                <div>
+                  <!-- Clip card -->
+                  <div class="bg-gray-800 border border-gray-700 rounded-lg mb-1 hover:border-gray-600 transition-colors">
+                    <!-- Header row -->
+                    <div class="flex items-center gap-2 p-2">
+                      <!-- Drag handle -->
+                      <div class="ce-drag cursor-grab text-gray-600 flex-none px-1">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+                        </svg>
+                      </div>
+                      <!-- Clip number -->
+                      <span class="text-xs text-gray-600 w-5 flex-none text-right" x-text="idx+1"></span>
+                      <!-- Thumbnail -->
+                      <div class="w-12 h-16 bg-gray-700 rounded overflow-hidden flex-none cursor-pointer"
+                           @click="clip.showPlayer = !clip.showPlayer"
+                           :title="clip.showPlayer ? 'Hide player' : 'Show clip preview'">
+                        <img :src="clip.thumbnail" class="w-full h-full object-cover"
+                             onerror="this.style.display='none'" />
+                      </div>
+                      <!-- Info -->
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-1.5 mb-0.5 flex-wrap">
+                          <span class="text-xs bg-gray-700 rounded px-1.5 text-gray-400">
+                            Sc <span x-text="clip.scene_index"></span>
+                          </span>
+                          <!-- Audio plan window -->
+                          <span class="text-xs text-gray-500 font-mono"
+                                x-text="clip.song_start >= 0 ? `♪ ${clip.song_start.toFixed(2)}–${clip.song_end.toFixed(2)}s` : ''">
+                          </span>
+                          <!-- Video output position (from audit if loaded) -->
+                          <template x-if="planAudit?.clips_detail?.[idx]">
+                            <span class="text-xs font-mono px-1.5 rounded"
+                                  :class="Math.abs(planAudit.clips_detail[idx].drift) < 0.1
+                                    ? 'text-gray-600'
+                                    : 'bg-amber-900/50 text-amber-300'">
+                              🎬 <span x-text="planAudit.clips_detail[idx].video_out_start.toFixed(2) + 's'"></span>
+                            </span>
+                          </template>
+                          <span class="text-xs" x-html="stars(clip.scene?.visual_power || 3)"></span>
+                        </div>
+                        <div class="text-xs font-medium text-yellow-300 truncate" x-text="clip.lyric_text"></div>
+                        <div class="text-xs text-purple-400 truncate" x-text="clip.scene?.emotion || '—'"></div>
+                        <div class="text-xs text-gray-500 truncate" x-text="clip.scene?.description || '(not analyzed)'"></div>
+                      </div>
+                      <!-- Actions -->
+                      <div class="flex gap-1 flex-none">
+                        <button @click="openScenePicker(idx)"
+                                class="text-xs px-2 py-1 bg-indigo-900 hover:bg-indigo-700 text-indigo-300 rounded transition-colors"
+                                title="Change scene">
+                          ↔
+                        </button>
+                        <button @click="deleteClipEdit(idx)"
+                                class="text-xs px-2 py-1 bg-red-950 hover:bg-red-800 text-red-400 rounded transition-colors"
+                                title="Remove this clip">
+                          ✕
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Trim controls -->
+                    <div class="px-3 pb-2 space-y-1">
+                      <!-- Row 1: start offset -->
+                      <div class="flex items-center gap-2 text-xs">
+                        <span class="text-gray-500 w-16 flex-none">Start</span>
+                        <input type="number" step="0.05" min="0"
+                               :max="Math.max(0, (clip.scene?.duration || 30) - 0.3).toFixed(2)"
+                               :value="clip.scene_trim_start.toFixed(3)"
+                               @change="
+                                 const sceneDur = clip.scene?.duration || 30;
+                                 const dur = clip.scene_trim_end - clip.scene_trim_start;
+                                 clip.scene_trim_start = Math.max(0, Math.min(+$event.target.value, sceneDur - 0.3));
+                                 clip.scene_trim_end = Math.min(clip.scene_trim_start + dur, sceneDur);
+                                 clip.song_end = clip.song_start + (clip.scene_trim_end - clip.scene_trim_start);
+                                 _cascadeOutputTimes(clipEdits, clipEdits.indexOf(clip));
+                                 _refreshClipSrcTimes(clip); clipEditorDirty = true"
+                               class="w-20 bg-gray-700 border border-gray-600 rounded px-1.5 py-0.5 text-gray-200 text-right focus:outline-none focus:border-indigo-500" />
+                        <span class="text-gray-600">s into scene</span>
+                      </div>
+                      <!-- Row 2: duration -->
+                      <div class="flex items-center gap-2 text-xs">
+                        <span class="text-gray-500 w-16 flex-none">Duration</span>
+                        <input type="number" step="0.05" min="0.3"
+                               :max="Math.max(0.3, (clip.scene?.duration || 30) - clip.scene_trim_start).toFixed(2)"
+                               :value="(clip.scene_trim_end - clip.scene_trim_start).toFixed(3)"
+                               @change="
+                                 const sceneDur = clip.scene?.duration || 30;
+                                 const maxDur = sceneDur - clip.scene_trim_start;
+                                 clip.scene_trim_end = clip.scene_trim_start + Math.max(0.3, Math.min(+$event.target.value, maxDur));
+                                 clip.song_end = clip.song_start + (clip.scene_trim_end - clip.scene_trim_start);
+                                 _cascadeOutputTimes(clipEdits, clipEdits.indexOf(clip));
+                                 _refreshClipSrcTimes(clip); clipEditorDirty = true"
+                               class="w-20 bg-gray-700 border border-gray-600 rounded px-1.5 py-0.5 text-gray-200 text-right focus:outline-none focus:border-indigo-500" />
+                        <span class="text-gray-600">s</span>
+                        <span class="text-gray-700">
+                          / avail <span x-text="Math.max(0, (clip.scene?.duration || 0) - clip.scene_trim_start).toFixed(1)"></span>s
+                        </span>
+                        <span class="ml-auto font-mono text-gray-700 text-xs">
+                          <span x-text="clip.clip_src_start.toFixed(2)"></span>–<span x-text="clip.clip_src_end.toFixed(2)"></span>s
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Inline video player (lazy, toggled by clicking thumbnail) -->
+                    <div x-show="clip.showPlayer" class="px-3 pb-2">
+                      <video
+                        :src="clip.showPlayer ? `/api/workspace/${selectedSlug}/video#t=${clip.clip_src_start.toFixed(3)},${clip.clip_src_end.toFixed(3)}` : ''"
+                        controls loop playsinline
+                        class="w-full max-h-52 rounded bg-black border border-gray-700">
+                      </video>
+                      <div class="text-xs text-gray-600 mt-1 text-center">
+                        Scene <span x-text="clip.scene_index"></span>
+                        · <span x-text="(clip.scene_trim_end - clip.scene_trim_start).toFixed(2)"></span>s
+                        · source <span x-text="clip.clip_src_start.toFixed(2)"></span>–<span x-text="clip.clip_src_end.toFixed(2)"></span>s
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Insert clip button between clips -->
+                  <button @click="openClipInsertPicker(idx)"
+                          class="w-full text-xs text-gray-700 hover:text-indigo-400 py-0.5 flex items-center justify-center gap-1 transition-colors mb-1">
+                    <span>+</span>
+                  </button>
+                </div>
+              </template>
+
+              <!-- Add at the end -->
+              <button @click="openClipInsertPicker(clipEdits.length - 1)"
+                      class="w-full text-xs text-gray-600 hover:text-indigo-400 border border-dashed border-gray-700 hover:border-indigo-600 rounded-lg py-2 transition-colors mt-1">
+                + Add clip at end
+              </button>
             </div>
           </div>
         </div>
@@ -558,6 +866,112 @@
           </div>
         </div>
 
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- CROP TAB                                                 -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div x-show="tab === 'crop'" class="flex-1 flex overflow-hidden">
+
+          <!-- Left: full-height reference image -->
+          <div class="flex-1 flex flex-col overflow-hidden bg-gray-950 p-4 gap-3 min-w-0">
+            <div class="flex-none text-sm font-medium text-gray-300">
+              Letterbox / Pillarbox Crop
+              <span class="ml-2 text-xs font-normal text-gray-500">Drag the yellow handles to mark where the black bars end</span>
+            </div>
+
+            <!-- Image container — fills remaining height -->
+            <div class="flex-1 min-h-0 flex items-center justify-center">
+              <div x-show="cropFrameUrl"
+                   class="relative select-none rounded overflow-hidden bg-black"
+                   :style="`aspect-ratio: ${cropVideoW}/${cropVideoH}; max-height: 100%; max-width: 100%`"
+                   x-ref="cropBox"
+                   @mousemove.window="_cropMove($event)"
+                   @mouseup.window="_cropUp()">
+                <img :src="cropFrameUrl" class="w-full h-full object-fill block pointer-events-none" />
+                <!-- Top bar overlay -->
+                <div class="absolute inset-x-0 top-0 bg-black/70 pointer-events-none"
+                     :style="`height: ${(cropTop/cropVideoH*100).toFixed(3)}%`"></div>
+                <!-- Bottom bar overlay -->
+                <div class="absolute inset-x-0 bottom-0 bg-black/70 pointer-events-none"
+                     :style="`height: ${(cropBottom/cropVideoH*100).toFixed(3)}%`"></div>
+                <!-- Top handle: 32px grab zone, 2px visible line -->
+                <div class="absolute inset-x-0 h-8 cursor-ns-resize z-10 flex flex-col justify-center group"
+                     :style="`top: calc(${(cropTop/cropVideoH*100).toFixed(3)}% - 16px)`"
+                     @mousedown.prevent="_cropDown('top', $event)">
+                  <div class="w-full h-0.5 bg-yellow-400 group-hover:h-1 transition-all relative">
+                    <span class="absolute left-3 -top-6 bg-yellow-400 text-black text-sm px-2 py-0.5 rounded font-mono font-bold pointer-events-none shadow"
+                          x-text="cropTop + ' px'"></span>
+                  </div>
+                </div>
+                <!-- Bottom handle: 32px grab zone, 2px visible line -->
+                <div class="absolute inset-x-0 h-8 cursor-ns-resize z-10 flex flex-col justify-center group"
+                     :style="`bottom: calc(${(cropBottom/cropVideoH*100).toFixed(3)}% - 16px)`"
+                     @mousedown.prevent="_cropDown('bottom', $event)">
+                  <div class="w-full h-0.5 bg-yellow-400 group-hover:h-1 transition-all relative">
+                    <span class="absolute left-3 top-1.5 bg-yellow-400 text-black text-sm px-2 py-0.5 rounded font-mono font-bold pointer-events-none shadow"
+                          x-text="cropBottom + ' px'"></span>
+                  </div>
+                </div>
+              </div>
+              <div x-show="!cropFrameUrl" class="text-gray-600 italic text-sm">
+                No frames available — run the <strong class="text-gray-400">sample-frames</strong> step first
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: controls -->
+          <div class="w-72 bg-gray-900 border-l border-gray-800 flex flex-col p-5 gap-5 overflow-y-auto flex-none">
+
+            <!-- Status -->
+            <div class="rounded-lg px-4 py-3 text-sm font-medium"
+                 :class="cropActive ? 'bg-amber-900/40 text-amber-300 border border-amber-800' : 'bg-gray-800 text-gray-400 border border-gray-700'">
+              <span x-show="cropActive">⚑ Manual crop active</span>
+              <span x-show="!cropActive">Auto-detection at render time</span>
+            </div>
+
+            <!-- Top / Bottom -->
+            <div class="space-y-3">
+              <div class="text-xs font-medium text-gray-400 uppercase tracking-wider">Horizontal bars (letterbox)</div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1.5">Top bar height (px)</div>
+                <input type="number" min="0" :max="Math.floor(cropVideoH/2) - 10"
+                       x-model.number="cropTop"
+                       class="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-indigo-500 font-mono" />
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1.5">Bottom bar height (px)</div>
+                <input type="number" min="0" :max="Math.floor(cropVideoH/2) - 10"
+                       x-model.number="cropBottom"
+                       class="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-indigo-500 font-mono" />
+              </div>
+            </div>
+
+            <!-- Dimensions reference -->
+            <div class="text-xs text-gray-600 font-mono">
+              Source: <span x-text="cropVideoW"></span> × <span x-text="cropVideoH"></span> px
+              <span x-show="cropTop > 0 || cropBottom > 0" class="block mt-0.5 text-gray-500">
+                → crop: <span x-text="cropVideoW"></span> × <span x-text="cropVideoH - cropTop - cropBottom"></span> px
+              </span>
+            </div>
+
+            <!-- Actions -->
+            <div class="space-y-2 mt-auto">
+              <button @click="saveCrop()"
+                      class="w-full bg-indigo-700 hover:bg-indigo-600 rounded-lg py-2.5 text-sm font-medium transition-colors">
+                Save Crop
+              </button>
+              <button @click="clearCrop()" x-show="cropActive"
+                      class="w-full bg-gray-700 hover:bg-gray-600 rounded-lg py-2.5 text-sm font-medium transition-colors text-gray-300">
+                Clear — revert to auto-detect
+              </button>
+            </div>
+
+            <p class="text-xs text-gray-600 leading-relaxed">
+              Saved crop overrides auto-detection for every render of this workspace.
+              Drag the yellow lines on the image, or type exact pixel values above.
+            </p>
+          </div>
+        </div>
+
       </div><!-- /selectedSlug content -->
     </div><!-- /content area -->
   </div><!-- /main layout -->
@@ -638,9 +1052,9 @@
             <select x-model="newWs.analyzer_model"
                     class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500">
               <option value="">Default (Gemini Flash)</option>
-              <option value="google/gemini-2.0-flash-001">Gemini Flash</option>
-              <option value="google/gemini-2.5-pro-preview">Gemini Pro</option>
-              <option value="anthropic/claude-sonnet-4-6">Claude Sonnet</option>
+              <template x-for="m in modelOptions" :key="m.id">
+                <option :value="m.id" x-text="m.label"></option>
+              </template>
             </select>
           </div>
           <div>
@@ -648,9 +1062,9 @@
             <select x-model="newWs.matcher_model"
                     class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm focus:outline-none focus:border-indigo-500">
               <option value="">Default (Claude Sonnet)</option>
-              <option value="anthropic/claude-sonnet-4-6">Claude Sonnet</option>
-              <option value="anthropic/claude-haiku-4-5-20251001">Claude Haiku</option>
-              <option value="google/gemini-2.5-pro-preview">Gemini Pro</option>
+              <template x-for="m in modelOptions" :key="m.id">
+                <option :value="m.id" x-text="m.label"></option>
+              </template>
             </select>
           </div>
         </div>
@@ -677,6 +1091,53 @@
     </div>
   </div>
 
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- SCENE PICKER MODAL (Clip Editor)                                -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div x-show="clipPickerOpen" x-transition.opacity
+       class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+       @click="clipPickerOpen = false">
+    <div class="bg-gray-900 border border-gray-700 rounded-xl w-full max-w-3xl max-h-[85vh] flex flex-col"
+         @click.stop>
+      <div class="flex items-center justify-between p-3 border-b border-gray-800">
+        <h3 class="font-semibold text-sm">
+          <span x-text="clipPickerForIdx !== null ? `Replace scene for clip ${clipPickerForIdx + 1}` : 'Insert new clip — pick a scene'"></span>
+        </h3>
+        <button @click="clipPickerOpen = false" class="text-gray-500 hover:text-gray-300 text-xl leading-none">×</button>
+      </div>
+      <!-- Search -->
+      <div class="px-3 py-2 border-b border-gray-800">
+        <input x-model="clipPickerSearch" placeholder="Search by scene #, description or emotion…"
+               class="w-full bg-gray-800 border border-gray-700 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-indigo-500" />
+      </div>
+      <!-- Grid -->
+      <div class="flex-1 overflow-y-auto p-3">
+        <div x-show="filteredPickerScenes.length === 0" class="text-center text-gray-600 py-8 text-sm">
+          No scenes match — run analyze-scenes first.
+        </div>
+        <div class="grid gap-2" style="grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))">
+          <template x-for="scene in filteredPickerScenes" :key="scene.index">
+            <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:border-indigo-500 transition-colors"
+                 @click="pickerSelectScene(scene)">
+              <div class="h-24 bg-gray-700">
+                <img :src="scene.thumbnail" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </div>
+              <div class="p-1.5">
+                <div class="flex items-center justify-between mb-0.5">
+                  <span class="text-xs text-gray-500">Sc <span x-text="scene.index"></span></span>
+                  <span class="text-xs" x-html="stars(scene.visual_power)"></span>
+                </div>
+                <div class="text-xs text-purple-400 truncate" x-text="scene.emotion || '—'"></div>
+                <div class="text-xs text-gray-400 truncate" x-text="(scene.description || '').slice(0,40)"></div>
+                <div class="text-xs text-gray-600 mt-0.5" x-text="(scene.duration || 0).toFixed(1) + 's'"></div>
+              </div>
+            </div>
+          </template>
+        </div><!-- /picker grid -->
+      </div><!-- /picker overflow -->
+    </div><!-- /picker card -->
+  </div><!-- /clipPickerOpen modal -->
 
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <!-- REEL PLAYER MODAL                                               -->
@@ -823,6 +1284,15 @@
         { id: 'high',      label: '★★★★+' },
       ],
 
+      // ── Shared model list (single source of truth for all dropdowns) ──
+      modelOptions: [
+        { id: 'google/gemini-2.0-flash-001',        label: 'Gemini Flash 2.0',  tag: 'fast · cheap' },
+        { id: 'google/gemini-2.5-pro-preview',       label: 'Gemini Pro 2.5',    tag: 'quality' },
+        { id: 'anthropic/claude-sonnet-4-6',         label: 'Claude Sonnet 4.6', tag: 'best reasoning' },
+        { id: 'anthropic/claude-haiku-4-5-20251001', label: 'Claude Haiku 4.5',  tag: 'fast · cheap' },
+        { id: 'meta-llama/llama-4-maverick',         label: 'Llama 4 Maverick',  tag: 'open' },
+      ],
+
       // ── Edit plan ──────────────────────────────────────────────
       editInstruction: '',
       editModel: 'google/gemini-2.0-flash-001',
@@ -830,10 +1300,36 @@
       // ── Render options ─────────────────────────────────────────
       fontOptions: [],
       selectedFont: 'Arial Rounded Bold',
+      subtitleFontSize: 56,
+      subtitleItalic: false,
+
+      // ── Manual crop ────────────────────────────────────────────
+      cropFrameUrl: null,
+      cropTop: 0,
+      cropBottom: 0,
+      cropVideoW: 1920,
+      cropVideoH: 1080,
+      cropActive: false,
+      _cropDragging: null,
 
       // ── Plan history ───────────────────────────────────────────
       planHistory: [],
       historyExpanded: false,
+
+      // ── Plan audit ─────────────────────────────────────────────
+      planAudit: null,
+      auditExpanded: false,
+
+      // ── Clip editor ────────────────────────────────────────────
+      clipEdits: [],
+      clipEditorDirty: false,
+      _clipSortable: null,
+      // scene picker
+      clipPickerOpen: false,
+      clipPickerForIdx: null,   // which clip slot is being reassigned (null = insert)
+      clipPickerInsertAfter: -1,// insert position (-1 = not inserting)
+      clipPickerSearch: '',
+      clipEditorScenes: [],
 
       // ── Publish ────────────────────────────────────────────────
       publishCaption: '',
@@ -874,7 +1370,7 @@
           id: 'analyze-scenes', label: '⑤ Analyze Scenes (AI)', produces: 'scenes',
           params: [
             { name: 'characters',  label: 'Characters',   placeholder: 'Alana Kane, Gary Valentine' },
-            { name: 'model',       label: 'Model',        placeholder: 'google/gemini-2.0-flash-001' },
+            { name: 'model',       label: 'Model',        type: 'model', default: 'google/gemini-2.0-flash-001' },
             { name: 'max_batches', label: 'Max batches',  placeholder: 'optional', type: 'number' },
           ]
         },
@@ -890,7 +1386,7 @@
           id: 'generate-plan', label: '⑦ Generate Plan (AI)', produces: 'plan',
           params: [
             { name: 'characters', label: 'Characters', placeholder: 'optional' },
-            { name: 'model',      label: 'Model',      placeholder: 'anthropic/claude-sonnet-4-6' },
+            { name: 'model',      label: 'Model',      type: 'model', default: 'anthropic/claude-sonnet-4-6' },
           ]
         },
         {
@@ -933,6 +1429,209 @@
         if (!this.wsDetail) return false;
         const done = this.wsDetail.steps_complete || [];
         return done.includes(step.produces);
+      },
+
+      // ── Clip editor ────────────────────────────────────────────
+      async loadClipEditor() {
+        if (!this.selectedSlug) return;
+        try {
+          const [planData, scenesData] = await Promise.all([
+            this._get(`/api/workspace/${this.selectedSlug}/plan`),
+            this._get(`/api/workspace/${this.selectedSlug}/scenes`),
+          ]);
+          this.clipEditorScenes = scenesData;
+          const sceneMap = Object.fromEntries(scenesData.map(s => [s.index, s]));
+          this.clipEdits = planData.map((clip, i) => this._makeClipEdit(clip, sceneMap, i));
+          this.clipEditorDirty = false;
+          this.$nextTick(() => this._initClipSortable());
+        } catch(e) { this.clipEdits = []; }
+      },
+
+      _makeClipEdit(clip, sceneMap, i) {
+        const scene = sceneMap[clip.scene_index] || {};
+        const trimStart = clip.scene_trim_start || 0;
+        const trimEnd   = clip.scene_trim_end >= 0 ? clip.scene_trim_end : (scene.duration || 4);
+        const srcStart  = (scene.start_time || 0) + trimStart;
+        const srcEnd    = (scene.start_time || 0) + trimEnd;
+        return {
+          _id: `ce_${i}_${clip.scene_index}`,
+          // lyric slot (fixed — defines audio timeline position)
+          song_start:   clip.song_start,
+          song_end:     clip.song_end,
+          lyric_text:   (clip.lyric_lines || []).map(l => l.text).join(' ') || '(silence)',
+          lyric_lines:  clip.lyric_lines || [],
+          // scene assignment (editable)
+          scene_index:       clip.scene_index,
+          scene_trim_start:  trimStart,
+          scene_trim_end:    trimEnd,
+          scene:      scene,
+          thumbnail:  clip.thumbnail,
+          clip_src_start: srcStart,
+          clip_src_end:   srcEnd,
+          // ui
+          showPlayer: false,
+        };
+      },
+
+      _refreshClipSrcTimes(clip) {
+        const scene = clip.scene || {};
+        clip.clip_src_start = (scene.start_time || 0) + clip.scene_trim_start;
+        clip.clip_src_end   = (scene.start_time || 0) + clip.scene_trim_end;
+      },
+
+      _cascadeOutputTimes(clips, fromIndex) {
+        for (let j = fromIndex + 1; j < clips.length; j++) {
+          const dur = clips[j].song_end - clips[j].song_start;
+          clips[j].song_start = clips[j - 1].song_end;
+          clips[j].song_end   = clips[j].song_start + dur;
+        }
+      },
+
+      // Reorder: moves only the SCENE ASSIGNMENT between lyric slots so subtitle
+      // timing stays anchored to the audio timeline.
+      _initClipSortable() {
+        if (this._clipSortable) { this._clipSortable.destroy(); this._clipSortable = null; }
+        const el = this.$refs.clipEditList;
+        if (!el) return;
+        this._clipSortable = Sortable.create(el, {
+          animation: 150,
+          handle: '.ce-drag',
+          ghostClass: 'sortable-ghost',
+          onEnd: (evt) => {
+            if (evt.oldIndex === evt.newIndex) return;
+            // Extract scene assignments ordered by current DOM position
+            const assigns = this.clipEdits.map(c => ({
+              scene_index: c.scene_index, scene_trim_start: c.scene_trim_start,
+              scene_trim_end: c.scene_trim_end, scene: c.scene, thumbnail: c.thumbnail,
+              clip_src_start: c.clip_src_start, clip_src_end: c.clip_src_end,
+            }));
+            const [moved] = assigns.splice(evt.oldIndex, 1);
+            assigns.splice(evt.newIndex, 0, moved);
+            // Replace array (not Object.assign) so Alpine.js reactivity fires reliably.
+            // Slot properties (song_start/song_end/lyric_lines) are preserved; only
+            // the scene assignment fields are overwritten from the reordered assigns.
+            this.clipEdits = this.clipEdits.map((clip, i) => ({ ...clip, ...assigns[i] }));
+            this.clipEditorDirty = true;
+            this.$nextTick(() => this._initClipSortable());
+          },
+        });
+      },
+
+      openScenePicker(clipIdx) {
+        this.clipPickerForIdx   = clipIdx;
+        this.clipPickerInsertAfter = -1;
+        this.clipPickerSearch   = '';
+        this.clipPickerOpen     = true;
+        if (this.clipEditorScenes.length === 0) {
+          this._get(`/api/workspace/${this.selectedSlug}/scenes`)
+            .then(s => { this.clipEditorScenes = s; })
+            .catch(() => {});
+        }
+      },
+
+      openClipInsertPicker(afterIdx) {
+        this.clipPickerForIdx   = null;
+        this.clipPickerInsertAfter = afterIdx;
+        this.clipPickerSearch   = '';
+        this.clipPickerOpen     = true;
+        if (this.clipEditorScenes.length === 0) {
+          this._get(`/api/workspace/${this.selectedSlug}/scenes`)
+            .then(s => { this.clipEditorScenes = s; })
+            .catch(() => {});
+        }
+      },
+
+      pickerSelectScene(scene) {
+        if (this.clipPickerForIdx !== null) {
+          // Replace scene assignment for an existing slot — preserve the current
+          // clip duration if the new scene is long enough, otherwise cap it.
+          const clip = this.clipEdits[this.clipPickerForIdx];
+          if (clip) {
+            const currentDur = clip.scene_trim_end - clip.scene_trim_start;
+            const newDur = Math.min(currentDur, scene.duration || currentDur);
+            clip.scene_index      = scene.index;
+            clip.scene_trim_start = 0;
+            clip.scene_trim_end   = newDur;
+            clip.scene     = scene;
+            clip.thumbnail = scene.thumbnail;
+            this._refreshClipSrcTimes(clip);
+            this.clipEditorDirty = true;
+          }
+        } else {
+          // Insert new clip after clipPickerInsertAfter
+          const afterIdx  = this.clipPickerInsertAfter;
+          const prevClip  = this.clipEdits[afterIdx];
+          const nextClip  = this.clipEdits[afterIdx + 1];
+          const s0 = prevClip ? prevClip.song_end : 0;
+          const s1 = nextClip ? nextClip.song_start : s0 + 3;
+          const dur = Math.max(0.1, s1 - s0);
+          const trimEnd = Math.min(dur, scene.duration || dur);
+          this.clipEdits.splice(afterIdx + 1, 0, {
+            _id: `ce_new_${Date.now()}`,
+            song_start: s0, song_end: s1,
+            lyric_text: '(new clip)', lyric_lines: [],
+            scene_index: scene.index, scene_trim_start: 0, scene_trim_end: trimEnd,
+            scene: scene, thumbnail: scene.thumbnail,
+            clip_src_start: scene.start_time || 0,
+            clip_src_end:   (scene.start_time || 0) + trimEnd,
+            showPlayer: false,
+          });
+          this.clipEditorDirty = true;
+          this.$nextTick(() => this._initClipSortable());
+        }
+        this.clipPickerOpen = false;
+      },
+
+      deleteClipEdit(idx) {
+        this.clipEdits.splice(idx, 1);
+        this.clipEditorDirty = true;
+        this.$nextTick(() => this._initClipSortable());
+      },
+
+      get filteredPickerScenes() {
+        const q = this.clipPickerSearch.toLowerCase();
+        if (!q) return this.clipEditorScenes;
+        return this.clipEditorScenes.filter(s =>
+          String(s.index).includes(q) ||
+          (s.description || '').toLowerCase().includes(q) ||
+          (s.emotion || '').toLowerCase().includes(q)
+        );
+      },
+
+      async commitClipPlan() {
+        if (!this.selectedSlug || this.isRunning) return;
+        const clips = this.clipEdits.map(c => ({
+          scene_index:      c.scene_index,
+          scene_trim_start: c.scene_trim_start,
+          scene_trim_end:   c.scene_trim_end,
+          song_start:       c.song_start,
+          song_end:         c.song_end,
+        }));
+        const r = await fetch(`/api/workspace/${this.selectedSlug}/plan/commit`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ clips }),
+        });
+        if (r.ok) {
+          this.clipEditorDirty = false;
+          this.logs.push('✓ Plan committed — lyrics synced, previous plan archived');
+          await this.loadPlanHistory();
+          if (this.plan.length > 0) await this.loadPlan();
+        } else {
+          this.logs.push(`❌ Commit failed: ${await r.text()}`);
+        }
+      },
+
+      // ── Plan audit ─────────────────────────────────────────────
+      async loadPlanAudit() {
+        if (!this.selectedSlug) return;
+        try {
+          this.planAudit = await this._get(`/api/workspace/${this.selectedSlug}/plan/audit`);
+        } catch { this.planAudit = null; }
+      },
+
+      auditClipDetail(idx) {
+        return this.planAudit?.clips_detail?.[idx] ?? null;
       },
 
       // ── Plan history ───────────────────────────────────────────
@@ -1086,10 +1785,20 @@
         this.planDirty = false;
         this.planHistory = [];
         this.historyExpanded = false;
+        this.planAudit = null;
+        this.auditExpanded = false;
+        this.clipEdits = [];
+        this.clipEditorDirty = false;
+        this.clipPickerOpen = false;
         this.showReel = false;
+        this.cropActive   = false;
+        this.cropTop      = 0;
+        this.cropBottom   = 0;
+        this.cropFrameUrl = null;
         this.wsDetail = await this._get(`/api/workspace/${slug}`);
         this._prefillParams();
         this.publishCaption = `'${this.wsDetail.song}' by ${this.wsDetail.film} (AI generated reel) #aesthetic #reels`;
+        this.loadCrop();
       },
 
       _prefillParams() {
@@ -1115,6 +1824,7 @@
         } catch (e) {
           this.plan = [];
         }
+        this.loadPlanAudit();
       },
 
       async loadScenes() {
@@ -1131,9 +1841,12 @@
         if (t === 'plan') {
           if (this.plan.length === 0) this.loadPlan();
           this.loadPlanHistory();
+          this.loadPlanAudit();
         }
+        if (t === 'clip-editor' && this.clipEdits.length === 0) this.loadClipEditor();
         if (t === 'scenes' && this.scenes.length === 0) this.loadScenes();
         if (t === 'lyrics' && this.lyrics.length === 0) this.loadLyrics();
+        if (t === 'crop') this.loadCrop();
         if (t !== 'lyrics') {
           const a = this.$refs.audioPlayer;
           if (a && !a.paused) a.pause();
@@ -1156,6 +1869,22 @@
             if (evt.oldIndex === evt.newIndex) return;
             const [moved] = this.plan.splice(evt.oldIndex, 1);
             this.plan.splice(evt.newIndex, 0, moved);
+            // Rebuild sequential output timeline so the renderer (which sorts by
+            // song_start) plays clips in the order the user arranged them.
+            // Lyric absolute times are shifted by the same delta as their clip.
+            let cursor = 0;
+            this.plan.forEach(clip => {
+              const raw = clip._raw;
+              const dur   = (raw.song_end - raw.song_start) || 2;
+              const delta = cursor - raw.song_start;
+              raw.song_start  = cursor;
+              raw.song_end    = cursor + dur;
+              clip.song_start = cursor;
+              clip.song_end   = cursor + dur;
+              if (raw.lyric_lines)  raw.lyric_lines.forEach(l  => { l.start_time  += delta; l.end_time  += delta; });
+              if (clip.lyric_lines) clip.lyric_lines.forEach(l => { l.start_time += delta; l.end_time += delta; });
+              cursor = raw.song_end;
+            });
             this.planDirty = true;
             this.$nextTick(() => this._initSortable());
           }
@@ -1199,10 +1928,68 @@
         await this.loadPlan();
       },
 
+      // ── Manual crop ──────────────────────────────────────────────────────────
+
+      async loadCrop() {
+        if (!this.selectedSlug) return;
+        try {
+          const d = await this._get(`/api/workspace/${this.selectedSlug}/crop`);
+          this.cropTop      = d.top      || 0;
+          this.cropBottom   = d.bottom   || 0;
+          this.cropVideoW   = d.video_w  || 1920;
+          this.cropVideoH   = d.video_h  || 1080;
+          this.cropActive   = d.active   || false;
+          this.cropFrameUrl = d.frame_url || null;
+        } catch {}
+      },
+
+      async saveCrop() {
+        if (!this.selectedSlug) return;
+        await fetch(`/api/workspace/${this.selectedSlug}/crop`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ top: this.cropTop, bottom: this.cropBottom, left: 0, right: 0 }),
+        });
+        this.cropActive = this.cropTop > 0 || this.cropBottom > 0;
+      },
+
+      async clearCrop() {
+        if (!this.selectedSlug) return;
+        await fetch(`/api/workspace/${this.selectedSlug}/crop`, { method: 'DELETE' });
+        this.cropTop = 0;
+        this.cropBottom = 0;
+        this.cropActive = false;
+      },
+
+      _cropDown(which, event) {
+        this._cropDragging = which;
+      },
+
+      _cropMove(event) {
+        if (!this._cropDragging) return;
+        const box = this.$refs.cropBox;
+        if (!box) return;
+        const rect = box.getBoundingClientRect();
+        const relY = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+        const px   = Math.round(relY * this.cropVideoH);
+        if (this._cropDragging === 'top') {
+          this.cropTop = Math.max(0, Math.min(px, this.cropVideoH - this.cropBottom - 50));
+        } else {
+          const fromBottom = Math.round((1 - relY) * this.cropVideoH);
+          this.cropBottom = Math.max(0, Math.min(fromBottom, this.cropVideoH - this.cropTop - 50));
+        }
+      },
+
+      _cropUp() { this._cropDragging = null; },
+
+      // ─────────────────────────────────────────────────────────────────────────
+
       async runRender() {
         if (!this.selectedSlug || this.isRunning) return;
         await this._streamPost(`/api/workspace/${this.selectedSlug}/render`, {
-          subtitle_font: this.selectedFont,
+          subtitle_font:     this.selectedFont,
+          subtitle_fontsize: this.subtitleFontSize,
+          subtitle_italic:   this.subtitleItalic,
         });
         await this.loadWorkspaces();
         this.wsDetail = await this._get(`/api/workspace/${this.selectedSlug}`);
