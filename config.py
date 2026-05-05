@@ -12,10 +12,15 @@ OUTPUTS_DIR = ROOT_DIR / "outputs"
 FRAMES_DIR = TEMP_DIR / "frames"
 WORKSPACES_DIR = ROOT_DIR / "workspaces"
 
+CLIPS_DIR      = ROOT_DIR / "clips"   # video + scenes + frames + scene-analysis cache
+SONGS_DIR      = ROOT_DIR / "songs"   # audio + lyrics + whisper cache
+
 TEMP_DIR.mkdir(exist_ok=True)
 OUTPUTS_DIR.mkdir(exist_ok=True)
 FRAMES_DIR.mkdir(exist_ok=True)
 WORKSPACES_DIR.mkdir(exist_ok=True)
+CLIPS_DIR.mkdir(exist_ok=True)
+SONGS_DIR.mkdir(exist_ok=True)
 
 # OpenRouter (all AI calls go through OpenRouter)
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -38,7 +43,7 @@ DEFAULT_MATCHER_MODEL  = OpenRouterModel.claude_sonnet  # best reasoning for sce
 # Scene detection
 SCENE_THRESHOLD = 27.0       # PySceneDetect ContentDetector threshold
 MIN_SCENE_DURATION = 1.5     # seconds — discard very short scenes
-N_FRAMES_PER_SCENE = 3       # frames sampled per scene for vision analysis
+N_FRAMES_PER_SCENE = 1       # frames sampled per scene for vision analysis
 SCENE_ANALYSIS_BATCH = 5     # scenes per vision request
 
 # Whisper
@@ -53,7 +58,7 @@ INSTAGRAM_SESSION_FILE = ROOT_DIR / "instagram_session.json"
 OUTPUT_WIDTH = 1080
 OUTPUT_HEIGHT = 1920
 OUTPUT_FPS = 30
-MAX_REEL_DURATION = 90       # seconds
+MAX_REEL_DURATION = 9999     # effectively unlimited — natural limit is the song duration
 
 # Subtitle style
 SUBTITLE_COLOR        = "#FFD966"  # warm soft yellow — readable on dark backgrounds

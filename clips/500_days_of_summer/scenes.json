@@ -1,0 +1,4069 @@
+[
+  {
+    "index": 0,
+    "start_time": 0.0,
+    "end_time": 1.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0000/frame_00.jpg"
+    ],
+    "description": "White text on a black screen asks the viewer how they picture the girl of their dreams, setting a romantic tone.",
+    "characters_present": [],
+    "emotion": "anticipation, curiosity",
+    "shot_type": "insert/detail shot",
+    "lighting": "flat, dark",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  },
+  {
+    "index": 1,
+    "start_time": 4.04,
+    "end_time": 6.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0001/frame_00.jpg"
+    ],
+    "description": "A heart-shaped birthmark is shown on the chest of Zooey Deschanel.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimacy, vulnerability",
+    "shot_type": "close-up",
+    "lighting": "soft, natural",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 2,
+    "start_time": 7.8,
+    "end_time": 9.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0002/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel adjusts her hair, gazing intently with bright blue eyes.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "sultry, thoughtful",
+    "shot_type": "extreme close-up",
+    "lighting": "soft, natural, diffused",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 3,
+    "start_time": 9.32,
+    "end_time": 11.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0003/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel lies in bed, smiling gently at the camera.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "tenderness, serenity",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused, natural",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 4,
+    "start_time": 11.16,
+    "end_time": 13.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0004/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, lying in bed, flashes a bright, playful smile.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "playful, radiant",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused, natural",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 5,
+    "start_time": 14.52,
+    "end_time": 18.2,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0005/frame_00.jpg"
+    ],
+    "description": "White text on black asks: \"How do you picture the girl of your dreams?\"",
+    "characters_present": [],
+    "emotion": "enigmatic question",
+    "shot_type": "insert/detail shot",
+    "lighting": "flat, text centered",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  },
+  {
+    "index": 6,
+    "start_time": 18.2,
+    "end_time": 20.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0006/frame_00.jpg"
+    ],
+    "description": "A man gazes serenely, framed by the word 'REAL' overlaid in huge letters across the frame.",
+    "characters_present": [],
+    "emotion": "sincere curiosity",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused background",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  },
+  {
+    "index": 7,
+    "start_time": 20.72,
+    "end_time": 22.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0007/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, dressed in a playful outfit, looks sideways with a slight smile during a conversation at night.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "subtle amusement",
+    "shot_type": "close-up",
+    "lighting": "soft, scattered urban lights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 8,
+    "start_time": 22.32,
+    "end_time": 23.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0008/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel listens intently, a shadow crossing her face as the superimposed text calls someone \"a b$td!\"",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "attentive concern",
+    "shot_type": "close-up",
+    "lighting": "dim, indirect light reflecting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.95
+  },
+  {
+    "index": 9,
+    "start_time": 23.96,
+    "end_time": 26.48,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0009/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel are in a movie theatre, both laughing joyfully with drinks in their hands, as overlaid text reads, 'Problem with that'.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "shared joy, carefree",
+    "shot_type": "medium",
+    "lighting": "dim movie theatre lighting, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.95
+  },
+  {
+    "index": 10,
+    "start_time": 26.48,
+    "end_time": 28.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0010/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits in a movie theater, a spotlight shining on his face, with the words 'Break-up' superimposed onto the frame.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy, introspection, resignation",
+    "shot_type": "medium",
+    "lighting": "spotlit, theatre dark, cool",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 11,
+    "start_time": 32.28,
+    "end_time": 34.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0011/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, looking somber in a suit, stands near an escalator entrance with the words 'Alpha Male' overlayed.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "defeated, isolated, ironic",
+    "shot_type": "medium",
+    "lighting": "natural light, grey",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 12,
+    "start_time": 34.84,
+    "end_time": 36.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0012/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stands indoors and smiles nervously, as if trying to contain his emotions.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "forced happiness, strained, anxious",
+    "shot_type": "close-up",
+    "lighting": "soft, indoor, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 13,
+    "start_time": 39.8,
+    "end_time": 42.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0013/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks thoughtfully to the side, with the face of Zooey Deschanel slightly out-of-focus and slightly transparent in the background.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "nostalgia, longing, bittersweet",
+    "shot_type": "medium close-up",
+    "lighting": "low key, soft, dark",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 14,
+    "start_time": 42.24,
+    "end_time": 43.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0014/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks with concentration towards a computer screen, sitting in an anonymous office.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "focused, preoccupied, absorbed",
+    "shot_type": "close-up",
+    "lighting": "fluorescent, office, neutral",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 15,
+    "start_time": 43.76,
+    "end_time": 46.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0015/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel sit glumly on a bench overlooking the cityscape, overlaid with the words \"Who was right?\"",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "uncertainty, strained reflection",
+    "shot_type": "wide",
+    "lighting": "overcast daylight, muted colors",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 16,
+    "start_time": 48.36,
+    "end_time": 50.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0016/frame_00.jpg"
+    ],
+    "description": "Tom Hansen leans in, examining the tattoo of a city skyline on Zooey Deschanel's wrist.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate curiosity",
+    "shot_type": "close-up",
+    "lighting": "soft natural light, shallow depth",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 17,
+    "start_time": 51.72,
+    "end_time": 54.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0017/frame_00.jpg"
+    ],
+    "description": "A boy, possibly younger Tom Hansen, sits on his bed engrossed in a television, surrounded by posters.",
+    "characters_present": [],
+    "emotion": "absorbed escapism",
+    "shot_type": "medium",
+    "lighting": "soft indirect, slightly dim",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 18,
+    "start_time": 54.4,
+    "end_time": 56.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0018/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stares thoughtfully away from the camera, perhaps at Zooey Deschanel, in a shared office space.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "pensive longing",
+    "shot_type": "medium close-up",
+    "lighting": "office fluorescent, slightly cool",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 19,
+    "start_time": 57.88,
+    "end_time": 64.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0019/frame_00.jpg"
+    ],
+    "description": "An elevator door opens slightly, revealing a partially-seen woman waiting inside; the viewer is left to wonder if it is Zooey Deschanel.",
+    "characters_present": [],
+    "emotion": "anticipation, uncertainty",
+    "shot_type": "medium wide",
+    "lighting": "artificial, metallic sheen",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 20,
+    "start_time": 64.16,
+    "end_time": 65.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0020/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel smile in a record store, browsing through albums and CDs with casual ease.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "playful connection",
+    "shot_type": "medium",
+    "lighting": "soft, even, slightly warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 21,
+    "start_time": 65.76,
+    "end_time": 68.68,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0021/frame_00.jpg"
+    ],
+    "description": "A newly married couple smiles at each other inside a bus or van; the bride holds a bouquet.",
+    "characters_present": [],
+    "emotion": "newlywed bliss",
+    "shot_type": "two-shot",
+    "lighting": "natural, diffused window light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 22,
+    "start_time": 68.68,
+    "end_time": 71.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0022/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stares directly into the camera in a black and white shot with the words 'Main Character' layered in front of him.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholic introspection",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused window light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 23,
+    "start_time": 73.64,
+    "end_time": 75.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0023/frame_00.jpg"
+    ],
+    "description": "A blurred Tom Hansen runs past a fountain, the word 'Relat' superimposed on screen, suggesting exhilaration.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "exhilarated rush",
+    "shot_type": "medium",
+    "lighting": "bright, sunny day",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 24,
+    "start_time": 75.92,
+    "end_time": 82.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0024/frame_00.jpg"
+    ],
+    "description": "Tom Hansen mimes playing a video game with a young girl; they're in a comfortable suburban living room.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "playful bonding",
+    "shot_type": "medium",
+    "lighting": "warm ambient interior light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 25,
+    "start_time": 83.2,
+    "end_time": 88.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0025/frame_00.jpg"
+    ],
+    "description": "Tom Hansen is lying in bed beside Summer, with yellow text overlayed stating 'Believe me. you were.'",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "intimate, tender, regretful",
+    "shot_type": "close-up",
+    "lighting": "soft, ambient bedroom lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 26,
+    "start_time": 89.52,
+    "end_time": 93.52,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0026/frame_00.jpg"
+    ],
+    "description": "A man is talking directly to the camera in black and white with a vignetted border.",
+    "characters_present": [],
+    "emotion": "contemplative, sincere, reflective",
+    "shot_type": "medium close-up",
+    "lighting": "neutral fill, simple shadows",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 27,
+    "start_time": 93.52,
+    "end_time": 99.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0027/frame_00.jpg"
+    ],
+    "description": "A man with dark hair is gesturing as he speaks to the camera from his studio setup with a blue background.",
+    "characters_present": [],
+    "emotion": "earnest, informative, thoughtful",
+    "shot_type": "medium close-up",
+    "lighting": "soft key, even lighting",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 28,
+    "start_time": 99.44,
+    "end_time": 106.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0028/frame_00.jpg"
+    ],
+    "description": "A montage of Zooey Deschanel, as Summer, showcases her various qualities listed as 'kindest, prettiest, funniest, genuine' in white text.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "idealized, admiring, whimsical",
+    "shot_type": "medium",
+    "lighting": "natural, varied, flattering",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 29,
+    "start_time": 106.4,
+    "end_time": 111.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0029/frame_00.jpg"
+    ],
+    "description": "Black screen with text reading 'Manic Pixie Dream Girl' in vintage typewriter style.",
+    "characters_present": [],
+    "emotion": "critical, analytical, deconstruction",
+    "shot_type": "insert/detail shot",
+    "lighting": "none",
+    "visual_power": 1,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 30,
+    "start_time": 111.56,
+    "end_time": 113.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0030/frame_00.jpg"
+    ],
+    "description": "An article titled 'The Real-World Consequences of the Manic Pixie Dream Girl Clich\u00e9' examines the objectification of women in media.",
+    "characters_present": [],
+    "emotion": "critical deconstruction",
+    "shot_type": "close-up",
+    "lighting": "flat bright, neutral",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 31,
+    "start_time": 113.96,
+    "end_time": 116.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0031/frame_00.jpg"
+    ],
+    "description": "Words read 'APING THE MANIE DREAM W'.",
+    "characters_present": [],
+    "emotion": "abstract analysis",
+    "shot_type": "close-up",
+    "lighting": "flat bright, neutral",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 32,
+    "start_time": 116.56,
+    "end_time": 120.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0032/frame_00.jpg"
+    ],
+    "description": "A podcast titled 'The Black Case Diaries Movie/TV Podcast' features a discussion about the 'Manic Pixie Dream Girl' trope.",
+    "characters_present": [],
+    "emotion": "intellectual curiosity",
+    "shot_type": "medium",
+    "lighting": "flat bright, neutral",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 33,
+    "start_time": 120.32,
+    "end_time": 124.68,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0033/frame_00.jpg"
+    ],
+    "description": "A girl and a boy sit in an armchair. Onscreen text appears 'Character Trope'.",
+    "characters_present": [],
+    "emotion": "cerebral observation",
+    "shot_type": "medium",
+    "lighting": "soft neutral, indoor",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 34,
+    "start_time": 124.68,
+    "end_time": 126.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0034/frame_00.jpg"
+    ],
+    "description": "A girl with green hair looks over her shoulder.",
+    "characters_present": [],
+    "emotion": "cool detachment",
+    "shot_type": "medium close-up",
+    "lighting": "cool streetlight, dramatic",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 35,
+    "start_time": 131.88,
+    "end_time": 137.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0035/frame_00.jpg"
+    ],
+    "description": "A young man and a pink-haired woman stand together, each holding a red cup, with the word 'Evolve' superimposed over them.",
+    "characters_present": [],
+    "emotion": "youthful insouciance",
+    "shot_type": "medium",
+    "lighting": "flat, institutional lighting",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 36,
+    "start_time": 137.32,
+    "end_time": 139.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0036/frame_00.jpg"
+    ],
+    "description": "A blonde woman smiles gently across at a man, her hand resting on her chin in a gesture of mild flirtation.",
+    "characters_present": [],
+    "emotion": "quiet amusement",
+    "shot_type": "medium close-up",
+    "lighting": "soft, warm lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 37,
+    "start_time": 139.04,
+    "end_time": 144.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0037/frame_00.jpg"
+    ],
+    "description": "A young woman in a pink jacket stands in front of a bookcase beneath superimposed text about 'Manic Pixie Dream Girls'.",
+    "characters_present": [],
+    "emotion": "critical awareness",
+    "shot_type": "medium",
+    "lighting": "warm, ambient light",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 38,
+    "start_time": 145.96,
+    "end_time": 149.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0038/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, eyes closed and face anguished, sings into a microphone on a brightly lit stage.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "raw heartbreak",
+    "shot_type": "close-up",
+    "lighting": "bright stage lights, warm",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 39,
+    "start_time": 150.6,
+    "end_time": 156.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0039/frame_00.jpg"
+    ],
+    "description": "A woman in a summery dress boards a sepia-toned bus, her back to the camera in a casual posture.",
+    "characters_present": [],
+    "emotion": "nostalgic longing",
+    "shot_type": "medium",
+    "lighting": "diffused daylight",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 40,
+    "start_time": 157.4,
+    "end_time": 159.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0040/frame_00.jpg"
+    ],
+    "description": "Summer beams with joy in bed, a close-up capturing her unguarded happiness.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "pure joy",
+    "shot_type": "close-up",
+    "lighting": "soft diffused, natural light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 41,
+    "start_time": 159.6,
+    "end_time": 161.2,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0041/frame_00.jpg"
+    ],
+    "description": "In a vintage-style, black and white scene, Summer stares directly at the camera with a slight smile.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "enigmatic allure",
+    "shot_type": "close-up",
+    "lighting": "even daylight, slightly faded",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 42,
+    "start_time": 161.2,
+    "end_time": 164.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0042/frame_00.jpg"
+    ],
+    "description": "Summer is framed in soft focus, with the words \"But why?\" overlaid, encapsulating her thought process.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "questioning, internal",
+    "shot_type": "close-up",
+    "lighting": "warm ambient, shallow depth",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 43,
+    "start_time": 164.56,
+    "end_time": 166.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0043/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Summer ride an elevator together, a two-shot capturing a potentially awkward or significant moment.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "wistful anticipation",
+    "shot_type": "two-shot",
+    "lighting": "soft overhead, ambient light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 44,
+    "start_time": 166.6,
+    "end_time": 168.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0044/frame_00.jpg"
+    ],
+    "description": "Seen from behind Tom Hansen, the muted lighting enhances Summer's melancholic demeanor as she stands in a doorway.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "quiet sadness",
+    "shot_type": "over-the-shoulder",
+    "lighting": "dim, warm-toned, indirect",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 45,
+    "start_time": 170.64,
+    "end_time": 172.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0045/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks slightly bewildered as he sits and listens, paintings of cherubs hanging behind him.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "contemplative introspection",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused, warm backlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 46,
+    "start_time": 172.72,
+    "end_time": 175.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0046/frame_00.jpg"
+    ],
+    "description": "A young woman looks directly at the camera with a serious expression against a dark background.",
+    "characters_present": [],
+    "emotion": "wistful contemplation",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused spotlight",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 47,
+    "start_time": 175.08,
+    "end_time": 177.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0047/frame_00.jpg"
+    ],
+    "description": "A young man with dark hair looks up and to his right with a hopeful expression in a crowd.",
+    "characters_present": [],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium close-up",
+    "lighting": "ambient stadium lighting, slightly grainy",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 48,
+    "start_time": 180.6,
+    "end_time": 183.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0048/frame_00.jpg"
+    ],
+    "description": "A young woman looks down with a pensive expression in a cafe setting, a partially obscured person beside her.",
+    "characters_present": [],
+    "emotion": "introspective sadness",
+    "shot_type": "medium close-up",
+    "lighting": "warm, soft, cafe lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 49,
+    "start_time": 184.48,
+    "end_time": 187.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0049/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, looking downcast, speaks to someone across a table in a dimly lit setting.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "somber conversation",
+    "shot_type": "two-shot",
+    "lighting": "muted, soft, low-key",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 50,
+    "start_time": 188.24,
+    "end_time": 191.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0050/frame_00.jpg"
+    ],
+    "description": "A poised woman in a sparkly dress dramatically spreads her arms wide under warm, low-key lighting.",
+    "characters_present": [],
+    "emotion": "confident serenity",
+    "shot_type": "medium",
+    "lighting": "warm low-key, soft",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 51,
+    "start_time": 191.44,
+    "end_time": 193.48,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0051/frame_00.jpg"
+    ],
+    "description": "A young man in a suit looking expectantly out of a car window, bathed in golden light.",
+    "characters_present": [],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium close-up",
+    "lighting": "warm golden, interior",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 52,
+    "start_time": 193.48,
+    "end_time": 196.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0052/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits with his backpack, a downcast expression on his face, with superimposed text 'Doesn't exist'.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy disillusionment",
+    "shot_type": "medium close-up",
+    "lighting": "natural daylight, slightly overcast",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 53,
+    "start_time": 196.88,
+    "end_time": 198.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0053/frame_00.jpg"
+    ],
+    "description": "A woman in a vintage flapper dress stands looking up with a dazed expression in front of a tall, water fountain.",
+    "characters_present": [],
+    "emotion": "dreamy awe",
+    "shot_type": "medium",
+    "lighting": "bright, diffused, with fountain lights",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 54,
+    "start_time": 198.72,
+    "end_time": 202.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0054/frame_00.jpg"
+    ],
+    "description": "A young man smiles into the audience from the middle of a crowd in movie theater seating.",
+    "characters_present": [],
+    "emotion": "nervous excitement",
+    "shot_type": "medium",
+    "lighting": "blue stage light, interior",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 55,
+    "start_time": 202.12,
+    "end_time": 204.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0055/frame_00.jpg"
+    ],
+    "description": "Summer Vasion looks alluring in a sequined top, posing with slight attitude under cool blue and purple lighting.",
+    "characters_present": [],
+    "emotion": "sultry confidence",
+    "shot_type": "medium close-up",
+    "lighting": "cool blue and purple spotlights",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.85
+  },
+  {
+    "index": 56,
+    "start_time": 204.84,
+    "end_time": 207.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0056/frame_00.jpg"
+    ],
+    "description": "Summer Vasion stares downwards with a slight frown, under warm yet dim lighting, wearing a black top and necklace.",
+    "characters_present": [],
+    "emotion": "quiet contemplation",
+    "shot_type": "close-up",
+    "lighting": "warm, dim, slightly diffused",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.85
+  },
+  {
+    "index": 57,
+    "start_time": 207.6,
+    "end_time": 209.52,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0057/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stares slightly upwards to the left, looking sad and pensive, under warm pink lighting.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy introspection",
+    "shot_type": "medium close-up",
+    "lighting": "warm pink ambient",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.85
+  },
+  {
+    "index": 58,
+    "start_time": 209.52,
+    "end_time": 215.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0058/frame_00.jpg"
+    ],
+    "description": "Summer Vasion stands facing left, with one arm raised, next to a vintage car, overlaid with the word 'Fantasy'.",
+    "characters_present": [],
+    "emotion": "dreamy hope",
+    "shot_type": "medium",
+    "lighting": "warm diffused side light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.85
+  },
+  {
+    "index": 59,
+    "start_time": 215.28,
+    "end_time": 218.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0059/frame_00.jpg"
+    ],
+    "description": "A musician performs on a stage in a dimly lit bar, surrounded by patrons.",
+    "characters_present": [],
+    "emotion": "intimate performance",
+    "shot_type": "wide",
+    "lighting": "dim, warm, string lights",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.75
+  },
+  {
+    "index": 60,
+    "start_time": 218.92,
+    "end_time": 225.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0060/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel is singing into a microphone in front of a mural, bathed in warm spotlight.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate performance",
+    "shot_type": "medium close-up",
+    "lighting": "warm spotlight, soft focus",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 61,
+    "start_time": 226.88,
+    "end_time": 228.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0061/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits and stares with a slightly furrowed expression, the light falling softly on his face.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "brooding contemplation",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 62,
+    "start_time": 228.76,
+    "end_time": 230.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0062/frame_00.jpg"
+    ],
+    "description": "A woman with pink hair stands against a green wall at a party, looking slightly detached from the crowd around her.",
+    "characters_present": [],
+    "emotion": "detached, withdrawn",
+    "shot_type": "medium",
+    "lighting": "flat, indoor lighting",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.9
+  },
+  {
+    "index": 63,
+    "start_time": 230.92,
+    "end_time": 233.2,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0063/frame_00.jpg"
+    ],
+    "description": "In a split screen, a man with wide eyes looks on, juxtaposed with a woman holding a red cup glancing sideways.",
+    "characters_present": [],
+    "emotion": "nervous anticipation",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused room lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.9
+  },
+  {
+    "index": 64,
+    "start_time": 233.2,
+    "end_time": 234.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0064/frame_00.jpg"
+    ],
+    "description": "A split-screen close up of two faces: a man looking somewhat surprised next to a woman with pink hair, holding a cup and tilting her head.",
+    "characters_present": [],
+    "emotion": "intense observation",
+    "shot_type": "close-up",
+    "lighting": "soft studio lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.9
+  },
+  {
+    "index": 65,
+    "start_time": 234.92,
+    "end_time": 236.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0065/frame_00.jpg"
+    ],
+    "description": "A woman with pink hair stares intensely towards the camera while a blurred hand holds a red plastic cup in the background.",
+    "characters_present": [],
+    "emotion": "intense gaze",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 66,
+    "start_time": 236.44,
+    "end_time": 241.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0066/frame_00.jpg"
+    ],
+    "description": "In semi-darkness, a young man and woman gaze at one another with soft affection.",
+    "characters_present": [],
+    "emotion": "gentle affection",
+    "shot_type": "medium",
+    "lighting": "dim, single-source light",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 67,
+    "start_time": 242.52,
+    "end_time": 244.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0067/frame_00.jpg"
+    ],
+    "description": "Angrily, a woman yells to the sky. ",
+    "characters_present": [],
+    "emotion": "tormented anger",
+    "shot_type": "close-up",
+    "lighting": "dark and artificial",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 68,
+    "start_time": 244.04,
+    "end_time": 248.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0068/frame_00.jpg"
+    ],
+    "description": "A man with sweating face with a concerned facial expression.",
+    "characters_present": [],
+    "emotion": "intense concern",
+    "shot_type": "close-up",
+    "lighting": "harsh, bright indoor lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 69,
+    "start_time": 248.44,
+    "end_time": 250.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0069/frame_00.jpg"
+    ],
+    "description": "A woman with short blonde hair looks tearful near a floral arrangement.",
+    "characters_present": [],
+    "emotion": "sad contemplation",
+    "shot_type": "close-up",
+    "lighting": "soft diffused light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 70,
+    "start_time": 251.8,
+    "end_time": 256.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0070/frame_00.jpg"
+    ],
+    "description": "A melancholy man in a tuxedo stares pensively forward, a kiss and ornate machinery blurred behind him.",
+    "characters_present": [],
+    "emotion": "brooding sadness",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused, cool blue",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 71,
+    "start_time": 256.0,
+    "end_time": 257.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0071/frame_00.jpg"
+    ],
+    "description": "A man in a tuxedo speaks with a hint of desperation, overlaid with the question: \"Can't repeat the past?\".",
+    "characters_present": [],
+    "emotion": "yearning regret",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused, cool blue",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 72,
+    "start_time": 259.4,
+    "end_time": 264.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0072/frame_00.jpg"
+    ],
+    "description": "A man in a tuxedo says \"Of course you can...\" with a pained expression, overlaid with textual bubbles.",
+    "characters_present": [],
+    "emotion": "desperate hope",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused, cool blue",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 73,
+    "start_time": 265.6,
+    "end_time": 268.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0073/frame_00.jpg"
+    ],
+    "description": "An enormous mansion presides over the water, bathed in the light of a setting sun.",
+    "characters_present": [],
+    "emotion": "hushed opulence",
+    "shot_type": "extreme wide",
+    "lighting": "warm sunset, golden light",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 74,
+    "start_time": 268.32,
+    "end_time": 272.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0074/frame_00.jpg"
+    ],
+    "description": "A man's face is slick with sweat, his blue eyes wide with focused intensity.",
+    "characters_present": [],
+    "emotion": "intense exertion",
+    "shot_type": "extreme close-up",
+    "lighting": "bright, overhead, clinical",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 75,
+    "start_time": 272.4,
+    "end_time": 274.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0075/frame_00.jpg"
+    ],
+    "description": "An opulent mansion sits on a manicured waterfront, silhouetted by a gently glowing sunset sky.",
+    "characters_present": [],
+    "emotion": "serene grandeur",
+    "shot_type": "wide",
+    "lighting": "warm golden hour, soft shadows",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 76,
+    "start_time": 276.32,
+    "end_time": 278.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0076/frame_00.jpg"
+    ],
+    "description": "A man in a white suit gazes adoringly as a woman's hand rests tenderly on his cheek.",
+    "characters_present": [],
+    "emotion": "intimate adoration",
+    "shot_type": "close-up",
+    "lighting": "soft diffused, warm glow",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 77,
+    "start_time": 278.6,
+    "end_time": 283.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0077/frame_00.jpg"
+    ],
+    "description": "A man lies peacefully in a red coffin wearing a white suit, his hands clasped.",
+    "characters_present": [],
+    "emotion": "melancholy acceptance",
+    "shot_type": "medium",
+    "lighting": "dark, dramatic chiaroscuro",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 78,
+    "start_time": 283.16,
+    "end_time": 287.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0078/frame_00.jpg"
+    ],
+    "description": "In a split screen, a man in a white suit yells with greenery beyond him, juxtaposed with Tom Hansen listlessly washing dishes in his kitchen.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "bitter contrast, quiet despair",
+    "shot_type": "two-shot",
+    "lighting": "natural, overcast",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.6
+  },
+  {
+    "index": 79,
+    "start_time": 287.08,
+    "end_time": 294.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0079/frame_00.jpg"
+    ],
+    "description": "The title card 'Deconstructing an archetype' appears over an illustration of a lone figure on a desolate street.",
+    "characters_present": [],
+    "emotion": "lonely introspection",
+    "shot_type": "wide",
+    "lighting": "flat overcast, muted colors",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 80,
+    "start_time": 294.84,
+    "end_time": 296.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0080/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits slumped in a chair across from someone, looking dejected, underneath childish drawings of cupids.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy resignation",
+    "shot_type": "medium",
+    "lighting": "soft diffused daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 81,
+    "start_time": 296.36,
+    "end_time": 298.2,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0081/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel looks back from the passenger seat of a car with a slight smile, seemingly engaging in a pleasant conversation.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "pleasant anticipation",
+    "shot_type": "over-the-shoulder",
+    "lighting": "soft daylight, slightly overcast",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 82,
+    "start_time": 298.2,
+    "end_time": 300.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0082/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel are seen blurred through a car window, laughing together during a car ride.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "carefree joy",
+    "shot_type": "medium",
+    "lighting": "natural daylight, slightly hazy",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 83,
+    "start_time": 300.76,
+    "end_time": 302.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0083/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel stand close, gazing into each other's eyes against a distant urban skyline.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "tender affection",
+    "shot_type": "two-shot",
+    "lighting": "soft overcast, diffused light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 84,
+    "start_time": 304.0,
+    "end_time": 306.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0084/frame_00.jpg"
+    ],
+    "description": "A split screen shows Zooey Deschanel in a car on the left, juxtaposed with a woman in a melancholic scene on the right, perhaps hinting at her feelings or future.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "reflective contrast",
+    "shot_type": "close-up",
+    "lighting": "soft daylight for Zooey Deschanel, artificial for other",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 85,
+    "start_time": 309.0,
+    "end_time": 311.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0085/frame_00.jpg"
+    ],
+    "description": "Frames are split showing an altercation and a man at his desk, with the word \"Tragedy\" over the image.",
+    "characters_present": [],
+    "emotion": "chaos, distress, confusion",
+    "shot_type": "medium",
+    "lighting": "mixed, hard",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 86,
+    "start_time": 312.72,
+    "end_time": 317.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0086/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stands forlornly in a cluttered kitchen, facing away from the camera, perhaps contemplating his next move.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy, loneliness, defeat",
+    "shot_type": "medium",
+    "lighting": "flat, natural, slightly diffused",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 87,
+    "start_time": 317.28,
+    "end_time": 319.52,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0087/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel's character, Summer, looks off-camera, her expression a complex mixture of concern and introspection.",
+    "characters_present": [],
+    "emotion": "contemplative, concerned, unresolved",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused, natural",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 88,
+    "start_time": 319.52,
+    "end_time": 321.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0088/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits in a room, looking at someone off-camera with a serious, perhaps questioning, expression.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "earnest, subdued, uncertain",
+    "shot_type": "medium close-up",
+    "lighting": "warm, soft, interior light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 89,
+    "start_time": 321.28,
+    "end_time": 325.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0089/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits at a table with other people, looking down at a document, lost in thought during a meeting.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "boredom, frustration, disengagement",
+    "shot_type": "medium",
+    "lighting": "fluorescent, workplace, neutral",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 90,
+    "start_time": 325.36,
+    "end_time": 329.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0090/frame_00.jpg"
+    ],
+    "description": "Tom Hansen's little brother stares pensively at something off-screen, seated on his bed amidst posters and records.",
+    "characters_present": [],
+    "emotion": "brooding boredom",
+    "shot_type": "medium",
+    "lighting": "soft indoor light, slightly muted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.99
+  },
+  {
+    "index": 91,
+    "start_time": 333.56,
+    "end_time": 338.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0091/frame_00.jpg"
+    ],
+    "description": "A vintage-style black and white graphic shows a woman riding a bicycle, overlaid with measurements.",
+    "characters_present": [],
+    "emotion": "playful curiosity",
+    "shot_type": "medium",
+    "lighting": "bright outdoor sunshine, desaturated",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.95
+  },
+  {
+    "index": 92,
+    "start_time": 339.16,
+    "end_time": 340.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0092/frame_00.jpg"
+    ],
+    "description": "A black and white headshot shows a friendly-looking man in a suit smiling confidently.",
+    "characters_present": [],
+    "emotion": "corporate optimism",
+    "shot_type": "close-up",
+    "lighting": "even, somewhat flat lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.9
+  },
+  {
+    "index": 93,
+    "start_time": 340.72,
+    "end_time": 343.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0093/frame_00.jpg"
+    ],
+    "description": "A split screen depicts expectations of a rooftop party on the left, versus the reality of Zooey Deschanel looking unhappy and isolated on the right.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "bitter disappointment",
+    "shot_type": "two-shot",
+    "lighting": "bright outdoor light, slight overexposure",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.99
+  },
+  {
+    "index": 94,
+    "start_time": 345.28,
+    "end_time": 347.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0094/frame_00.jpg"
+    ],
+    "description": "Han Solo looks back from inside a dimly lit vehicle, a slightly mischievous grin on his face.",
+    "characters_present": [],
+    "emotion": "confident smirk",
+    "shot_type": "medium close-up",
+    "lighting": "low ambient light, shadowed",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.01
+  },
+  {
+    "index": 95,
+    "start_time": 347.08,
+    "end_time": 348.68,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0095/frame_00.jpg"
+    ],
+    "description": "People mill around a modernist concrete fountain in bright California sunshine, with office buildings reflecting the sky in the background.",
+    "characters_present": [],
+    "emotion": "bright, hopeful, nonchalant",
+    "shot_type": "wide",
+    "lighting": "bright, diffused sunlight, even",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.1
+  },
+  {
+    "index": 96,
+    "start_time": 348.68,
+    "end_time": 351.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0096/frame_00.jpg"
+    ],
+    "description": "A split-screen shows a young boy and girl in home-movie style, with superimposed credits.",
+    "characters_present": [],
+    "emotion": "childhood nostalgia, innocence",
+    "shot_type": "medium",
+    "lighting": "natural light, home video",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  },
+  {
+    "index": 97,
+    "start_time": 351.72,
+    "end_time": 356.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0097/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits at a long table with two older colleagues, looking attentive or bored in a work meeting.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "boredom, professional obligation",
+    "shot_type": "medium",
+    "lighting": "fluorescent office, flat",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 98,
+    "start_time": 358.24,
+    "end_time": 360.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0098/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel sings into a microphone on stage, with warm lighting and a mural backdrop.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "sweet, melodic, intimate",
+    "shot_type": "medium close-up",
+    "lighting": "warm, soft spotlight, stage lighting",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 99,
+    "start_time": 360.76,
+    "end_time": 362.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0099/frame_00.jpg"
+    ],
+    "description": "Close up shot of Zooey Deschanel adjusting her dress or being fitted.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimacy, nervousness, anticipation",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused, natural light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 100,
+    "start_time": 362.28,
+    "end_time": 364.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0100/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stares forlornly at an architectural drawing on a chalkboard, lost in thought.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy yearning",
+    "shot_type": "medium",
+    "lighting": "flat, diffused indoor lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 101,
+    "start_time": 366.04,
+    "end_time": 368.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0101/frame_00.jpg"
+    ],
+    "description": "A split-screen shows a sad Tom Hansen on a bus juxtaposed with Summer Finn smiling in a wedding veil.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "bitter contrast",
+    "shot_type": "medium",
+    "lighting": "natural window light, subtle",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 102,
+    "start_time": 368.16,
+    "end_time": 369.88,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0102/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel lie in bed, relaxed together near the start of their relationship.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "content intimacy",
+    "shot_type": "medium",
+    "lighting": "soft, warm daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 103,
+    "start_time": 369.88,
+    "end_time": 373.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0103/frame_00.jpg"
+    ],
+    "description": "Tom Hansen lies in bed in a dark room, alone and facing away from the camera.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "isolated sadness",
+    "shot_type": "medium",
+    "lighting": "dim, murky, bedside lamp",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 104,
+    "start_time": 373.92,
+    "end_time": 382.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0104/frame_00.jpg"
+    ],
+    "description": "In a black-and-white vignette, someone talks to a sad mime in a heavy makeup.",
+    "characters_present": [],
+    "emotion": "surreal discomfort",
+    "shot_type": "medium",
+    "lighting": "soft, even, diffused lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 105,
+    "start_time": 382.36,
+    "end_time": 384.48,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0105/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits alone in a dark movie theater, lost in thought and surrounded by empty seats.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "isolated, melancholic, contemplative",
+    "shot_type": "medium",
+    "lighting": "dim, moody, minimal illumination",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 106,
+    "start_time": 385.24,
+    "end_time": 393.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0106/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel lay in bed, looking at each other but seemingly disconnected, hinting at an unspoken distance.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "comfortable distance, unspoken tension",
+    "shot_type": "medium",
+    "lighting": "soft, diffused, warm tones",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 107,
+    "start_time": 393.44,
+    "end_time": 397.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0107/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits alone on a park bench, formally dressed but with a defeated expression, emphasizing his isolation and disappointment.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "despair, longing, pensive sadness",
+    "shot_type": "medium",
+    "lighting": "natural daylight, overcast, muted colors",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 108,
+    "start_time": 397.4,
+    "end_time": 400.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0108/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel and Tom Hansen sit side-by-side on a bench, sharing a fleeting moment, her distant gaze contrasting with his hopeful one.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "unrequited affection, bittersweet connection",
+    "shot_type": "medium close-up",
+    "lighting": "soft, natural light, slight contrast",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 109,
+    "start_time": 400.8,
+    "end_time": 409.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0109/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, dressed in a suit, walks through an ornate building, conveying a sense of purpose and anticipation.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful anticipation, nervous excitement",
+    "shot_type": "medium",
+    "lighting": "warm, inviting, ambient light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 110,
+    "start_time": 409.24,
+    "end_time": 429.68,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0110/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel looks pensively out of frame, with a soft ribbon in her hair, in a vintage filtered flashback.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "melancholy, wistful, nostalgic",
+    "shot_type": "close-up",
+    "lighting": "soft diffused daylight, muted tones",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 111,
+    "start_time": 429.68,
+    "end_time": 434.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0111/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel gazes tenderly at Tom Hansen as he appears deep in thought at the office.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "gentle affection, quiet intimacy",
+    "shot_type": "two-shot",
+    "lighting": "soft ambient office light, neutral",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 112,
+    "start_time": 438.12,
+    "end_time": 441.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0112/frame_00.jpg"
+    ],
+    "description": "Tom Hansen appears distracted at the office, talking to a coworker from behind a cubicle separator.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "preoccupied, thoughtful, concerned",
+    "shot_type": "over-the-shoulder",
+    "lighting": "neutral office lighting, slightly cool",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 113,
+    "start_time": 441.36,
+    "end_time": 443.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0113/frame_00.jpg"
+    ],
+    "description": "A coworker speaks earnestly to Tom Hansen at the office, from behind a cubicle separator.",
+    "characters_present": [],
+    "emotion": "concerned, direct, conversational",
+    "shot_type": "over-the-shoulder",
+    "lighting": "neutral office lighting, flat",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 114,
+    "start_time": 445.92,
+    "end_time": 451.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0114/frame_00.jpg"
+    ],
+    "description": "Tom Hansen is seen in partial over-the-shoulder shot at work looking worried and pensive.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "worried, pensive, anxious",
+    "shot_type": "over-the-shoulder",
+    "lighting": "neutral office lighting, slightly cool",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 115,
+    "start_time": 451.04,
+    "end_time": 453.52,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0115/frame_00.jpg"
+    ],
+    "description": "Tom Hansen watches as a woman in a blue shirt walks through the office while he remains seated at his desk, presumably thinking about her.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy longing",
+    "shot_type": "medium",
+    "lighting": "soft window light, diffused",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 116,
+    "start_time": 453.52,
+    "end_time": 459.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0116/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel stand in an elevator, Tom looking serious as Zooey Deschanel speaks.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate conversation",
+    "shot_type": "two-shot",
+    "lighting": "artificial light, neutral tone",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 117,
+    "start_time": 459.84,
+    "end_time": 462.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0117/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits across from a friend in a coffee shop, engaged in a deep conversation, his face showing concern.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "pensive desperation",
+    "shot_type": "medium close-up",
+    "lighting": "warm ambient light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 118,
+    "start_time": 467.0,
+    "end_time": 469.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0118/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel walks through the office as Tom Hansen watches her, the words 'Passive Protagonist' overlaid on the scene.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "obsessive yearning",
+    "shot_type": "medium",
+    "lighting": "soft window light, diffused",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 119,
+    "start_time": 470.6,
+    "end_time": 473.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0119/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel looks intensely at someone off-screen, a subtle smile playing on her lips amidst dark, intimate lighting.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "enigmatic affection",
+    "shot_type": "close-up",
+    "lighting": "dim, warm, romantic",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 120,
+    "start_time": 473.16,
+    "end_time": 475.88,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0120/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, Zooey Deschanel (as Summer) and a friend sit in a dimly lit booth, bottles on the table, as they seem to be in conversation.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate friendly discussion",
+    "shot_type": "medium",
+    "lighting": "dim, warm, amber glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 121,
+    "start_time": 475.88,
+    "end_time": 483.28,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0121/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel (as Summer) sit across from each other in a cozy booth, sharing a drink, with text overlaid on the scene obscuring the friend in the middle.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate, vulnerable, curious",
+    "shot_type": "medium",
+    "lighting": "warm, low-key, inviting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 122,
+    "start_time": 483.28,
+    "end_time": 484.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0122/frame_00.jpg"
+    ],
+    "description": "Tom Hansen glances softly at Zooey Deschanel (as Summer) in the low light as she speaks to the side of the frame.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "hopeful, affectionate, tender",
+    "shot_type": "close-up",
+    "lighting": "warm, diffused, flattering",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 123,
+    "start_time": 484.96,
+    "end_time": 488.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0123/frame_00.jpg"
+    ],
+    "description": "A friend speaks intently next to Zooey Deschanel in the warm bar light.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "serious, engaged, concerned",
+    "shot_type": "medium close-up",
+    "lighting": "warm, amber, slightly soft",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 124,
+    "start_time": 488.0,
+    "end_time": 493.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0124/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel (as Summer) looks earnestly conveys a sentiment, as Tom Hansen is barely seen in the other profile.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "genuine, earnest, attentive",
+    "shot_type": "close-up",
+    "lighting": "warm, flattering, subtly contrasted",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 125,
+    "start_time": 494.4,
+    "end_time": 500.52,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0125/frame_00.jpg"
+    ],
+    "description": "In a split-screen, Tom Hansen looks distraught holding a plastic bag to his face while Zooey Deschanel observes him with a barely perceptible smirk.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "awkward humor, strained interaction",
+    "shot_type": "medium close-up",
+    "lighting": "warm ambient, soft diffusion",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 126,
+    "start_time": 500.52,
+    "end_time": 504.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0126/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, wearing a vest and tie, looks across the table with a hopeful, slightly awkward smile at someone out of frame.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful anticipation, vulnerability",
+    "shot_type": "over-the-shoulder",
+    "lighting": "warm ambient, soft focus",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 127,
+    "start_time": 504.08,
+    "end_time": 506.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0127/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, with a slight frown, listens intently to Tom Hansen, looking slightly unconvinced or uncomfortable.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "skepticism, suppressed emotion",
+    "shot_type": "over-the-shoulder",
+    "lighting": "warm ambient, soft focus",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 128,
+    "start_time": 506.72,
+    "end_time": 511.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0128/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, wearing a vest and tie, looks across the table with a hopeful, slightly awkward smile at someone out of frame.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful anticipation, vulnerability",
+    "shot_type": "over-the-shoulder",
+    "lighting": "warm ambient, soft focus",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 129,
+    "start_time": 511.24,
+    "end_time": 513.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0129/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel watches Tom Hansen with a small, thoughtful smile, her eyes holding a hint of something unreadable.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "wary acceptance, subtle amusement",
+    "shot_type": "close-up",
+    "lighting": "warm ambient, soft focus",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 130,
+    "start_time": 513.4,
+    "end_time": 519.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0130/frame_00.jpg"
+    ],
+    "description": "A split screen shows two versions of Tom Hansen and Zooey Deschanel in intimate conversation, each side with different lighting/background.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "contrasting perspectives",
+    "shot_type": "two-shot",
+    "lighting": "warm indoor light / bright outdoor day",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 131,
+    "start_time": 519.84,
+    "end_time": 523.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0131/frame_00.jpg"
+    ],
+    "description": "Tom Hansen cuddles with what appears to be Summer in a dimly lit bedroom, her leg visible beneath the blanket.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "intimate connection",
+    "shot_type": "medium",
+    "lighting": "warm ambient, soft glow",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 132,
+    "start_time": 524.48,
+    "end_time": 526.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0132/frame_00.jpg"
+    ],
+    "description": "Tom Hansen speaks with Summer at a formal event, Summer looking elegantly dressed and slightly amused.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "social encounter",
+    "shot_type": "medium",
+    "lighting": "warm, ambient lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 133,
+    "start_time": 526.84,
+    "end_time": 530.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0133/frame_00.jpg"
+    ],
+    "description": "Summer rests her head on Tom Hansen's shoulder on a bus or train, both appearing relaxed under the dim light.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "peaceful intimacy",
+    "shot_type": "medium close-up",
+    "lighting": "dim, subdued indoor",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 134,
+    "start_time": 530.0,
+    "end_time": 531.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0134/frame_00.jpg"
+    ],
+    "description": "Summer converses with someone unseen across a table, looking slightly surprised or intrigued.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "engaged curiosity",
+    "shot_type": "close-up",
+    "lighting": "warm, restaurant lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 135,
+    "start_time": 531.96,
+    "end_time": 533.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0135/frame_00.jpg"
+    ],
+    "description": "Summer is sitting on a park bench and is looking to her left but avoiding Tom's pleading gaze to her right, with added caption on screen.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "unsettled tension",
+    "shot_type": "medium close-up",
+    "lighting": "soft sunlight overcast",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 136,
+    "start_time": 533.92,
+    "end_time": 537.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0136/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, playing Summer, smiles warmly at someone across the table in a dimly lit setting with romantic implications.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "close-up",
+    "lighting": "warm, dim, ambient",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 137,
+    "start_time": 537.4,
+    "end_time": 539.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0137/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks hopefully at somebody across the table, perhaps Summer, in a warm but dim date-like environment.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "quiet optimism",
+    "shot_type": "close-up",
+    "lighting": "warm subtle romantic",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 138,
+    "start_time": 539.92,
+    "end_time": 543.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0138/frame_00.jpg"
+    ],
+    "description": "Summer seems unsure, evading Tom Hansen's eyes as they sit outside on a park bench and he speaks intently to her.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "unsettled avoidance",
+    "shot_type": "medium close-up",
+    "lighting": "soft overcast daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 139,
+    "start_time": 543.24,
+    "end_time": 546.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0139/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks sadly down, nearly head to head and touching with Summer in an intimate moment of melancholy.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "tender sadness",
+    "shot_type": "close-up",
+    "lighting": "muted indoor lighting",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 140,
+    "start_time": 546.6,
+    "end_time": 549.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0140/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel as Summer looks on attentively, listening to an unseen person in a warmly lit indoor setting.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate curiosity",
+    "shot_type": "close-up",
+    "lighting": "warm tungsten, soft",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 141,
+    "start_time": 549.0,
+    "end_time": 551.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0141/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks down with a subtle smile, possibly reading or appreciating something during an indoor encounter.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "gentle amusement",
+    "shot_type": "close-up",
+    "lighting": "warm, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 142,
+    "start_time": 551.24,
+    "end_time": 556.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0142/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, as Summer, and Tom Hansen sit outside immersed in conversation, with Summer turning her head to look upwards.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "earnest connection",
+    "shot_type": "two-shot",
+    "lighting": "soft daylight, overcast",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 143,
+    "start_time": 559.76,
+    "end_time": 563.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0143/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel as Summer and Tom Hansen sit in close proximity, engaged in a deep conversation punctuated by focused expressions.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "absorbed intensity",
+    "shot_type": "two-shot",
+    "lighting": "muted daylight, even",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 144,
+    "start_time": 565.12,
+    "end_time": 567.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0144/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, playing Summer, smiles tenderly towards Tom Hansen as they sit together outdoors, perhaps sharing a private joke.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "sweet affection",
+    "shot_type": "two-shot",
+    "lighting": "soft, diffused daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 145,
+    "start_time": 567.56,
+    "end_time": 573.48,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0145/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel are split screen, sitting at seperate locations, each lost in their own thoughts and experiences after their breakup.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "melancholy isolation",
+    "shot_type": "medium",
+    "lighting": "warm indoor lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 146,
+    "start_time": 577.04,
+    "end_time": 579.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0146/frame_00.jpg"
+    ],
+    "description": "A man with curly hair leans in, concerned, speaking to someone off-screen at a work desk.",
+    "characters_present": [],
+    "emotion": "serious concern",
+    "shot_type": "medium close-up",
+    "lighting": "natural light, warm",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.95
+  },
+  {
+    "index": 147,
+    "start_time": 579.12,
+    "end_time": 580.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0147/frame_00.jpg"
+    ],
+    "description": "Tom Hansen is forlorn, looking directly at the camera with a mix of sadness and resignation in his eyes.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "quiet heartbreak",
+    "shot_type": "medium",
+    "lighting": "soft diffused indoor light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 148,
+    "start_time": 583.68,
+    "end_time": 587.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0148/frame_00.jpg"
+    ],
+    "description": "Tom Hansen joyfully dances in a crowded public space, caught up in a surreal and optimistic moment of imagined happiness.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "euphoric fantasy",
+    "shot_type": "medium wide",
+    "lighting": "bright daylight",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 149,
+    "start_time": 589.72,
+    "end_time": 593.52,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0149/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel playfully stands in a model kitchen with Tom Hansen as they act out a domestic fantasy.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "whimsical domesticity",
+    "shot_type": "medium",
+    "lighting": "even, bright showroom lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 150,
+    "start_time": 593.52,
+    "end_time": 595.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0150/frame_00.jpg"
+    ],
+    "description": "Framed through an urban structure, Zooey Deschanel looks up with a neutral expression as a bus rushes past.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "contemplative, urban calm",
+    "shot_type": "medium",
+    "lighting": "natural light, slightly overcast",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 151,
+    "start_time": 595.12,
+    "end_time": 597.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0151/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel and Tom Hansen sit together at a crowded bar, each sipping a drink and seemingly talking.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "casual intimacy, social buzz",
+    "shot_type": "medium",
+    "lighting": "dim bar lights, warm glows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 152,
+    "start_time": 599.32,
+    "end_time": 600.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0152/frame_00.jpg"
+    ],
+    "description": "Tom Hansen holds up a record with a playful expression, facing Zooey Deschanel in a record store, who is looking at the album",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "playful banter, shared interest",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffuse store lighting",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 153,
+    "start_time": 600.96,
+    "end_time": 602.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0153/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel sits opposite Tom Hansen at a diner, her expression serious as she seems to be listening.",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "serious conversation, concerned listening",
+    "shot_type": "two-shot",
+    "lighting": "flat diner lighting, neutral tones",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 154,
+    "start_time": 602.76,
+    "end_time": 604.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0154/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel stands at a doorway, looking downward with a serious expression through the shadows as seen over Tom Hansen's shoulder..",
+    "characters_present": [
+      "Zooey Deschanel",
+      "Tom Hansen"
+    ],
+    "emotion": "tense parting, quiet sorrow",
+    "shot_type": "over-the-shoulder",
+    "lighting": "dim, moody, high contrast",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 155,
+    "start_time": 604.44,
+    "end_time": 606.52,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0155/frame_00.jpg"
+    ],
+    "description": "A man and woman stand close, their hands almost touching between them in an understated moment of possible connection.",
+    "characters_present": [],
+    "emotion": "subtle anticipation",
+    "shot_type": "medium",
+    "lighting": "soft indoor ambient light",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 156,
+    "start_time": 607.68,
+    "end_time": 609.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0156/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel in character smiles towards a person off-screen at what appears to be a wedding.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "genuine happiness",
+    "shot_type": "medium",
+    "lighting": "daylight, soft and flattering",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 157,
+    "start_time": 612.0,
+    "end_time": 614.48,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0157/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits in subdued lighting, engaged in conversation with a woman off-camera, looking thoughtful and serious.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "earnest conversation",
+    "shot_type": "medium close-up",
+    "lighting": "dim, yellowish indoor lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 158,
+    "start_time": 614.48,
+    "end_time": 616.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0158/frame_00.jpg"
+    ],
+    "description": "Tom Hansen smiles innocently outside a doorway, dressed in a schoolboy outfit as if he's at a meeting.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium",
+    "lighting": "soft, slightly overcast daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 159,
+    "start_time": 617.6,
+    "end_time": 619.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0159/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel smiles while looking at the camera upside down in bed, her gaze captivating.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "playful intimacy",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused indoor light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 160,
+    "start_time": 620.76,
+    "end_time": 622.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0160/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, looking slightly disheveled in a suit, gazes off to the side with a concerned expression against a green park background.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "contemplative melancholy",
+    "shot_type": "medium close-up",
+    "lighting": "soft natural light, diffused",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 161,
+    "start_time": 626.08,
+    "end_time": 628.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0161/frame_00.jpg"
+    ],
+    "description": "A man in a white suit looks directly into the camera with an intense but controlled expression.",
+    "characters_present": [],
+    "emotion": "brooding intensity",
+    "shot_type": "close-up",
+    "lighting": "bright window light, soft shadows",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 162,
+    "start_time": 629.48,
+    "end_time": 631.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0162/frame_00.jpg"
+    ],
+    "description": "A woman adjusts a bride's veil, partially obscuring the bride's face.",
+    "characters_present": [],
+    "emotion": "delicate anticipation",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused outdoor light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 163,
+    "start_time": 633.56,
+    "end_time": 635.4,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0163/frame_00.jpg"
+    ],
+    "description": "A hand draws a line on a wall using an object.",
+    "characters_present": [],
+    "emotion": "deliberate precision",
+    "shot_type": "insert/detail shot",
+    "lighting": "subtle, indirect lighting",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 164,
+    "start_time": 636.6,
+    "end_time": 642.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0164/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits alone, looking unhappy despite the party happening around him that is shown in a split screen.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "isolated disappointment",
+    "shot_type": "medium",
+    "lighting": "bright, natural light, rooftop",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 165,
+    "start_time": 642.56,
+    "end_time": 644.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0165/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stares intently at the camera with a subtly melancholic expression, framed in a vintage-style monochrome.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "wistful contemplation",
+    "shot_type": "close-up",
+    "lighting": "diffused daylight, soft",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 166,
+    "start_time": 644.72,
+    "end_time": 647.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0166/frame_00.jpg"
+    ],
+    "description": "In a split screen, a staircase represents 'Expectations' while Tom Hansen walks somberly down a hallway labeled 'Reality'.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "bleak disillusionment",
+    "shot_type": "medium",
+    "lighting": "soft ambient, natural",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 167,
+    "start_time": 647.08,
+    "end_time": 654.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0167/frame_00.jpg"
+    ],
+    "description": "In a split screen, 'Expectations' show a woman embracing someone affectionately, while 'Reality' depicts Summer smiles as Tom Hansen stands next to her.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "hopeful expectation",
+    "shot_type": "medium",
+    "lighting": "soft, natural",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 168,
+    "start_time": 654.08,
+    "end_time": 660.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0168/frame_00.jpg"
+    ],
+    "description": "In a split screen contrast of 'Expectations' with a close up of Zooey Deschanel and 'Reality', Tom Hansen is somber going upstairs.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "unspoken tension",
+    "shot_type": "close-up",
+    "lighting": "warm, soft",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 169,
+    "start_time": 660.12,
+    "end_time": 663.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0169/frame_00.jpg"
+    ],
+    "description": "In a split screen, 'Expectations' show a cozy embrace on the left, counterpoised with 'Reality' where Tom Hansen is with Summer.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "idealized affection",
+    "shot_type": "medium",
+    "lighting": "soft, natural",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 170,
+    "start_time": 664.28,
+    "end_time": 666.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0170/frame_00.jpg"
+    ],
+    "description": "A split screen contrasts 'expectations,' where the party seems lively and 'reality,' rendered in black and white, shows a more subdued gathering.",
+    "characters_present": [],
+    "emotion": "disillusionment, contrasting ideals",
+    "shot_type": "medium",
+    "lighting": "warm interior, flat grey",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 171,
+    "start_time": 666.8,
+    "end_time": 669.2,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0171/frame_00.jpg"
+    ],
+    "description": "A split screen contrasts 'expectations,' where the party seems lively and 'reality,' rendered in black and white, shows a more subdued gathering.",
+    "characters_present": [],
+    "emotion": "disillusionment, contrasting ideals",
+    "shot_type": "medium",
+    "lighting": "warm interior, flat grey",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 172,
+    "start_time": 669.2,
+    "end_time": 673.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0172/frame_00.jpg"
+    ],
+    "description": "A split screen contrasts 'expectations,' which show a vibrant gathering on a rooftop with the city in the background, against the 'reality' of Tom Hansen sitting alone, looking dejected, rendered in black and white.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "lonely disappointment",
+    "shot_type": "medium",
+    "lighting": "soft sunlight, flat grey",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 173,
+    "start_time": 673.6,
+    "end_time": 678.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0173/frame_00.jpg"
+    ],
+    "description": "A split screen contrasts 'expectations,' which show a vibrant gathering on a rooftop with the city in the background, against the 'reality' where Zooey Deschanel stands with a disaffected expression, as the scene comes into full color.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "emotional distance",
+    "shot_type": "medium",
+    "lighting": "soft sunlight, flat grey",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 174,
+    "start_time": 679.76,
+    "end_time": 685.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0174/frame_00.jpg"
+    ],
+    "description": "The scene focuses on the 'reality' side of a split-screen, revealing a rooftop party with revelers under hanging lights while Tom Hansen observes from the edge.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "detached observation",
+    "shot_type": "medium",
+    "lighting": "soft ambient, hanging lights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 175,
+    "start_time": 685.32,
+    "end_time": 689.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0175/frame_00.jpg"
+    ],
+    "description": "Summer is speaking earnestly across a table at Tom Hansen, inside a warm, dimly lit restaurant.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate conversation",
+    "shot_type": "medium close-up",
+    "lighting": "warm ambient, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 176,
+    "start_time": 689.12,
+    "end_time": 691.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0176/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks dreamily at Summer as they sit together, the restaurant softly lit.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "hopeful affection",
+    "shot_type": "medium close-up",
+    "lighting": "warm ambient, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 177,
+    "start_time": 693.36,
+    "end_time": 695.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0177/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, looking away from something in the distance, stands at a wedding reception or event, the background blurred.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "unsettled",
+    "shot_type": "medium close-up",
+    "lighting": "ambient, string lights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 178,
+    "start_time": 695.32,
+    "end_time": 698.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0178/frame_00.jpg"
+    ],
+    "description": "With string lights softly glowing in the background, two young women demonstrate their engagement rings.",
+    "characters_present": [],
+    "emotion": "joyful anticipation",
+    "shot_type": "insert/detail shot",
+    "lighting": "warm ambient, string lights",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.5
+  },
+  {
+    "index": 179,
+    "start_time": 698.12,
+    "end_time": 700.92,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0179/frame_00.jpg"
+    ],
+    "description": "Tom Hansen overhears that someone just got engaged, with superimposed text from his POV reinforcing his feelings about the event.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "bitter realization",
+    "shot_type": "medium close-up",
+    "lighting": "ambient, string lights",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 180,
+    "start_time": 700.92,
+    "end_time": 703.64,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0180/frame_00.jpg"
+    ],
+    "description": "Tom Hansen runs up some stairs in a hallway, framed from a low angle, as voiceover text appears onscreen.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "frenetic desperation",
+    "shot_type": "wide",
+    "lighting": "warm, diffused overhead",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.95
+  },
+  {
+    "index": 181,
+    "start_time": 703.64,
+    "end_time": 707.0,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0181/frame_00.jpg"
+    ],
+    "description": "Tom Hansen walks along a dark street in a suit, framed in medium shot, against a dark backdrop as voiceover text appears onscreen.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "resignation",
+    "shot_type": "medium",
+    "lighting": "low key, artificial",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.95
+  },
+  {
+    "index": 182,
+    "start_time": 707.0,
+    "end_time": 717.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0182/frame_00.jpg"
+    ],
+    "description": "Tom Hansen walks away from the camera down a street that has been transformed into a pencil sketch with gray skies, and the voiceover text overlayed.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy, reflective",
+    "shot_type": "wide",
+    "lighting": "flat overcast, gray",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.95
+  },
+  {
+    "index": 183,
+    "start_time": 717.24,
+    "end_time": 722.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0183/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits talking to an unnamed younger woman on an outside park bench.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful, tentative",
+    "shot_type": "medium",
+    "lighting": "soft daylight, natural",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 184,
+    "start_time": 722.04,
+    "end_time": 725.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0184/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits outside on a sunny day, staring pensively into the distance.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "thoughtful, present",
+    "shot_type": "close-up",
+    "lighting": "filtered sunlight, natural",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 185,
+    "start_time": 725.8,
+    "end_time": 727.56,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0185/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel stand outside near a rack of clothes, smiling at each other ambiguously.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "subtle affection",
+    "shot_type": "medium",
+    "lighting": "natural overcast, soft light",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 186,
+    "start_time": 727.56,
+    "end_time": 730.36,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0186/frame_00.jpg"
+    ],
+    "description": "A woman wearing a white veil laughs along with a man to her right in an enclosed vehicle during a rainy day.",
+    "characters_present": [],
+    "emotion": "uncontrolled hysteria",
+    "shot_type": "medium",
+    "lighting": "diffused daylight, watery",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 187,
+    "start_time": 730.36,
+    "end_time": 733.08,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0187/frame_00.jpg"
+    ],
+    "description": "Tom Hansen and Zooey Deschanel sit in a darkened theatre, appearing emotionally affected by the film playing.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "melancholy contemplation",
+    "shot_type": "medium",
+    "lighting": "dim ambient, cool tones",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 188,
+    "start_time": 733.08,
+    "end_time": 735.12,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0188/frame_00.jpg"
+    ],
+    "description": "A man smiles at the foreground as a man with an evil grin is behind him.",
+    "characters_present": [],
+    "emotion": "smug calculation",
+    "shot_type": "close-up",
+    "lighting": "bright even, slightly sterile",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 189,
+    "start_time": 737.8,
+    "end_time": 740.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0189/frame_00.jpg"
+    ],
+    "description": "A woman and a man sit in a red convertible car, looking slightly downward and upset.",
+    "characters_present": [],
+    "emotion": "internalized sadness",
+    "shot_type": "medium",
+    "lighting": "dim stage light, cool palette",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 190,
+    "start_time": 741.16,
+    "end_time": 743.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0190/frame_00.jpg"
+    ],
+    "description": "A chaotic fight erupts in a crowd, bodies flailing and faces contorted in anger and shock as someone carries a gold frame during the havoc.",
+    "characters_present": [],
+    "emotion": "frenetic chaos",
+    "shot_type": "medium",
+    "lighting": "bright and even, indoor",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 191,
+    "start_time": 744.32,
+    "end_time": 745.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0191/frame_00.jpg"
+    ],
+    "description": "A jubilant newlywed couple, dressed in a disheveled wedding dress and black shirt, run hand-in-hand away from the wedding location, joyfully escaping.",
+    "characters_present": [],
+    "emotion": "elated escape",
+    "shot_type": "wide",
+    "lighting": "overcast, natural light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 192,
+    "start_time": 745.84,
+    "end_time": 755.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0192/frame_00.jpg"
+    ],
+    "description": "A bride with a veil and a man sit side by side in a vehicle, both looking in different directions with expressions of quiet contemplation.",
+    "characters_present": [],
+    "emotion": "contemplative ambivalence",
+    "shot_type": "two-shot",
+    "lighting": "natural, diffused lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 193,
+    "start_time": 755.8,
+    "end_time": 759.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0193/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks off to the side with a serious expression as Zooey Deschanel smiles softly beside him in the darkness of an indoor location.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "intimate disconnection",
+    "shot_type": "medium close-up",
+    "lighting": "dim, ambient light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 194,
+    "start_time": 759.6,
+    "end_time": 766.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0194/frame_00.jpg"
+    ],
+    "description": "A color image of a bride with a veil contrasts with a black and white image of a man beside her, both with introspective expressions as they ride in a vehicle.",
+    "characters_present": [],
+    "emotion": "melancholic division",
+    "shot_type": "two-shot",
+    "lighting": "even, natural light",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 195,
+    "start_time": 767.64,
+    "end_time": 771.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0195/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stands outside a building entrance, waiting for someone with anticipation, as a woman walks past.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium",
+    "lighting": "warm, natural light, neutral tones",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 196,
+    "start_time": 772.64,
+    "end_time": 774.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0196/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits on a bus looking melancholy, while a split screen shows another woman in a different context.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "melancholy reflection",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 197,
+    "start_time": 774.72,
+    "end_time": 777.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0197/frame_00.jpg"
+    ],
+    "description": "Tom Hansen looks at an unseen woman with a hopeful smile as they sit outdoors.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful affection",
+    "shot_type": "medium close-up",
+    "lighting": "soft, diffused daylight, slightly cool",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 198,
+    "start_time": 777.8,
+    "end_time": 780.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0198/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, wearing headphones, reads while another coworker sits on the couch next to him in a cozy office setting.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "relaxed concentration",
+    "shot_type": "medium",
+    "lighting": "warm, soft interior light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 199,
+    "start_time": 781.8,
+    "end_time": 784.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0199/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, in a suit, looks off-screen with a thoughtful expression in a park setting.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "contemplative stillness",
+    "shot_type": "medium close-up",
+    "lighting": "soft, overcast daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 200,
+    "start_time": 784.24,
+    "end_time": 786.24,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0200/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel, wearing a trench coat, stands happily on a grassy incline overlooking traffic.",
+    "characters_present": [
+      "Zooey Deschanel"
+    ],
+    "emotion": "genuine happiness",
+    "shot_type": "medium",
+    "lighting": "natural daylight, slightly overcast",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 201,
+    "start_time": 786.24,
+    "end_time": 788.64,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0201/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, looking forlorn, rides on a crowded bus while holding onto a pole.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "brooding sadness",
+    "shot_type": "close-up",
+    "lighting": "soft diffused, interior lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 202,
+    "start_time": 788.64,
+    "end_time": 790.48,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0202/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stands on public transit, looking hopeful as he has his headphones slung around his shoulders, briefcase in-hand.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "quiet anticipation",
+    "shot_type": "medium",
+    "lighting": "bright fluorescent, even",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 203,
+    "start_time": 790.48,
+    "end_time": 792.64,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0203/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, looking amused and charming, sits in a room with art sketches on the walls behind him.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "smug confidence",
+    "shot_type": "medium close-up",
+    "lighting": "soft window light, warm shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 204,
+    "start_time": 792.64,
+    "end_time": 795.32,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0204/frame_00.jpg"
+    ],
+    "description": "Tom Hansen sits on a bench, smiling at a woman that he is talking with as the sun glistens behind them.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "sweet anticipation",
+    "shot_type": "two-shot",
+    "lighting": "soft, slightly backlit",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 205,
+    "start_time": 795.32,
+    "end_time": 798.64,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0205/frame_00.jpg"
+    ],
+    "description": "Zooey Deschanel and Tom Hansen sit together outside, listening intently to each other during a serious conversation.",
+    "characters_present": [
+      "Tom Hansen",
+      "Zooey Deschanel"
+    ],
+    "emotion": "earnest conversation",
+    "shot_type": "two-shot",
+    "lighting": "soft daylight, muted colors",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 206,
+    "start_time": 798.64,
+    "end_time": 800.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0206/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, wearing a suit, sits and looks to his left, listening to another individual while indoors.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "reflective listening",
+    "shot_type": "medium close-up",
+    "lighting": "slightly diffused sunlight, warm tones",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 207,
+    "start_time": 800.96,
+    "end_time": 804.16,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0207/frame_00.jpg"
+    ],
+    "description": "A woman with long brown hair looks up and to the left with a slight smirk, sitting indoors by an ornate wooden structure.",
+    "characters_present": [],
+    "emotion": "sly amusement",
+    "shot_type": "medium close-up",
+    "lighting": "ambient interior, warm and soft",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 208,
+    "start_time": 804.16,
+    "end_time": 807.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0208/frame_00.jpg"
+    ],
+    "description": "Leonardo DiCaprio as Jay Gatsby looks up with an outstretched hand in a dramatic pose.",
+    "characters_present": [],
+    "emotion": "melancholy hope",
+    "shot_type": "medium close-up",
+    "lighting": "artificial cool-toned lighting",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 209,
+    "start_time": 808.96,
+    "end_time": 811.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0209/frame_00.jpg"
+    ],
+    "description": "An extreme wide shot shows a distant mansion lit up at night across a body of water, reflecting light.",
+    "characters_present": [],
+    "emotion": "isolated grandeur",
+    "shot_type": "extreme wide",
+    "lighting": "dark night, distant artificial lights",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 210,
+    "start_time": 811.96,
+    "end_time": 817.84,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0210/frame_00.jpg"
+    ],
+    "description": "Tom Hansen stands forlornly at the bottom of an escalator, watching people pass by on a cloudy day.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "isolated disappointment",
+    "shot_type": "medium",
+    "lighting": "flat overcast, neutral tones",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 211,
+    "start_time": 817.84,
+    "end_time": 821.76,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0211/frame_00.jpg"
+    ],
+    "description": "Tom Hansen lies dejectedly on a couch, listlessly tossing a tennis ball in the air.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "defeated apathy",
+    "shot_type": "medium",
+    "lighting": "dim interior, low contrast",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 212,
+    "start_time": 821.76,
+    "end_time": 824.96,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0212/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, holding a champagne flute, wanders through the office cubicles with a dazed expression.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "uneasy detachment",
+    "shot_type": "medium",
+    "lighting": "fluorescent office, slightly cool",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 213,
+    "start_time": 824.96,
+    "end_time": 826.6,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0213/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, seated at his desk, turns to look at a woman walking behind him in the office.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "fleeting curiosity",
+    "shot_type": "medium",
+    "lighting": "soft ambient, muted colors",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 214,
+    "start_time": 828.8,
+    "end_time": 830.68,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0214/frame_00.jpg"
+    ],
+    "description": "A woman smiles and looks off-screen during a conversation inside a building with marble pillars.",
+    "characters_present": [],
+    "emotion": "hopeful expectancy",
+    "shot_type": "close-up",
+    "lighting": "natural window light, soft",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 215,
+    "start_time": 830.68,
+    "end_time": 834.72,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0215/frame_00.jpg"
+    ],
+    "description": "Tom Hansen is shown in a split-screen depicting him in three different phases of his life, all in office settings, reflecting on his journey.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "introspective contemplation",
+    "shot_type": "medium",
+    "lighting": "soft, diffused, neutral",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 216,
+    "start_time": 834.72,
+    "end_time": 838.44,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0216/frame_00.jpg"
+    ],
+    "description": "A stylized cityscape with a single tree in the foreground fades in and out, evoking a sense of transient beauty and place.",
+    "characters_present": [],
+    "emotion": "melancholic whimsy",
+    "shot_type": "wide",
+    "lighting": "flat, muted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 217,
+    "start_time": 838.44,
+    "end_time": 840.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0217/frame_00.jpg"
+    ],
+    "description": "The number '440' appears on a textured, grey-toned background, likely indicating a scene number or day within Tom Hansen's narrative.",
+    "characters_present": [],
+    "emotion": "clinical distance",
+    "shot_type": "medium",
+    "lighting": "flat, even",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 218,
+    "start_time": 840.04,
+    "end_time": 842.04,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0218/frame_00.jpg"
+    ],
+    "description": "Tom Hansen, dressed in a suit, looks slightly off-camera with a hint of a smile, suggesting a moment of optimism or realization.",
+    "characters_present": [
+      "Tom Hansen"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "close-up",
+    "lighting": "warm, diffused indoor light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 219,
+    "start_time": 842.04,
+    "end_time": 878.8,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/500_days_of_summer_chances/frames/scene_0219/frame_00.jpg"
+    ],
+    "description": "Text reading 'Wow Them In the End' by Andre appears on a black background.",
+    "characters_present": [],
+    "emotion": "bold ambition",
+    "shot_type": "medium",
+    "lighting": "none",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.9
+  }
+]

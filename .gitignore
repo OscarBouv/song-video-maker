@@ -1,6 +1,8 @@
 .env
 temp/
 workspaces/*
+clips/*
+songs/*
 __pycache__/
 *.pyc
 *.pyo

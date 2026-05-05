@@ -1,0 +1,3175 @@
+{
+  "d581a8feb7e6f9e76e611c8c143870ff:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A group of boys jostle in a crowded corridor, seemingly fighting or playfully pushing each other against a mirror.",
+    "characters_present": [],
+    "emotion": "chaotic energy",
+    "shot_type": "medium",
+    "lighting": "fluorescent, slightly harsh",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:37Z"
+    }
+  },
+  "0a864c0c7cfaeaf25993206f2f8c1768:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine sits stiffly for a portrait in a school gymnasium while Alana Kane stands off to the side, observing with arms crossed.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "awkward anticipation",
+    "shot_type": "wide",
+    "lighting": "bright studio light, clean white",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:37Z"
+    }
+  },
+  "4c81f0b70648e976c0f9f25cc57b6819:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A vintage hot dog stand glows under a vibrant sunset, with figures sitting at outdoor tables and bikes parked nearby.",
+    "characters_present": [],
+    "emotion": "nostalgic twilight",
+    "shot_type": "wide",
+    "lighting": "golden sunset, contrasty shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:37Z"
+    }
+  },
+  "f0ecbed4f15b6e0ec83a17c202c6af4b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine leans in close to talk to another young boy, their faces illuminated by the diner's warm, ambient light.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "intimate conversation",
+    "shot_type": "close-up",
+    "lighting": "warm interior, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:37Z"
+    }
+  },
+  "bbf7e90ac7d08f597b6ea7233d4f8c4b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A large group of children in pajamas stand on a white cyc, posed and singing with adult stage director leading them.",
+    "characters_present": [],
+    "emotion": "theatrical exuberance",
+    "shot_type": "medium",
+    "lighting": "flat studio, neutral",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:37Z"
+    }
+  },
+  "b02a626f39a93063776ece5d1de60195:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A large indistinct crowd, silhouetted against stadium lights, slowly makes its way somewhere.",
+    "characters_present": [],
+    "emotion": "enigmatic, disorienting, looming dread",
+    "shot_type": "wide",
+    "lighting": "high contrast backlit silhouette",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:43Z"
+    }
+  },
+  "267dc16f829ecbb47058d4f881f084ba:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "From a darkened doorway, Alana rapidly cleans a desk.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "frazzled, rushed, chaotic",
+    "shot_type": "medium",
+    "lighting": "flat, yellowish, interior",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:43Z"
+    }
+  },
+  "451b46f9edd6078e8001174cdb0808e8:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana searches under a cluttered bed in her bra and underwear.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "vulnerable, frantic, exposed",
+    "shot_type": "medium",
+    "lighting": "warm incandescent, cluttered",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:43Z"
+    }
+  },
+  "af0a70129e6f48bf68a6c5cad580cdbf:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana looks back nervously from the passenger seat of a convertible being driven at night.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "nervous, apprehensive, uncertain",
+    "shot_type": "medium",
+    "lighting": "dark, atmospheric, specular highlights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:43Z"
+    }
+  },
+  "3b1e1d5ec2fc3fd56f88f7ab5bff1dee:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary and Alana look at each other with subtle affection in a crowded hallway.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "quiet affection, tentative connection",
+    "shot_type": "medium close-up",
+    "lighting": "soft, warm, ambient",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:43Z"
+    }
+  },
+  "714cb888e4a56696d1f7dfd16d36a76f:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana walks down a street with a determined expression, moving towards something out of frame.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "resolute, focused",
+    "shot_type": "medium",
+    "lighting": "bright sunlight, slightly harsh shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:50Z"
+    }
+  },
+  "493237540a21b970342c009d103ab461:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary looks pensively out of the car window while driving, bathed in golden light.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "dreamy yearning",
+    "shot_type": "close-up",
+    "lighting": "warm golden hour, backlit",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:50Z"
+    }
+  },
+  "f9775ccf6235e7d8310236cbd1d9796f:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A lone figure sprints across a vast, empty agricultural field on a gloomy, overcast day.",
+    "characters_present": [],
+    "emotion": "desperate, urgent",
+    "shot_type": "wide",
+    "lighting": "diffused overcast, grey",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:50Z"
+    }
+  },
+  "d3ad4f397593b5562d2d8726077e8b6b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man speeds across a flat desert plain on a vintage motorcycle, kicking up dust.",
+    "characters_present": [],
+    "emotion": "carefree, adventurous",
+    "shot_type": "wide",
+    "lighting": "bright sunlight, long shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:50Z"
+    }
+  },
+  "1084c7d78e2d1e13f1e058a0b2b061fa:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A figure runs toward bright headlights in a dark field, illuminated by streetlights.",
+    "characters_present": [],
+    "emotion": "uncertain, desperate",
+    "shot_type": "wide",
+    "lighting": "high contrast, artificial light sources",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:50Z"
+    }
+  },
+  "ccf2381d251c5d8dd69feb1b3e2b6956:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a suit, face contorted in a wild scream, leans forward in apparent terror as he speeds along.",
+    "characters_present": [],
+    "emotion": "frenzied fear",
+    "shot_type": "close-up",
+    "lighting": "artificial, high-key, nocturnal",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:56Z"
+    }
+  },
+  "2388347ff325ff7792053f2db88ef91a:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A bearded man holding a gas pump nozzle points a lit match toward the nozzle as Alana Kane looks on apprehensively at a gas station.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "dangerous tension",
+    "shot_type": "medium",
+    "lighting": "artificial gas station lights, cool",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:56Z"
+    }
+  },
+  "9e3c81a3d6f0e85aac3633e46e66d7fa:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man and a woman, perhaps Alana Kane, sprint hand-in-hand past a neon 'LOANS' sign at night.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "urgent escape",
+    "shot_type": "medium",
+    "lighting": "neon glow, dark shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:56Z"
+    }
+  },
+  "c8a97e9d602ed75f1854723cb9b7831e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man and a woman, potentially Alana Kane, weave through a crowded outdoor space lit with strung lights at night.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "chaotic energy",
+    "shot_type": "medium",
+    "lighting": "warm, diffused string lights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:56Z"
+    }
+  },
+  "ee374a7dda58f2bbabad0246fda83805:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A MUBI advertisement stating 'GET 30 DAYS FREE' in stark white text on a black background.",
+    "characters_present": [],
+    "emotion": "none",
+    "shot_type": "wide",
+    "lighting": "flat, stark",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:51:56Z"
+    }
+  },
+  "3010b8d8336c7144c6238ae77d1bd948:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A lone girl walks down a sun-drenched school corridor, the distant figures hinting at a bustling day.",
+    "characters_present": [],
+    "emotion": "serene isolation",
+    "shot_type": "wide",
+    "lighting": "bright, sunny, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:02Z"
+    }
+  },
+  "e8d51934f989fc397f3ef28838cbb567:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Teenagers mill in a crowded school hallway, their faces reflecting the uncertainty of youth.",
+    "characters_present": [],
+    "emotion": "awkward anticipation",
+    "shot_type": "medium",
+    "lighting": "soft diffused, neutral",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:02Z"
+    }
+  },
+  "827159e6b809751e35b1cf21abaafc5a:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A group of teenagers awkwardly stand together in a sunlit school hallway.",
+    "characters_present": [],
+    "emotion": "restrained youthful curiosity",
+    "shot_type": "medium",
+    "lighting": "soft diffused, neutral",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:02Z"
+    }
+  },
+  "45d1d41ac6a843085fde4f4c070b3e22:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A young woman stands alone by a schoolyard, the sprinklers creating an ethereal glow.",
+    "characters_present": [],
+    "emotion": "melancholy hope",
+    "shot_type": "wide",
+    "lighting": "golden hour, soft, bright",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:02Z"
+    }
+  },
+  "cbfa0a520a3c35b4ff9f5840c147d87d:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana and Gary are walking at night, lit by streetlights, lost in their own world.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "youthful wonder",
+    "shot_type": "two-shot",
+    "lighting": "artificial, nighttime, soft",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:02Z"
+    }
+  },
+  "8690377e6746528b0dc82dcde0e96161:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane and Gary Valentine sprint across a beach, both smiling and full of youthful energy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "joyful abandon, carefree",
+    "shot_type": "medium",
+    "lighting": "bright daylight, slightly overexposed",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:08Z"
+    }
+  },
+  "39614cced2b62fee42946f611484dc09:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine, wearing a white suit with a red shirt, runs down a street underneath neon lights, potentially in a tense pursuit.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "frantic energy, desperate escape",
+    "shot_type": "medium",
+    "lighting": "neon glow, urban nighttime",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:08Z"
+    }
+  },
+  "fb9af1e3b8cec80ece44831d60136276:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A woman sits inside a vintage movie theater ticket booth, framed by dark wood and maroon curtains.",
+    "characters_present": [],
+    "emotion": "melancholic waiting, quiet observation",
+    "shot_type": "medium",
+    "lighting": "soft window light, warm interior",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:08Z"
+    }
+  },
+  "e91c055f9089153ee3cf452aa308afcc:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A group of friends in a car are laughing, with Alana Kane among them, but overlaid text obscures the lower faces.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "raucous fun, shared laughter",
+    "shot_type": "medium",
+    "lighting": "dark interior, reflected screen glow",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:08Z"
+    }
+  },
+  "ade4ac5cb147d57603eca0ff9194fcc6:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane, in close-up, speaks intently into a vintage turquoise telephone, her expression fraught with concern.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "anxious urgency, worried anticipation",
+    "shot_type": "close-up",
+    "lighting": "soft lamp light, warm shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:08Z"
+    }
+  },
+  "fa5ed40efe253f51633bc75824693040:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine, with a serious expression, holds a telephone receiver close to his ear, seemingly troubled by the conversation.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "anxious anticipation",
+    "shot_type": "close-up",
+    "lighting": "warm, tungsten, slightly underexposed",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:12Z"
+    }
+  },
+  "d5eae2a2c300b45828c94f3966e6f09d:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man rushes through an airport concourse, pursued by someone, from the movie Sleepless in Seattle.",
+    "characters_present": [],
+    "emotion": "frantic urgency",
+    "shot_type": "medium",
+    "lighting": "bright fluorescent, flat",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:12Z"
+    }
+  },
+  "d26fa146e6929964fbd2f8a9cfb1f388:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "People stroll past storefronts at night, in a scene from Sleepless in Seattle.",
+    "characters_present": [],
+    "emotion": "melancholy loneliness",
+    "shot_type": "wide",
+    "lighting": "mix of streetlights, night shadows",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:12Z"
+    }
+  },
+  "c3fc740ff3f48d17367c4d5f0fe06ebd:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Hands gently stroke a teddy bear.",
+    "characters_present": [],
+    "emotion": "tenderness affection",
+    "shot_type": "insert/detail shot",
+    "lighting": "soft, diffused, possibly daylight",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:12Z"
+    }
+  },
+  "8ed2d4914ab93ea084b44f97a87c7cda:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A woman sits in a car while a man standing outside places something into the back seat.",
+    "characters_present": [],
+    "emotion": "understated tension",
+    "shot_type": "medium",
+    "lighting": "overcast daylight, flat",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:12Z"
+    }
+  },
+  "f13e7c1d4dcca2a3391c9983eeb42e49:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Streetlights illuminate the night on Genesta Street, next to some parked cars and a large truck parked on the right side.",
+    "characters_present": [],
+    "emotion": "Urban cool, nocturnal vibes",
+    "shot_type": "wide",
+    "lighting": "Artificial streetlights, stark and diffused",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:18Z"
+    }
+  },
+  "6b873cb95fa5bacb5758c20ee89a1bd4:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "The frame divides into two panels: Gary intensely kisses a girl in the front seat; in the back, Alana looks on with a worried expression.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "awkwardness, forbidden desire, bittersweet",
+    "shot_type": "medium close-up",
+    "lighting": "Dim interior, warm and claustrophobic",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:18Z"
+    }
+  },
+  "e5b41931dff03c77f77ac86dfce75b9f:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Splitscreen frame: on the left, an illuminated truck at nighttime; on the right, Alana hauls a rope up a staircase in broad daylight.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Unease and determined action",
+    "shot_type": "medium",
+    "lighting": "high contrast, daylight to darkness",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:18Z"
+    }
+  },
+  "d9696e035fb6f924ab372a198b17c4ff:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana leans in intently, eyes locked on Gary, in a sun-drenched domestic interior.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "Intimacy, intensity, unspoken feelings",
+    "shot_type": "medium close-up",
+    "lighting": "Warm, natural light, soft focus",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:18Z"
+    }
+  },
+  "12a835e75cf4345bd642531c01826808:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary gazes upwards at Alana, who regards him with an ambiguous expression in a warm-toned interior.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "Yearning, hopeful, uncertain",
+    "shot_type": "medium close-up",
+    "lighting": "warm ambient light, subtle shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:19Z"
+    }
+  },
+  "19c72c9e6c21f37f83d39ad4549735fb:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana looks past someone out of focus and into the distance, a lawn with sprinklers behind her.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "contemplative, searching",
+    "shot_type": "medium",
+    "lighting": "bright, daytime, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:23Z"
+    }
+  },
+  "f7fe3e69c8118b6976925f08dbeb412a:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine wears a striped shirt as he looks sideways and talks to someone off camera, sprinklers misting in the background.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful exuberance",
+    "shot_type": "medium close-up",
+    "lighting": "bright, sunny, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:23Z"
+    }
+  },
+  "e21a601836a1c83be06b75e24df3cdd6:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana stares pensively at the right of frame, a younger boy and Gary Valentine framed in the mirror on the right.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "uncertainty, contemplation",
+    "shot_type": "medium",
+    "lighting": "soft, diffused sunlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:23Z"
+    }
+  },
+  "ddb097655f5b3ff19a590218d720e374:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana looks intently at Gary Valentine, a younger boy looks down and out of focus to the left frame.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "serious, focused",
+    "shot_type": "medium close-up",
+    "lighting": "natural light, slight backlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:23Z"
+    }
+  },
+  "a3ddfe74d424d847b33ca09288a093bd:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana makes her case forcefully across from Gary Valentine in the sunshine.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "determination, passion",
+    "shot_type": "medium close-up",
+    "lighting": "bright, daytime, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:23Z"
+    }
+  },
+  "3e161d8c91e6fa563d75659ca1129d6e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine sits at a restaurant table, gesturings with his hands as he speaks, a mix of nervous energy and earnest hope on his face.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:28Z"
+    }
+  },
+  "4c30edd7a081922b597f751f6128076e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane sits across from Gary Valentine at a dimly lit restaurant table, looking directly at someone off-screen with a slight, curious smile.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "curious intrigue",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, subtly moody",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:28Z"
+    }
+  },
+  "07d2cf076e2b7607789eaa75b33a7b31:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine, seated, speaks with his hands clasped in front of him, a hopeful but slightly strained expression on his face in the dimly lit restaurant.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "nervous hope",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, soft edges",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:28Z"
+    }
+  },
+  "5cb436a3ce7dcb29aadfc75eeae9cd43:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Across from Gary Valentine, Alana Kane maintains a slight smile with a direct gaze, her expression unreadable, in the low light of the restaurant.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "intense observation",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, subtle backlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:28Z"
+    }
+  },
+  "e41256ced314f5e7ae7ca4bf3b8b3871:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine speaks intently, possibly making a pitch or explaining something important, in the golden light of the restaurant, with a dark figure looming to the right.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "earnest intensity",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, slightly dramatic",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:28Z"
+    }
+  },
+  "ae7702f7d884035f723d0c449bdd9d27:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane and Gary Valentine stand side-by-side on a dimly lit street, both looking directly at the camera with neutral expressions amidst looming shadows.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "awkward uncertainty",
+    "shot_type": "medium",
+    "lighting": "low-key, minimal streetlamp illumination",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:34Z"
+    }
+  },
+  "e9b58503a89b3c9b65bf72eef0d03323:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane walks towards a suburban house at night, while a man dribbles a basketball near a vintage car in the driveway.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "melancholy solitude",
+    "shot_type": "wide",
+    "lighting": "dim and suburban, porch light glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:34Z"
+    }
+  },
+  "aa7f6e0d7510fe294e95bc72d0ed0325:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane lounges on a couch amidst family members, some awake and some asleep, in front of a patterned wallpaper.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "domestic boredom",
+    "shot_type": "medium",
+    "lighting": "warm, interior lamp light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:34Z"
+    }
+  },
+  "99d52158cc909ddfc01f99cde9ad0a1c:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A blonde woman with concern etched on her face peers from behind a partially opened door.",
+    "characters_present": [],
+    "emotion": "worried curiosity",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused indoor lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:34Z"
+    }
+  },
+  "86a1f9516dc40e223bc5d5a1b282ab0a:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane writhes dramatically on a bed, her expression a mix of discomfort and distress inside of a bedroom with vintage decor.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "frustrated desperation",
+    "shot_type": "medium",
+    "lighting": "ambient, yellowish cast, side lamp",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:34Z"
+    }
+  },
+  "4b43d5634096df46b0d8a8c7911cdfa8:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "The Kane family, including Alana Kane, gathers around a dinner table bathed in candlelight, sharing a meal and conversation.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "warm familial intimacy",
+    "shot_type": "medium",
+    "lighting": "soft candlelight, warm and inviting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:39Z"
+    }
+  },
+  "99b662e0737f5bad5bc9b25e78814ddb:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane and Gary Valentine walk closely together at night outside a house, looking comfortable and perhaps a little somber.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "quiet companionship",
+    "shot_type": "medium",
+    "lighting": "dim streetlight, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:39Z"
+    }
+  },
+  "bcbd8752f647ac4650e00f715c47fe9d:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane stands in the background while two men in suits are arguing intensely in the foreground, creating a tense and awkward atmosphere.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "awkward tension",
+    "shot_type": "medium",
+    "lighting": "soft interior lighting, slightly desaturated",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:39Z"
+    }
+  },
+  "5c53eee20b2e831944371e51d5111081:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A fraught encounter takes place, with Alana Kane entering a room and pushing past someone in a moment of heightened emotion or possible conflict.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "electric tension",
+    "shot_type": "medium",
+    "lighting": "fluorescent overhead, cool and harsh",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:39Z"
+    }
+  },
+  "e7c36625b0a4bd42ba3377ea465baae4:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane peels out in a vintage turquoise convertible, with Gary Valentine riding shotgun, in a display of youthful rebellion and carefree energy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "defiant freedom",
+    "shot_type": "wide",
+    "lighting": "bright sunlight, slightly warm",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:39Z"
+    }
+  },
+  "4609328ee188bd126a4c38c8d59a6d9c:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two separate scenes show Gary Valentine: in one, he looks up in surprise; in the other, he gleefully participates in a pillow fight on a bunk bed.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful exuberance",
+    "shot_type": "close-up",
+    "lighting": "bright, even, studio lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:43Z"
+    }
+  },
+  "477894de8daba30954af05ad88773c0e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine, viewed from the side, walks with purpose along the side of a building.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "purposeful forward momentum",
+    "shot_type": "medium",
+    "lighting": "soft natural light, overcast skies",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:43Z"
+    }
+  },
+  "2b2f87d1875849662e77f26a218acbe4:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane and Gary Valentine walk side-by-side down a suburban sidewalk at dusk, both holding objects, Alana holding a booklet.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "quiet companionship",
+    "shot_type": "medium wide",
+    "lighting": "soft twilight, fading light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:43Z"
+    }
+  },
+  "9ba8dad61d410135c116f06dde810962:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "An unseen person walks past a dimly lit room, revealing a couch and some objects on a table.",
+    "characters_present": [],
+    "emotion": "vague unease",
+    "shot_type": "medium",
+    "lighting": "dim, grainy, interior lighting, blue hues",
+    "visual_power": 1,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:43Z"
+    }
+  },
+  "0473018716d11e7e97f2336e1c4d6072:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine is among several occupants in a car being driven at dusk.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "carefree joyride",
+    "shot_type": "medium",
+    "lighting": "low light, ambient sunset, dark interior",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:43Z"
+    }
+  },
+  "4d7a4371a6a661998243bb53dbe288b4:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A blonde woman with a bouffant sits in the back of a car looking vaguely concerned next to another less-defined character and in front of Gary Valentine.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful discontent, mild apprehension",
+    "shot_type": "medium",
+    "lighting": "soft diffused natural light",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:48Z"
+    }
+  },
+  "270254ecf919c4c3857f07ba90212f0d:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane holds a mirror reflecting Gary Valentine's face, seemingly assessing his appearance in an outdoor setting.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "playful tension, scrutiny",
+    "shot_type": "medium close-up",
+    "lighting": "bright, even daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:48Z"
+    }
+  },
+  "f20d6796963d7f7de2e4bee80c37d8a1:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane listens with a furrowed brow as Gary Valentine speaks to her off-screen, trees and buildings visible in the background.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "attentive skepticism, unspoken concerns",
+    "shot_type": "medium close-up",
+    "lighting": "soft, natural daylight, slight overexposure",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:48Z"
+    }
+  },
+  "054f8a6ff8061e017993ede46ebd7bbf:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane looks off into the distance with a worried expression while Gary Valentine stands beside her, with a bright outdoor setting.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "pensive worry, distant anxiety",
+    "shot_type": "medium",
+    "lighting": "bright, slightly washed-out daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:48Z"
+    }
+  },
+  "97fac0cac6087192d9f518da1f53cfef:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine passionately argues or explains something to Alana Kane, who looks back with a slightly skeptical expression in broad daylight.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "charged argument, youthful frustration",
+    "shot_type": "medium",
+    "lighting": "even, bright daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:48Z"
+    }
+  },
+  "78822722ef9cdce9bbd2a4ad0d16d0a3:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A blurred figure hurries past in front of a plain pale blue wall, moving right. ",
+    "characters_present": [],
+    "emotion": "hurried, frantic",
+    "shot_type": "medium",
+    "lighting": "soft, diffused light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.4,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:53Z"
+    }
+  },
+  "e51c723db118f3005ee5dd9e5deebd50:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane walks along a sidewalk past a storefront called \"Mr. Jack's Wig Shop\" with many vintage cars reflected in the window.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "nostalgic, retro",
+    "shot_type": "wide",
+    "lighting": "flat daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:53Z"
+    }
+  },
+  "725455c8ce25704b9bebcc0b9ccc84f8:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A woman stands inside a wig shop, delivering a line.",
+    "characters_present": [],
+    "emotion": "bold, direct",
+    "shot_type": "medium close-up",
+    "lighting": "warm, slightly muted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:53Z"
+    }
+  },
+  "fa4f1c3154448dbf56c70b1c3f6737af:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine sits at a cluttered desk on the phone, a woman's leg with a strappy shoe partially obscures the view.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "discomfort, distraction",
+    "shot_type": "medium",
+    "lighting": "warm, desk lamp",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:53Z"
+    }
+  },
+  "c46c9198d499683f503fb4121c057f9e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine watches with a blank expression as a woman pulls off her robe, back to camera.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "awkward tension",
+    "shot_type": "medium",
+    "lighting": "dim, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:53Z"
+    }
+  },
+  "4804dde05a946eaa3c14d9125aa24b12:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "In a split screen, Gary turns to a woman undressing exposing her back in a room with illustrated wallpaper, while outside, a woman who could be Alana, embraces someone out of view.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "youthful confusion, tender disconnect",
+    "shot_type": "medium",
+    "lighting": "warm indoor/bright, natural outdoor",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:58Z"
+    }
+  },
+  "cc5eba884edbb7a48e6a6f033ba068e8:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man sits alone at a dining table under cool, dim light, his expression troubled.",
+    "characters_present": [],
+    "emotion": "lonely anxiety, quiet desperation",
+    "shot_type": "medium",
+    "lighting": "cool dim, somber, clinical",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:58Z"
+    }
+  },
+  "d8c120c0200bed6a8406781cfa919a80:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man speaks on the phone, head slightly bowed, his face etched with worry.",
+    "characters_present": [],
+    "emotion": "concerned, strained tension",
+    "shot_type": "close-up",
+    "lighting": "dim, shadowed, low-key",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:58Z"
+    }
+  },
+  "e9478d6065899d31c6ee09cfbe2f9724:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man is on a call next to newspapers with woman's face.",
+    "characters_present": [],
+    "emotion": "urgent, dubious, conflicted",
+    "shot_type": "medium close-up",
+    "lighting": "cool, shadowed, stark",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:58Z"
+    }
+  },
+  "66d563f3b9a0b8dbb361dc79ad9ababf:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man walks in a room near cabinets as he speaks on the phone.",
+    "characters_present": [],
+    "emotion": "tense, business, isolated",
+    "shot_type": "medium",
+    "lighting": "cool, shadowed, sparse",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:52:58Z"
+    }
+  },
+  "2b7d312e2b1c33a0e0ed13e9b89c4389:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A shirtless man lies face down in the sand on a beach, pressed against a sandy sculpture.",
+    "characters_present": [],
+    "emotion": "vulnerability, isolation",
+    "shot_type": "close-up",
+    "lighting": "warm, natural light, directional",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:04Z"
+    }
+  },
+  "442e2dcbb2fae7a192bd3844c91a0347:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A split screen shows a man lying on a sand sculpture of a nude woman and a bride and groom kissing at their wedding.",
+    "characters_present": [],
+    "emotion": "contrast, love, longing",
+    "shot_type": "medium",
+    "lighting": "warm daylight, golden hour and soft interior",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:04Z"
+    }
+  },
+  "7c8920d2a9e3dc632a9016321b7f4e02:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A bride and groom jump and cheer with a third man, arms raised in joyous celebration at their wedding reception.",
+    "characters_present": [],
+    "emotion": "unrestrained joy",
+    "shot_type": "medium",
+    "lighting": "bright interior light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:04Z"
+    }
+  },
+  "00455463d75baa7a9b565ddef075a870:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A wedding party sits around a banquet table, with one man standing to deliver a speech at the reception.",
+    "characters_present": [],
+    "emotion": "formality, celebration",
+    "shot_type": "medium",
+    "lighting": "warm, elegant interior lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:04Z"
+    }
+  },
+  "bc737075ffc2f68f1b20db4b49e2019b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a suit sits at a table, dramatically acting with his hands in a brightly lit scene.",
+    "characters_present": [],
+    "emotion": "intense, theatrical",
+    "shot_type": "medium",
+    "lighting": "high-key, dramatic studio lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:04Z"
+    }
+  },
+  "8927a92bd30babd9665ce322f4ff4259:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A young man in a black outfit gestures wildly, framed in a doorway, surrounded by a crowd of onlookers in a dimly lit space.",
+    "characters_present": [],
+    "emotion": "Frantic, theatrical, contained chaos",
+    "shot_type": "medium",
+    "lighting": "Dim, cool, available light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:09Z"
+    }
+  },
+  "b35617dc3588c4775c7bc114733d9e80:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A young man with arms spread wide emerges from a doorway, into a dimly lit interior space, framed by a crowd of people.",
+    "characters_present": [],
+    "emotion": "Triumphant, liberating, expansive",
+    "shot_type": "medium",
+    "lighting": "Dim, cool, practical lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:09Z"
+    }
+  },
+  "2aacf99a63d5cd7d574a9a0a02bc3c0a:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane looks up and to her left with a soft expression while positioned across from another person.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Contemplative, gentle, curious",
+    "shot_type": "close-up",
+    "lighting": "Warm, soft, interior light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:09Z"
+    }
+  },
+  "c37ae1488dad6d7d70ca8d160e29971c:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine and Alana Kane run side-by-side through an open space, smiling with palpable joy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "Joyful, carefree, energetic",
+    "shot_type": "medium",
+    "lighting": "Bright overcast, natural light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:09Z"
+    }
+  },
+  "f87701acf00414e8c7ba25d11947909e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A car door is opened, revealing part of a person's patterned shirt as they enter the vehicle during the day.",
+    "characters_present": [],
+    "emotion": "Anticipation, departure, transition",
+    "shot_type": "medium",
+    "lighting": "Bright, sunny, natural light",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:09Z"
+    }
+  },
+  "cfd0c3838fbe1bed9d7a1c8806416617:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane drives a car, looking over to smile at the passenger in the front seat.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "playful, easygoing, affectionate",
+    "shot_type": "medium",
+    "lighting": "bright daylight, soft diffuse light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:16Z"
+    }
+  },
+  "c21fad57c698f645fb48f17b8a375bd2:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane, wearing a red t-shirt, looks worried as she leans against a brick wall and talks with another woman.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "concerned, serious, intimate",
+    "shot_type": "medium close-up",
+    "lighting": "warm, diffused, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:16Z"
+    }
+  },
+  "77de49feefb4781c9ec480f6c9906430:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "In split screen, Gary Valentine is riding in a car, and Alana Kane is on the right looking angry.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "tense, strained, uncomfortable",
+    "shot_type": "close-up",
+    "lighting": "dark interior, artificial, contrasty",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:17Z"
+    }
+  },
+  "24e2cbdf4146be56e2fbc2f18def4b87:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Split screen showing Gary Valentine walking with a woman to the left and to the right a woman is smiling at a younger boy.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "social, ambiguous, lighthearted",
+    "shot_type": "medium",
+    "lighting": "mixed, artificial, nightclub vibe",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:17Z"
+    }
+  },
+  "ab0d703c866255ad2f80859e1dea79d9:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Split screen featuring Gary Valentine on the right at a table and Alana Kane sits across the table from an older man on the left.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "awkward, uneasy, transactional",
+    "shot_type": "medium close-up",
+    "lighting": "warm, subdued, restaurant-like",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:17Z"
+    }
+  },
+  "837bf229ec56cddbeafb2a7c84f489ea:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine and Alana Kane sit uncomfortably close in a booth, with another man looming behind Alana, creating an awkward and tense moment.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "awkward tension",
+    "shot_type": "two-shot",
+    "lighting": "warm, dim, intimate",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:22Z"
+    }
+  },
+  "487d576f9cf232f9858269508705b1a3:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a suit stands casually outside of a jail cell while another man sits inside in a prison jumpsuit.",
+    "characters_present": [],
+    "emotion": "bleak confinement",
+    "shot_type": "wide",
+    "lighting": "flat, institutional, grey",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:22Z"
+    }
+  },
+  "e43956beef85ba2ef77dcead6e5f73fa:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man with curly hair and a green shirt stares intensely from the driver's seat, while a man in a suit sits calmly beside him, driving the car.",
+    "characters_present": [],
+    "emotion": "contained apprehension",
+    "shot_type": "medium",
+    "lighting": "soft, natural light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:22Z"
+    }
+  },
+  "42345cdbf68b548222f0b600115bc59e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two men wrestle violently in a mud pit while other figures stand watching in the background.",
+    "characters_present": [],
+    "emotion": "brutal conflict",
+    "shot_type": "wide",
+    "lighting": "harsh sunlight, high contrast",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.4,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:22Z"
+    }
+  },
+  "e309b02a8ea6ab6dce52133d4dcfd448:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine gazes with soft interest at someone who is just out of frame. ",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "hopeful adoration",
+    "shot_type": "close-up",
+    "lighting": "warm, golden, diffused",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:23Z"
+    }
+  },
+  "81311d2823ca0be746f1285b8b4630fb:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a suit is getting slapped on the face in front of an audience.",
+    "characters_present": [],
+    "emotion": "violent confrontation",
+    "shot_type": "wide",
+    "lighting": "Warm, diffused light, wooden walls",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:28Z"
+    }
+  },
+  "cee0d535ec8d64d69de32a1655351d17:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man with a mustache grimaces as a hand rests on his head.",
+    "characters_present": [],
+    "emotion": "distress and violation",
+    "shot_type": "close-up",
+    "lighting": "warm, indoor lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:28Z"
+    }
+  },
+  "01d27b95e5ede914e20a00cf2d09e815:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A chef slices ingredients on a cutting board.",
+    "characters_present": [],
+    "emotion": "culinary preparation",
+    "shot_type": "insert/detail shot",
+    "lighting": "Subdued, indirect lighting, cool tones",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:28Z"
+    }
+  },
+  "95b56f81cf92c0adf06f02f452484841:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man with glasses stares intently at something off-screen, with furrowed eyebrows.",
+    "characters_present": [],
+    "emotion": "suspicion, intense focus",
+    "shot_type": "close-up",
+    "lighting": "Dark, brown moody",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:28Z"
+    }
+  },
+  "b1acc33381f610527e57bb052ef19f2e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A woman in a green shirt stands in a domestic interior with her arms crossed.",
+    "characters_present": [],
+    "emotion": "pensive resignation",
+    "shot_type": "medium",
+    "lighting": "flat, overcast, desaturated",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:28Z"
+    }
+  },
+  "3287a56ee80cc4b22981607f1fc85ba1:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "In soft light, Alana Kane stands by the kitchen window, looking down with a somber expression.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "melancholy, introspection, quiet sadness",
+    "shot_type": "medium",
+    "lighting": "soft natural light, warm, muted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:34Z"
+    }
+  },
+  "01121c9f8622f445b99a533bf68b2e0f:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine sits with papers, books, some cigarettes and a yellow phone on the kitchen table, looking hopefully into the camera",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "hopeful, anticipating, relaxed",
+    "shot_type": "medium",
+    "lighting": "warm interior light, slightly diffused",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:34Z"
+    }
+  },
+  "d6f2ccf489ec9833d9b0ddd08384e123:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane stands in the kitchen, her posture is tense, facing the kitchen table.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "unease, anticipation, controlled agitation",
+    "shot_type": "wide",
+    "lighting": "warm, natural light, some shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:34Z"
+    }
+  },
+  "d14b5338648cc0b9f5b9c25b88438356:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine sits at the table, looking up at Alana Kane who leans in close, creating a tense face-off.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "tense confrontation, power imbalance",
+    "shot_type": "two-shot",
+    "lighting": "warm interior light, slightly diffused",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:34Z"
+    }
+  },
+  "1a6508f587fc8ec464a7d3ebc58ee1ba:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A close-up captures Alana Kane's intensely serious expression as she looks down at Gary.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "serious, considering, intense",
+    "shot_type": "close-up",
+    "lighting": "warm, diffused interior light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:34Z"
+    }
+  },
+  "c0308407d98cf0dc592dcbca9d0d8bf4:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two figures (Gary Valentine and an unidentified person) kneel before a large, ornate waterbed, the scene lit by lamps casting a warm glow.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Anticipation, subdued, meticulous",
+    "shot_type": "medium wide",
+    "lighting": "warm, golden, soft lamps",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:42Z"
+    }
+  },
+  "89d27302d62ee06dbb2874af5d7ac4ba:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane and someone behind her look down toward a surface; the mood is concentrated but intimate.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Focused, intimate, concentrated",
+    "shot_type": "medium close-up",
+    "lighting": "Soft diffuse, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:42Z"
+    }
+  },
+  "a7fce1e77e6b6ed6dcb0aaf2d80504e8:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in sturdy boots stands on a table, seemingly demonstrating or performing for a group of seated men in suits, creating a bizarre spectacle.",
+    "characters_present": [],
+    "emotion": "Absurdist, theatrical, comical",
+    "shot_type": "medium",
+    "lighting": "Dim, low key, tungsten",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:42Z"
+    }
+  },
+  "94d88b637af6809fa565af70564c7905:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A green hose connects to a fitting labeled 'Fat Bernie's environmental living', suggesting a connection to the waterbed business of Gary Valentine.",
+    "characters_present": [],
+    "emotion": "Industrial, practical, functional",
+    "shot_type": "close-up",
+    "lighting": "Neutral, even, indoor",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:42Z"
+    }
+  },
+  "4e923bb643142c6ca5cb5293614a9aad:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine stares intently at something off-screen, the ambiance dim and tinged with blue.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Serious, intense, thoughtful",
+    "shot_type": "close-up",
+    "lighting": "Dim, blue-tinted, moody",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:42Z"
+    }
+  },
+  "6055c99ba3b082033769152f720633cd:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana, in a red sweater, looks intently at someone out of frame, her expression thoughtful and slightly concerned.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "earnest concern",
+    "shot_type": "medium close-up",
+    "lighting": "soft, indoor, slightly blue-tinged",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.99,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:46Z"
+    }
+  },
+  "0db9303a61108e194852ad52f03accd6:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a white suit walks away along a sunlit path towards a stylish house surrounded by lush greenery.",
+    "characters_present": [],
+    "emotion": "carefree exit",
+    "shot_type": "medium wide",
+    "lighting": "bright sunlight, dappled shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:46Z"
+    }
+  },
+  "48ca3250409e6c3b96688fbce79e242c:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Split screen: a man in white throws boxes in a garage, contrasted against Alana, in a red dress, walking determinedly outside.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "urgent determination, chaotic energy",
+    "shot_type": "medium",
+    "lighting": "garage: bright fluorescent; outside: natural sunlight",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:46Z"
+    }
+  },
+  "fc439f85bfa883eff1ad3f39ada8132f:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Split screen: a man with a beard peers out of a red truck, contrasted with Gary upside down on a leopard-print divan.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "gritty anticipation, playful disorientation",
+    "shot_type": "close-up",
+    "lighting": "truck: overcast daylight; divan: diffused sunlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:46Z"
+    }
+  },
+  "0d15b5cbc5737179fa845826b0b11505:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man with a beard smiles down at Gary, who is listening attentively, against a backdrop of green trees.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "intense conversation, mild manipulation",
+    "shot_type": "close-up",
+    "lighting": "bright sunlight, green hues",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.99,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:46Z"
+    }
+  },
+  "56b50d065e89e14d475ac1789b3fe903:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana sits dejectedly on the curb outside the Encino Post Office, hunched over in disappointment, while a man in a white suit walks past.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "desolation, loneliness, hopelessness",
+    "shot_type": "wide",
+    "lighting": "cool, muted streetlight, somber",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:51Z"
+    }
+  },
+  "1e9d909d4f3febd4018a36a43bf33a24:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Three indistinct figures in silhouette pee against the back of a stalled truck on a deserted highway.",
+    "characters_present": [],
+    "emotion": "desperate, exposed, vulnerable",
+    "shot_type": "wide",
+    "lighting": "cold, pre-dawn, silhouette",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:51Z"
+    }
+  },
+  "0199f315139d20da70227694c4585e4c:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana stares intensely to the side, illuminated by harsh blue-green neon light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "intense scrutiny, troubled reflection",
+    "shot_type": "close-up",
+    "lighting": "harsh blue-green neon, noir",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:51Z"
+    }
+  },
+  "ed8db42890b1c2045dfce1e5dfc22e4e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Four indistinct figures in silhouette work on the stalled truck on a deserted highway as daylight breaks.",
+    "characters_present": [],
+    "emotion": "collaborative effort, hopeful energy",
+    "shot_type": "wide",
+    "lighting": "cold, pre-dawn, sunrise",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:51Z"
+    }
+  },
+  "cf75372e770605910d7d4d0ec480c16f:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A truck barrels towards a stalled car, with Gary visible inside the truck cab, and Alana and another figure trying to stop it.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "panic, impending doom, frantic",
+    "shot_type": "medium",
+    "lighting": "harsh headlights, intense glare",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:51Z"
+    }
+  },
+  "cea6435f524d579e6dcf189dd4fb6ffe:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary smiles knowingly in the dark, looking offscreen with mischief twinkling in his eye.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "mischievous anticipation",
+    "shot_type": "close-up",
+    "lighting": "low-key, single source, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:57Z"
+    }
+  },
+  "eb7e7a40d374d1fa38cc6bde16ce919d:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A truck drives down a dark suburban street at night, illuminated by streetlights.",
+    "characters_present": [],
+    "emotion": "ominous unknown",
+    "shot_type": "wide",
+    "lighting": "dark, mixed tungsten and streetlight",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:57Z"
+    }
+  },
+  "4ccc4bb1838b081a76a3494602e68d86:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Inside the truck, Alana stares intently forward with worried eyes, bathed in indirect light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "concerned unease",
+    "shot_type": "close-up",
+    "lighting": "soft, low-key, interior glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:57Z"
+    }
+  },
+  "c78305731d52c095c74dc04c9648a3a7:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary drives nervously while Alana looks on with a concerned expression inside the truck.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "nervous apprehension",
+    "shot_type": "two-shot",
+    "lighting": "low-key, mixed artificial light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:57Z"
+    }
+  },
+  "519642b5c5d532c939632b5882fe69da:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana sits forlornly outside the post office at night, her arms crossed, looking downcast.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "melancholy isolation",
+    "shot_type": "medium",
+    "lighting": "cool blue neon, soft fill",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:53:57Z"
+    }
+  },
+  "ab8a5eb22f82bc0ec0429423df959ac8:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A political poster with a young man's face and the slogan 'Wachs for Mayor' hangs on a doorway at night, lit by blue exterior light.",
+    "characters_present": [],
+    "emotion": "Distant ambition, quiet mystery",
+    "shot_type": "medium",
+    "lighting": "cool blue, stark street lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:03Z"
+    }
+  },
+  "179f626d596cb0f453a624fa38439a45:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a suit, possibly a movie actor, sits in a wood-paneled office illuminated by a single lamp, gesturing with a cigarette in his hand.",
+    "characters_present": [],
+    "emotion": "Confident swagger, understated power",
+    "shot_type": "medium",
+    "lighting": "warm, direct lamp, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:03Z"
+    }
+  },
+  "1ca4af16f6942bd7e745ac3f44600e54:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "In a dimly lit restaurant, a man gestures theatrically with silverware at Alana and other diners, under warm, stained-glass-filtered light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Boisterous energy, convivial chaos",
+    "shot_type": "medium wide",
+    "lighting": "warm, low-key, stained glass highlights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:03Z"
+    }
+  },
+  "ca7dd103f269dd8e4882ff2d284e2ed1:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a hat and glasses smiles maniacally, brandishing a piece of silverware towards the camera amidst the warm, low-light ambiance of the restaurant.",
+    "characters_present": [],
+    "emotion": "Eccentric glee, manic energy",
+    "shot_type": "close-up",
+    "lighting": "warm, low-key, flickering candlelight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:03Z"
+    }
+  },
+  "b5efd586889632ad89d3aa482abd7377:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man smiles fiercely through dim lighting in a restaurant, as if responding intently to someone else's comment or dramatic gesture.",
+    "characters_present": [],
+    "emotion": "Intense amusement, captivated engagement",
+    "shot_type": "close-up",
+    "lighting": "warm, low-key, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:03Z"
+    }
+  },
+  "6ade1afb40d55ea55d14da7dbbabc592:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a suit yells with a wide smile in the dark, with lights blurred in the background indicating a film set.",
+    "characters_present": [],
+    "emotion": "excited fervor",
+    "shot_type": "medium",
+    "lighting": "artificial night, bright pinpoint background",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:09Z"
+    }
+  },
+  "950d084e1fc501e2e362b1806fad651f:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man on a motorcycle jumps into the air in front of a distant crowd at twilight.",
+    "characters_present": [],
+    "emotion": "reckless abandon",
+    "shot_type": "wide",
+    "lighting": "dusky sky, artificial stadium lights",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:09Z"
+    }
+  },
+  "d6d615c6a4b9322bd46d6123d1407737:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A motorcycle lies on its side engulfed in flames outside at night.",
+    "characters_present": [],
+    "emotion": "chaotic destruction",
+    "shot_type": "wide",
+    "lighting": "bright fire, smoky haze",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:09Z"
+    }
+  },
+  "f6aca0b4a38840247550e10bac0e14ba:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana speaks intently on the phone inside a building, with a Coffee Shop sign visible through window blinds.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "intense worry",
+    "shot_type": "medium",
+    "lighting": "soft daylight spilling through blinds",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:09Z"
+    }
+  },
+  "fc92d745f4414ee65a4e3ccf83ca5308:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Several men stand in suits, one possibly a photographer, near what appears to be a political office or campaign event.",
+    "characters_present": [],
+    "emotion": "businesslike seriousness",
+    "shot_type": "medium",
+    "lighting": "warm indoor, fluorescent hues",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:09Z"
+    }
+  },
+  "55eb4f807e183711b53dfaf90e89ccce:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana looks up anxiously, partially obscured by a man in a suit, in what appears to be a school gymnasium setting.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "apprehension, suppressed concern",
+    "shot_type": "medium",
+    "lighting": "slightly diffuse, warm institutional lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:14Z"
+    }
+  },
+  "27dd953fef5e9812dab6175348e00820:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "People can be seen bicycling and walking on a street outside a brightly lit building labeled \"Pinball Palace\" at dusk.",
+    "characters_present": [],
+    "emotion": "nostalgia, urban activity",
+    "shot_type": "wide",
+    "lighting": "artificial, bright, nighttime street lights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:14Z"
+    }
+  },
+  "32f1b1073420707714454a4ab0f402c1:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A blur of a blonde woman is seen from behind, with hazy red lights in the background creating an ambient glow.",
+    "characters_present": [],
+    "emotion": "mystery, soft focus",
+    "shot_type": "close-up",
+    "lighting": "soft red ambient glow",
+    "visual_power": 1,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.7,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:14Z"
+    }
+  },
+  "c2b6b1ee81fd20148c0d42c7c365277b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A split screeen shows Alana whispering to a man in a yellow room while Gary Valentine holds a rifle.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "tension, hushed urgency",
+    "shot_type": "medium",
+    "lighting": "artificial, yellow and warm.",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:14Z"
+    }
+  },
+  "dd0a75f7c62195b6a9975a6ebe4e2179:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana is looking somber with her head down at a table in front of blurred people, lit with warm ambient light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "pensive, melancholic",
+    "shot_type": "close-up",
+    "lighting": "dim, warm, ambient restaurant light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:14Z"
+    }
+  },
+  "f335a7e136b3df541b1c7c827c72098b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man with sideburns purses his lips, looking slightly concerned as someone stands just outside the frame to his left, interrupting his evening.",
+    "characters_present": [],
+    "emotion": "apprehensive, doubtful, slightly worried",
+    "shot_type": "close-up",
+    "lighting": "warm incandescent, amber tones",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:19Z"
+    }
+  },
+  "84aea6a4195435e9a462cfdab78bfb63:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two men sit at a formal restaurant table, one drinking from his glass, the other seeming impatient with the situation.",
+    "characters_present": [],
+    "emotion": "strained formality, muted tension",
+    "shot_type": "medium",
+    "lighting": "dim ambient, greenish cast",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:19Z"
+    }
+  },
+  "01256c952bc41b9e297647c51d39910e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two figures stand silhouetted in front of a brick building, their faces obscured by darkness and the composition.",
+    "characters_present": [],
+    "emotion": "mystery, implied intimacy",
+    "shot_type": "wide",
+    "lighting": "low key, dramatic shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:19Z"
+    }
+  },
+  "7499397d6539c05d342e1ab9c3dfc1b7:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana walks down a dark residential street at night, cars parked on either side, looking determined.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "determined, slightly vulnerable",
+    "shot_type": "wide",
+    "lighting": "sodium vapor, streetlights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:19Z"
+    }
+  },
+  "a0c32ac8c33867f2d7e68ed304e3abf2:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man in a white suit stands inside a shop, hands on his head in frustration, reflected in the glass.",
+    "characters_present": [],
+    "emotion": "desperation, contained anxiety",
+    "shot_type": "medium",
+    "lighting": "fluorescent, harsh glare",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:19Z"
+    }
+  },
+  "668e37d38dc033a4d59e0808e7e07b40:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "The dark interior of a campaign office is seen through its large front windows, streetlights blurring outside.",
+    "characters_present": [],
+    "emotion": "Quiet anticipation, lurking tension",
+    "shot_type": "wide",
+    "lighting": "low key, shadowed interiors, street lights",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:26Z"
+    }
+  },
+  "6f01e56ba86c953d93794ba7ae58bb94:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine looks directly at the camera, running at night with blurred city lights in the background.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Urgency, focused determination",
+    "shot_type": "close-up",
+    "lighting": "Ambient city lights, slightly distorted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:26Z"
+    }
+  },
+  "a81b4bfe40696f8fd387f206eb365cbb:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine runs through the city at night, a blurred motion streak as he looks to his left.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Desperate escape, raw exertion",
+    "shot_type": "medium",
+    "lighting": "Dimly lit street, motion blur",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:26Z"
+    }
+  },
+  "b05f181a05fe04292b49697712a4049c:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana Kane runs against a wall with yellow neon lettering at night, her face determined.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Frenzied pursuit, grit",
+    "shot_type": "medium",
+    "lighting": "neon glow, artificial, vibrant",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:26Z"
+    }
+  },
+  "f9a9a4bde222c2a1d4ef414ff5c4f89e:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine runs, clearly terrified and frantic, through the dark, shadowed streets at night.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Panicked flight, sheer dread",
+    "shot_type": "medium close-up",
+    "lighting": "Dark, ambient street lighting, low key",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:26Z"
+    }
+  },
+  "dc04a60639d86c468aced9a373e6b215:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "An unrecognizable figure sprints through the dark, backlit by an indiscernible light source.",
+    "characters_present": [],
+    "emotion": "urgent, desperate, unseen",
+    "shot_type": "medium",
+    "lighting": "harsh backlight, muddy shadows",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:31Z"
+    }
+  },
+  "b1af620575f61ca5a8298302e9237589:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Indistinct individuals struggle inside a car, their bodies pressed against the interior under harsh sunlight.",
+    "characters_present": [],
+    "emotion": "claustrophobic, tense, obscured",
+    "shot_type": "close-up",
+    "lighting": "direct sunlight, harsh shadows",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.3,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:31Z"
+    }
+  },
+  "b431962261423683e19e4cd8c5261e52:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man, shirtless, sprints towards headlights in a large field at night.",
+    "characters_present": [],
+    "emotion": "frantic, exposed, vulnerable",
+    "shot_type": "wide",
+    "lighting": "harsh headlights, dark field",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.4,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:31Z"
+    }
+  },
+  "f6b9890f94ae6dabd17221d886d8ef31:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana runs towards the camera, her patterned halter top visible, against a blurred sandy background.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "determined, frantic, breathless",
+    "shot_type": "medium",
+    "lighting": "bright daylight, slightly hazy",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:31Z"
+    }
+  },
+  "65e38e849a66ef152ea63e97916db2a1:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary Valentine and Alana Kane lie side-by-side, appearing exhausted and pensive against a stained wall, lit by warm, golden light.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "weary, reflective, intimate",
+    "shot_type": "two-shot",
+    "lighting": "warm, golden, indirect",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:31Z"
+    }
+  },
+  "b2b48ec3a5baa3be911eefec25d39668:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two figures press their hands against a foggy window, their forms silhouetted against the diffused light.",
+    "characters_present": [],
+    "emotion": "intimate moment, touch, longing",
+    "shot_type": "close-up",
+    "lighting": "soft diffused backlight, silhouettes",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:35Z"
+    }
+  },
+  "92a4daa755d38a6df9b60a42bbb6b3b7:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two faces are close together in the darkness, illuminated by bokeh balls in the background, suggesting Alana and Gary's closeness and intimacy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "tender intimacy, soft focus",
+    "shot_type": "close-up",
+    "lighting": "low key, bokeh highlights",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:35Z"
+    }
+  },
+  "9f15fcf3434ebc5d1f627c0ea0c53975:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Abstracted, blurry figures walk past a bus at night, their forms indistinct, conveying a sense of disorientation and movement.",
+    "characters_present": [],
+    "emotion": "fleeting, chaotic, disoriented",
+    "shot_type": "wide",
+    "lighting": "artificial streetlight, blurry",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:35Z"
+    }
+  },
+  "43af7cc2dfeb5170f06e8690ea48327d:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana, wearing a floral two-piece outfit, runs by a large pole; the scene is blurry and conveys motion.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "urgent escape, breathless, frantic",
+    "shot_type": "medium",
+    "lighting": "bright daylight, outdoors",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:35Z"
+    }
+  },
+  "2ad67b019cd58ed6832c389ebf4b93aa:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary looks up into the night sky in wonder, with car headlights blurring behind him in the darkness.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful hope, uncertain wonder",
+    "shot_type": "medium",
+    "lighting": "low key, headlights bokeh",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:35Z"
+    }
+  },
+  "e768423646c6185b4070d10ee15b0a61:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Alana stands in a crowded, warmly lit arcade, looking intently off-screen at someone and smiling.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium",
+    "lighting": "warm tungsten, ambient lights, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:40Z"
+    }
+  },
+  "f9ba9a4f8a36a52b2da0111c1efa2641:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary smiles with a slightly mischievous look on his face amidst a buzzy arcade environment.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "playful confidence",
+    "shot_type": "medium close-up",
+    "lighting": "warm, slightly diffused ambient light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:40Z"
+    }
+  },
+  "bb06c66445fd626a76224008ca9dc7f7:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Gary and Alana share a kiss, their faces close and intimate against the blurry, colorful background of the arcade.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "tender affection",
+    "shot_type": "close-up",
+    "lighting": "warm, diffused, slightly grainy",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:40Z"
+    }
+  },
+  "9872ca5c15298738fc0d3c1b628d07dc:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A figure stands silhouetted in a doorway, bathed in the eerie red glow of a room beyond.",
+    "characters_present": [],
+    "emotion": "ominous tension",
+    "shot_type": "medium",
+    "lighting": "high contrast, red monochromatic, backlit",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:40Z"
+    }
+  },
+  "65595ad46c545eefffe05f644e642140:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "An abstract floor pattern with the MUJI logo is displayed, possibly from a stream.",
+    "characters_present": [],
+    "emotion": "clean minimalism",
+    "shot_type": "insert/detail shot",
+    "lighting": "even, slightly warm",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:40Z"
+    }
+  },
+  "6b0ce8594eb845626733badd95f8c3d0:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two figures stand on opposite stairways by the sea as the title 'Drive My Car' overlays the landscape and foreground.",
+    "characters_present": [],
+    "emotion": "melancholy stillness",
+    "shot_type": "wide",
+    "lighting": "overcast, soft, hazy",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:44Z"
+    }
+  },
+  "6509635c6f6b3d05e80243268eced441:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Silhouetted hands hold cigarettes in a dark vehicle, smoke rising into the dimness.",
+    "characters_present": [],
+    "emotion": "smoldering, nocturnal contemplation",
+    "shot_type": "close-up",
+    "lighting": "low light, amber glow",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:44Z"
+    }
+  },
+  "da22553254c9c4135d5b376a097a61a4:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A woman embraces a man with a mustache from behind, resting her head on his with tender closeness against a stark black backdrop.",
+    "characters_present": [],
+    "emotion": "intimate, poignant, comforting",
+    "shot_type": "close-up",
+    "lighting": "warm, soft lamplight",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:44Z"
+    }
+  },
+  "311ef650f80181724b569bf1e293a3be:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two silhouetted figures walk away down a white hallway towards a bright industrial harbor scene.",
+    "characters_present": [],
+    "emotion": "reflective, distant, contemplative",
+    "shot_type": "medium wide",
+    "lighting": "bright, hazy, backlit",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:44Z"
+    }
+  },
+  "3a5194264e622e1e99ba7f72fdd0b985:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A woman in a cream sweater gestures with her hand while seated at a table laden with food and drinks during a tense dinner conversation.",
+    "characters_present": [],
+    "emotion": "unease, strained, uncomfortable",
+    "shot_type": "medium close-up",
+    "lighting": "soft, somewhat cool, fluorescent",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:44Z"
+    }
+  },
+  "4f02966d5f943ae182790144d5b49cb6:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "Two figures kneel dramatically on a stage scattered with debris, lit starkly from above against a black backdrop, with illuminated captions.",
+    "characters_present": [],
+    "emotion": "melancholy introspection",
+    "shot_type": "wide",
+    "lighting": "harsh spotlight, theatrical",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:49Z"
+    }
+  },
+  "bdfd08a69ab46f5d23dd4ea387b5423b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A red Saab 900 convertible speeds toward the camera on a snowy highway, revealing two occupants in the front seat.",
+    "characters_present": [],
+    "emotion": "driving anticipation",
+    "shot_type": "medium",
+    "lighting": "overcast daylight, cool tones",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:49Z"
+    }
+  },
+  "0f0a25ad82aeabf1b9e95bd663045284:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A man and a woman stand in a snowy landscape, the woman holding flowers and looking upwards with closed eyes.",
+    "characters_present": [],
+    "emotion": "solemn reflection",
+    "shot_type": "medium",
+    "lighting": "soft overcast, diffused light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:49Z"
+    }
+  },
+  "4ca93e39fbfeabcca779ce06de2d1618:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A split screen shows two close-up portrait shots with overlaid text, featuring dramatically lit faces.",
+    "characters_present": [],
+    "emotion": "dramatic intensity",
+    "shot_type": "close-up",
+    "lighting": "high contrast, cinematic",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:49Z"
+    }
+  },
+  "d678103e5c91e44c373df4a8a5b045f4:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A split screen shows a pensive woman in a period dress and a hand reaching for a book, overlaid with text in black and white.",
+    "characters_present": [],
+    "emotion": "thoughtful curiosity",
+    "shot_type": "close-up",
+    "lighting": "soft diffused, monochrome",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:49Z"
+    }
+  },
+  "160f68df811bb7e63d89f5c4156c601b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A woman with elegant hair and a striped garment smiles softly as a man's hand tenderly holds her arm.",
+    "characters_present": [],
+    "emotion": "Gentle affection, quiet intimacy",
+    "shot_type": "medium close-up",
+    "lighting": "Warm, soft, diffused lighting",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.2,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:54Z"
+    }
+  },
+  "2c3015f22675729fc67291751bfad48b:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A blurry scene bathed in intense red light shows silhouettes of bodies dancing.",
+    "characters_present": [],
+    "emotion": "Intense, chaotic, frenetic",
+    "shot_type": "wide",
+    "lighting": "Intense, saturated red light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:54Z"
+    }
+  },
+  "6c203db90d2ffea1f4e53f81fd9e1b1c:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A screen displays text promoting a free trial on a black background.",
+    "characters_present": [],
+    "emotion": "Informative, promotional, neutral",
+    "shot_type": "wide",
+    "lighting": "Flat, artificial light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:54Z"
+    }
+  },
+  "ddc873a130aa568b4e207847885a18d6:56c14db893df45d42fb4d0ebf098fa6f": {
+    "description": "A tiled collage background sits next to a Patreon and social media promotion.",
+    "characters_present": [],
+    "emotion": "Supportive, connected, encouraging",
+    "shot_type": "wide",
+    "lighting": "Flat, artificial light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1,
+    "_meta": {
+      "model": "google/gemini-2.0-flash-001",
+      "film": "Licorice Pizza|chars:Alana Kane,Gary Valentine",
+      "created_at": "2026-03-08T22:54:54Z"
+    }
+  }
+}

@@ -1,0 +1,3359 @@
+[
+  {
+    "index": 0,
+    "start_time": 0.0,
+    "end_time": 3.878875,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0000/frame_00.jpg"
+    ],
+    "description": "A group of boys jostle in a crowded corridor, seemingly fighting or playfully pushing each other against a mirror.",
+    "characters_present": [],
+    "emotion": "chaotic energy",
+    "shot_type": "medium",
+    "lighting": "fluorescent, slightly harsh",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8
+  },
+  {
+    "index": 1,
+    "start_time": 3.878875,
+    "end_time": 6.25625,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0001/frame_00.jpg"
+    ],
+    "description": "Gary Valentine sits stiffly for a portrait in a school gymnasium while Alana Kane stands off to the side, observing with arms crossed.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "awkward anticipation",
+    "shot_type": "wide",
+    "lighting": "bright studio light, clean white",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 2,
+    "start_time": 6.25625,
+    "end_time": 7.882874999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0002/frame_00.jpg"
+    ],
+    "description": "A vintage hot dog stand glows under a vibrant sunset, with figures sitting at outdoor tables and bikes parked nearby.",
+    "characters_present": [],
+    "emotion": "nostalgic twilight",
+    "shot_type": "wide",
+    "lighting": "golden sunset, contrasty shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 3,
+    "start_time": 7.882874999999999,
+    "end_time": 10.510499999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0003/frame_00.jpg"
+    ],
+    "description": "Gary Valentine leans in close to talk to another young boy, their faces illuminated by the diner's warm, ambient light.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "intimate conversation",
+    "shot_type": "close-up",
+    "lighting": "warm interior, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 4,
+    "start_time": 10.510499999999999,
+    "end_time": 12.137125,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0004/frame_00.jpg"
+    ],
+    "description": "A large group of children in pajamas stand on a white cyc, posed and singing with adult stage director leading them.",
+    "characters_present": [],
+    "emotion": "theatrical exuberance",
+    "shot_type": "medium",
+    "lighting": "flat studio, neutral",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8
+  },
+  {
+    "index": 5,
+    "start_time": 12.137125,
+    "end_time": 14.389375,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0005/frame_00.jpg"
+    ],
+    "description": "A large indistinct crowd, silhouetted against stadium lights, slowly makes its way somewhere.",
+    "characters_present": [],
+    "emotion": "enigmatic, disorienting, looming dread",
+    "shot_type": "wide",
+    "lighting": "high contrast backlit silhouette",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 6,
+    "start_time": 14.389375,
+    "end_time": 19.894875,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0006/frame_00.jpg"
+    ],
+    "description": "From a darkened doorway, Alana rapidly cleans a desk.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "frazzled, rushed, chaotic",
+    "shot_type": "medium",
+    "lighting": "flat, yellowish, interior",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 7,
+    "start_time": 19.894875,
+    "end_time": 22.647624999999998,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0007/frame_00.jpg"
+    ],
+    "description": "Alana searches under a cluttered bed in her bra and underwear.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "vulnerable, frantic, exposed",
+    "shot_type": "medium",
+    "lighting": "warm incandescent, cluttered",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 8,
+    "start_time": 24.899874999999998,
+    "end_time": 27.19383333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0008/frame_00.jpg"
+    ],
+    "description": "Alana looks back nervously from the passenger seat of a convertible being driven at night.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "nervous, apprehensive, uncertain",
+    "shot_type": "medium",
+    "lighting": "dark, atmospheric, specular highlights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 9,
+    "start_time": 27.19383333333333,
+    "end_time": 32.36566666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0009/frame_00.jpg"
+    ],
+    "description": "Gary and Alana look at each other with subtle affection in a crowded hallway.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "quiet affection, tentative connection",
+    "shot_type": "medium close-up",
+    "lighting": "soft, warm, ambient",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 10,
+    "start_time": 32.36566666666666,
+    "end_time": 37.70433333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0010/frame_00.jpg"
+    ],
+    "description": "Alana walks down a street with a determined expression, moving towards something out of frame.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "resolute, focused",
+    "shot_type": "medium",
+    "lighting": "bright sunlight, slightly harsh shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 11,
+    "start_time": 37.70433333333333,
+    "end_time": 39.95658333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0011/frame_00.jpg"
+    ],
+    "description": "Gary looks pensively out of the car window while driving, bathed in golden light.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "dreamy yearning",
+    "shot_type": "close-up",
+    "lighting": "warm golden hour, backlit",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 12,
+    "start_time": 39.95658333333333,
+    "end_time": 42.917874999999995,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0012/frame_00.jpg"
+    ],
+    "description": "A lone figure sprints across a vast, empty agricultural field on a gloomy, overcast day.",
+    "characters_present": [],
+    "emotion": "desperate, urgent",
+    "shot_type": "wide",
+    "lighting": "diffused overcast, grey",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 13,
+    "start_time": 42.917874999999995,
+    "end_time": 45.00329166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0013/frame_00.jpg"
+    ],
+    "description": "A man speeds across a flat desert plain on a vintage motorcycle, kicking up dust.",
+    "characters_present": [],
+    "emotion": "carefree, adventurous",
+    "shot_type": "wide",
+    "lighting": "bright sunlight, long shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 14,
+    "start_time": 45.00329166666666,
+    "end_time": 47.58920833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0014/frame_00.jpg"
+    ],
+    "description": "A figure runs toward bright headlights in a dark field, illuminated by streetlights.",
+    "characters_present": [],
+    "emotion": "uncertain, desperate",
+    "shot_type": "wide",
+    "lighting": "high contrast, artificial light sources",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 15,
+    "start_time": 47.58920833333333,
+    "end_time": 49.71633333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0015/frame_00.jpg"
+    ],
+    "description": "A man in a suit, face contorted in a wild scream, leans forward in apparent terror as he speeds along.",
+    "characters_present": [],
+    "emotion": "frenzied fear",
+    "shot_type": "close-up",
+    "lighting": "artificial, high-key, nocturnal",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75
+  },
+  {
+    "index": 16,
+    "start_time": 50.884166666666665,
+    "end_time": 54.59620833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0016/frame_00.jpg"
+    ],
+    "description": "A bearded man holding a gas pump nozzle points a lit match toward the nozzle as Alana Kane looks on apprehensively at a gas station.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "dangerous tension",
+    "shot_type": "medium",
+    "lighting": "artificial gas station lights, cool",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75
+  },
+  {
+    "index": 17,
+    "start_time": 54.59620833333333,
+    "end_time": 59.72633333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0017/frame_00.jpg"
+    ],
+    "description": "A man and a woman, perhaps Alana Kane, sprint hand-in-hand past a neon 'LOANS' sign at night.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "urgent escape",
+    "shot_type": "medium",
+    "lighting": "neon glow, dark shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75
+  },
+  {
+    "index": 18,
+    "start_time": 59.72633333333333,
+    "end_time": 62.437374999999996,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0018/frame_00.jpg"
+    ],
+    "description": "A man and a woman, potentially Alana Kane, weave through a crowded outdoor space lit with strung lights at night.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "chaotic energy",
+    "shot_type": "medium",
+    "lighting": "warm, diffused string lights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.75
+  },
+  {
+    "index": 19,
+    "start_time": 65.77404166666666,
+    "end_time": 69.11070833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0019/frame_00.jpg"
+    ],
+    "description": "A MUBI advertisement stating 'GET 30 DAYS FREE' in stark white text on a black background.",
+    "characters_present": [],
+    "emotion": "none",
+    "shot_type": "wide",
+    "lighting": "flat, stark",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 20,
+    "start_time": 69.11070833333333,
+    "end_time": 70.945875,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0020/frame_00.jpg"
+    ],
+    "description": "A lone girl walks down a sun-drenched school corridor, the distant figures hinting at a bustling day.",
+    "characters_present": [],
+    "emotion": "serene isolation",
+    "shot_type": "wide",
+    "lighting": "bright, sunny, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 21,
+    "start_time": 70.945875,
+    "end_time": 72.48908333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0021/frame_00.jpg"
+    ],
+    "description": "Teenagers mill in a crowded school hallway, their faces reflecting the uncertainty of youth.",
+    "characters_present": [],
+    "emotion": "awkward anticipation",
+    "shot_type": "medium",
+    "lighting": "soft diffused, neutral",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 22,
+    "start_time": 72.48908333333333,
+    "end_time": 76.5765,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0022/frame_00.jpg"
+    ],
+    "description": "A group of teenagers awkwardly stand together in a sunlit school hallway.",
+    "characters_present": [],
+    "emotion": "restrained youthful curiosity",
+    "shot_type": "medium",
+    "lighting": "soft diffused, neutral",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 23,
+    "start_time": 76.5765,
+    "end_time": 82.24883333333332,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0023/frame_00.jpg"
+    ],
+    "description": "A young woman stands alone by a schoolyard, the sprinklers creating an ethereal glow.",
+    "characters_present": [],
+    "emotion": "melancholy hope",
+    "shot_type": "wide",
+    "lighting": "golden hour, soft, bright",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 24,
+    "start_time": 82.24883333333332,
+    "end_time": 85.085,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0024/frame_00.jpg"
+    ],
+    "description": "Alana and Gary are walking at night, lit by streetlights, lost in their own world.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "youthful wonder",
+    "shot_type": "two-shot",
+    "lighting": "artificial, nighttime, soft",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 25,
+    "start_time": 85.085,
+    "end_time": 88.04629166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0025/frame_00.jpg"
+    ],
+    "description": "Alana Kane and Gary Valentine sprint across a beach, both smiling and full of youthful energy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "joyful abandon, carefree",
+    "shot_type": "medium",
+    "lighting": "bright daylight, slightly overexposed",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 26,
+    "start_time": 88.04629166666666,
+    "end_time": 89.54779166666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0026/frame_00.jpg"
+    ],
+    "description": "Gary Valentine, wearing a white suit with a red shirt, runs down a street underneath neon lights, potentially in a tense pursuit.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "frantic energy, desperate escape",
+    "shot_type": "medium",
+    "lighting": "neon glow, urban nighttime",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 27,
+    "start_time": 91.96687499999999,
+    "end_time": 94.05229166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0027/frame_00.jpg"
+    ],
+    "description": "A woman sits inside a vintage movie theater ticket booth, framed by dark wood and maroon curtains.",
+    "characters_present": [],
+    "emotion": "melancholic waiting, quiet observation",
+    "shot_type": "medium",
+    "lighting": "soft window light, warm interior",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 28,
+    "start_time": 94.05229166666666,
+    "end_time": 97.84774999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0028/frame_00.jpg"
+    ],
+    "description": "A group of friends in a car are laughing, with Alana Kane among them, but overlaid text obscures the lower faces.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "raucous fun, shared laughter",
+    "shot_type": "medium",
+    "lighting": "dark interior, reflected screen glow",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 29,
+    "start_time": 97.84774999999999,
+    "end_time": 100.85074999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0029/frame_00.jpg"
+    ],
+    "description": "Alana Kane, in close-up, speaks intently into a vintage turquoise telephone, her expression fraught with concern.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "anxious urgency, worried anticipation",
+    "shot_type": "close-up",
+    "lighting": "soft lamp light, warm shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 30,
+    "start_time": 100.85074999999999,
+    "end_time": 102.977875,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0030/frame_00.jpg"
+    ],
+    "description": "Gary Valentine, with a serious expression, holds a telephone receiver close to his ear, seemingly troubled by the conversation.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "anxious anticipation",
+    "shot_type": "close-up",
+    "lighting": "warm, tungsten, slightly underexposed",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 31,
+    "start_time": 102.977875,
+    "end_time": 104.81304166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0031/frame_00.jpg"
+    ],
+    "description": "A man rushes through an airport concourse, pursued by someone, from the movie Sleepless in Seattle.",
+    "characters_present": [],
+    "emotion": "frantic urgency",
+    "shot_type": "medium",
+    "lighting": "bright fluorescent, flat",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 32,
+    "start_time": 104.81304166666666,
+    "end_time": 106.94016666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0032/frame_00.jpg"
+    ],
+    "description": "People stroll past storefronts at night, in a scene from Sleepless in Seattle.",
+    "characters_present": [],
+    "emotion": "melancholy loneliness",
+    "shot_type": "wide",
+    "lighting": "mix of streetlights, night shadows",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 33,
+    "start_time": 109.27583333333332,
+    "end_time": 110.77733333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0033/frame_00.jpg"
+    ],
+    "description": "Hands gently stroke a teddy bear.",
+    "characters_present": [],
+    "emotion": "tenderness affection",
+    "shot_type": "insert/detail shot",
+    "lighting": "soft, diffused, possibly daylight",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 34,
+    "start_time": 110.77733333333333,
+    "end_time": 123.33154166666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0034/frame_00.jpg"
+    ],
+    "description": "A woman sits in a car while a man standing outside places something into the back seat.",
+    "characters_present": [],
+    "emotion": "understated tension",
+    "shot_type": "medium",
+    "lighting": "overcast daylight, flat",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 35,
+    "start_time": 123.33154166666665,
+    "end_time": 127.29383333333332,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0035/frame_00.jpg"
+    ],
+    "description": "Streetlights illuminate the night on Genesta Street, next to some parked cars and a large truck parked on the right side.",
+    "characters_present": [],
+    "emotion": "Urban cool, nocturnal vibes",
+    "shot_type": "wide",
+    "lighting": "Artificial streetlights, stark and diffused",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 36,
+    "start_time": 127.29383333333332,
+    "end_time": 132.17370833333334,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0036/frame_00.jpg"
+    ],
+    "description": "The frame divides into two panels: Gary intensely kisses a girl in the front seat; in the back, Alana looks on with a worried expression.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "awkwardness, forbidden desire, bittersweet",
+    "shot_type": "medium close-up",
+    "lighting": "Dim interior, warm and claustrophobic",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 37,
+    "start_time": 132.17370833333334,
+    "end_time": 135.96916666666667,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0037/frame_00.jpg"
+    ],
+    "description": "Splitscreen frame: on the left, an illuminated truck at nighttime; on the right, Alana hauls a rope up a staircase in broad daylight.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Unease and determined action",
+    "shot_type": "medium",
+    "lighting": "high contrast, daylight to darkness",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 38,
+    "start_time": 135.96916666666667,
+    "end_time": 139.22241666666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0038/frame_00.jpg"
+    ],
+    "description": "Alana leans in intently, eyes locked on Gary, in a sun-drenched domestic interior.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "Intimacy, intensity, unspoken feelings",
+    "shot_type": "medium close-up",
+    "lighting": "Warm, natural light, soft focus",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 39,
+    "start_time": 139.22241666666665,
+    "end_time": 141.76662499999998,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0039/frame_00.jpg"
+    ],
+    "description": "Gary gazes upwards at Alana, who regards him with an ambiguous expression in a warm-toned interior.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "Yearning, hopeful, uncertain",
+    "shot_type": "medium close-up",
+    "lighting": "warm ambient light, subtle shadows",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 40,
+    "start_time": 141.76662499999998,
+    "end_time": 145.3118333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0040/frame_00.jpg"
+    ],
+    "description": "Alana looks past someone out of focus and into the distance, a lawn with sprinklers behind her.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "contemplative, searching",
+    "shot_type": "medium",
+    "lighting": "bright, daytime, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 41,
+    "start_time": 147.93945833333333,
+    "end_time": 150.0665833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0041/frame_00.jpg"
+    ],
+    "description": "Gary Valentine wears a striped shirt as he looks sideways and talks to someone off camera, sprinklers misting in the background.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful exuberance",
+    "shot_type": "medium close-up",
+    "lighting": "bright, sunny, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 42,
+    "start_time": 150.0665833333333,
+    "end_time": 152.65249999999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0042/frame_00.jpg"
+    ],
+    "description": "Alana stares pensively at the right of frame, a younger boy and Gary Valentine framed in the mirror on the right.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "uncertainty, contemplation",
+    "shot_type": "medium",
+    "lighting": "soft, diffused sunlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 43,
+    "start_time": 153.86204166666667,
+    "end_time": 157.49066666666667,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0043/frame_00.jpg"
+    ],
+    "description": "Alana looks intently at Gary Valentine, a younger boy looks down and out of focus to the left frame.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "serious, focused",
+    "shot_type": "medium close-up",
+    "lighting": "natural light, slight backlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 44,
+    "start_time": 157.49066666666667,
+    "end_time": 159.159,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0044/frame_00.jpg"
+    ],
+    "description": "Alana makes her case forcefully across from Gary Valentine in the sunshine.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "determination, passion",
+    "shot_type": "medium close-up",
+    "lighting": "bright, daytime, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 45,
+    "start_time": 160.32683333333333,
+    "end_time": 163.95545833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0045/frame_00.jpg"
+    ],
+    "description": "Gary Valentine sits at a restaurant table, gesturings with his hands as he speaks, a mix of nervous energy and earnest hope on his face.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 46,
+    "start_time": 163.95545833333333,
+    "end_time": 168.25141666666664,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0046/frame_00.jpg"
+    ],
+    "description": "Alana Kane sits across from Gary Valentine at a dimly lit restaurant table, looking directly at someone off-screen with a slight, curious smile.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "curious intrigue",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, subtly moody",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 47,
+    "start_time": 168.25141666666664,
+    "end_time": 171.50466666666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0047/frame_00.jpg"
+    ],
+    "description": "Gary Valentine, seated, speaks with his hands clasped in front of him, a hopeful but slightly strained expression on his face in the dimly lit restaurant.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "nervous hope",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, soft edges",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 48,
+    "start_time": 171.50466666666665,
+    "end_time": 174.6745,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0048/frame_00.jpg"
+    ],
+    "description": "Across from Gary Valentine, Alana Kane maintains a slight smile with a direct gaze, her expression unreadable, in the low light of the restaurant.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "intense observation",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, subtle backlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 49,
+    "start_time": 174.6745,
+    "end_time": 176.88504166666667,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0049/frame_00.jpg"
+    ],
+    "description": "Gary Valentine speaks intently, possibly making a pitch or explaining something important, in the golden light of the restaurant, with a dark figure looming to the right.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "earnest intensity",
+    "shot_type": "medium close-up",
+    "lighting": "warm tungsten, slightly dramatic",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 50,
+    "start_time": 176.88504166666667,
+    "end_time": 182.39054166666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0050/frame_00.jpg"
+    ],
+    "description": "Alana Kane and Gary Valentine stand side-by-side on a dimly lit street, both looking directly at the camera with neutral expressions amidst looming shadows.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "awkward uncertainty",
+    "shot_type": "medium",
+    "lighting": "low-key, minimal streetlamp illumination",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 51,
+    "start_time": 182.39054166666665,
+    "end_time": 190.10658333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0051/frame_00.jpg"
+    ],
+    "description": "Alana Kane walks towards a suburban house at night, while a man dribbles a basketball near a vintage car in the driveway.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "melancholy solitude",
+    "shot_type": "wide",
+    "lighting": "dim and suburban, porch light glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 52,
+    "start_time": 190.10658333333333,
+    "end_time": 194.56937499999998,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0052/frame_00.jpg"
+    ],
+    "description": "Alana Kane lounges on a couch amidst family members, some awake and some asleep, in front of a patterned wallpaper.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "domestic boredom",
+    "shot_type": "medium",
+    "lighting": "warm, interior lamp light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 53,
+    "start_time": 194.56937499999998,
+    "end_time": 197.322125,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0053/frame_00.jpg"
+    ],
+    "description": "A blonde woman with concern etched on her face peers from behind a partially opened door.",
+    "characters_present": [],
+    "emotion": "worried curiosity",
+    "shot_type": "close-up",
+    "lighting": "soft, diffused indoor lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 54,
+    "start_time": 197.322125,
+    "end_time": 199.57437499999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0054/frame_00.jpg"
+    ],
+    "description": "Alana Kane writhes dramatically on a bed, her expression a mix of discomfort and distress inside of a bedroom with vintage decor.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "frustrated desperation",
+    "shot_type": "medium",
+    "lighting": "ambient, yellowish cast, side lamp",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 55,
+    "start_time": 199.57437499999997,
+    "end_time": 202.91104166666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0055/frame_00.jpg"
+    ],
+    "description": "The Kane family, including Alana Kane, gathers around a dinner table bathed in candlelight, sharing a meal and conversation.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "warm familial intimacy",
+    "shot_type": "medium",
+    "lighting": "soft candlelight, warm and inviting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 56,
+    "start_time": 202.91104166666665,
+    "end_time": 207.207,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0056/frame_00.jpg"
+    ],
+    "description": "Alana Kane and Gary Valentine walk closely together at night outside a house, looking comfortable and perhaps a little somber.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "quiet companionship",
+    "shot_type": "medium",
+    "lighting": "dim streetlight, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 57,
+    "start_time": 207.207,
+    "end_time": 210.20999999999998,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0057/frame_00.jpg"
+    ],
+    "description": "Alana Kane stands in the background while two men in suits are arguing intensely in the foreground, creating a tense and awkward atmosphere.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "awkward tension",
+    "shot_type": "medium",
+    "lighting": "soft interior lighting, slightly desaturated",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 58,
+    "start_time": 211.16929166666665,
+    "end_time": 216.46624999999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0058/frame_00.jpg"
+    ],
+    "description": "A fraught encounter takes place, with Alana Kane entering a room and pushing past someone in a moment of heightened emotion or possible conflict.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "electric tension",
+    "shot_type": "medium",
+    "lighting": "fluorescent overhead, cool and harsh",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 59,
+    "start_time": 216.46624999999997,
+    "end_time": 218.96874999999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0059/frame_00.jpg"
+    ],
+    "description": "Alana Kane peels out in a vintage turquoise convertible, with Gary Valentine riding shotgun, in a display of youthful rebellion and carefree energy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "defiant freedom",
+    "shot_type": "wide",
+    "lighting": "bright sunlight, slightly warm",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 60,
+    "start_time": 218.96874999999997,
+    "end_time": 224.7662083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0060/frame_00.jpg"
+    ],
+    "description": "Two separate scenes show Gary Valentine: in one, he looks up in surprise; in the other, he gleefully participates in a pillow fight on a bunk bed.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful exuberance",
+    "shot_type": "close-up",
+    "lighting": "bright, even, studio lighting",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 61,
+    "start_time": 224.7662083333333,
+    "end_time": 230.81391666666664,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0061/frame_00.jpg"
+    ],
+    "description": "Gary Valentine, viewed from the side, walks with purpose along the side of a building.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "purposeful forward momentum",
+    "shot_type": "medium",
+    "lighting": "soft natural light, overcast skies",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 62,
+    "start_time": 230.81391666666664,
+    "end_time": 236.02745833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0062/frame_00.jpg"
+    ],
+    "description": "Alana Kane and Gary Valentine walk side-by-side down a suburban sidewalk at dusk, both holding objects, Alana holding a booklet.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "quiet companionship",
+    "shot_type": "medium wide",
+    "lighting": "soft twilight, fading light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 63,
+    "start_time": 236.02745833333333,
+    "end_time": 242.49224999999998,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0063/frame_00.jpg"
+    ],
+    "description": "An unseen person walks past a dimly lit room, revealing a couch and some objects on a table.",
+    "characters_present": [],
+    "emotion": "vague unease",
+    "shot_type": "medium",
+    "lighting": "dim, grainy, interior lighting, blue hues",
+    "visual_power": 1,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.9
+  },
+  {
+    "index": 64,
+    "start_time": 242.49224999999998,
+    "end_time": 247.24699999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0064/frame_00.jpg"
+    ],
+    "description": "Gary Valentine is among several occupants in a car being driven at dusk.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "carefree joyride",
+    "shot_type": "medium",
+    "lighting": "low light, ambient sunset, dark interior",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 65,
+    "start_time": 247.24699999999999,
+    "end_time": 249.79120833333332,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0065/frame_00.jpg"
+    ],
+    "description": "A blonde woman with a bouffant sits in the back of a car looking vaguely concerned next to another less-defined character and in front of Gary Valentine.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful discontent, mild apprehension",
+    "shot_type": "medium",
+    "lighting": "soft diffused natural light",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 66,
+    "start_time": 249.79120833333332,
+    "end_time": 251.2927083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0066/frame_00.jpg"
+    ],
+    "description": "Alana Kane holds a mirror reflecting Gary Valentine's face, seemingly assessing his appearance in an outdoor setting.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "playful tension, scrutiny",
+    "shot_type": "medium close-up",
+    "lighting": "bright, even daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 67,
+    "start_time": 251.2927083333333,
+    "end_time": 258.54995833333334,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0067/frame_00.jpg"
+    ],
+    "description": "Alana Kane listens with a furrowed brow as Gary Valentine speaks to her off-screen, trees and buildings visible in the background.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "attentive skepticism, unspoken concerns",
+    "shot_type": "medium close-up",
+    "lighting": "soft, natural daylight, slight overexposure",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 68,
+    "start_time": 258.54995833333334,
+    "end_time": 261.76149999999996,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0068/frame_00.jpg"
+    ],
+    "description": "Alana Kane looks off into the distance with a worried expression while Gary Valentine stands beside her, with a bright outdoor setting.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "pensive worry, distant anxiety",
+    "shot_type": "medium",
+    "lighting": "bright, slightly washed-out daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 69,
+    "start_time": 261.76149999999996,
+    "end_time": 263.6800833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0069/frame_00.jpg"
+    ],
+    "description": "Gary Valentine passionately argues or explains something to Alana Kane, who looks back with a slightly skeptical expression in broad daylight.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "charged argument, youthful frustration",
+    "shot_type": "medium",
+    "lighting": "even, bright daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 70,
+    "start_time": 263.6800833333333,
+    "end_time": 270.35341666666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0070/frame_00.jpg"
+    ],
+    "description": "A blurred figure hurries past in front of a plain pale blue wall, moving right. ",
+    "characters_present": [],
+    "emotion": "hurried, frantic",
+    "shot_type": "medium",
+    "lighting": "soft, diffused light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.4
+  },
+  {
+    "index": 71,
+    "start_time": 270.35341666666665,
+    "end_time": 286.8282083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0071/frame_00.jpg"
+    ],
+    "description": "Alana Kane walks along a sidewalk past a storefront called \"Mr. Jack's Wig Shop\" with many vintage cars reflected in the window.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "nostalgic, retro",
+    "shot_type": "wide",
+    "lighting": "flat daylight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 72,
+    "start_time": 286.8282083333333,
+    "end_time": 289.7895,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0072/frame_00.jpg"
+    ],
+    "description": "A woman stands inside a wig shop, delivering a line.",
+    "characters_present": [],
+    "emotion": "bold, direct",
+    "shot_type": "medium close-up",
+    "lighting": "warm, slightly muted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 73,
+    "start_time": 289.7895,
+    "end_time": 292.54224999999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0073/frame_00.jpg"
+    ],
+    "description": "Gary Valentine sits at a cluttered desk on the phone, a woman's leg with a strappy shoe partially obscures the view.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "discomfort, distraction",
+    "shot_type": "medium",
+    "lighting": "warm, desk lamp",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 74,
+    "start_time": 292.54224999999997,
+    "end_time": 294.5025416666667,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0074/frame_00.jpg"
+    ],
+    "description": "Gary Valentine watches with a blank expression as a woman pulls off her robe, back to camera.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "awkward tension",
+    "shot_type": "medium",
+    "lighting": "dim, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 75,
+    "start_time": 294.5025416666667,
+    "end_time": 302.38541666666663,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0075/frame_00.jpg"
+    ],
+    "description": "In a split screen, Gary turns to a woman undressing exposing her back in a room with illustrated wallpaper, while outside, a woman who could be Alana, embraces someone out of view.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "youthful confusion, tender disconnect",
+    "shot_type": "medium",
+    "lighting": "warm indoor/bright, natural outdoor",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 76,
+    "start_time": 302.38541666666663,
+    "end_time": 307.55724999999995,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0076/frame_00.jpg"
+    ],
+    "description": "A man sits alone at a dining table under cool, dim light, his expression troubled.",
+    "characters_present": [],
+    "emotion": "lonely anxiety, quiet desperation",
+    "shot_type": "medium",
+    "lighting": "cool dim, somber, clinical",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3
+  },
+  {
+    "index": 77,
+    "start_time": 307.55724999999995,
+    "end_time": 313.85520833333334,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0077/frame_00.jpg"
+    ],
+    "description": "A man speaks on the phone, head slightly bowed, his face etched with worry.",
+    "characters_present": [],
+    "emotion": "concerned, strained tension",
+    "shot_type": "close-up",
+    "lighting": "dim, shadowed, low-key",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3
+  },
+  {
+    "index": 78,
+    "start_time": 313.85520833333334,
+    "end_time": 318.56825,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0078/frame_00.jpg"
+    ],
+    "description": "A man is on a call next to newspapers with woman's face.",
+    "characters_present": [],
+    "emotion": "urgent, dubious, conflicted",
+    "shot_type": "medium close-up",
+    "lighting": "cool, shadowed, stark",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3
+  },
+  {
+    "index": 79,
+    "start_time": 318.56825,
+    "end_time": 323.8652083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0079/frame_00.jpg"
+    ],
+    "description": "A man walks in a room near cabinets as he speaks on the phone.",
+    "characters_present": [],
+    "emotion": "tense, business, isolated",
+    "shot_type": "medium",
+    "lighting": "cool, shadowed, sparse",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3
+  },
+  {
+    "index": 80,
+    "start_time": 323.8652083333333,
+    "end_time": 327.3687083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0080/frame_00.jpg"
+    ],
+    "description": "A shirtless man lies face down in the sand on a beach, pressed against a sandy sculpture.",
+    "characters_present": [],
+    "emotion": "vulnerability, isolation",
+    "shot_type": "close-up",
+    "lighting": "warm, natural light, directional",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7
+  },
+  {
+    "index": 81,
+    "start_time": 327.3687083333333,
+    "end_time": 330.78879166666667,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0081/frame_00.jpg"
+    ],
+    "description": "A split screen shows a man lying on a sand sculpture of a nude woman and a bride and groom kissing at their wedding.",
+    "characters_present": [],
+    "emotion": "contrast, love, longing",
+    "shot_type": "medium",
+    "lighting": "warm daylight, golden hour and soft interior",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.7
+  },
+  {
+    "index": 82,
+    "start_time": 330.78879166666667,
+    "end_time": 333.29129166666667,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0082/frame_00.jpg"
+    ],
+    "description": "A bride and groom jump and cheer with a third man, arms raised in joyous celebration at their wedding reception.",
+    "characters_present": [],
+    "emotion": "unrestrained joy",
+    "shot_type": "medium",
+    "lighting": "bright interior light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7
+  },
+  {
+    "index": 83,
+    "start_time": 333.29129166666667,
+    "end_time": 337.962625,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0083/frame_00.jpg"
+    ],
+    "description": "A wedding party sits around a banquet table, with one man standing to deliver a speech at the reception.",
+    "characters_present": [],
+    "emotion": "formality, celebration",
+    "shot_type": "medium",
+    "lighting": "warm, elegant interior lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7
+  },
+  {
+    "index": 84,
+    "start_time": 337.962625,
+    "end_time": 341.2575833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0084/frame_00.jpg"
+    ],
+    "description": "A man in a suit sits at a table, dramatically acting with his hands in a brightly lit scene.",
+    "characters_present": [],
+    "emotion": "intense, theatrical",
+    "shot_type": "medium",
+    "lighting": "high-key, dramatic studio lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7
+  },
+  {
+    "index": 85,
+    "start_time": 341.2575833333333,
+    "end_time": 347.3052916666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0085/frame_00.jpg"
+    ],
+    "description": "A young man in a black outfit gestures wildly, framed in a doorway, surrounded by a crowd of onlookers in a dimly lit space.",
+    "characters_present": [],
+    "emotion": "Frantic, theatrical, contained chaos",
+    "shot_type": "medium",
+    "lighting": "Dim, cool, available light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 86,
+    "start_time": 347.3052916666666,
+    "end_time": 350.725375,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0086/frame_00.jpg"
+    ],
+    "description": "A young man with arms spread wide emerges from a doorway, into a dimly lit interior space, framed by a crowd of people.",
+    "characters_present": [],
+    "emotion": "Triumphant, liberating, expansive",
+    "shot_type": "medium",
+    "lighting": "Dim, cool, practical lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 87,
+    "start_time": 353.227875,
+    "end_time": 355.7720833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0087/frame_00.jpg"
+    ],
+    "description": "Alana Kane looks up and to her left with a soft expression while positioned across from another person.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Contemplative, gentle, curious",
+    "shot_type": "close-up",
+    "lighting": "Warm, soft, interior light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 88,
+    "start_time": 357.0233333333333,
+    "end_time": 363.32129166666664,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0088/frame_00.jpg"
+    ],
+    "description": "Gary Valentine and Alana Kane run side-by-side through an open space, smiling with palpable joy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "Joyful, carefree, energetic",
+    "shot_type": "medium",
+    "lighting": "Bright overcast, natural light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 89,
+    "start_time": 363.32129166666664,
+    "end_time": 365.9072083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0089/frame_00.jpg"
+    ],
+    "description": "A car door is opened, revealing part of a person's patterned shirt as they enter the vehicle during the day.",
+    "characters_present": [],
+    "emotion": "Anticipation, departure, transition",
+    "shot_type": "medium",
+    "lighting": "Bright, sunny, natural light",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.7
+  },
+  {
+    "index": 90,
+    "start_time": 365.9072083333333,
+    "end_time": 369.1604583333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0090/frame_00.jpg"
+    ],
+    "description": "Alana Kane drives a car, looking over to smile at the passenger in the front seat.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "playful, easygoing, affectionate",
+    "shot_type": "medium",
+    "lighting": "bright daylight, soft diffuse light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 91,
+    "start_time": 369.1604583333333,
+    "end_time": 371.5795416666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0091/frame_00.jpg"
+    ],
+    "description": "Alana Kane, wearing a red t-shirt, looks worried as she leans against a brick wall and talks with another woman.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "concerned, serious, intimate",
+    "shot_type": "medium close-up",
+    "lighting": "warm, diffused, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 92,
+    "start_time": 371.5795416666666,
+    "end_time": 373.33129166666663,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0092/frame_00.jpg"
+    ],
+    "description": "In split screen, Gary Valentine is riding in a car, and Alana Kane is on the right looking angry.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "tense, strained, uncomfortable",
+    "shot_type": "close-up",
+    "lighting": "dark interior, artificial, contrasty",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 93,
+    "start_time": 373.33129166666663,
+    "end_time": 375.95891666666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0093/frame_00.jpg"
+    ],
+    "description": "Split screen showing Gary Valentine walking with a woman to the left and to the right a woman is smiling at a younger boy.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "social, ambiguous, lighthearted",
+    "shot_type": "medium",
+    "lighting": "mixed, artificial, nightclub vibe",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 94,
+    "start_time": 375.95891666666665,
+    "end_time": 378.00262499999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0094/frame_00.jpg"
+    ],
+    "description": "Split screen featuring Gary Valentine on the right at a table and Alana Kane sits across the table from an older man on the left.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "awkward, uneasy, transactional",
+    "shot_type": "medium close-up",
+    "lighting": "warm, subdued, restaurant-like",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 95,
+    "start_time": 378.00262499999997,
+    "end_time": 380.08804166666664,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0095/frame_00.jpg"
+    ],
+    "description": "Gary Valentine and Alana Kane sit uncomfortably close in a booth, with another man looming behind Alana, creating an awkward and tense moment.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "awkward tension",
+    "shot_type": "two-shot",
+    "lighting": "warm, dim, intimate",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 96,
+    "start_time": 380.08804166666664,
+    "end_time": 383.21616666666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0096/frame_00.jpg"
+    ],
+    "description": "A man in a suit stands casually outside of a jail cell while another man sits inside in a prison jumpsuit.",
+    "characters_present": [],
+    "emotion": "bleak confinement",
+    "shot_type": "wide",
+    "lighting": "flat, institutional, grey",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.7
+  },
+  {
+    "index": 97,
+    "start_time": 383.21616666666665,
+    "end_time": 387.011625,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0097/frame_00.jpg"
+    ],
+    "description": "A man with curly hair and a green shirt stares intensely from the driver's seat, while a man in a suit sits calmly beside him, driving the car.",
+    "characters_present": [],
+    "emotion": "contained apprehension",
+    "shot_type": "medium",
+    "lighting": "soft, natural light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 98,
+    "start_time": 387.011625,
+    "end_time": 390.64025,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0098/frame_00.jpg"
+    ],
+    "description": "Two men wrestle violently in a mud pit while other figures stand watching in the background.",
+    "characters_present": [],
+    "emotion": "brutal conflict",
+    "shot_type": "wide",
+    "lighting": "harsh sunlight, high contrast",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.4
+  },
+  {
+    "index": 99,
+    "start_time": 390.64025,
+    "end_time": 392.35029166666664,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0099/frame_00.jpg"
+    ],
+    "description": "Gary Valentine gazes with soft interest at someone who is just out of frame. ",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "hopeful adoration",
+    "shot_type": "close-up",
+    "lighting": "warm, golden, diffused",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 100,
+    "start_time": 393.518125,
+    "end_time": 396.521125,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0100/frame_00.jpg"
+    ],
+    "description": "A man in a suit is getting slapped on the face in front of an audience.",
+    "characters_present": [],
+    "emotion": "violent confrontation",
+    "shot_type": "wide",
+    "lighting": "Warm, diffused light, wooden walls",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 101,
+    "start_time": 396.521125,
+    "end_time": 398.6899583333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0101/frame_00.jpg"
+    ],
+    "description": "A man with a mustache grimaces as a hand rests on his head.",
+    "characters_present": [],
+    "emotion": "distress and violation",
+    "shot_type": "close-up",
+    "lighting": "warm, indoor lighting",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 102,
+    "start_time": 398.6899583333333,
+    "end_time": 400.3582916666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0102/frame_00.jpg"
+    ],
+    "description": "A chef slices ingredients on a cutting board.",
+    "characters_present": [],
+    "emotion": "culinary preparation",
+    "shot_type": "insert/detail shot",
+    "lighting": "Subdued, indirect lighting, cool tones",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 103,
+    "start_time": 400.3582916666666,
+    "end_time": 402.6105416666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0103/frame_00.jpg"
+    ],
+    "description": "A man with glasses stares intently at something off-screen, with furrowed eyebrows.",
+    "characters_present": [],
+    "emotion": "suspicion, intense focus",
+    "shot_type": "close-up",
+    "lighting": "Dark, brown moody",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 104,
+    "start_time": 402.6105416666666,
+    "end_time": 404.32058333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0104/frame_00.jpg"
+    ],
+    "description": "A woman in a green shirt stands in a domestic interior with her arms crossed.",
+    "characters_present": [],
+    "emotion": "pensive resignation",
+    "shot_type": "medium",
+    "lighting": "flat, overcast, desaturated",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 105,
+    "start_time": 404.32058333333333,
+    "end_time": 405.86379166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0105/frame_00.jpg"
+    ],
+    "description": "In soft light, Alana Kane stands by the kitchen window, looking down with a somber expression.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "melancholy, introspection, quiet sadness",
+    "shot_type": "medium",
+    "lighting": "soft natural light, warm, muted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 106,
+    "start_time": 405.86379166666666,
+    "end_time": 407.90749999999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0106/frame_00.jpg"
+    ],
+    "description": "Gary Valentine sits with papers, books, some cigarettes and a yellow phone on the kitchen table, looking hopefully into the camera",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "hopeful, anticipating, relaxed",
+    "shot_type": "medium",
+    "lighting": "warm interior light, slightly diffused",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 107,
+    "start_time": 407.90749999999997,
+    "end_time": 409.74266666666665,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0107/frame_00.jpg"
+    ],
+    "description": "Alana Kane stands in the kitchen, her posture is tense, facing the kitchen table.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "unease, anticipation, controlled agitation",
+    "shot_type": "wide",
+    "lighting": "warm, natural light, some shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 108,
+    "start_time": 409.74266666666665,
+    "end_time": 414.03862499999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0108/frame_00.jpg"
+    ],
+    "description": "Gary Valentine sits at the table, looking up at Alana Kane who leans in close, creating a tense face-off.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "tense confrontation, power imbalance",
+    "shot_type": "two-shot",
+    "lighting": "warm interior light, slightly diffused",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 109,
+    "start_time": 414.03862499999997,
+    "end_time": 419.1270416666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0109/frame_00.jpg"
+    ],
+    "description": "A close-up captures Alana Kane's intensely serious expression as she looks down at Gary.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "serious, considering, intense",
+    "shot_type": "close-up",
+    "lighting": "warm, diffused interior light",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 110,
+    "start_time": 419.1270416666666,
+    "end_time": 420.87879166666664,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0110/frame_00.jpg"
+    ],
+    "description": "Two figures (Gary Valentine and an unidentified person) kneel before a large, ornate waterbed, the scene lit by lamps casting a warm glow.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Anticipation, subdued, meticulous",
+    "shot_type": "medium wide",
+    "lighting": "warm, golden, soft lamps",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 111,
+    "start_time": 422.29687499999994,
+    "end_time": 424.2154583333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0111/frame_00.jpg"
+    ],
+    "description": "Alana Kane and someone behind her look down toward a surface; the mood is concentrated but intimate.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Focused, intimate, concentrated",
+    "shot_type": "medium close-up",
+    "lighting": "Soft diffuse, natural light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 112,
+    "start_time": 424.2154583333333,
+    "end_time": 427.0933333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0112/frame_00.jpg"
+    ],
+    "description": "A man in sturdy boots stands on a table, seemingly demonstrating or performing for a group of seated men in suits, creating a bizarre spectacle.",
+    "characters_present": [],
+    "emotion": "Absurdist, theatrical, comical",
+    "shot_type": "medium",
+    "lighting": "Dim, low key, tungsten",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.8
+  },
+  {
+    "index": 113,
+    "start_time": 427.0933333333333,
+    "end_time": 429.3455833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0113/frame_00.jpg"
+    ],
+    "description": "A green hose connects to a fitting labeled 'Fat Bernie's environmental living', suggesting a connection to the waterbed business of Gary Valentine.",
+    "characters_present": [],
+    "emotion": "Industrial, practical, functional",
+    "shot_type": "close-up",
+    "lighting": "Neutral, even, indoor",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 114,
+    "start_time": 430.42999999999995,
+    "end_time": 431.93149999999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0114/frame_00.jpg"
+    ],
+    "description": "Gary Valentine stares intently at something off-screen, the ambiance dim and tinged with blue.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Serious, intense, thoughtful",
+    "shot_type": "close-up",
+    "lighting": "Dim, blue-tinted, moody",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 115,
+    "start_time": 431.93149999999997,
+    "end_time": 434.64254166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0115/frame_00.jpg"
+    ],
+    "description": "Alana, in a red sweater, looks intently at someone out of frame, her expression thoughtful and slightly concerned.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "earnest concern",
+    "shot_type": "medium close-up",
+    "lighting": "soft, indoor, slightly blue-tinged",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.99
+  },
+  {
+    "index": 116,
+    "start_time": 434.64254166666666,
+    "end_time": 438.31287499999996,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0116/frame_00.jpg"
+    ],
+    "description": "A man in a white suit walks away along a sunlit path towards a stylish house surrounded by lush greenery.",
+    "characters_present": [],
+    "emotion": "carefree exit",
+    "shot_type": "medium wide",
+    "lighting": "bright sunlight, dappled shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 117,
+    "start_time": 438.31287499999996,
+    "end_time": 441.69124999999997,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0117/frame_00.jpg"
+    ],
+    "description": "Split screen: a man in white throws boxes in a garage, contrasted against Alana, in a red dress, walking determinedly outside.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "urgent determination, chaotic energy",
+    "shot_type": "medium",
+    "lighting": "garage: bright fluorescent; outside: natural sunlight",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 118,
+    "start_time": 441.69124999999997,
+    "end_time": 444.819375,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0118/frame_00.jpg"
+    ],
+    "description": "Split screen: a man with a beard peers out of a red truck, contrasted with Gary upside down on a leopard-print divan.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "gritty anticipation, playful disorientation",
+    "shot_type": "close-up",
+    "lighting": "truck: overcast daylight; divan: diffused sunlight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 119,
+    "start_time": 444.819375,
+    "end_time": 449.8660833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0119/frame_00.jpg"
+    ],
+    "description": "A man with a beard smiles down at Gary, who is listening attentively, against a backdrop of green trees.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "intense conversation, mild manipulation",
+    "shot_type": "close-up",
+    "lighting": "bright sunlight, green hues",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.99
+  },
+  {
+    "index": 120,
+    "start_time": 449.8660833333333,
+    "end_time": 458.3745833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0120/frame_00.jpg"
+    ],
+    "description": "Alana sits dejectedly on the curb outside the Encino Post Office, hunched over in disappointment, while a man in a white suit walks past.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "desolation, loneliness, hopelessness",
+    "shot_type": "wide",
+    "lighting": "cool, muted streetlight, somber",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 121,
+    "start_time": 458.3745833333333,
+    "end_time": 460.9187916666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0121/frame_00.jpg"
+    ],
+    "description": "Three indistinct figures in silhouette pee against the back of a stalled truck on a deserted highway.",
+    "characters_present": [],
+    "emotion": "desperate, exposed, vulnerable",
+    "shot_type": "wide",
+    "lighting": "cold, pre-dawn, silhouette",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 122,
+    "start_time": 460.9187916666666,
+    "end_time": 463.33787499999994,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0122/frame_00.jpg"
+    ],
+    "description": "Alana stares intensely to the side, illuminated by harsh blue-green neon light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "intense scrutiny, troubled reflection",
+    "shot_type": "close-up",
+    "lighting": "harsh blue-green neon, noir",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 123,
+    "start_time": 463.33787499999994,
+    "end_time": 466.7996666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0123/frame_00.jpg"
+    ],
+    "description": "Four indistinct figures in silhouette work on the stalled truck on a deserted highway as daylight breaks.",
+    "characters_present": [],
+    "emotion": "collaborative effort, hopeful energy",
+    "shot_type": "wide",
+    "lighting": "cold, pre-dawn, sunrise",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 124,
+    "start_time": 466.7996666666666,
+    "end_time": 470.09462499999995,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0124/frame_00.jpg"
+    ],
+    "description": "A truck barrels towards a stalled car, with Gary visible inside the truck cab, and Alana and another figure trying to stop it.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "panic, impending doom, frantic",
+    "shot_type": "medium",
+    "lighting": "harsh headlights, intense glare",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 125,
+    "start_time": 470.09462499999995,
+    "end_time": 471.67954166666664,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0125/frame_00.jpg"
+    ],
+    "description": "Gary smiles knowingly in the dark, looking offscreen with mischief twinkling in his eye.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "mischievous anticipation",
+    "shot_type": "close-up",
+    "lighting": "low-key, single source, warm",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 126,
+    "start_time": 471.67954166666664,
+    "end_time": 473.8900833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0126/frame_00.jpg"
+    ],
+    "description": "A truck drives down a dark suburban street at night, illuminated by streetlights.",
+    "characters_present": [],
+    "emotion": "ominous unknown",
+    "shot_type": "wide",
+    "lighting": "dark, mixed tungsten and streetlight",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 127,
+    "start_time": 473.8900833333333,
+    "end_time": 477.60212499999994,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0127/frame_00.jpg"
+    ],
+    "description": "Inside the truck, Alana stares intently forward with worried eyes, bathed in indirect light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "concerned unease",
+    "shot_type": "close-up",
+    "lighting": "soft, low-key, interior glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 128,
+    "start_time": 478.68654166666664,
+    "end_time": 483.7749583333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0128/frame_00.jpg"
+    ],
+    "description": "Gary drives nervously while Alana looks on with a concerned expression inside the truck.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "nervous apprehension",
+    "shot_type": "two-shot",
+    "lighting": "low-key, mixed artificial light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 129,
+    "start_time": 483.7749583333333,
+    "end_time": 486.31916666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0129/frame_00.jpg"
+    ],
+    "description": "Alana sits forlornly outside the post office at night, her arms crossed, looking downcast.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "melancholy isolation",
+    "shot_type": "medium",
+    "lighting": "cool blue neon, soft fill",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 130,
+    "start_time": 486.31916666666666,
+    "end_time": 488.9050833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0130/frame_00.jpg"
+    ],
+    "description": "A political poster with a young man's face and the slogan 'Wachs for Mayor' hangs on a doorway at night, lit by blue exterior light.",
+    "characters_present": [],
+    "emotion": "Distant ambition, quiet mystery",
+    "shot_type": "medium",
+    "lighting": "cool blue, stark street lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 131,
+    "start_time": 488.9050833333333,
+    "end_time": 492.99249999999995,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0131/frame_00.jpg"
+    ],
+    "description": "A man in a suit, possibly a movie actor, sits in a wood-paneled office illuminated by a single lamp, gesturing with a cigarette in his hand.",
+    "characters_present": [],
+    "emotion": "Confident swagger, understated power",
+    "shot_type": "medium",
+    "lighting": "warm, direct lamp, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 132,
+    "start_time": 492.99249999999995,
+    "end_time": 494.82766666666663,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0132/frame_00.jpg"
+    ],
+    "description": "In a dimly lit restaurant, a man gestures theatrically with silverware at Alana and other diners, under warm, stained-glass-filtered light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Boisterous energy, convivial chaos",
+    "shot_type": "medium wide",
+    "lighting": "warm, low-key, stained glass highlights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 133,
+    "start_time": 494.82766666666663,
+    "end_time": 496.37087499999996,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0133/frame_00.jpg"
+    ],
+    "description": "A man in a hat and glasses smiles maniacally, brandishing a piece of silverware towards the camera amidst the warm, low-light ambiance of the restaurant.",
+    "characters_present": [],
+    "emotion": "Eccentric glee, manic energy",
+    "shot_type": "close-up",
+    "lighting": "warm, low-key, flickering candlelight",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 134,
+    "start_time": 496.37087499999996,
+    "end_time": 498.45629166666663,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0134/frame_00.jpg"
+    ],
+    "description": "A man smiles fiercely through dim lighting in a restaurant, as if responding intently to someone else's comment or dramatic gesture.",
+    "characters_present": [],
+    "emotion": "Intense amusement, captivated engagement",
+    "shot_type": "close-up",
+    "lighting": "warm, low-key, soft shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 135,
+    "start_time": 498.45629166666663,
+    "end_time": 502.08491666666663,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0135/frame_00.jpg"
+    ],
+    "description": "A man in a suit yells with a wide smile in the dark, with lights blurred in the background indicating a film set.",
+    "characters_present": [],
+    "emotion": "excited fervor",
+    "shot_type": "medium",
+    "lighting": "artificial night, bright pinpoint background",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8
+  },
+  {
+    "index": 136,
+    "start_time": 502.08491666666663,
+    "end_time": 504.4205833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0136/frame_00.jpg"
+    ],
+    "description": "A man on a motorcycle jumps into the air in front of a distant crowd at twilight.",
+    "characters_present": [],
+    "emotion": "reckless abandon",
+    "shot_type": "wide",
+    "lighting": "dusky sky, artificial stadium lights",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8
+  },
+  {
+    "index": 137,
+    "start_time": 504.4205833333333,
+    "end_time": 509.13362499999994,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0137/frame_00.jpg"
+    ],
+    "description": "A motorcycle lies on its side engulfed in flames outside at night.",
+    "characters_present": [],
+    "emotion": "chaotic destruction",
+    "shot_type": "wide",
+    "lighting": "bright fire, smoky haze",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8
+  },
+  {
+    "index": 138,
+    "start_time": 509.13362499999994,
+    "end_time": 513.8049583333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0138/frame_00.jpg"
+    ],
+    "description": "Alana speaks intently on the phone inside a building, with a Coffee Shop sign visible through window blinds.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "intense worry",
+    "shot_type": "medium",
+    "lighting": "soft daylight spilling through blinds",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 139,
+    "start_time": 513.8049583333333,
+    "end_time": 515.640125,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0139/frame_00.jpg"
+    ],
+    "description": "Several men stand in suits, one possibly a photographer, near what appears to be a political office or campaign event.",
+    "characters_present": [],
+    "emotion": "businesslike seriousness",
+    "shot_type": "medium",
+    "lighting": "warm indoor, fluorescent hues",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.8
+  },
+  {
+    "index": 140,
+    "start_time": 515.640125,
+    "end_time": 518.392875,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0140/frame_00.jpg"
+    ],
+    "description": "Alana looks up anxiously, partially obscured by a man in a suit, in what appears to be a school gymnasium setting.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "apprehension, suppressed concern",
+    "shot_type": "medium",
+    "lighting": "slightly diffuse, warm institutional lighting",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 141,
+    "start_time": 518.392875,
+    "end_time": 520.394875,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0141/frame_00.jpg"
+    ],
+    "description": "People can be seen bicycling and walking on a street outside a brightly lit building labeled \"Pinball Palace\" at dusk.",
+    "characters_present": [],
+    "emotion": "nostalgia, urban activity",
+    "shot_type": "wide",
+    "lighting": "artificial, bright, nighttime street lights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 142,
+    "start_time": 520.394875,
+    "end_time": 523.3144583333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0142/frame_00.jpg"
+    ],
+    "description": "A blur of a blonde woman is seen from behind, with hazy red lights in the background creating an ambient glow.",
+    "characters_present": [],
+    "emotion": "mystery, soft focus",
+    "shot_type": "close-up",
+    "lighting": "soft red ambient glow",
+    "visual_power": 1,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.7
+  },
+  {
+    "index": 143,
+    "start_time": 523.3144583333333,
+    "end_time": 528.5279999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0143/frame_00.jpg"
+    ],
+    "description": "A split screeen shows Alana whispering to a man in a yellow room while Gary Valentine holds a rifle.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "tension, hushed urgency",
+    "shot_type": "medium",
+    "lighting": "artificial, yellow and warm.",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 144,
+    "start_time": 528.5279999999999,
+    "end_time": 531.3641666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0144/frame_00.jpg"
+    ],
+    "description": "Alana is looking somber with her head down at a table in front of blurred people, lit with warm ambient light.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "pensive, melancholic",
+    "shot_type": "close-up",
+    "lighting": "dim, warm, ambient restaurant light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 145,
+    "start_time": 531.3641666666666,
+    "end_time": 538.2043333333332,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0145/frame_00.jpg"
+    ],
+    "description": "A man with sideburns purses his lips, looking slightly concerned as someone stands just outside the frame to his left, interrupting his evening.",
+    "characters_present": [],
+    "emotion": "apprehensive, doubtful, slightly worried",
+    "shot_type": "close-up",
+    "lighting": "warm incandescent, amber tones",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 146,
+    "start_time": 538.2043333333332,
+    "end_time": 547.29675,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0146/frame_00.jpg"
+    ],
+    "description": "Two men sit at a formal restaurant table, one drinking from his glass, the other seeming impatient with the situation.",
+    "characters_present": [],
+    "emotion": "strained formality, muted tension",
+    "shot_type": "medium",
+    "lighting": "dim ambient, greenish cast",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 147,
+    "start_time": 547.29675,
+    "end_time": 552.1349166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0147/frame_00.jpg"
+    ],
+    "description": "Two figures stand silhouetted in front of a brick building, their faces obscured by darkness and the composition.",
+    "characters_present": [],
+    "emotion": "mystery, implied intimacy",
+    "shot_type": "wide",
+    "lighting": "low key, dramatic shadows",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 148,
+    "start_time": 552.1349166666666,
+    "end_time": 557.557,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0148/frame_00.jpg"
+    ],
+    "description": "Alana walks down a dark residential street at night, cars parked on either side, looking determined.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "determined, slightly vulnerable",
+    "shot_type": "wide",
+    "lighting": "sodium vapor, streetlights",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 149,
+    "start_time": 557.557,
+    "end_time": 560.8936666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0149/frame_00.jpg"
+    ],
+    "description": "A man in a white suit stands inside a shop, hands on his head in frustration, reflected in the glass.",
+    "characters_present": [],
+    "emotion": "desperation, contained anxiety",
+    "shot_type": "medium",
+    "lighting": "fluorescent, harsh glare",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.95
+  },
+  {
+    "index": 150,
+    "start_time": 560.8936666666666,
+    "end_time": 562.937375,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0150/frame_00.jpg"
+    ],
+    "description": "The dark interior of a campaign office is seen through its large front windows, streetlights blurring outside.",
+    "characters_present": [],
+    "emotion": "Quiet anticipation, lurking tension",
+    "shot_type": "wide",
+    "lighting": "low key, shadowed interiors, street lights",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 151,
+    "start_time": 562.937375,
+    "end_time": 568.3177499999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0151/frame_00.jpg"
+    ],
+    "description": "Gary Valentine looks directly at the camera, running at night with blurred city lights in the background.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Urgency, focused determination",
+    "shot_type": "close-up",
+    "lighting": "Ambient city lights, slightly distorted",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 152,
+    "start_time": 568.3177499999999,
+    "end_time": 572.446875,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0152/frame_00.jpg"
+    ],
+    "description": "Gary Valentine runs through the city at night, a blurred motion streak as he looks to his left.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Desperate escape, raw exertion",
+    "shot_type": "medium",
+    "lighting": "Dimly lit street, motion blur",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 153,
+    "start_time": 572.446875,
+    "end_time": 573.9900833333332,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0153/frame_00.jpg"
+    ],
+    "description": "Alana Kane runs against a wall with yellow neon lettering at night, her face determined.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "Frenzied pursuit, grit",
+    "shot_type": "medium",
+    "lighting": "neon glow, artificial, vibrant",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 154,
+    "start_time": 573.9900833333332,
+    "end_time": 578.4945833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0154/frame_00.jpg"
+    ],
+    "description": "Gary Valentine runs, clearly terrified and frantic, through the dark, shadowed streets at night.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "Panicked flight, sheer dread",
+    "shot_type": "medium close-up",
+    "lighting": "Dark, ambient street lighting, low key",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 155,
+    "start_time": 578.4945833333333,
+    "end_time": 580.7885416666667,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0155/frame_00.jpg"
+    ],
+    "description": "An unrecognizable figure sprints through the dark, backlit by an indiscernible light source.",
+    "characters_present": [],
+    "emotion": "urgent, desperate, unseen",
+    "shot_type": "medium",
+    "lighting": "harsh backlight, muddy shadows",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.5
+  },
+  {
+    "index": 156,
+    "start_time": 580.7885416666667,
+    "end_time": 585.5432916666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0156/frame_00.jpg"
+    ],
+    "description": "Indistinct individuals struggle inside a car, their bodies pressed against the interior under harsh sunlight.",
+    "characters_present": [],
+    "emotion": "claustrophobic, tense, obscured",
+    "shot_type": "close-up",
+    "lighting": "direct sunlight, harsh shadows",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.3
+  },
+  {
+    "index": 157,
+    "start_time": 588.1709166666666,
+    "end_time": 590.214625,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0157/frame_00.jpg"
+    ],
+    "description": "A man, shirtless, sprints towards headlights in a large field at night.",
+    "characters_present": [],
+    "emotion": "frantic, exposed, vulnerable",
+    "shot_type": "wide",
+    "lighting": "harsh headlights, dark field",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.4
+  },
+  {
+    "index": 158,
+    "start_time": 591.2156249999999,
+    "end_time": 593.593,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0158/frame_00.jpg"
+    ],
+    "description": "Alana runs towards the camera, her patterned halter top visible, against a blurred sandy background.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "determined, frantic, breathless",
+    "shot_type": "medium",
+    "lighting": "bright daylight, slightly hazy",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 159,
+    "start_time": 593.593,
+    "end_time": 598.2643333333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0159/frame_00.jpg"
+    ],
+    "description": "Gary Valentine and Alana Kane lie side-by-side, appearing exhausted and pensive against a stained wall, lit by warm, golden light.",
+    "characters_present": [
+      "Gary Valentine",
+      "Alana Kane"
+    ],
+    "emotion": "weary, reflective, intimate",
+    "shot_type": "two-shot",
+    "lighting": "warm, golden, indirect",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 160,
+    "start_time": 598.2643333333333,
+    "end_time": 600.975375,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0160/frame_00.jpg"
+    ],
+    "description": "Two figures press their hands against a foggy window, their forms silhouetted against the diffused light.",
+    "characters_present": [],
+    "emotion": "intimate moment, touch, longing",
+    "shot_type": "close-up",
+    "lighting": "soft diffused backlight, silhouettes",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 161,
+    "start_time": 600.975375,
+    "end_time": 605.1879166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0161/frame_00.jpg"
+    ],
+    "description": "Two faces are close together in the darkness, illuminated by bokeh balls in the background, suggesting Alana and Gary's closeness and intimacy.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "tender intimacy, soft focus",
+    "shot_type": "close-up",
+    "lighting": "low key, bokeh highlights",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 162,
+    "start_time": 605.1879166666666,
+    "end_time": 610.2763333333332,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0162/frame_00.jpg"
+    ],
+    "description": "Abstracted, blurry figures walk past a bus at night, their forms indistinct, conveying a sense of disorientation and movement.",
+    "characters_present": [],
+    "emotion": "fleeting, chaotic, disoriented",
+    "shot_type": "wide",
+    "lighting": "artificial streetlight, blurry",
+    "visual_power": 2,
+    "is_film_related": true,
+    "is_aesthetic": false,
+    "confidence": 0.9
+  },
+  {
+    "index": 163,
+    "start_time": 610.2763333333332,
+    "end_time": 612.6537083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0163/frame_00.jpg"
+    ],
+    "description": "Alana, wearing a floral two-piece outfit, runs by a large pole; the scene is blurry and conveys motion.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "urgent escape, breathless, frantic",
+    "shot_type": "medium",
+    "lighting": "bright daylight, outdoors",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 164,
+    "start_time": 612.6537083333333,
+    "end_time": 614.6557083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0164/frame_00.jpg"
+    ],
+    "description": "Gary looks up into the night sky in wonder, with car headlights blurring behind him in the darkness.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "youthful hope, uncertain wonder",
+    "shot_type": "medium",
+    "lighting": "low key, headlights bokeh",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 0.9
+  },
+  {
+    "index": 165,
+    "start_time": 615.9069583333333,
+    "end_time": 618.86825,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0165/frame_00.jpg"
+    ],
+    "description": "Alana stands in a crowded, warmly lit arcade, looking intently off-screen at someone and smiling.",
+    "characters_present": [
+      "Alana Kane"
+    ],
+    "emotion": "hopeful anticipation",
+    "shot_type": "medium",
+    "lighting": "warm tungsten, ambient lights, soft glow",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 166,
+    "start_time": 618.86825,
+    "end_time": 621.3707499999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0166/frame_00.jpg"
+    ],
+    "description": "Gary smiles with a slightly mischievous look on his face amidst a buzzy arcade environment.",
+    "characters_present": [
+      "Gary Valentine"
+    ],
+    "emotion": "playful confidence",
+    "shot_type": "medium close-up",
+    "lighting": "warm, slightly diffused ambient light",
+    "visual_power": 3,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 167,
+    "start_time": 621.3707499999999,
+    "end_time": 629.7124166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0167/frame_00.jpg"
+    ],
+    "description": "Gary and Alana share a kiss, their faces close and intimate against the blurry, colorful background of the arcade.",
+    "characters_present": [
+      "Alana Kane",
+      "Gary Valentine"
+    ],
+    "emotion": "tender affection",
+    "shot_type": "close-up",
+    "lighting": "warm, diffused, slightly grainy",
+    "visual_power": 4,
+    "is_film_related": true,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 168,
+    "start_time": 629.7124166666666,
+    "end_time": 631.756125,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0168/frame_00.jpg"
+    ],
+    "description": "A figure stands silhouetted in a doorway, bathed in the eerie red glow of a room beyond.",
+    "characters_present": [],
+    "emotion": "ominous tension",
+    "shot_type": "medium",
+    "lighting": "high contrast, red monochromatic, backlit",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 0.3
+  },
+  {
+    "index": 169,
+    "start_time": 631.756125,
+    "end_time": 633.4661666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0169/frame_00.jpg"
+    ],
+    "description": "An abstract floor pattern with the MUJI logo is displayed, possibly from a stream.",
+    "characters_present": [],
+    "emotion": "clean minimalism",
+    "shot_type": "insert/detail shot",
+    "lighting": "even, slightly warm",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  },
+  {
+    "index": 170,
+    "start_time": 636.1772083333333,
+    "end_time": 638.4711666666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0170/frame_00.jpg"
+    ],
+    "description": "Two figures stand on opposite stairways by the sea as the title 'Drive My Car' overlays the landscape and foreground.",
+    "characters_present": [],
+    "emotion": "melancholy stillness",
+    "shot_type": "wide",
+    "lighting": "overcast, soft, hazy",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 171,
+    "start_time": 646.1037916666667,
+    "end_time": 647.6469999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0171/frame_00.jpg"
+    ],
+    "description": "Silhouetted hands hold cigarettes in a dark vehicle, smoke rising into the dimness.",
+    "characters_present": [],
+    "emotion": "smoldering, nocturnal contemplation",
+    "shot_type": "close-up",
+    "lighting": "low light, amber glow",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 172,
+    "start_time": 648.39775,
+    "end_time": 652.6102916666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0172/frame_00.jpg"
+    ],
+    "description": "A woman embraces a man with a mustache from behind, resting her head on his with tender closeness against a stark black backdrop.",
+    "characters_present": [],
+    "emotion": "intimate, poignant, comforting",
+    "shot_type": "close-up",
+    "lighting": "warm, soft lamplight",
+    "visual_power": 4,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 173,
+    "start_time": 653.6529999999999,
+    "end_time": 655.1962083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0173/frame_00.jpg"
+    ],
+    "description": "Two silhouetted figures walk away down a white hallway towards a bright industrial harbor scene.",
+    "characters_present": [],
+    "emotion": "reflective, distant, contemplative",
+    "shot_type": "medium wide",
+    "lighting": "bright, hazy, backlit",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 174,
+    "start_time": 655.1962083333333,
+    "end_time": 656.6977083333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0174/frame_00.jpg"
+    ],
+    "description": "A woman in a cream sweater gestures with her hand while seated at a table laden with food and drinks during a tense dinner conversation.",
+    "characters_present": [],
+    "emotion": "unease, strained, uncomfortable",
+    "shot_type": "medium close-up",
+    "lighting": "soft, somewhat cool, fluorescent",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 175,
+    "start_time": 656.6977083333333,
+    "end_time": 659.2419166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0175/frame_00.jpg"
+    ],
+    "description": "Two figures kneel dramatically on a stage scattered with debris, lit starkly from above against a black backdrop, with illuminated captions.",
+    "characters_present": [],
+    "emotion": "melancholy introspection",
+    "shot_type": "wide",
+    "lighting": "harsh spotlight, theatrical",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 176,
+    "start_time": 660.1595,
+    "end_time": 661.786125,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0176/frame_00.jpg"
+    ],
+    "description": "A red Saab 900 convertible speeds toward the camera on a snowy highway, revealing two occupants in the front seat.",
+    "characters_present": [],
+    "emotion": "driving anticipation",
+    "shot_type": "medium",
+    "lighting": "overcast daylight, cool tones",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 177,
+    "start_time": 664.3720416666666,
+    "end_time": 666.9579583333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0177/frame_00.jpg"
+    ],
+    "description": "A man and a woman stand in a snowy landscape, the woman holding flowers and looking upwards with closed eyes.",
+    "characters_present": [],
+    "emotion": "solemn reflection",
+    "shot_type": "medium",
+    "lighting": "soft overcast, diffused light",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": true,
+    "confidence": 1.0
+  },
+  {
+    "index": 178,
+    "start_time": 670.6282916666667,
+    "end_time": 672.2549166666666,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0178/frame_00.jpg"
+    ],
+    "description": "A split screen shows two close-up portrait shots with overlaid text, featuring dramatically lit faces.",
+    "characters_present": [],
+    "emotion": "dramatic intensity",
+    "shot_type": "close-up",
+    "lighting": "high contrast, cinematic",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 179,
+    "start_time": 677.2182083333333,
+    "end_time": 679.053375,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0179/frame_00.jpg"
+    ],
+    "description": "A split screen shows a pensive woman in a period dress and a hand reaching for a book, overlaid with text in black and white.",
+    "characters_present": [],
+    "emotion": "thoughtful curiosity",
+    "shot_type": "close-up",
+    "lighting": "soft diffused, monochrome",
+    "visual_power": 3,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 1.0
+  },
+  {
+    "index": 180,
+    "start_time": 679.053375,
+    "end_time": 681.0553749999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0180/frame_00.jpg"
+    ],
+    "description": "A woman with elegant hair and a striped garment smiles softly as a man's hand tenderly holds her arm.",
+    "characters_present": [],
+    "emotion": "Gentle affection, quiet intimacy",
+    "shot_type": "medium close-up",
+    "lighting": "Warm, soft, diffused lighting",
+    "visual_power": 2,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.2
+  },
+  {
+    "index": 181,
+    "start_time": 682.5151666666666,
+    "end_time": 684.058375,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0181/frame_00.jpg"
+    ],
+    "description": "A blurry scene bathed in intense red light shows silhouettes of bodies dancing.",
+    "characters_present": [],
+    "emotion": "Intense, chaotic, frenetic",
+    "shot_type": "wide",
+    "lighting": "Intense, saturated red light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  },
+  {
+    "index": 182,
+    "start_time": 686.3940416666666,
+    "end_time": 695.1110833333333,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0182/frame_00.jpg"
+    ],
+    "description": "A screen displays text promoting a free trial on a black background.",
+    "characters_present": [],
+    "emotion": "Informative, promotional, neutral",
+    "shot_type": "wide",
+    "lighting": "Flat, artificial light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  },
+  {
+    "index": 183,
+    "start_time": 695.1110833333333,
+    "end_time": 706.2054999999999,
+    "frames": [
+      "/Users/oscarbouvier/song-video-maker/workspaces/licorice_pizza_call_it_fate_call_it_karma/frames/scene_0183/frame_00.jpg"
+    ],
+    "description": "A tiled collage background sits next to a Patreon and social media promotion.",
+    "characters_present": [],
+    "emotion": "Supportive, connected, encouraging",
+    "shot_type": "wide",
+    "lighting": "Flat, artificial light",
+    "visual_power": 1,
+    "is_film_related": false,
+    "is_aesthetic": false,
+    "confidence": 0.1
+  }
+]

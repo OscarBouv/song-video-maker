@@ -13,8 +13,58 @@ from fastapi.staticfiles import StaticFiles
 ROOT_DIR = Path(__file__).parent
 sys.path.insert(0, str(ROOT_DIR))
 
-from config import WORKSPACES_DIR
+from config import WORKSPACES_DIR, CLIPS_DIR, SONGS_DIR
 from models import Scene, MatchedSegment
+
+
+def _ws_paths(ws_dir: Path):
+    """Return path resolver for a workspace.
+
+    Reads clip_slug / song_slug from workspace.json (written during migration or
+    first pipeline run) and resolves file locations in clips/ and songs/.
+    Falls back to the legacy state/ directory for un-migrated workspaces.
+    """
+    from types import SimpleNamespace
+    cfg: dict = {}
+    cfg_file = ws_dir / "workspace.json"
+    if cfg_file.exists():
+        try:
+            cfg = json.loads(cfg_file.read_text())
+        except Exception:
+            pass
+
+    clip_slug = cfg.get("clip_slug", "")
+    song_slug = cfg.get("song_slug", "")
+
+    if clip_slug:
+        clip_dir        = CLIPS_DIR / clip_slug
+        frames_dir      = clip_dir / "frames"
+        scenes_file     = clip_dir / "scenes.json"
+        video_path_file = clip_dir / "video_path.txt"
+    else:
+        clip_dir        = ws_dir / "state"
+        frames_dir      = ws_dir / "frames"
+        scenes_file     = ws_dir / "state" / "scenes.json"
+        video_path_file = ws_dir / "state" / "video_path.txt"
+
+    if song_slug:
+        song_dir             = SONGS_DIR / song_slug
+        lyrics_file          = song_dir / "lyrics.json"
+        lyrics_readable_file = song_dir / "lyrics_readable.txt"
+        audio_path_file      = song_dir / "audio_path.txt"
+    else:
+        song_dir             = ws_dir / "state"
+        lyrics_file          = ws_dir / "state" / "lyrics.json"
+        lyrics_readable_file = ws_dir / "state" / "lyrics_readable.txt"
+        audio_path_file      = ws_dir / "state" / "audio_path.txt"
+
+    return SimpleNamespace(
+        clip_dir=clip_dir, song_dir=song_dir,
+        frames_dir=frames_dir,
+        scenes_file=scenes_file, lyrics_file=lyrics_file,
+        lyrics_readable_file=lyrics_readable_file,
+        video_path_file=video_path_file, audio_path_file=audio_path_file,
+    )
 
 app = FastAPI(title="song-video-maker")
 
@@ -29,7 +79,6 @@ SSE_HEADERS = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _ws_status(ws_dir: Path) -> dict:
-    state = ws_dir / "state"
     cfg: dict = {}
     cfg_file = ws_dir / "workspace.json"
     if cfg_file.exists():
@@ -37,18 +86,21 @@ def _ws_status(ws_dir: Path) -> dict:
             cfg = json.loads(cfg_file.read_text())
         except Exception:
             pass
+    p = _ws_paths(ws_dir)
     steps = []
-    if (state / "video_path.txt").exists():        steps.append("video")
-    if (state / "audio_path.txt").exists():        steps.append("audio")
-    if (state / "scenes.json").exists():           steps.append("scenes")
-    if (state / "lyrics.json").exists():           steps.append("lyrics")
-    if next(ws_dir.glob("*_plan.json"), None):     steps.append("plan")
-    if next(ws_dir.glob("*_reel.mp4"), None):      steps.append("reel")
+    if p.video_path_file.exists():             steps.append("video")
+    if p.audio_path_file.exists():             steps.append("audio")
+    if p.scenes_file.exists():                 steps.append("scenes")
+    if p.lyrics_file.exists():                 steps.append("lyrics")
+    if next(ws_dir.glob("*_plan.json"), None): steps.append("plan")
+    if next(ws_dir.glob("*_reel.mp4"), None):  steps.append("reel")
     return {
         "slug": ws_dir.name,
         "film": cfg.get("film", ws_dir.name),
         "song": cfg.get("song", ""),
         "artist": cfg.get("artist", ""),
+        "clip_slug": cfg.get("clip_slug", ""),
+        "song_slug": cfg.get("song_slug", ""),
         "created_at": cfg.get("created_at", ""),
         "config": cfg,
         "steps_complete": steps,
@@ -95,7 +147,7 @@ def get_workspace(slug: str):
     if not ws_dir.exists():
         raise HTTPException(404, f"Workspace '{slug}' not found")
     result = _ws_status(ws_dir)
-    scenes_file = ws_dir / "state" / "scenes.json"
+    scenes_file = _ws_paths(ws_dir).scenes_file
     if scenes_file.exists():
         try:
             scenes = [Scene.model_validate(d) for d in json.loads(scenes_file.read_text())]
@@ -104,7 +156,7 @@ def get_workspace(slug: str):
         except Exception:
             result["scenes_count"] = 0
             result["scenes_usable"] = 0
-    lyrics_file = ws_dir / "state" / "lyrics.json"
+    lyrics_file = _ws_paths(ws_dir).lyrics_file
     if lyrics_file.exists():
         try:
             result["lyrics_count"] = len(json.loads(lyrics_file.read_text()))
@@ -116,7 +168,7 @@ def get_workspace(slug: str):
 @app.get("/api/workspace/{slug}/scenes")
 def get_scenes(slug: str):
     ws_dir = WORKSPACES_DIR / slug
-    scenes_file = ws_dir / "state" / "scenes.json"
+    scenes_file = _ws_paths(ws_dir).scenes_file
     if not scenes_file.exists():
         raise HTTPException(404, "No scenes.json — run detect-scenes first")
     scenes = [Scene.model_validate(d) for d in json.loads(scenes_file.read_text())]
@@ -148,7 +200,7 @@ def get_plan(slug: str):
     if not plan_file:
         raise HTTPException(404, "No plan — run generate-plan first")
     segments_raw = json.loads(plan_file.read_text())
-    scenes_file = ws_dir / "state" / "scenes.json"
+    scenes_file = _ws_paths(ws_dir).scenes_file
     scene_by_index: dict[int, Scene] = {}
     if scenes_file.exists():
         for d in json.loads(scenes_file.read_text()):
@@ -374,7 +426,7 @@ def audit_plan(slug: str):
 
     segments_raw = json.loads(plan_file.read_text())
 
-    scenes_file = ws_dir / "state" / "scenes.json"
+    scenes_file = _ws_paths(ws_dir).scenes_file
     scene_map: dict[int, Scene] = {}
     if scenes_file.exists():
         for d in json.loads(scenes_file.read_text()):
@@ -383,7 +435,7 @@ def audit_plan(slug: str):
 
     # Probe audio duration
     audio_duration = 0.0
-    audio_path_file = ws_dir / "state" / "audio_path.txt"
+    audio_path_file = _ws_paths(ws_dir).audio_path_file
     if audio_path_file.exists():
         try:
             from pipeline.editor import _probe_duration
@@ -502,7 +554,7 @@ def audit_plan(slug: str):
 def serve_video(slug: str):
     """Stream the source video with byte-range support for in-browser clip preview."""
     ws_dir = WORKSPACES_DIR / slug
-    video_path_file = ws_dir / "state" / "video_path.txt"
+    video_path_file = _ws_paths(ws_dir).video_path_file
     if not video_path_file.exists():
         raise HTTPException(404, "No video — run download-video first")
     video_path = Path(video_path_file.read_text().strip())
@@ -534,7 +586,7 @@ async def commit_plan(slug: str, body: dict):
         raise HTTPException(400, "clips array is required and must be non-empty")
 
     # Load current lyrics for syncing
-    lyrics_file = ws_dir / "state" / "lyrics.json"
+    lyrics_file = _ws_paths(ws_dir).lyrics_file
     displayable_lyrics: list[dict] = []
     if lyrics_file.exists():
         try:
@@ -546,23 +598,39 @@ async def commit_plan(slug: str, body: dict):
         except Exception:
             pass
 
-    # Build segments, re-syncing lyric_lines from lyrics.json
+    # Build segments with song_start/song_end derived from scene trim durations.
+    # scene_trim_end - scene_trim_start is the source of truth for clip length;
+    # song_start/song_end are rebuilt as a perfectly gapless sequential timeline.
+    cursor = 0.0
     segments = []
     for clip in clips:
-        s0 = float(clip.get("song_start", 0))
-        s1 = float(clip.get("song_end", 0))
-        lyric_lines = [
-            l for l in displayable_lyrics
-            if l.get("end_time", 0) > s0 and l.get("start_time", 0) < s1
-        ] if s1 > s0 else []
+        trim_start = float(clip.get("scene_trim_start", 0))
+        trim_end   = float(clip.get("scene_trim_end", -1))
+        # Fall back to song window duration only for legacy segments with no trim values
+        if trim_end >= 0:
+            dur = max(0.05, trim_end - trim_start)
+        else:
+            dur = max(0.05, float(clip.get("song_end", cursor + 2)) - float(clip.get("song_start", cursor)))
+
+        new_start = cursor
+        new_end   = cursor + dur
         segments.append({
             "scene_index":      int(clip["scene_index"]),
-            "lyric_lines":      lyric_lines,
-            "scene_trim_start": float(clip.get("scene_trim_start", 0)),
-            "scene_trim_end":   float(clip.get("scene_trim_end", -1)),
-            "song_start":       s0,
-            "song_end":         s1,
+            "lyric_lines":      [],   # synced below once windows are finalised
+            "scene_trim_start": trim_start,
+            "scene_trim_end":   trim_end,
+            "song_start":       new_start,
+            "song_end":         new_end,
         })
+        cursor = new_end
+
+    # Re-sync lyric_lines against the normalised song_start/song_end windows
+    for seg in segments:
+        s0, s1 = seg["song_start"], seg["song_end"]
+        seg["lyric_lines"] = [
+            l for l in displayable_lyrics
+            if l.get("start_time", 0) >= s0 and l.get("start_time", 0) < s1
+        ] if s1 > s0 else []
 
     # Determine plan file path (may not exist yet if first save)
     plan_file = next(ws_dir.glob("*_plan.json"), None)
@@ -583,6 +651,36 @@ async def commit_plan(slug: str, body: dict):
     return {"ok": True, "clips": len(segments)}
 
 
+@app.post("/api/workspace/{slug}/plan/sync")
+def sync_plan(slug: str):
+    """Re-match lyrics.json into plan.json lyric_lines, return updated clip count.
+
+    This is a lightweight re-sync: the clip slot assignments (scene_index,
+    trim_start/end, song_start/end) are preserved; only lyric_lines are rebuilt
+    from the current lyrics.json timing so the plan reflects any lyric edits.
+    """
+    from models import LyricLine
+    ws_dir = WORKSPACES_DIR / slug
+    plan_file = ws_dir / f"{slug}_plan.json"
+    if not plan_file.exists():
+        raise HTTPException(404, "No plan found — run generate-plan first")
+    segments = [MatchedSegment.from_dict(d) for d in json.loads(plan_file.read_text())]
+
+    lyrics_file = _ws_paths(ws_dir).lyrics_file
+    if lyrics_file.exists():
+        raw = json.loads(lyrics_file.read_text())
+        lyrics = [LyricLine(**l) for l in raw]
+        displayable = [l for l in lyrics if l.start_time != l.end_time]
+        for seg in segments:
+            seg.lyric_lines = [
+                l for l in displayable
+                if l.start_time >= seg.song_start and l.start_time < seg.song_end
+            ]
+
+    plan_file.write_text(json.dumps([s.to_dict() for s in segments], indent=2))
+    return {"ok": True, "clips": len(segments)}
+
+
 @app.get("/api/workspace/{slug}/crop")
 def get_crop(slug: str):
     """Return manual crop settings + reference frame URL + video dimensions."""
@@ -596,7 +694,7 @@ def get_crop(slug: str):
 
     # Probe video dimensions from the stored video path
     video_w, video_h = 1920, 1080
-    vp_file = ws_dir / "state" / "video_path.txt"
+    vp_file = _ws_paths(ws_dir).video_path_file
     if vp_file.exists():
         vp = Path(vp_file.read_text().strip())
         if vp.exists():
@@ -616,7 +714,7 @@ def get_crop(slug: str):
     # Priority 1: first scene in the current plan (curated content, guaranteed to show film).
     # Priority 2: a scene from the middle of the sampled frames (avoids opening credits / black).
     frame_url = None
-    frames_dir = ws_dir / "frames"
+    frames_dir = _ws_paths(ws_dir).frames_dir
     if frames_dir.exists():
         scene_dirs = sorted([d for d in frames_dir.iterdir() if d.is_dir()])
         if scene_dirs:
@@ -731,7 +829,7 @@ async def publish_stream(slug: str, body: dict):
 @app.get("/api/workspace/{slug}/lyrics")
 def get_lyrics(slug: str):
     ws_dir = WORKSPACES_DIR / slug
-    lyrics_file = ws_dir / "state" / "lyrics.json"
+    lyrics_file = _ws_paths(ws_dir).lyrics_file
     if not lyrics_file.exists():
         raise HTTPException(404, "No lyrics — run extract-lyrics first")
     return json.loads(lyrics_file.read_text())
@@ -746,7 +844,7 @@ async def save_lyrics(slug: str, body: dict):
     if not isinstance(lyrics, list):
         raise HTTPException(400, "lyrics must be a list")
 
-    lyrics_file = ws_dir / "state" / "lyrics.json"
+    lyrics_file = _ws_paths(ws_dir).lyrics_file
     lyrics_file.write_text(json.dumps(lyrics, indent=2))
 
     # Sync lyric_lines in plan.json — editor.py reads exclusively from the plan,
@@ -783,7 +881,7 @@ async def save_lyrics(slug: str, body: dict):
 @app.get("/api/workspace/{slug}/audio")
 def serve_audio(slug: str):
     ws_dir = WORKSPACES_DIR / slug
-    audio_path_file = ws_dir / "state" / "audio_path.txt"
+    audio_path_file = _ws_paths(ws_dir).audio_path_file
     if not audio_path_file.exists():
         raise HTTPException(404, "No audio — run download-audio first")
     audio_path = Path(audio_path_file.read_text().strip())

@@ -156,9 +156,9 @@ def _build_timeline_slots(
         slot_idx += 1
         t = ll.end_time
 
-    # Outro silence
+    # Outro silence — always add even if tiny, so the plan covers 100% of the audio.
     outro_gap = audio_duration - t
-    if outro_gap >= min_gap:
+    if outro_gap > 0.01:
         slots.append({
             "slot_index": slot_idx,
             "start": t, "end": audio_duration,
@@ -622,18 +622,25 @@ the lyric. A great fan-edit feels personal, not like a highlight reel of action 
 
     return f"""You are a world-class video editor creating a deeply resonant Instagram Reel from the film '{film_name}' set to the song '{song_name}'.
 {char_block}
-AVAILABLE SCENES ({n_scenes} usable scenes — only aesthetically clean, film-related ones):
+AVAILABLE SCENES ({n_scenes} scenes — ranked by visual_power ★; use ★ as your primary quality filter):
 {scene_lines}
 
 ══════════════════════════════════════════════════════════════════════════════
 AUDIO TIMELINE — {audio_duration:.2f}s total  ({lyric_slots} lyric slots + {silence_slots} silence slots = {total_slots} total)
 ══════════════════════════════════════════════════════════════════════════════
-IMPORTANT: These time slots are IMMUTABLE. Their durations are derived from the
-lyrics transcript and cannot be changed. Lyric timestamps mark the EXACT moments
-a phrase is pronounced — they are ground truth.
+These time slots are IMMUTABLE. Their durations come from the lyrics transcript
+and cannot be changed. Lyric timestamps are ground truth.
 
-Your only decisions: (1) which scene to show in each slot, (2) where in that scene
-to start the clip. The output video MUST cover the full {audio_duration:.2f}s exactly.
+Your only decisions: (1) which scene fills each slot, (2) where in that scene
+to start the clip.
+
+FULL COVERAGE IS MANDATORY — the output video must fill the song from 0.00s to
+{audio_duration:.2f}s with zero gaps. This means:
+• The very first slot (intro silence or first lyric) must be assigned a scene.
+• Every silence/gap slot between lyrics must be assigned a scene.
+• The very last slot (outro silence or last lyric) must be assigned a scene that
+  reaches exactly {audio_duration:.2f}s. Do not leave the end of the song uncut.
+• Skipping ANY slot — especially intro/outro silence — is an error.
 
 {slots_display}
 
@@ -656,17 +663,19 @@ HARD CONSTRAINTS — non-negotiable, checked automatically after your response:
 
 SCENE SELECTION PRINCIPLES (apply after satisfying the hard constraints above):
 
-1. EMOTIONAL RESONANCE — the scene's emotional register must match the lyric
+1. VISUAL POWER FIRST — ★ is the primary quality signal. Prefer ★★★★+ scenes.
+   Never use ★★☆☆☆ when a ★★★+ alternative with matching emotion exists.
+   Silence/gap slots (intro, outro, gaps) deserve visually strong scenes just as
+   much as lyric slots — they are the emotional framing of the whole piece.
+
+2. EMOTIONAL RESONANCE — match the scene's register to the lyric or mood
    • Tender/longing → intimate close-ups, quiet moments, characters apart
    • Euphoric/free  → movement, brightness, characters together
    • Melancholy     → stillness, distance, averted eyes, fading light
    • Tension        → confrontation, charged silence, uncertain expression
 
-2. CHARACTER FOCUS — faces and readable reactions beat any scenery shot.
+3. CHARACTER FOCUS — faces and readable reactions beat any scenery shot.
    A character's expression reacting to a lyric's words is worth 10 landscape shots.
-
-3. VISUAL POWER — prefer higher ★ scenes. Never use ★★☆☆☆ when a ★★★+ alternative
-   with matching emotion exists. Silence/gap slots still deserve beautiful visuals.
 
 4. LYRIC-VISUAL SYNC — think literally AND metaphorically:
    • "Waiting" → stillness, empty space, a character poised
@@ -678,7 +687,8 @@ SCENE SELECTION PRINCIPLES (apply after satisfying the hard constraints above):
    to create visual rhythm even within the no-reuse constraint.
 
 TASK:
-Assign a scene clip to every slot in the timeline above and return a JSON array.
+Assign a scene clip to EVERY slot in the timeline above (all {total_slots} slots, no exceptions)
+and return a JSON array.
 
 CLIP DURATION RULES:
 • For each slot: the sum of clip_duration values MUST equal the slot's duration EXACTLY.

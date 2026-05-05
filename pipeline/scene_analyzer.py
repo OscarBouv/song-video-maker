@@ -56,22 +56,28 @@ def _system_prompt(film_name: str, n_frames: int, characters: list[str] | None =
         "e.g. 'warm golden hour, soft shadows', 'harsh fluorescent, clinical', "
         "'blue-green neon, night', 'diffused overcast, flat', 'high contrast backlit silhouette'.>,\n\n"
 
-        '  "visual_power": <integer 1–5 — how iconic and cinematically striking is this scene '
-        "as a standalone music-video shot? Apply this rubric strictly:\n"
-        "    5 = Showstopper: a frame you could print as a poster. Extraordinary light, composition,\n"
-        "        or emotional charge. The hero shot of any music video.\n"
+        '  "visual_power": <integer 1–5 — the PRIMARY quality signal used to rank scenes.\n'
+        "    Rate strictly and spread the full scale — most scenes should be 2 or 3.\n"
+        "    5 = Showstopper: a frame you could print as a poster. Extraordinary light,\n"
+        "        composition, or emotional charge. The hero shot of any music video.\n"
         "    4 = Strong: visually beautiful or emotionally arresting. Great light or framing.\n"
         "        A confident choice for a key moment in a fan edit.\n"
         "    3 = Solid: competent and clean, nothing wrong but nothing exceptional.\n"
-        "    2 = Weak: flat light, cluttered background, or awkward composition.\n"
-        "    1 = Poor: blurry, badly framed, heavily obstructed, or aesthetically unappealing.>,\n\n"
+        "    2 = Weak: flat light, cluttered background, dark/grainy, or awkward composition.\n"
+        "        Include burn-in text, minor watermarks, or mild quality issues here rather\n"
+        "        than marking is_aesthetic=false.\n"
+        "    1 = Poor: heavily obstructed, almost completely dark, or barely watchable.>,\n\n"
 
         f'  "is_film_related": <true/false — is this scene from \'{film_name}\'?>,\n\n'
 
-        '  "is_aesthetic": <true/false — is this scene visually suitable for an Instagram Reel? '
-        "Mark FALSE if any frame shows: overlaid text/subtitles/watermarks/channel logos, "
-        "explicit or graphic content, heavy pixelation/corruption, black bars covering >30 % of the frame, "
-        "or on-screen UI / interface elements>,\n\n"
+        '  "is_aesthetic": <true/false — mark FALSE ONLY if the scene is truly unusable:\n'
+        "    • A persistent channel watermark or logo that occupies a significant portion of the frame.\n"
+        "    • Explicit adult or graphic violent content.\n"
+        "    • Video so corrupted or pixelated it is genuinely unreadable.\n"
+        "    The following do NOT make a scene not-aesthetic — use visual_power to rate these instead:\n"
+        "    dark scenes, heavy grain, motion blur, hard-cut frames, burn-in subtitles in another\n"
+        "    language, widescreen black bars, mild compression artifacts, or any aesthetic style choice.\n"
+        "    When in doubt, mark TRUE. Under-flagging is better than over-flagging.>,\n\n"
 
         '  "confidence": <0.0–1.0 — your confidence that is_film_related is correct>\n\n'
 
@@ -96,6 +102,10 @@ def _build_content(scenes_batch: list[Scene], film_name: str, characters: list[s
     return parts
 
 
+class _ProhibitedContent(Exception):
+    """Raised when OpenRouter rejects a request with PROHIBITED_CONTENT (403)."""
+
+
 def _call_openrouter(content: list[dict], model: str) -> str:
     from openai import OpenAI
     client = OpenAI(api_key=OPENROUTER_API_KEY, base_url=OPENROUTER_BASE_URL)
@@ -104,6 +114,14 @@ def _call_openrouter(content: list[dict], model: str) -> str:
         max_tokens=2048,
         messages=[{"role": "user", "content": content}],
     )
+    # OpenRouter returns errors as a populated `.error` field with choices=None
+    if response.choices is None:
+        err = getattr(response, "error", {}) or {}
+        code = err.get("code") or err.get("status")
+        msg  = err.get("message", "unknown error")
+        if str(code) == "403" or "PROHIBITED" in str(msg).upper():
+            raise _ProhibitedContent(msg)
+        raise RuntimeError(f"[scene_analyzer] OpenRouter error {code}: {msg}")
     return response.choices[0].message.content.strip()
 
 def _apply_result(scene: Scene, r: dict) -> None:
@@ -195,7 +213,54 @@ def analyze_scenes(
         print(f"[scene_analyzer] Batch {batch_num}/{run_batches} ({len(batch)} scenes)...")
 
         content = _build_content(batch, film_name, characters)
-        raw = _call_openrouter(content, resolved_model)
+        try:
+            raw = _call_openrouter(content, resolved_model)
+        except _ProhibitedContent:
+            if len(batch) == 1:
+                # Single scene — mark it as skipped and cache the tombstone
+                scene = batch[0]
+                print(f"[scene_analyzer] Sc {scene.index}: PROHIBITED_CONTENT — marking not usable")
+                _apply_result(scene, {
+                    "description": "(content flagged by model)",
+                    "is_film_related": False, "is_aesthetic": False,
+                    "visual_power": 1, "confidence": 0.0,
+                })
+                cache.set_scene(scene.frames, cache_context,
+                                {"description": "(prohibited)", "is_film_related": False,
+                                 "is_aesthetic": False, "visual_power": 1,
+                                 "confidence": 0.0, "characters_present": [],
+                                 "emotion": "", "shot_type": "", "lighting": ""},
+                                model=resolved_model, cache_dir=cache_dir)
+                continue
+            # Retry each scene individually to isolate the flagged one
+            print(f"[scene_analyzer] Batch {batch_num} PROHIBITED — retrying {len(batch)} scenes individually")
+            for solo in batch:
+                solo_content = _build_content([solo], film_name, characters)
+                try:
+                    solo_raw = _call_openrouter(solo_content, resolved_model)
+                    solo_results = _parse_json(solo_raw, batch_num)
+                    if solo_results:
+                        _apply_result(solo, solo_results[0])
+                        cache.set_scene(
+                            solo.frames, cache_context,
+                            {"description": solo.description, "characters_present": solo.characters_present,
+                             "emotion": solo.emotion, "shot_type": solo.shot_type,
+                             "lighting": solo.lighting, "visual_power": solo.visual_power,
+                             "is_film_related": solo.is_film_related, "is_aesthetic": solo.is_aesthetic,
+                             "confidence": solo.confidence},
+                            model=resolved_model, cache_dir=cache_dir,
+                        )
+                except _ProhibitedContent:
+                    print(f"[scene_analyzer] Sc {solo.index}: PROHIBITED_CONTENT — marking not usable")
+                    _apply_result(solo, {"description": "(content flagged by model)",
+                                        "is_film_related": False, "is_aesthetic": False,
+                                        "visual_power": 1, "confidence": 0.0})
+                    cache.set_scene(solo.frames, cache_context,
+                                    {"description": "(prohibited)", "is_film_related": False,
+                                     "is_aesthetic": False, "visual_power": 1, "confidence": 0.0,
+                                     "characters_present": [], "emotion": "", "shot_type": "", "lighting": ""},
+                                    model=resolved_model, cache_dir=cache_dir)
+            continue
 
         results = _parse_json(raw, batch_num)
         if results is None:

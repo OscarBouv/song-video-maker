@@ -99,7 +99,7 @@
 
         <!-- Tab bar -->
         <div class="flex border-b border-gray-800 bg-gray-900 flex-none px-2">
-          <template x-for="t in [{id:'pipeline',label:'Pipeline'},{id:'plan',label:'Plan Editor'},{id:'clip-editor',label:'Clip Editor'},{id:'lyrics',label:'Lyrics'},{id:'scenes',label:'Scene Browser'},{id:'crop',label:'✂ Crop'}]" :key="t.id">
+          <template x-for="t in [{id:'pipeline',label:'Pipeline'},{id:'plan',label:'Plan Viewer'},{id:'clip-editor',label:'Clip Editor'},{id:'lyrics',label:'Lyrics'},{id:'scenes',label:'Scene Browser'},{id:'crop',label:'✂ Crop'}]" :key="t.id">
             <button @click="switchTab(t.id)"
                     class="px-4 py-2.5 text-sm font-medium border-b-2 transition-colors"
                     :class="tab === t.id
@@ -183,127 +183,159 @@
         </div>
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!-- PLAN EDITOR TAB                                         -->
+        <!-- PLAN VIEWER TAB                                         -->
         <!-- ═══════════════════════════════════════════════════════ -->
-        <div x-show="tab === 'plan'" class="flex-1 flex overflow-hidden">
+        <div x-show="tab === 'plan'" class="flex-1 flex flex-col overflow-hidden">
 
-          <!-- Clip list (sortable) -->
-          <div class="flex-1 flex flex-col overflow-hidden">
-            <div class="flex items-center justify-between px-4 py-2 border-b border-gray-800 flex-none">
-              <div class="text-sm font-medium flex items-center gap-2">
+          <!-- ── Top: toolbar + full-width timeline ──────────────── -->
+          <div class="flex-none border-b border-gray-800">
+
+            <!-- Toolbar -->
+            <div class="flex items-center justify-between px-4 py-2 border-b border-gray-700/50 gap-3">
+              <div class="text-sm font-medium flex items-center gap-2 min-w-0">
                 <span x-text="plan.length"></span> clips
-                <span x-show="planDirty" class="text-xs text-yellow-400">● unsaved</span>
-                <!-- Timing summary pill -->
                 <template x-if="planAudit">
-                  <span class="flex items-center gap-1 text-xs font-mono px-2 py-0.5 rounded-full"
-                        :class="planAudit.ok
-                          ? 'bg-green-900/50 text-green-300'
-                          : 'bg-red-900/50 text-red-300'">
+                  <span class="flex items-center gap-1 text-xs font-mono px-2 py-0.5 rounded-full flex-none"
+                        :class="planAudit.ok ? 'bg-green-900/50 text-green-300' : 'bg-red-900/50 text-red-300'">
                     <span x-text="planAudit.ok ? '✓' : '⚠'"></span>
-                    <span x-text="`${planAudit.plan_total.toFixed(2)}s`"></span>
-                    <span class="text-gray-500">/</span>
-                    <span x-text="`${planAudit.audio_duration.toFixed(2)}s`"></span>
-                    <span x-show="!planAudit.ok"
-                          class="text-red-400 font-bold"
-                          x-text="`(${planAudit.end_gap > 0 ? '+' : ''}${planAudit.end_gap.toFixed(2)}s)`">
-                    </span>
+                    <span x-text="`${planAudit.plan_total.toFixed(1)}s / ${planAudit.audio_duration.toFixed(1)}s`"></span>
                   </span>
                 </template>
               </div>
-              <div class="flex gap-2">
-                <button @click="loadPlan()" class="text-xs text-gray-500 hover:text-gray-300 px-2 py-1 rounded">↺ Reload</button>
-                <button @click="savePlan()"
-                        :disabled="!planDirty"
-                        class="text-xs bg-green-700 hover:bg-green-600 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1 rounded font-medium">
-                  Save Order
+              <div class="flex gap-2 flex-none">
+                <button @click="syncPlan()" :disabled="isRunning"
+                        class="text-xs bg-indigo-800 hover:bg-indigo-700 disabled:opacity-40 px-3 py-1 rounded font-medium transition-colors">
+                  ↻ Sync
                 </button>
+                <button @click="loadPlan()" class="text-xs text-gray-500 hover:text-gray-300 px-2 py-1 rounded">↺ Reload</button>
               </div>
             </div>
 
-            <div x-show="plan.length === 0" class="flex-1 flex items-center justify-center text-gray-600 text-sm">
-              No plan yet — run generate-plan first, then come back here.
-            </div>
+            <!-- ── Full-width timeline ───────────────────────────── -->
+            <div x-show="plan.length > 0" class="bg-gray-950 px-4 pt-3 pb-2">
 
-            <div class="flex-1 overflow-y-auto p-3" x-show="plan.length > 0">
-              <div x-ref="planList" id="plan-list">
-                <template x-for="(clip, idx) in plan" :key="clip.clip_number + '-' + clip.scene_index">
-                  <div class="clip-card bg-gray-800 border border-gray-700 rounded-lg mb-2 flex gap-2 p-2 hover:border-gray-600">
-                    <!-- Drag handle + number -->
-                    <div class="drag-handle flex flex-col items-center justify-center w-6 text-gray-600 flex-none">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
-                      </svg>
-                      <span class="text-xs text-gray-600 mt-1" x-text="idx + 1"></span>
-                    </div>
-                    <!-- Thumbnail -->
-                    <div class="w-14 h-20 bg-gray-700 rounded overflow-hidden flex-none">
-                      <img :src="clip.thumbnail" class="w-full h-full object-cover"
-                           onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-gray-600 text-xs\'>No<br>frame</div>'" />
-                    </div>
-                    <!-- Info -->
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center gap-1.5 mb-1 flex-wrap">
-                        <span class="text-xs bg-gray-700 rounded px-1.5 py-0.5 text-gray-400">
-                          Sc <span x-text="clip.scene_index"></span>
-                        </span>
-                        <!-- Audio plan position -->
-                        <span class="text-xs text-gray-500 font-mono"
-                              x-text="clip.song_start >= 0 ? `♪ ${clip.song_start.toFixed(2)}–${clip.song_end.toFixed(2)}s` : ''">
-                        </span>
-                        <!-- Video output position from audit -->
-                        <template x-if="auditClipDetail(idx)">
-                          <span class="text-xs font-mono px-1.5 py-0.5 rounded"
-                                :class="auditClipDetail(idx).drift === 0
-                                  ? 'bg-gray-800 text-gray-500'
-                                  : Math.abs(auditClipDetail(idx).drift) < 0.1
-                                    ? 'bg-gray-800 text-gray-400'
-                                    : 'bg-amber-900/50 text-amber-300'"
-                                :title="`Video output: ${auditClipDetail(idx).video_out_start.toFixed(2)}–${auditClipDetail(idx).video_out_end.toFixed(2)}s`
-                                         + (auditClipDetail(idx).drift !== 0 ? `  drift: ${auditClipDetail(idx).drift > 0 ? '+' : ''}${auditClipDetail(idx).drift.toFixed(2)}s` : '')">
-                            🎬 <span x-text="`${auditClipDetail(idx).video_out_start.toFixed(2)}s`"></span>
-                            <template x-if="Math.abs(auditClipDetail(idx).drift) >= 0.1">
-                              <span x-text="`⚠${auditClipDetail(idx).drift > 0 ? '+' : ''}${auditClipDetail(idx).drift.toFixed(2)}s`"></span>
-                            </template>
-                          </span>
-                        </template>
-                        <span class="text-xs" x-html="stars(clip.scene?.visual_power || 3)"></span>
-                      </div>
-                      <div class="text-sm font-medium text-yellow-300 mb-1 truncate"
-                           x-text="clip.lyric_lines.map(l => l.text).join(' · ') || '(silence)'">
-                      </div>
-                      <div class="text-xs text-purple-400 truncate" x-text="clip.scene?.emotion || '—'"></div>
-                      <div class="text-xs text-gray-500 truncate" x-text="clip.scene?.description || '—'"></div>
-                    </div>
+              <!-- Two-row timeline: clips on top, lyrics below -->
+              <div class="relative select-none" style="height: 76px">
+
+                <!-- Clip bars (top row, 0–34px) -->
+                <template x-for="(clip, i) in plan" :key="'tc' + i">
+                  <div class="absolute top-0 rounded-sm border border-black/30 flex items-center justify-center overflow-hidden cursor-pointer hover:brightness-125 transition-filter"
+                       style="height: 34px"
+                       :style="`
+                         left:  ${(clip.song_start / planTotalDuration * 100).toFixed(3)}%;
+                         width: max(3px, ${((clip.song_end - clip.song_start) / planTotalDuration * 100).toFixed(3)}%);
+                         background: hsl(${i * 37 % 360}, 55%, 30%)`"
+                       :title="`#${i+1} Sc ${clip.scene_index}  ${clip.song_start.toFixed(2)}–${clip.song_end.toFixed(2)}s\n${clip.lyric_lines?.map(l=>l.text).join(' / ') || '(silence)'}`"
+                       @click="focusPlanClip(i)">
+                    <span x-show="(clip.song_end - clip.song_start) / planTotalDuration > 0.025"
+                          class="text-xs font-bold text-white/80 drop-shadow pointer-events-none px-0.5 truncate"
+                          x-text="i + 1"></span>
                   </div>
                 </template>
+
+                <!-- Divider between rows -->
+                <div class="absolute inset-x-0 bg-gray-700/50" style="top: 37px; height: 1px"></div>
+
+                <!-- Lyric bars (bottom row, 40–74px) -->
+                <template x-for="(lyric, i) in lyrics.filter(l => l.start_time !== l.end_time)" :key="'tl' + i">
+                  <div class="absolute bottom-0 rounded-sm border border-black/20 flex items-center overflow-hidden cursor-pointer hover:brightness-125 transition-filter"
+                       style="height: 34px"
+                       :style="`
+                         left:  ${(lyric.start_time / planTotalDuration * 100).toFixed(3)}%;
+                         width: max(3px, ${((lyric.end_time - lyric.start_time) / planTotalDuration * 100).toFixed(3)}%);
+                         background: hsl(${lyricClipIdx(lyric) * 37 % 360}, 40%, 20%)`"
+                       :title="`${lyric.text}  ${lyric.start_time.toFixed(2)}–${lyric.end_time.toFixed(2)}s`"
+                       @click="focusPlanClip(lyricClipIdx(lyric))">
+                    <span class="text-xs text-white/60 px-0.5 truncate pointer-events-none" x-text="lyric.text"></span>
+                  </div>
+                </template>
+
+                <!-- Time axis ticks -->
+                <template x-for="t in planTimeMarkers" :key="t">
+                  <div class="absolute pointer-events-none" style="top:0; bottom:0; width:1px; background: rgba(100,100,100,0.15)"
+                       :style="`left: ${(t / planTotalDuration * 100).toFixed(2)}%`"></div>
+                </template>
+
+              </div>
+
+              <!-- Axis labels + legend -->
+              <div class="flex items-center mt-1.5 text-gray-600" style="font-size: 10px">
+                <div class="flex-1 relative" style="height: 12px">
+                  <template x-for="t in planTimeMarkers" :key="t">
+                    <span class="absolute" style="transform: translateX(-50%)"
+                          :style="`left: ${(t / planTotalDuration * 100).toFixed(2)}%`"
+                          x-text="t + 's'"></span>
+                  </template>
+                </div>
+                <div class="flex-none flex gap-3 ml-4 text-gray-700">
+                  <span>▬ clips</span>
+                  <span>▬ lyrics</span>
+                  <span class="font-mono" x-text="planTotalDuration.toFixed(1) + 's'"></span>
+                </div>
               </div>
             </div>
-          </div>
+          </div><!-- /top full-width section -->
 
-          <!-- AI edit sidebar -->
-          <div class="w-96 bg-gray-900 border-l border-gray-800 flex flex-col p-3 gap-3">
-            <div>
-              <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">AI Instruction</div>
-              <textarea x-model="editInstruction"
-                        placeholder="e.g. 'Clip 5 is too static, swap it for a close-up shot'&#10;'Replace clips 3 and 7 with alternatives to scene 22'&#10;'Fix lyric 2 — change there to here'"
-                        rows="5"
-                        class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs resize-none focus:outline-none focus:border-indigo-500 placeholder-gray-600">
-              </textarea>
-            </div>
-            <div>
-              <div class="text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider">Model</div>
-              <select x-model="editModel"
-                      class="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-xs focus:outline-none focus:border-indigo-500">
-                <template x-for="m in modelOptions" :key="m.id">
-                  <option :value="m.id" x-text="m.label + ' — ' + m.tag"></option>
-                </template>
-              </select>
-            </div>
-            <button @click="applyEdit()"
-                    :disabled="isRunning || !editInstruction.trim()"
-                    class="bg-indigo-700 hover:bg-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed rounded py-2 text-sm font-medium transition-colors">
-              Apply AI Edit
-            </button>
+          <!-- ── Bottom: clip list (left) + render sidebar (right) ── -->
+          <div class="flex-1 flex overflow-hidden min-h-0">
+
+            <!-- Clip list -->
+            <div class="flex-1 flex flex-col overflow-hidden min-w-0">
+              <div x-show="plan.length === 0" class="flex-1 flex items-center justify-center text-gray-600 text-sm">
+                No plan yet — run generate-plan first, then come back here.
+              </div>
+              <div class="flex-1 overflow-y-auto p-3" x-show="plan.length > 0">
+                <div id="plan-list">
+                  <template x-for="(clip, idx) in plan" :key="clip.clip_number + '-' + clip.scene_index">
+                    <div :id="`plan-clip-${idx}`"
+                         class="rounded-lg mb-2 flex gap-2 p-2 border transition-colors"
+                         :class="planFocusIdx === idx
+                           ? 'bg-indigo-900/40 border-indigo-500'
+                           : 'bg-gray-800 border-gray-700'">
+                      <!-- Number with clip-color dot -->
+                      <div class="flex flex-col items-center justify-center w-6 flex-none gap-1">
+                        <div class="w-2.5 h-2.5 rounded-sm flex-none"
+                             :style="`background: hsl(${idx * 37 % 360}, 55%, 35%)`"></div>
+                        <span class="text-xs text-gray-500 font-mono font-bold" x-text="idx + 1"></span>
+                      </div>
+                      <!-- Thumbnail -->
+                      <div class="w-14 h-20 bg-gray-700 rounded overflow-hidden flex-none">
+                        <img :src="clip.thumbnail" class="w-full h-full object-cover"
+                             onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-gray-600 text-xs\'>No<br>frame</div>'" />
+                      </div>
+                      <!-- Info -->
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+                          <!-- Scene link → opens Scene Browser at this scene -->
+                          <button @click="goToScene(clip.scene_index)"
+                                  class="text-xs bg-gray-700 hover:bg-indigo-800 rounded px-1.5 py-0.5 text-gray-300 hover:text-indigo-200 transition-colors">
+                            Sc <span x-text="clip.scene_index"></span> →
+                          </button>
+                          <span class="text-xs text-gray-500 font-mono"
+                                x-text="clip.song_start >= 0 ? `♪ ${clip.song_start.toFixed(2)}–${clip.song_end.toFixed(2)}s` : ''">
+                          </span>
+                          <template x-if="auditClipDetail(idx)">
+                            <span class="text-xs font-mono px-1.5 py-0.5 rounded"
+                                  :class="auditClipDetail(idx).drift === 0 ? 'bg-gray-800 text-gray-500' : Math.abs(auditClipDetail(idx).drift) < 0.1 ? 'bg-gray-800 text-gray-400' : 'bg-amber-900/50 text-amber-300'"
+                                  :title="`Video: ${auditClipDetail(idx).video_out_start.toFixed(2)}–${auditClipDetail(idx).video_out_end.toFixed(2)}s`">
+                              🎬 <span x-text="auditClipDetail(idx).video_out_start.toFixed(2) + 's'"></span>
+                            </span>
+                          </template>
+                          <span class="text-xs" x-html="stars(clip.scene?.visual_power || 3)"></span>
+                        </div>
+                        <div class="text-sm font-medium text-yellow-300 mb-1 truncate"
+                             x-text="clip.lyric_lines?.map(l => l.text).join(' · ') || '(silence)'"></div>
+                        <div class="text-xs text-purple-400 truncate" x-text="clip.scene?.emotion || '—'"></div>
+                        <div class="text-xs text-gray-500 truncate" x-text="clip.scene?.description || '—'"></div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div><!-- /clip list -->
+
+            <!-- Render sidebar -->
+            <div class="w-80 bg-gray-900 border-l border-gray-800 flex flex-col p-3 gap-3 overflow-y-auto flex-none">
             <!-- Subtitle font selector + preview -->
             <div class="space-y-2">
               <div class="text-xs font-medium text-gray-400 uppercase tracking-wider">Subtitle Font</div>
@@ -468,8 +500,9 @@
                 <div x-show="logs.length === 0" class="text-gray-700 italic">Output appears here…</div>
               </div>
             </div>
-          </div>
-        </div>
+          </div><!-- /render sidebar -->
+        </div><!-- /bottom flex row -->
+        </div><!-- /plan viewer tab -->
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!-- CLIP EDITOR TAB                                         -->
@@ -1406,6 +1439,26 @@
         'render':          {},
       },
 
+      planFocusIdx: -1,
+
+      // ── Plan viewer computed ───────────────────────────────────
+      get planTotalDuration() {
+        const clipEnd   = this.plan.length   ? Math.max(...this.plan.map(c => c.song_end || 0))   : 0;
+        const lyricEnd  = this.lyrics.length ? Math.max(...this.lyrics.filter(l => l.start_time !== l.end_time).map(l => l.end_time || 0)) : 0;
+        return Math.max(clipEnd, lyricEnd, 1);
+      },
+      get planTimeMarkers() {
+        const dur  = this.planTotalDuration;
+        const step = dur <= 20 ? 2 : dur <= 60 ? 5 : dur <= 120 ? 10 : 20;
+        const out  = [];
+        for (let t = 0; t <= dur; t += step) out.push(Math.round(t));
+        return out;
+      },
+      lyricClipIdx(lyric) {
+        const i = this.plan.findIndex(c => lyric.start_time >= c.song_start && lyric.start_time < c.song_end);
+        return i >= 0 ? i : 0;
+      },
+
       // ── Computed ───────────────────────────────────────────────
       get filteredScenes() {
         if (this.sceneFilter === 'all')       return this.scenes;
@@ -1481,7 +1534,8 @@
 
       _cascadeOutputTimes(clips, fromIndex) {
         for (let j = fromIndex + 1; j < clips.length; j++) {
-          const dur = clips[j].song_end - clips[j].song_start;
+          // Use scene trim as source of truth for duration
+          const dur = Math.max(0.05, clips[j].scene_trim_end - clips[j].scene_trim_start);
           clips[j].song_start = clips[j - 1].song_end;
           clips[j].song_end   = clips[j].song_start + dur;
         }
@@ -1842,6 +1896,7 @@
           if (this.plan.length === 0) this.loadPlan();
           this.loadPlanHistory();
           this.loadPlanAudit();
+          if (this.lyrics.length === 0) this.loadLyrics();
         }
         if (t === 'clip-editor' && this.clipEdits.length === 0) this.loadClipEditor();
         if (t === 'scenes' && this.scenes.length === 0) this.loadScenes();
@@ -1875,7 +1930,10 @@
             let cursor = 0;
             this.plan.forEach(clip => {
               const raw = clip._raw;
-              const dur   = (raw.song_end - raw.song_start) || 2;
+              // scene_trim is source of truth for duration; song window is derived
+              const dur = (raw.scene_trim_end >= 0)
+                ? Math.max(0.05, raw.scene_trim_end - raw.scene_trim_start)
+                : Math.max(0.05, (raw.song_end - raw.song_start) || 2);
               const delta = cursor - raw.song_start;
               raw.song_start  = cursor;
               raw.song_end    = cursor + dur;
@@ -1917,6 +1975,35 @@
         });
         this.planDirty = false;
         this.logs.push('✓ Plan order saved');
+      },
+
+      focusPlanClip(idx) {
+        this.planFocusIdx = idx;
+        const el = document.getElementById(`plan-clip-${idx}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        clearTimeout(this._planFocusTimer);
+        this._planFocusTimer = setTimeout(() => { this.planFocusIdx = -1; }, 1800);
+      },
+
+      goToScene(sceneIndex) {
+        if (this.scenes.length === 0) this.loadScenes();
+        this.switchTab('scenes');
+        this.$nextTick(() => {
+          const scene = this.scenes.find(s => s.index === sceneIndex);
+          if (scene) this.selectedScene = scene;
+        });
+      },
+
+      async syncPlan() {
+        if (!this.selectedSlug || this.isRunning) return;
+        const r = await fetch(`/api/workspace/${this.selectedSlug}/plan/sync`, { method: 'POST' });
+        if (r.ok) {
+          this.logs.push('✓ Plan synced from clips & lyrics');
+          await this.loadPlan();
+          await this.loadPlanAudit();
+        } else {
+          this.logs.push(`❌ Sync failed: ${await r.text()}`);
+        }
       },
 
       async applyEdit() {

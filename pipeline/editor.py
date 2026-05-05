@@ -63,9 +63,24 @@ def render_video(
     """Single-pass ffmpeg render: trim clips → blur-background 9:16 crop → drawtext subtitles → audio."""
 
     # Sort by song_start so any out-of-order plan produces a coherent video.
-    # Plans saved after the sequential-fix post-processing are already sorted;
-    # this guards against older plans loaded from disk.
     segments = sorted(segments, key=lambda s: s.song_start)
+
+    # Normalise: scene_trim duration is the source of truth for clip length.
+    # Rebuild song_start/song_end as a perfectly gapless sequential timeline and
+    # shift each segment's lyric timestamps by the same delta so subtitles stay
+    # in sync regardless of how the plan was built or edited.
+    cursor = 0.0
+    for seg in segments:
+        dur = (seg.scene_trim_end - seg.scene_trim_start) if seg.scene_trim_end >= 0 \
+              else (seg.song_end - seg.song_start) if seg.song_start >= 0 else 0.0
+        dur = max(dur, 0.05)
+        delta = cursor - (seg.song_start if seg.song_start >= 0 else cursor)
+        seg.song_start = cursor
+        seg.song_end   = cursor + dur
+        for ll in seg.lyric_lines:
+            ll.start_time = ll.start_time + delta
+            ll.end_time   = ll.end_time   + delta
+        cursor = seg.song_end
 
     video_duration = _probe_duration(video_path)
     scene_by_index = {s.index: s for s in scenes}

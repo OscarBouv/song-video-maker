@@ -14,6 +14,8 @@ import typer
 
 from config import (
     WORKSPACES_DIR,
+    CLIPS_DIR,
+    SONGS_DIR,
     SCENE_THRESHOLD,
     MIN_SCENE_DURATION,
     N_FRAMES_PER_SCENE,
@@ -35,42 +37,84 @@ app = typer.Typer(
 )
 
 
+# ── Slug helpers ─────────────────────────────────────────────────────────────
+
+def _slug(text: str) -> str:
+    """Slugify a single string."""
+    return re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
+
+
+def _slugify(film: str, song: str) -> str:
+    """Workspace slug (film+song, unchanged for backward compat)."""
+    return _slug(f"{film}_{song}")
+
+
 # ── Workspace paths ───────────────────────────────────────────────────────────
 
 class _WS:
-    """All file paths for one film+song workspace."""
+    """File paths for one workspace — a specific clip+song pairing.
 
-    def __init__(self, film: str, song: str) -> None:
-        self.film = film
-        self.song = song
-        self.slug = _slugify(film, song)
-        self.root      = WORKSPACES_DIR / self.slug
-        self.state_dir = self.root / "state"
-        self.frames_dir = self.root / "frames"
-        self.cache_dir  = self.root / "cache"
-        # State files
-        self.scenes_file          = self.state_dir / "scenes.json"
-        self.lyrics_file          = self.state_dir / "lyrics.json"
-        self.lyrics_readable_file = self.state_dir / "lyrics_readable.txt"
-        self.audio_path_file      = self.state_dir / "audio_path.txt"
-        self.video_path_file      = self.state_dir / "video_path.txt"
-        # Outputs (live at workspace root for easy access)
+    Data is stored in three disjoint directories:
+      clips/{clip_slug}/     — video file, scenes, frames, scene-analysis cache
+      songs/{song_slug}/     — audio file, lyrics, lyrics-readable
+      workspaces/{slug}/     — plan, reel, LLM-response cache (the pairing)
+
+    clip_slug and song_slug are derived from film/artist/song names and stored
+    in workspace.json so any subsequent command can locate the right dirs even
+    when the artist is not passed on the command line.
+    """
+
+    def __init__(self, film: str, song: str, artist: str = "") -> None:
+        self.film   = film
+        self.song   = song
+        self.artist = artist
+        self.slug   = _slugify(film, song)       # workspace dir name (unchanged)
+
+        self.root        = WORKSPACES_DIR / self.slug
+        self.config_file = self.root / "workspace.json"
+
+        # Load stored slugs from workspace.json if available (set during migration
+        # or first run) so we always resolve the right clip/song dir.
+        cfg: dict = {}
+        if self.config_file.exists():
+            try:
+                cfg = json.loads(self.config_file.read_text())
+            except Exception:
+                pass
+        effective_artist = artist or cfg.get("artist", "")
+
+        self.clip_slug = cfg.get("clip_slug") or _slug(film)
+        self.song_slug = cfg.get("song_slug") or (
+            _slug(f"{effective_artist}_{song}") if effective_artist else _slug(song)
+        )
+
+        # ── Clip-scoped dirs/files (clips/{clip_slug}/) ──────────────────
+        self.clip_dir        = CLIPS_DIR / self.clip_slug
+        self.frames_dir      = self.clip_dir / "frames"
+        self.clip_cache_dir  = self.clip_dir / "cache"
+        self.scenes_file     = self.clip_dir / "scenes.json"
+        self.video_path_file = self.clip_dir / "video_path.txt"
+
+        # ── Song-scoped dirs/files (songs/{song_slug}/) ──────────────────
+        self.song_dir             = SONGS_DIR / self.song_slug
+        self.lyrics_file          = self.song_dir / "lyrics.json"
+        self.lyrics_readable_file = self.song_dir / "lyrics_readable.txt"
+        self.audio_path_file      = self.song_dir / "audio_path.txt"
+
+        # ── Workspace-scoped files (workspaces/{slug}/) ──────────────────
+        self.plan_cache_dir     = self.root / "cache"   # LLM response cache
         self.plan_file          = self.root / f"{self.slug}_plan.json"
         self.plan_readable_file = self.root / f"{self.slug}_plan_readable.txt"
         self.reel_file          = self.root / f"{self.slug}_reel.mp4"
-        # Config
-        self.config_file = self.root / "workspace.json"
 
     def ensure(self) -> None:
-        """Create workspace directories."""
-        self.root.mkdir(parents=True, exist_ok=True)
-        self.state_dir.mkdir(parents=True, exist_ok=True)
+        """Create all required directories."""
+        for d in (self.clip_dir, self.clip_cache_dir, self.frames_dir,
+                  self.song_dir, self.root, self.plan_cache_dir):
+            d.mkdir(parents=True, exist_ok=True)
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-
-def _slugify(film: str, song: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "_", f"{film}_{song}".lower()).strip("_")
 
 
 def _next(cmd: str) -> None:
@@ -93,9 +137,11 @@ def _update_config(ws: _WS, **fields) -> None:
     # Strip None values so they don't overwrite previously set fields
     updates = {k: v for k, v in fields.items() if v is not None}
     existing.update(updates)
-    # Always keep core identity fields and a timestamp
-    existing.setdefault("film", ws.film)
-    existing.setdefault("song", ws.song)
+    # Always keep core identity + slug mappings so any command can locate the right dirs
+    existing.setdefault("film",      ws.film)
+    existing.setdefault("song",      ws.song)
+    existing.setdefault("clip_slug", ws.clip_slug)
+    existing.setdefault("song_slug", ws.song_slug)
     existing.setdefault("created_at", datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     ws.config_file.write_text(json.dumps(existing, indent=2))
 
@@ -113,7 +159,7 @@ def _require(path: Path, step: str, ws: _WS) -> None:
 # ── State helpers (all workspace-scoped) ──────────────────────────────────────
 
 def _save_scenes(ws: _WS, scenes: list[Scene]) -> None:
-    ws.state_dir.mkdir(parents=True, exist_ok=True)
+    ws.ensure()
     ws.scenes_file.write_text(json.dumps([s.model_dump() for s in scenes], indent=2))
     typer.echo(f"[state] Saved {len(scenes)} scenes → {ws.scenes_file}")
 
@@ -124,7 +170,7 @@ def _load_scenes(ws: _WS) -> list[Scene]:
 
 
 def _save_lyrics(ws: _WS, lyrics: list[LyricLine]) -> None:
-    ws.state_dir.mkdir(parents=True, exist_ok=True)
+    ws.ensure()
     ws.lyrics_file.write_text(json.dumps([ll.model_dump() for ll in lyrics], indent=2))
     typer.echo(f"[state] Saved {len(lyrics)} lyric lines → {ws.lyrics_file}")
 
@@ -162,7 +208,7 @@ def _load_lyrics_safe(ws: _WS) -> list[LyricLine]:
 
 
 def _save_audio_path(ws: _WS, path: Path) -> None:
-    ws.state_dir.mkdir(parents=True, exist_ok=True)
+    ws.ensure()
     ws.audio_path_file.write_text(str(path))
 
 
@@ -172,7 +218,7 @@ def _load_audio_path(ws: _WS) -> Path:
 
 
 def _save_video_path(ws: _WS, path: Path) -> None:
-    ws.state_dir.mkdir(parents=True, exist_ok=True)
+    ws.ensure()
     ws.video_path_file.write_text(str(path))
 
 
@@ -355,7 +401,7 @@ def run(
     typer.echo("\n── Step 4/6: Sampling frames + AI scene analysis ────────────")
     scenes = sample_all_scenes(video_path, scenes, n_frames=n_frames, frames_dir=ws.frames_dir)
     char_list = [c.strip() for c in characters.split(",")] if characters else None
-    scenes = analyze_scenes(scenes, film_name=film, model=analyzer_model.value, characters=char_list, cache_dir=ws.cache_dir)
+    scenes = analyze_scenes(scenes, film_name=film, model=analyzer_model.value, characters=char_list, cache_dir=ws.clip_cache_dir)
     _save_scenes(ws, scenes)
 
     typer.echo("\n── Step 5/6: Extracting lyrics ──────────────────────────────")
@@ -380,7 +426,7 @@ def run(
         model=matcher_model.value,
         characters=char_list,
         audio_path=audio_path,
-        cache_dir=ws.cache_dir,
+        cache_dir=ws.plan_cache_dir,
     )
 
     typer.echo("\n✓ Pipeline complete. Next steps:")
@@ -487,7 +533,7 @@ def analyze_scenes_cmd(
     char_list = [c.strip() for c in characters.split(",")] if characters else None
     scenes = analyze_scenes(
         scenes, film_name=film, model=model.value,
-        characters=char_list, max_batches=max_batches, cache_dir=ws.cache_dir,
+        characters=char_list, max_batches=max_batches, cache_dir=ws.clip_cache_dir,
     )
     _save_scenes(ws, scenes)
     related   = sum(1 for s in scenes if s.is_film_related)
@@ -589,7 +635,7 @@ def generate_plan_cmd(
         model=model.value,
         characters=char_list,
         audio_path=audio_path,
-        cache_dir=ws.cache_dir,
+        cache_dir=ws.plan_cache_dir,
     )
     typer.echo(f"\n✓ Plan: {ws.plan_readable_file}")
     _next(f"edit-plan --film '{film}' --song '{song}' --instruction '...'  OR  song-video-maker render --film '{film}' --song '{song}'")
